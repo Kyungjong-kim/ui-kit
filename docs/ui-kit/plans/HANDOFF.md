@@ -2,6 +2,29 @@
 
 > 이전 Session notes → [`history/세션_노트.md`](../history/세션_노트.md) 참고
 
+## Session Update 2026-04-30 (워크플로우 운영 시연 + README)
+
+### 변경 파일
+- `README.md` — 라이브러리 진입 문서 추가 (설치·사용법·컴포넌트 카탈로그·개발 명령·Git Flow 요약)
+- `docs/ui-kit/status/HANDOFF_NOW.md` — §1·§2 갱신 (Project 링크 추가, §2를 expansion plan 중심으로 재정렬)
+- `docs/ui-kit/history/세션_노트.md` — Session note prepend
+- `docs/ui-kit/plans/HANDOFF.md` — 이 Session Update 추가
+
+### 인프라/운영 변경 (이번 세션에 PR로 반영됨)
+- `develop` 브랜치 신설, GitHub 기본 브랜치를 `develop` 으로 변경
+- 이슈 #1·#2·#3 생성 → PR #4·#5·#6 생성·squash merge (3분리 단위 워크플로우 검증)
+  - #4 `chore: biome 2.4.13 업그레이드 + 자동 포맷` (69 files)
+  - #5 `feat: Toast 스토리 variant별 분리 + WithDescription`
+  - #6 `chore: Claude Code 하네스 + Git Flow`
+- 라벨 단일 축 6종 (이모지+색상)으로 재정의: 🧩 components / 🎨 tokens / 📚 stories / 🛠️ tooling / 🤖 harness / 🔀 workflow
+- GitHub Project [UI-kit 구축 #1](https://github.com/users/Kyungjong-kim/projects/1) 생성, 이슈 #1·#2·#3 연결
+- 인증: `gh` active account `kyungjongKim` → `Kyungjong-kim` 전환 (원격 레포 소유자 일치)
+
+### 이슈
+- 다음 세션 후보: (1) `docs/plans/2026-04-30-ui-kit-expansion.md` 실행 (`/executing-plans`, 18개 컴포넌트), (2) §2 단발 컴포넌트 옵션 (Progress·Tag·RadioGroup 등)
+
+---
+
 ## Session Update 2026-04-30 (하네스 검토·Git Flow 전환)
 
 ### 변경 파일
