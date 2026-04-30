@@ -1,5 +1,5 @@
-import * as SelectPrimitive from "@radix-ui/react-select";
 import * as Label from "@radix-ui/react-label";
+import * as SelectPrimitive from "@radix-ui/react-select";
 import { CheckIcon, ChevronDownIcon } from "lucide-react";
 import { useId } from "react";
 import { cn } from "../../../utils/cn";
@@ -53,7 +53,9 @@ export function Select({
             "focus:outline-none focus:ring-2 focus:ring-[var(--color-border-focus)] focus:border-[var(--color-border-focus)]",
             "disabled:cursor-not-allowed disabled:bg-[var(--color-bg-disabled)] disabled:opacity-50",
             "data-[placeholder]:text-[var(--color-text-tertiary)]",
-            error ? "border-[var(--color-border-danger-default)]" : "border-[var(--color-border-default)]",
+            error
+              ? "border-[var(--color-border-danger-default)]"
+              : "border-[var(--color-border-default)]",
             className,
           )}
         >
@@ -93,7 +95,12 @@ export function Select({
         </SelectPrimitive.Portal>
       </SelectPrimitive.Root>
       {helperText && (
-        <p className={cn("text-xs", error ? "text-[var(--color-text-danger-default)]" : "text-[var(--color-text-tertiary)]")}>
+        <p
+          className={cn(
+            "text-xs",
+            error ? "text-[var(--color-text-danger-default)]" : "text-[var(--color-text-tertiary)]",
+          )}
+        >
           {helperText}
         </p>
       )}

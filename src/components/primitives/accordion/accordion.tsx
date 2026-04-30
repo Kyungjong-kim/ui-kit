@@ -6,7 +6,11 @@ import { cn } from "../../../utils/cn";
 export const Accordion = AccordionPrimitive.Root;
 export const AccordionItem = AccordionPrimitive.Item;
 
-export function AccordionTrigger({ className, children, ...props }: ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>) {
+export function AccordionTrigger({
+  className,
+  children,
+  ...props
+}: ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>) {
   return (
     <AccordionPrimitive.Header className="flex">
       <AccordionPrimitive.Trigger
@@ -24,7 +28,11 @@ export function AccordionTrigger({ className, children, ...props }: ComponentPro
   );
 }
 
-export function AccordionContent({ className, children, ...props }: ComponentPropsWithoutRef<typeof AccordionPrimitive.Content>) {
+export function AccordionContent({
+  className,
+  children,
+  ...props
+}: ComponentPropsWithoutRef<typeof AccordionPrimitive.Content>) {
   return (
     <AccordionPrimitive.Content
       className={cn(

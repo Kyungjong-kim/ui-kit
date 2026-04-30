@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it } from "vitest";
-import { Tooltip } from "./tooltip";
 import { Button } from "../../primitives/button";
+import { Tooltip } from "./tooltip";
 
 describe("Tooltip", () => {
   it("trigger 자식을 렌더한다", () => {

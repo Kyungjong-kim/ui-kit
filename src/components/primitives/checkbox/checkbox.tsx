@@ -4,8 +4,7 @@ import { CheckIcon } from "lucide-react";
 import { type ComponentPropsWithoutRef, useId } from "react";
 import { cn } from "../../../utils/cn";
 
-export interface CheckboxProps
-  extends ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root> {
+export interface CheckboxProps extends ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root> {
   label?: string;
 }
 

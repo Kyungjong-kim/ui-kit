@@ -1,7 +1,7 @@
-import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import { DndList } from "../src/components/primitives/dnd-list";
+import { useState } from "react";
 import { Badge } from "../src/components/primitives/badge";
+import { DndList } from "../src/components/primitives/dnd-list";
 
 const meta: Meta = {
   title: "Primitives/DndList",
@@ -34,8 +34,8 @@ export const Default: Story = {
                   item.status === "done"
                     ? "success"
                     : item.status === "progress"
-                    ? "default"
-                    : "outline"
+                      ? "default"
+                      : "outline"
                 }
               >
                 {item.status === "done" ? "완료" : item.status === "progress" ? "진행중" : "대기"}

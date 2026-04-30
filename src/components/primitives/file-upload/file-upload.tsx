@@ -1,6 +1,6 @@
+import { FileIcon, UploadIcon, XIcon } from "lucide-react";
 import { useCallback, useState } from "react";
-import { useDropzone, type Accept } from "react-dropzone";
-import { UploadIcon, XIcon, FileIcon } from "lucide-react";
+import { type Accept, useDropzone } from "react-dropzone";
 import { cn } from "../../../utils/cn";
 
 export interface FileUploadProps {
@@ -70,7 +70,7 @@ export function FileUpload({
         <ul className="space-y-1.5">
           {files.map((file, i) => (
             <li
-              key={`${file.name}-${i}`}
+              key={file.name}
               className="flex items-center gap-2 rounded-md border border-[var(--color-border-default)] px-3 py-2"
             >
               <FileIcon className="h-4 w-4 shrink-0 text-[var(--color-text-tertiary)]" />

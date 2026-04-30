@@ -39,8 +39,11 @@ export function Stepper({
                   className={cn(
                     "flex h-8 w-8 items-center justify-center rounded-full text-sm font-medium transition-colors",
                     isDone && "bg-[var(--color-bg-brand-default)] text-[var(--color-neutral-900)]",
-                    isCurrent && "border-2 border-[var(--color-border-brand-default)] text-[var(--color-text-brand-default)]",
-                    !isDone && !isCurrent && "border-2 border-[var(--color-border-default)] text-[var(--color-text-tertiary)]",
+                    isCurrent &&
+                      "border-2 border-[var(--color-border-brand-default)] text-[var(--color-text-brand-default)]",
+                    !isDone &&
+                      !isCurrent &&
+                      "border-2 border-[var(--color-border-default)] text-[var(--color-text-tertiary)]",
                   )}
                 >
                   {isDone ? <CheckIcon className="h-4 w-4" /> : index + 1}
@@ -48,7 +51,9 @@ export function Stepper({
                 <span
                   className={cn(
                     "mt-1 text-xs whitespace-nowrap",
-                    isCurrent ? "text-[var(--color-text-brand-default)] font-medium" : "text-[var(--color-text-tertiary)]",
+                    isCurrent
+                      ? "text-[var(--color-text-brand-default)] font-medium"
+                      : "text-[var(--color-text-tertiary)]",
                   )}
                 >
                   {step}
@@ -58,7 +63,9 @@ export function Stepper({
                 <div
                   className={cn(
                     "mx-2 h-px flex-1 transition-colors",
-                    index < activeStep ? "bg-[var(--color-bg-brand-default)]" : "bg-[var(--color-border-default)]",
+                    index < activeStep
+                      ? "bg-[var(--color-bg-brand-default)]"
+                      : "bg-[var(--color-border-default)]",
                   )}
                 />
               )}

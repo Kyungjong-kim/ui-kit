@@ -11,7 +11,11 @@ describe("Button", () => {
 
   it("disabled 상태에서 클릭 이벤트가 발생하지 않는다", async () => {
     const onClick = vi.fn();
-    render(<Button disabled onClick={onClick}>Click</Button>);
+    render(
+      <Button disabled onClick={onClick}>
+        Click
+      </Button>,
+    );
     await userEvent.click(screen.getByRole("button"));
     expect(onClick).not.toHaveBeenCalled();
   });

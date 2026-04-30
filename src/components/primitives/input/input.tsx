@@ -1,5 +1,5 @@
 import * as Label from "@radix-ui/react-label";
-import { type InputHTMLAttributes, forwardRef, useId } from "react";
+import { forwardRef, type InputHTMLAttributes, useId } from "react";
 import { cn } from "../../../utils/cn";
 
 export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "size"> {
