@@ -16,9 +16,7 @@ describe("EmptyState", () => {
 
   it("action 버튼 클릭 시 onAction이 호출된다", async () => {
     const onAction = vi.fn();
-    render(
-      <EmptyState title="오류" actionText="다시 시도" onAction={onAction} />,
-    );
+    render(<EmptyState title="오류" actionText="다시 시도" onAction={onAction} />);
     await userEvent.click(screen.getByRole("button", { name: "다시 시도" }));
     expect(onAction).toHaveBeenCalled();
   });

@@ -1,5 +1,5 @@
 import * as Label from "@radix-ui/react-label";
-import { type TextareaHTMLAttributes, forwardRef, useId } from "react";
+import { forwardRef, type TextareaHTMLAttributes, useId } from "react";
 import { cn } from "../../../utils/cn";
 
 export interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
@@ -49,7 +49,9 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           <p
             className={cn(
               "text-xs",
-              error ? "text-[var(--color-text-danger-default)]" : "text-[var(--color-text-tertiary)]",
+              error
+                ? "text-[var(--color-text-danger-default)]"
+                : "text-[var(--color-text-tertiary)]",
             )}
           >
             {helperText}

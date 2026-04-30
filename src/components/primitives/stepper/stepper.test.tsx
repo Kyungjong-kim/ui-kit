@@ -8,7 +8,9 @@ const steps = ["기본 정보", "상세 설정", "완료"];
 describe("Stepper", () => {
   it("모든 step 라벨이 렌더된다", () => {
     render(<Stepper steps={steps} activeStep={0} />);
-    steps.forEach((s) => expect(screen.getByText(s)).toBeInTheDocument());
+    for (const s of steps) {
+      expect(screen.getByText(s)).toBeInTheDocument();
+    }
   });
 
   it("다음 버튼 클릭 시 onNext가 호출된다", async () => {

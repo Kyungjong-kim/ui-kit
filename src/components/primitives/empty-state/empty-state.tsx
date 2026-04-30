@@ -11,7 +11,14 @@ export interface EmptyStateProps {
   className?: string;
 }
 
-export function EmptyState({ title, description, icon, actionText, onAction, className }: EmptyStateProps) {
+export function EmptyState({
+  title,
+  description,
+  icon,
+  actionText,
+  onAction,
+  className,
+}: EmptyStateProps) {
   return (
     <div
       className={cn(
@@ -30,9 +37,7 @@ export function EmptyState({ title, description, icon, actionText, onAction, cla
           <p className="text-sm text-[var(--color-text-secondary)] max-w-sm">{description}</p>
         )}
       </div>
-      {actionText && onAction && (
-        <Button onClick={onAction}>{actionText}</Button>
-      )}
+      {actionText && onAction && <Button onClick={onAction}>{actionText}</Button>}
     </div>
   );
 }

@@ -6,7 +6,11 @@ export const DropdownMenu = DropdownMenuPrimitive.Root;
 export const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger;
 export const DropdownMenuSeparator = DropdownMenuPrimitive.Separator;
 
-export function DropdownMenuContent({ className, sideOffset = 6, ...props }: ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Content>) {
+export function DropdownMenuContent({
+  className,
+  sideOffset = 6,
+  ...props
+}: ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Content>) {
   return (
     <DropdownMenuPrimitive.Portal>
       <DropdownMenuPrimitive.Content
@@ -22,7 +26,10 @@ export function DropdownMenuContent({ className, sideOffset = 6, ...props }: Com
   );
 }
 
-export function DropdownMenuItem({ className, ...props }: ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Item>) {
+export function DropdownMenuItem({
+  className,
+  ...props
+}: ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Item>) {
   return (
     <DropdownMenuPrimitive.Item
       className={cn(
@@ -36,10 +43,16 @@ export function DropdownMenuItem({ className, ...props }: ComponentPropsWithoutR
   );
 }
 
-export function DropdownMenuLabel({ className, ...props }: ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Label>) {
+export function DropdownMenuLabel({
+  className,
+  ...props
+}: ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Label>) {
   return (
     <DropdownMenuPrimitive.Label
-      className={cn("px-2 py-1.5 text-xs font-semibold text-[var(--color-text-tertiary)]", className)}
+      className={cn(
+        "px-2 py-1.5 text-xs font-semibold text-[var(--color-text-tertiary)]",
+        className,
+      )}
       {...props}
     />
   );

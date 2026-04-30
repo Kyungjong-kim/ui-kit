@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import { Card, CardHeader, CardBody, CardFooter } from "./card";
+import { Card, CardBody, CardFooter, CardHeader } from "./card";
 
 describe("Card", () => {
   it("children을 렌더한다", () => {

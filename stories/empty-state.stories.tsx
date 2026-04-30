@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { InboxIcon, AlertCircleIcon, SearchIcon } from "lucide-react";
+import { AlertCircleIcon, InboxIcon, SearchIcon } from "lucide-react";
 import { EmptyState } from "../src/components/primitives/empty-state";
 
 const meta: Meta<typeof EmptyState> = {
@@ -22,7 +22,7 @@ export const NoData: Story = {
   },
 };
 
-export const Error: Story = {
+export const ErrorState: Story = {
   args: {
     icon: <AlertCircleIcon className="h-8 w-8 text-[var(--color-text-danger-default)]" />,
     title: "오류가 발생했습니다",

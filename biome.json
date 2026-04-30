@@ -1,6 +1,9 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
-  "organizeImports": { "enabled": true },
+  "$schema": "https://biomejs.dev/schemas/2.4.13/schema.json",
+  "files": {
+    "includes": ["**", "!dist", "!node_modules", "!storybook-static", "!src/stories"]
+  },
+  "assist": { "actions": { "source": { "organizeImports": "on" } } },
   "linter": {
     "enabled": true,
     "rules": {
@@ -16,5 +19,8 @@
   },
   "javascript": {
     "formatter": { "quoteStyle": "double", "trailingCommas": "all" }
+  },
+  "css": {
+    "parser": { "cssModules": false, "tailwindDirectives": true }
   }
 }

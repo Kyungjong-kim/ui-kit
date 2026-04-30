@@ -2,7 +2,10 @@ import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { DndList } from "./dnd-list";
 
-interface Item { id: string; label: string }
+interface Item {
+  id: string;
+  label: string;
+}
 
 const items: Item[] = [
   { id: "1", label: "항목 1" },
@@ -19,6 +22,8 @@ describe("DndList", () => {
         renderItem={(item) => <span>{item.label}</span>}
       />,
     );
-    items.forEach((item) => expect(screen.getByText(item.label)).toBeInTheDocument());
+    for (const item of items) {
+      expect(screen.getByText(item.label)).toBeInTheDocument();
+    }
   });
 });

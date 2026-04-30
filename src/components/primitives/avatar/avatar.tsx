@@ -9,7 +9,14 @@ export interface AvatarProps {
   className?: string;
 }
 
-export function Avatar({ src, alt, fallback, size = "md", shape = "circle", className }: AvatarProps) {
+export function Avatar({
+  src,
+  alt,
+  fallback,
+  size = "md",
+  shape = "circle",
+  className,
+}: AvatarProps) {
   const sizeClasses = {
     xs: "h-6 w-6 text-xs",
     sm: "h-8 w-8 text-xs",
