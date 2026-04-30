@@ -1,0 +1,72 @@
+/* Core Design Tokens — Brand Palette (Golden Amber #FABC37) */
+:root {
+  /* Brand — Golden Amber (#FABC37 = 500)
+   * 밝은 색이므로 이 색 위에 올라오는 텍스트는 반드시 다크(neutral-900)를 사용한다. */
+  --color-brand-25: #fffdf0;
+  --color-brand-50: #fff8d9;
+  --color-brand-100: #fff1b3;
+  --color-brand-200: #ffe480;
+  --color-brand-300: #ffd44d;
+  --color-brand-400: #fcc83c;
+  --color-brand-500: #fabc37;
+  --color-brand-600: #e6a828;
+  --color-brand-700: #c48e1a;
+  --color-brand-800: #a07318;
+  --color-brand-900: #7a5812;
+
+  /* Neutral — Warm Gray (앰버와 어울리는 따뜻한 그레이) */
+  --color-neutral-25: #fdfcfb;
+  --color-neutral-50: #faf8f5;
+  --color-neutral-100: #f2efe9;
+  --color-neutral-200: #e5e1da;
+  --color-neutral-300: #d2cdc4;
+  --color-neutral-400: #b5afa5;
+  --color-neutral-500: #908880;
+  --color-neutral-600: #635e58;
+  --color-neutral-700: #403c38;
+  --color-neutral-800: #272420;
+  --color-neutral-900: #141210;
+
+  /* Red (Error / Danger) */
+  --color-red-25: #fff5f5;
+  --color-red-50: #ffebea;
+  --color-red-100: #ffdbdc;
+  --color-red-200: #ffb7b9;
+  --color-red-300: #ff9497;
+  --color-red-400: #ff7074;
+  --color-red-500: #ff4c51;
+  --color-red-600: #e64449;
+  --color-red-700: #d94145;
+  --color-red-800: #cc3d41;
+  --color-red-900: #bf383d;
+
+  /* Green (Success) */
+  --color-green-25: #f2fbf7;
+  --color-green-50: #e6f8ef;
+  --color-green-100: #d4f4e2;
+  --color-green-200: #a9e9c5;
+  --color-green-300: #7edda9;
+  --color-green-400: #53d28c;
+  --color-green-500: #28c76f;
+  --color-green-600: #24b364;
+  --color-green-700: #22a95e;
+  --color-green-800: #209f59;
+  --color-green-900: #1e9553;
+
+  /* Orange (Warning — 브랜드가 골든/앰버라 노란색 대신 오렌지로 구분) */
+  --color-orange-25: #fff8f0;
+  --color-orange-50: #fff1e0;
+  --color-orange-100: #ffe2bf;
+  --color-orange-200: #ffc480;
+  --color-orange-300: #ffa640;
+  --color-orange-400: #ff8f1a;
+  --color-orange-500: #f97316;
+  --color-orange-600: #ea6c0e;
+  --color-orange-700: #c45c0c;
+  --color-orange-800: #9e4a0a;
+  --color-orange-900: #783908;
+
+  /* White / Black */
+  --color-white: #ffffff;
+  --color-black: #000000;
+}

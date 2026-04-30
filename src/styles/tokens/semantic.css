@@ -1,0 +1,54 @@
+/* Semantic Design Tokens — 의미 계층 (core 참조) */
+:root {
+  /* Text */
+  --color-text-primary: var(--color-neutral-900);
+  --color-text-secondary: var(--color-neutral-700);
+  --color-text-tertiary: var(--color-neutral-500);
+  --color-text-disabled: var(--color-neutral-400);
+  --color-text-inverse: var(--color-white);
+  /* 브랜드 텍스트: 흰 배경 위에서 가독성을 위해 700(딥 앰버) 사용 */
+  --color-text-brand-default: var(--color-brand-700);
+  --color-text-brand-hover: var(--color-brand-800);
+  --color-text-danger-default: var(--color-red-500);
+  --color-text-success-default: var(--color-green-500);
+  --color-text-warning-default: var(--color-orange-600);
+
+  /* Background */
+  --color-bg-primary: var(--color-white);
+  --color-bg-secondary: var(--color-neutral-50);
+  --color-bg-tertiary: var(--color-neutral-100);
+  --color-bg-inverse: var(--color-neutral-900);
+  --color-bg-brand-default: var(--color-brand-500);
+  --color-bg-brand-hover: var(--color-brand-600);
+  --color-bg-brand-subtle: var(--color-brand-50);
+  --color-bg-danger-default: var(--color-red-500);
+  --color-bg-danger-subtle: var(--color-red-50);
+  --color-bg-success-default: var(--color-green-500);
+  --color-bg-success-subtle: var(--color-green-50);
+  --color-bg-warning-default: var(--color-orange-500);
+  --color-bg-warning-subtle: var(--color-orange-50);
+  --color-bg-disabled: var(--color-neutral-100);
+
+  /* Border */
+  --color-border-default: var(--color-neutral-200);
+  --color-border-strong: var(--color-neutral-300);
+  --color-border-brand-default: var(--color-brand-500);
+  --color-border-danger-default: var(--color-red-500);
+  --color-border-disabled: var(--color-neutral-200);
+  /* focus ring: 브랜드 컬러가 밝아서 포커스 링은 딥 앰버 사용 */
+  --color-border-focus: var(--color-brand-700);
+
+  /* Interactive
+   * ⚠️ primary 버튼 배경이 #FABC37(밝은 골든)이므로 텍스트는 반드시 다크(neutral-900) */
+  --color-interactive-primary-bg: var(--color-brand-500);
+  --color-interactive-primary-bg-hover: var(--color-brand-600);
+  --color-interactive-primary-text: var(--color-neutral-900);
+  --color-interactive-secondary-bg: var(--color-white);
+  --color-interactive-secondary-border: var(--color-neutral-300);
+  --color-interactive-secondary-text: var(--color-neutral-900);
+  --color-interactive-ghost-text: var(--color-neutral-700);
+  --color-interactive-ghost-bg-hover: var(--color-neutral-100);
+  --color-interactive-destructive-bg: var(--color-red-500);
+  --color-interactive-destructive-bg-hover: var(--color-red-600);
+  --color-interactive-destructive-text: var(--color-white);
+}
