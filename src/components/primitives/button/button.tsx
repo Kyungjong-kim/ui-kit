@@ -2,6 +2,7 @@ import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 import { type ButtonHTMLAttributes, forwardRef } from "react";
 import { cn } from "../../../utils/cn";
+import { Spinner } from "../spinner/spinner";
 
 const buttonVariants = cva(
   "inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-border-focus)] disabled:pointer-events-none disabled:opacity-50",
@@ -34,13 +35,26 @@ export interface ButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean;
+  loading?: boolean;
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
+  (
+    { className, variant, size, asChild = false, loading = false, disabled, children, ...props },
+    ref,
+  ) => {
     const Comp = asChild ? Slot : "button";
     return (
-      <Comp ref={ref} className={cn(buttonVariants({ variant, size }), className)} {...props} />
+      <Comp
+        ref={ref}
+        className={cn(buttonVariants({ variant, size }), className)}
+        disabled={disabled || loading}
+        aria-busy={loading}
+        {...props}
+      >
+        {loading && <Spinner size="sm" className="border-current border-t-current opacity-70" />}
+        {children}
+      </Comp>
     );
   },
 );

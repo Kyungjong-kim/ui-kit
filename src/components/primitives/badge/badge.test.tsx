@@ -12,4 +12,9 @@ describe("Badge", () => {
     render(<Badge variant="success">Active</Badge>);
     expect(screen.getByText("Active").className).toMatch(/success/);
   });
+
+  it("variant=info가 렌더된다", () => {
+    render(<Badge variant="info">정보</Badge>);
+    expect(screen.getByText("정보")).toBeInTheDocument();
+  });
 });

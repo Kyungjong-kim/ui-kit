@@ -18,6 +18,7 @@ export const AllVariants: Story = {
       <Badge variant="success">Success</Badge>
       <Badge variant="warning">Warning</Badge>
       <Badge variant="danger">Danger</Badge>
+      <Badge variant="info">Info</Badge>
       <Badge variant="outline">Outline</Badge>
     </div>
   ),

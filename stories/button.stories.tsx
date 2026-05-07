@@ -13,6 +13,7 @@ const meta: Meta<typeof Button> = {
     },
     size: { control: "select", options: ["sm", "md", "lg"] },
     disabled: { control: "boolean" },
+    loading: { control: "boolean" },
   },
 };
 
@@ -47,4 +48,27 @@ export const Sizes: Story = {
 
 export const Disabled: Story = {
   args: { variant: "primary", children: "Disabled", disabled: true },
+};
+
+export const Loading: Story = {
+  args: { variant: "primary", children: "저장 중", loading: true },
+};
+
+export const LoadingVariants: Story = {
+  render: () => (
+    <div className="flex items-center gap-3">
+      <Button variant="primary" loading>
+        저장
+      </Button>
+      <Button variant="secondary" loading>
+        저장
+      </Button>
+      <Button variant="ghost" loading>
+        저장
+      </Button>
+      <Button variant="destructive" loading>
+        삭제
+      </Button>
+    </div>
+  ),
 };
