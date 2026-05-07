@@ -86,6 +86,17 @@
 
 ---
 
+## 횡단규칙 — 모든 작업에 적용
+
+| # | 규칙 | 설명 | 위반 예 |
+|---|---|---|---|
+| 1 | **Think Before Coding** | → STEP 0-D 참조. 분석·계획·확인 전 코드 작성 금지 | 추정으로 코드 작성 시작 |
+| 2 | **Simplicity First** | 요청된 만큼만. 단발성 코드에 추상화 금지. 발생 불가능한 시나리오 에러 처리 금지 | "나중에 쓸지도"로 옵션 추가 |
+| 3 | **Surgical Changes** | 변경된 모든 줄은 요청에 추적 가능해야 함. 인접 코드 임의 정리 금지 | 버그 수정 중 주변 포맷팅 정리 |
+| 4 | **Goal-Driven Execution** | 작업을 검증 가능한 목표로 변환. 검증 전 완료 처리 금지 | "되는 것 같다"로 마무리 |
+
+---
+
 ## 🔴 STEP 1 — 작업 중 강제 규칙
 
 > **규칙 위반 발견 시: 즉시 중단 → 사용자에게 위반 내용 보고 → 지시 후 재개. 임의 수정 후 계속 진행 금지.**
@@ -95,7 +106,7 @@
 | **신규 컴포넌트는 5개 산출물 동시 작성** (`<name>.tsx` / `<name>.test.tsx` / `index.ts` / `stories/<name>.stories.tsx` / `src/components/primitives/index.ts` export 추가) | 즉시 중단 → 누락 항목 보고 후 보완 |
 | **디자인 토큰 직접 hex 사용 금지** — 컴포넌트 className에 `#fabc37` 같은 raw값 작성 금지. semantic 토큰 변수(`bg-bg-brand-default` 등) 경유 | 즉시 중단 → semantic 토큰으로 교체 |
 | **`src/components/primitives/index.ts` 갱신 누락 금지** — 신규 컴포넌트 export 추가 후 `pnpm build` 실행 | 즉시 중단 → export 추가 후 빌드 재실행 |
-| **(이슈 트래커 도입 후) 이슈 번호 없이 커밋 금지** — 트래커 미도입 상태(현재)에선 적용 안 함 | 즉시 중단 → 이슈 생성 후 재개 |
+| **이슈 없이 커밋·PR 금지** — GitHub Issues 사용. 작업 시작 전 이슈 먼저 생성 (`/project-issue`). 이슈 번호를 커밋 메시지와 브랜치명에 포함 | 즉시 중단 → 이슈 생성 후 재개 |
 | **`main`·`develop` 직접 커밋 금지** (Git Flow — feature/release/hotfix 브랜치만 머지) | 즉시 중단 → 브랜치 생성 |
 | **커밋은 명시적 요청 시에만** | 사용자가 "커밋해줘" 전까지 커밋 불가 |
 
