@@ -12,6 +12,7 @@
   --color-text-danger-default: var(--color-red-500);
   --color-text-success-default: var(--color-green-500);
   --color-text-warning-default: var(--color-orange-600);
+  --color-text-info-default: var(--color-blue-700);
 
   /* Background */
   --color-bg-primary: var(--color-white);
@@ -27,6 +28,8 @@
   --color-bg-success-subtle: var(--color-green-50);
   --color-bg-warning-default: var(--color-orange-500);
   --color-bg-warning-subtle: var(--color-orange-50);
+  --color-bg-info-default: var(--color-blue-500);
+  --color-bg-info-subtle: var(--color-blue-50);
   --color-bg-disabled: var(--color-neutral-100);
 
   /* Border */
@@ -34,6 +37,7 @@
   --color-border-strong: var(--color-neutral-300);
   --color-border-brand-default: var(--color-brand-500);
   --color-border-danger-default: var(--color-red-500);
+  --color-border-info-default: var(--color-blue-500);
   --color-border-disabled: var(--color-neutral-200);
   /* focus ring: 브랜드 컬러가 밝아서 포커스 링은 딥 앰버 사용 */
   --color-border-focus: var(--color-brand-700);

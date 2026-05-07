@@ -29,23 +29,81 @@
   --color-neutral-800: var(--color-neutral-800);
   --color-neutral-900: var(--color-neutral-900);
 
-  /* semantic shortcuts (Tailwind 클래스로 사용) */
+  /* red */
+  --color-red-25: var(--color-red-25);
+  --color-red-50: var(--color-red-50);
+  --color-red-500: var(--color-red-500);
+  --color-red-600: var(--color-red-600);
+
+  /* green */
+  --color-green-25: var(--color-green-25);
+  --color-green-50: var(--color-green-50);
+  --color-green-500: var(--color-green-500);
+  --color-green-600: var(--color-green-600);
+
+  /* blue */
+  --color-blue-25: var(--color-blue-25);
+  --color-blue-50: var(--color-blue-50);
+  --color-blue-500: var(--color-blue-500);
+  --color-blue-600: var(--color-blue-600);
+  --color-blue-700: var(--color-blue-700);
+
+  /* orange */
+  --color-orange-25: var(--color-orange-25);
+  --color-orange-50: var(--color-orange-50);
+  --color-orange-500: var(--color-orange-500);
+  --color-orange-600: var(--color-orange-600);
+
+  /* semantic — text */
   --color-text-primary: var(--color-text-primary);
   --color-text-secondary: var(--color-text-secondary);
   --color-text-tertiary: var(--color-text-tertiary);
   --color-text-disabled: var(--color-text-disabled);
   --color-text-inverse: var(--color-text-inverse);
+  --color-text-brand-default: var(--color-text-brand-default);
+  --color-text-brand-hover: var(--color-text-brand-hover);
+  --color-text-danger-default: var(--color-text-danger-default);
+  --color-text-success-default: var(--color-text-success-default);
+  --color-text-warning-default: var(--color-text-warning-default);
+  --color-text-info-default: var(--color-text-info-default);
+
+  /* semantic — background */
   --color-bg-primary: var(--color-bg-primary);
   --color-bg-secondary: var(--color-bg-secondary);
+  --color-bg-tertiary: var(--color-bg-tertiary);
+  --color-bg-inverse: var(--color-bg-inverse);
   --color-bg-brand-default: var(--color-bg-brand-default);
+  --color-bg-brand-hover: var(--color-bg-brand-hover);
   --color-bg-brand-subtle: var(--color-bg-brand-subtle);
+  --color-bg-danger-default: var(--color-bg-danger-default);
+  --color-bg-danger-subtle: var(--color-bg-danger-subtle);
+  --color-bg-success-default: var(--color-bg-success-default);
+  --color-bg-success-subtle: var(--color-bg-success-subtle);
+  --color-bg-warning-default: var(--color-bg-warning-default);
+  --color-bg-warning-subtle: var(--color-bg-warning-subtle);
+  --color-bg-info-default: var(--color-bg-info-default);
+  --color-bg-info-subtle: var(--color-bg-info-subtle);
+  --color-bg-disabled: var(--color-bg-disabled);
+
+  /* semantic — border */
   --color-border-default: var(--color-border-default);
   --color-border-strong: var(--color-border-strong);
+  --color-border-brand-default: var(--color-border-brand-default);
+  --color-border-danger-default: var(--color-border-danger-default);
+  --color-border-info-default: var(--color-border-info-default);
+  --color-border-disabled: var(--color-border-disabled);
   --color-border-focus: var(--color-border-focus);
 
-  /* orange (warning) */
-  --color-orange-25: var(--color-orange-25);
-  --color-orange-50: var(--color-orange-50);
-  --color-orange-500: var(--color-orange-500);
-  --color-orange-600: var(--color-orange-600);
+  /* semantic — interactive */
+  --color-interactive-primary-bg: var(--color-interactive-primary-bg);
+  --color-interactive-primary-bg-hover: var(--color-interactive-primary-bg-hover);
+  --color-interactive-primary-text: var(--color-interactive-primary-text);
+  --color-interactive-secondary-bg: var(--color-interactive-secondary-bg);
+  --color-interactive-secondary-border: var(--color-interactive-secondary-border);
+  --color-interactive-secondary-text: var(--color-interactive-secondary-text);
+  --color-interactive-ghost-text: var(--color-interactive-ghost-text);
+  --color-interactive-ghost-bg-hover: var(--color-interactive-ghost-bg-hover);
+  --color-interactive-destructive-bg: var(--color-interactive-destructive-bg);
+  --color-interactive-destructive-bg-hover: var(--color-interactive-destructive-bg-hover);
+  --color-interactive-destructive-text: var(--color-interactive-destructive-text);
 }
