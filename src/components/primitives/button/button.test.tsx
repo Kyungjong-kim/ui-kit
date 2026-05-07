@@ -25,4 +25,17 @@ describe("Button", () => {
     const button = screen.getByRole("button");
     expect(button.className).toMatch(/destructive/);
   });
+
+  it("loading=true일 때 Spinner가 렌더되고 버튼이 비활성화된다", () => {
+    render(<Button loading>저장</Button>);
+    const button = screen.getByRole("button");
+    expect(screen.getByRole("status")).toBeInTheDocument();
+    expect(button).toBeDisabled();
+    expect(button).toHaveAttribute("aria-busy", "true");
+  });
+
+  it("loading=true일 때 children도 함께 렌더된다", () => {
+    render(<Button loading>저장 중</Button>);
+    expect(screen.getByText("저장 중")).toBeInTheDocument();
+  });
 });
