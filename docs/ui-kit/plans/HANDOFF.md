@@ -2,6 +2,25 @@
 
 > 이전 Session notes → [`history/세션_노트.md`](../history/세션_노트.md) 참고
 
+## Session Update 2026-05-07 (Storybook 정리·커스텀 컴포넌트 이관 준비)
+
+### 변경 파일
+- `.storybook/main.ts` — 온보딩 가이드 비활성화 (disableWhatsNewNotifications · sidebarOnboardingChecklist)
+- `package.json` / `pnpm-lock.yaml` — @chromatic-com/storybook 제거
+- `docs/ui-kit/status/HANDOFF_NOW.md` — 이관 작업 계획 반영
+
+### 주요 변경
+- Storybook "What's New" 알림 및 "Level up" 온보딩 체크리스트 제거
+- 커스텀 디자인 컴포넌트 이관 이슈 #20 생성 (하위: #21 Primitives · #22 Composed · #23 Icons)
+- 브랜치 `feat/#20-custom-component-migration` 생성
+
+### 다음 할 일
+- [ ] #21 커스텀 Primitives 이관 (Text · Thumbnail · LinkButton · SlideListBadge)
+- [ ] #22 Composed 컴포넌트 이관 (Chip · DatePicker · Modal · PageHeader · IconButton 등 16개)
+- [ ] #23 아이콘 시스템 이관
+
+---
+
 ## Session Update 2026-05-07 (토큰 보강·컴포넌트 개선·워크플로우 정비)
 
 ### 변경 파일 (PR #13·#14·#15 squash merge)
