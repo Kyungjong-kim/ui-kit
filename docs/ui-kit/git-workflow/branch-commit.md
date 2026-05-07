@@ -50,16 +50,17 @@ git checkout -b hotfix/<요약>
 
 | 타입 | 패턴 | base | 예시 |
 |------|------|------|------|
-| 기능 추가 | `feat/<요약>` | `develop` | `feat/progress`, `feat/tag-closable` |
-| 버그 수정 | `fix/<요약>` | `develop` | `fix/button-disabled` |
-| 토큰 변경 | `feat/<요약>` 또는 `chore/<요약>` | `develop` | `feat/info-tokens` |
-| 리팩토링 | `refactor/<요약>` | `develop` | `refactor/cn-util` |
-| 문서 | `docs/<요약>` | `develop` | `docs/handoff-update` |
+| 기능 추가 | `feat/#<이슈번호>` | `develop` | `feat/#8`, `feat/#9` |
+| 버그 수정 | `fix/#<이슈번호>` | `develop` | `fix/#10` |
+| 토큰 변경 | `feat/#<이슈번호>` 또는 `chore/#<이슈번호>` | `develop` | `feat/#9` |
+| 리팩토링 | `refactor/#<이슈번호>` | `develop` | `refactor/#11` |
+| 문서 | `docs/#<이슈번호>` | `develop` | `docs/#12` |
+| 테스트 | `test/#<이슈번호>` | `develop` | `test/#13` |
+| 기타 정비 | `chore/#<이슈번호>` | `develop` | `chore/#10` |
 | 릴리스 | `release/<버전>` | `develop` | `release/0.2.0` |
-| 핫픽스 | `hotfix/<요약>` | `main` | `hotfix/button-aria` |
+| 핫픽스 | `hotfix/#<이슈번호>` | `main` | `hotfix/#14` |
 
-> **단일 패키지 라이브러리 특성**: 이슈 트래커가 없거나 작은 OSS 운영이면 이슈 번호 대신 요약(kebab-case) 사용 가능.
-> 이슈 트래커 도입 시 `<타입>/<이슈번호>` 형식으로 변경.
+> **이슈 트래커**: GitHub Issues. 작업 시작 전 이슈 먼저 생성. 브랜치명·커밋 메시지에 이슈 번호 필수 포함.
 
 ---
 
@@ -68,7 +69,7 @@ git checkout -b hotfix/<요약>
 **형식**: 컨벤셔널 커밋 (영역 브래킷 생략 — 단일 패키지)
 
 ```
-<타입>: <변경 내용> [#이슈번호 — 이슈 있을 때만]
+<타입>: <변경 내용> #이슈번호
 ```
 
 ### 변경 타입 목록
@@ -86,17 +87,11 @@ git checkout -b hotfix/<요약>
 ### 예시
 
 ```
-feat: add Progress component
-feat: add closable variant to Tag
-fix: Button disabled state aria-disabled missing
-docs: update design-system.md for info tokens
-chore: bump tsup to 8.5.1
-```
-
-이슈 트래커 도입 후:
-```
-feat: add Progress component #12
-fix: Button disabled state #15
+feat: add Button loading prop #8
+feat: add info tokens and Badge info variant #9
+fix: Button disabled state aria-disabled missing #10
+docs: update design-system.md for info tokens #11
+chore: bump tsup to 8.5.1 #12
 ```
 
 ---
@@ -122,6 +117,7 @@ Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>
 **PR 제목 형식**: `<변경 내용>` (타입·이슈번호는 본문에 명시)
 
 **체크리스트**:
+- [ ] 이슈 생성 확인 (작업 시작 전 필수)
 - [ ] `pnpm test` 통과
 - [ ] `pnpm build` 통과 (dist 갱신 확인)
 - [ ] `pnpm lint` 통과

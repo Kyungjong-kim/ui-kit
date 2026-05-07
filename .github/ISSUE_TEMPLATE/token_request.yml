@@ -1,0 +1,62 @@
+name: 디자인 토큰 요청
+description: 새 색상·spacing·radius 등 디자인 토큰 추가 또는 변경을 요청합니다.
+labels: ["design-token"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        디자인 토큰 변경은 모든 컴포넌트에 영향을 미칩니다.
+        변경 범위와 이유를 명확히 작성해 주세요.
+
+  - type: dropdown
+    id: token_type
+    attributes:
+      label: 토큰 카테고리
+      options:
+        - color (색상)
+        - spacing (여백)
+        - radius (모서리)
+        - typography (타이포그래피)
+        - shadow (그림자)
+        - 기타
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: 상세설명
+      description: 어떤 토큰을 추가/변경하고, 어떤 컴포넌트에서 사용할 예정인지
+      placeholder: "예: info 상태용 파란색 계열 토큰 추가 — Badge, Alert 컴포넌트에서 사용"
+    validations:
+      required: true
+
+  - type: textarea
+    id: background
+    attributes:
+      label: Background
+      description: 현재 토큰으로 해결되지 않는 이유, 디자인 의도
+      placeholder: "현재 semantic 토큰 중 info 의미를 표현할 수 있는 색상이 없어서..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: todo
+    attributes:
+      label: To Do
+      description: 토큰 추가 체크리스트
+      value: |
+        - [ ] core.css — raw 색상 값 추가 (필요 시)
+        - [ ] semantic.css — 의미 토큰 추가
+        - [ ] index.css — @theme inline 등록
+        - [ ] `pnpm build` 통과 (dist/styles.css 갱신)
+        - [ ] agent/design-system.md 갱신
+
+  - type: textarea
+    id: proposed_tokens
+    attributes:
+      label: 제안 토큰 (선택)
+      description: 추가하고자 하는 CSS 변수명과 값
+      placeholder: |
+        --color-info-default: var(--color-blue-500);
+        --color-bg-info-subtle: var(--color-blue-50);
