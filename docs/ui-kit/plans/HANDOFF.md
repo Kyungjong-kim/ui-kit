@@ -2,6 +2,28 @@
 
 > 이전 Session notes → [`history/세션_노트.md`](../history/세션_노트.md) 참고
 
+## Session Update 2026-05-07 (토큰 보강·컴포넌트 개선·워크플로우 정비)
+
+### 변경 파일 (PR #13·#14·#15 squash merge)
+- `src/styles/index.css` — @theme inline 누락 토큰 전체 등록 (#8)
+- `src/styles/tokens/core.css` — blue 팔레트(25~900) 추가 (#8)
+- `src/styles/tokens/semantic.css` — info 카테고리 토큰 추가 (#8)
+- `src/components/primitives/button/button.tsx` — `loading` prop, Spinner 연동 (#9)
+- `src/components/primitives/badge/badge.tsx` — `info` variant 추가 (#9)
+- `src/components/primitives/toast/toast.test.tsx` — 1→4 tests (#9)
+- `src/components/primitives/file-upload/file-upload.test.tsx` — 2→6 tests (#9)
+- `.github/ISSUE_TEMPLATE/*.yml` — bug_report / feature_request / token_request (#10)
+- `.github/PULL_REQUEST_TEMPLATE.md` — PR 템플릿 신규 (#10)
+- `CLAUDE.md` — GitHub Issues 필수화, 횡단규칙 4개, 브랜치 네이밍 feat/#N (#10)
+- `docs/ui-kit/git-workflow/branch-commit.md` — 브랜치 네이밍 `feat/#8` 형식 (#10)
+- 하네스(code/design) — 이슈 생성 가이드 템플릿 추가·push
+
+### 기타
+- 브랜치 네이밍 규칙 실수 수정: `feat/8-long-name` → `feat/#8` 형식으로 재생성
+- 커밋 메시지 한국어 규칙 확립
+
+---
+
 ## Session Update 2026-04-30 (워크플로우 운영 시연 + README)
 
 ### 변경 파일
