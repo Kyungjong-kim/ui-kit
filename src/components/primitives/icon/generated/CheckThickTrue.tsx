@@ -1,0 +1,10 @@
+import type { SVGProps } from "react";
+export interface SVGRProps {
+  title?: string;
+}
+const CheckThickTrue = ({
+  title,
+  style: styleProp = {},
+  ...props
+}: SVGProps<SVGSVGElement> & SVGRProps) => <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" role={title ? 'img' : undefined} aria-label={title ?? undefined} aria-hidden={title ? undefined : true} {...props} style={{ color: '#1A1A1A', ...styleProp }}><path d="M21 5.49902C21.3315 5.49915 21.6504 5.63183 21.8848 5.86621C22.1188 6.10056 22.2509 6.41878 22.251 6.75C22.2508 7.08146 22.1191 7.40038 21.8848 7.63477L9.88477 19.6348C9.76891 19.7507 9.63086 19.8424 9.47949 19.9053C9.32789 19.9681 9.1641 20.0009 9 20.001C8.83609 20.0009 8.67294 19.968 8.52148 19.9053C8.40799 19.8582 8.30168 19.7945 8.20703 19.7168L8.11621 19.6348L2.86621 14.3848C2.63183 14.1504 2.49915 13.8315 2.49902 13.5C2.49913 13.1685 2.63181 12.8506 2.86621 12.6162C3.10061 12.3818 3.41852 12.2501 3.75 12.25C4.08146 12.2501 4.40038 12.3818 4.63477 12.6162L9 16.9824L20.1162 5.86621C20.3506 5.63181 20.6685 5.49913 21 5.49902Z" fill="currentColor" /></svg>;
+export default CheckThickTrue;

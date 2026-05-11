@@ -1,0 +1,19 @@
+import type { SVGProps } from "react";
+import { useId } from 'react'
+export interface SVGRProps {
+  title?: string;
+}
+const ColoredExport = ({
+  title,
+  style: styleProp = {},
+  ...props
+}: SVGProps<SVGSVGElement> & SVGRProps) => {
+  const uniqueId = useId().replace(/:/g, '')
+  const ColoredExport___filter0_n_22394_31677Id = `ColoredExport-__filter0_n_22394_31677-${uniqueId}`
+  const ColoredExport___paint0_linear_22394_31677Id = `ColoredExport-__paint0_linear_22394_31677-${uniqueId}`
+  return (
+    <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" role={title ? 'img' : undefined} aria-label={title ?? undefined} aria-hidden={title ? undefined : true} {...props} style={{ color: '#FFF9ED', ...styleProp }}><g filter={`url(#${ColoredExport___filter0_n_22394_31677Id})`}><rect width={24} height={24} rx={8} fill="currentColor" /><path d="M18.75 10.6733V17.5962C18.75 17.9022 18.6207 18.1957 18.3905 18.4121C18.1604 18.6284 17.8482 18.75 17.5227 18.75H6.47727C6.15178 18.75 5.83962 18.6284 5.60946 18.4121C5.3793 18.1957 5.25 17.9022 5.25 17.5962V10.6733C5.25 10.3673 5.3793 10.0738 5.60946 9.85745C5.83962 9.64107 6.15178 9.51951 6.47727 9.51951H11.3864V12.9809C11.3864 13.1339 11.451 13.2807 11.5661 13.3889C11.6812 13.4971 11.8373 13.5578 12 13.5578C12.1627 13.5578 12.3188 13.4971 12.4339 13.3889C12.549 13.2807 12.6136 13.1339 12.6136 12.9809V9.51951H17.5227C17.8482 9.51951 18.1604 9.64107 18.3905 9.85745C18.6207 10.0738 18.75 10.3673 18.75 10.6733ZM12.6136 5.71987L14.634 7.62005C14.7492 7.7283 14.9053 7.78911 15.0682 7.78911C15.231 7.78911 15.3872 7.7283 15.5023 7.62005C15.6175 7.5118 15.6822 7.36498 15.6822 7.21189C15.6822 7.0588 15.6175 6.91198 15.5023 6.80373L12.4341 3.9192C12.3772 3.86556 12.3095 3.82301 12.235 3.79398C12.1605 3.76494 12.0806 3.75 12 3.75C11.9194 3.75 11.8395 3.76494 11.765 3.79398C11.6905 3.82301 11.6228 3.86556 11.5659 3.9192L8.49767 6.80373C8.38253 6.91198 8.31784 7.0588 8.31784 7.21189C8.31784 7.36498 8.38253 7.5118 8.49767 7.62005C8.61281 7.7283 8.76898 7.78911 8.93182 7.78911C9.09466 7.78911 9.25082 7.7283 9.36597 7.62005L11.3864 5.71987V9.51951H12.6136V5.71987Z" fill={`url(#${ColoredExport___paint0_linear_22394_31677Id})`} /></g><defs><filter id={ColoredExport___filter0_n_22394_31677Id} x={0} y={0} width={24} height={24} filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB"><feFlood floodOpacity={0} result="BackgroundImageFix" /><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" /><feTurbulence type="fractalNoise" baseFrequency="2 2" stitchTiles="stitch" numOctaves={3} result="noise" seed={3053} /><feColorMatrix in="noise" type="luminanceToAlpha" result="alphaNoise" /><feComponentTransfer in="alphaNoise" result="coloredNoise1"><feFuncA type="discrete" tableValues="1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 " /></feComponentTransfer><feComposite operator="in" in2="shape" in="coloredNoise1" result="noise1Clipped" /><feFlood floodColor="rgba(255, 255, 255, 0.25)" result="color1Flood" /><feComposite operator="in" in2="noise1Clipped" in="color1Flood" result="color1" /><feMerge result="effect1_noise_22394_31677"><feMergeNode in="shape" /><feMergeNode in="color1" /></feMerge></filter><linearGradient id={ColoredExport___paint0_linear_22394_31677Id} x1={12} y1={3.75} x2={12} y2={18.75} gradientUnits="userSpaceOnUse"><stop stopColor="#FFA442" /><stop offset={1} stopColor="#FF8442" /></linearGradient></defs></svg>
+  )
+}
+
+export default ColoredExport
