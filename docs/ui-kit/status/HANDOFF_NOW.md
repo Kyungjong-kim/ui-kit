@@ -24,10 +24,11 @@
 - 신규 컴포넌트는 **5개 산출물 동시 작성** (tsx + test + index + stories + primitives/index.ts export)
 - **이슈 먼저 생성** → 브랜치 `feat/#<번호>` → 커밋 `feat: 한국어 내용 #번호`
 
-**최근 변경 (2026-05-11)**: Progress · Tag · RadioGroup 프리미티브 추가 완료 (#25·#26·#27). test 194/194 · build · lint 통과. PR #28 리뷰 대기 중.
+**최근 변경 (2026-05-11)**: #23 아이콘 이관 완료 확인·이슈 close. Progress·Tag·RadioGroup 추가 (#25·#26·#27). PR #28 리뷰 대기 중.
 
 ---
 
 ## §2 다음 작업 (신규 세션)
 
-1. (후순위) #23 아이콘 시스템 이관 검토 (gen-portal SVG → ui-kit Icon 매핑 확인)
+1. (대기) PR #28 머지 후 — 다음 이슈 검토
+2. (검토) #20 커스텀 컴포넌트 이관 부모 이슈 close 여부 확인 (#21·#22·#23 모두 완료)
