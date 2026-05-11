@@ -24,17 +24,11 @@
 - 신규 컴포넌트는 **5개 산출물 동시 작성** (tsx + test + index + stories + primitives/index.ts export)
 - **이슈 먼저 생성** → 브랜치 `feat/#<번호>` → 커밋 `feat: 한국어 내용 #번호`
 
-**최근 변경 (2026-05-11)**: Calendar · Popover · ScrollArea 프리미티브 추가(#22 DatePicker 의존), Icon 컴포넌트 + SVG 자동생성 시스템(#23) 커밋·push 완료. test 78/78 · build · lint 통과. biome.json generated 디렉토리 lint 제외 추가.
+**최근 변경 (2026-05-11)**: #22 Composed 컴포넌트 이관 완료 — CheckMark · Chip · DatePicker · DocumentCell · EmptyState · FileIcon · IconButton · IconTabs · ImageCell · LogoOnlyHeader · Modal · MultilineButton · PageHeader · SelectButton · SelectIconButton · TextSkeleton 16개 추가. test 178/178 · build · lint 통과.
 
 ---
 
 ## §2 다음 작업 (신규 세션)
 
-1. 🔴 **#21 커스텀 Primitives 이관** (`feat/#20-custom-component-migration` 브랜치)
-   - Text · Thumbnail · LinkButton · SlideListBadge
-   - 소스: `업무/GenOS/GenOS/gen-portal/frontend/packages/design-system/src/components/primitives/genon/`
-2. 🔴 **#22 Composed 컴포넌트 이관** (16개)
-   - CheckMark · Chip · DatePicker · DocumentCell · EmptyState · FileIcon · IconButton · IconTabs · ImageCell · LogoOnlyHeader · Modal · MultilineButton · PageHeader · SelectButton · SelectIconButton · TextSkeleton
-   - 소스: `업무/GenOS/GenOS/gen-portal/frontend/packages/design-system/src/components/composed/`
-3. (단발) Storybook main.ts 변경사항 커밋 (온보딩 가이드 제거)
-4. (후순위) Progress / Tag / RadioGroup 추가
+1. (단발) Storybook main.ts 변경사항 커밋 (온보딩 가이드 제거)
+2. (후순위) Progress / Tag / RadioGroup 추가

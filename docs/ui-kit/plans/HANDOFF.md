@@ -2,6 +2,54 @@
 
 > 이전 Session notes → [`history/세션_노트.md`](../history/세션_노트.md) 참고
 
+## Session Update 2026-05-11 (#22 Composed 컴포넌트 이관)
+
+### 변경 파일
+- `src/components/composed/` — 신규 디렉토리, 16개 컴포넌트 전체
+  - check-mark · chip · date-picker · document-cell · empty-state · file-icon · icon-button · icon-tabs · image-cell · logo-only-header · modal · multiline-button · page-header · select-button · select-icon-button · text-skeleton
+- `src/components/composed/index.ts` — 16개 barrel export
+- `src/components/index.ts` — `export * from "./composed"` 추가
+- `src/components/primitives/index.ts` — empty-state conflict 제거
+- `stories/` — 16개 stories 추가
+
+### 주요 변경
+- gen-portal design-system의 composed/ 16개 컴포넌트 이관
+- **IconButton**: ui-kit Button API 불일치(appearance/tertiary/danger/light 미지원) → 독립 `<button>` + cva로 구현
+- **MultilineButton·SelectButton**: ui-kit Button tertiary variant 없음 → 독립 `<button>` + cva
+- **TextSkeleton**: ui-kit Skeleton이 `style` prop 미지원 → 독립 `<div>` + animate-pulse
+- **Modal**: ui-kit Dialog에 `className` 없음 → ModalProps에서 className 제거
+- **IconTabs**: gen-portal 복합 Tooltip → ui-kit `<Tooltip content={...}>` 단일 API로 변환
+- **EmptyState**: PNG illust 에셋 번들 불가 → `illustSrc?: string` 외부 prop으로 교체
+- **primitives/EmptyState 충돌**: composed가 더 풍부한 API → primitives index에서 제거
+
+### 검증
+- test 178/178 · build 통과 · lint 통과
+
+### 다음 작업
+- Storybook main.ts 변경사항 커밋 (온보딩 가이드 제거, 단발)
+- Progress / Tag / RadioGroup 추가 (후순위)
+
+## Session Update 2026-05-11 (#21 커스텀 Primitives 이관)
+
+### 변경 파일
+- `src/components/primitives/text/` — Text 컴포넌트 신규 (polymorphic, cva typography variants)
+- `src/components/primitives/thumbnail/` — Thumbnail 컴포넌트 신규 (CSS 회색 배경 fallback)
+- `src/components/primitives/link-button/` — LinkButton 컴포넌트 신규 (cva, Icon 연동)
+- `src/components/primitives/slide-list-badge/` — SlideListBadge 컴포넌트 신규 (cva compound variants)
+- `src/components/primitives/index.ts` — 4개 export 추가 (알파벳 정렬)
+- `stories/` — 4개 stories 추가
+
+### 주요 변경
+- gen-portal design-system의 primitives/genon/ 4개 컴포넌트 이관
+- LinkButton: `@gen-portal/design-system` Icon → ui-kit 자체 Icon으로 교체, `danger→dangerDefault`·`light→inverse` 색상 매핑
+- Thumbnail: 이미지 에셋 대신 `bg-[var(--color-neutral-200)]` CSS fallback 사용 (tsup 라이브러리 빌드 호환)
+
+### 검증
+- test 99/99 · build 통과 · lint 통과
+
+### 다음 작업
+- #22 Composed 컴포넌트 이관 (16개)
+
 ## Session Update 2026-05-11 (Calendar·Popover·ScrollArea·Icon 시스템 추가)
 
 ### 변경 파일
