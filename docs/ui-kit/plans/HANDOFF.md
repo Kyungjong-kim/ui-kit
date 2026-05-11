@@ -2,6 +2,31 @@
 
 > 이전 Session notes → [`history/세션_노트.md`](../history/세션_노트.md) 참고
 
+## Session Update 2026-05-11 (Calendar·Popover·ScrollArea·Icon 시스템 추가)
+
+### 변경 파일
+- `src/components/primitives/calendar/` — Calendar 컴포넌트 신규 (react-day-picker 기반)
+- `src/components/primitives/popover/` — Popover 컴포넌트 신규 (Radix 기반)
+- `src/components/primitives/scroll-area/` — ScrollArea 컴포넌트 신규 (Radix 기반)
+- `src/components/primitives/icon/` — Icon 컴포넌트 + SVG 자동생성 스크립트 + 생성 파일 113개
+- `src/components/primitives/index.ts` — 4개 신규 export 추가
+- `stories/` — calendar·popover·scroll-area·icon 스토리 추가
+- `biome.json` — `generated/` 디렉토리 lint/format 제외
+- `package.json` / `pnpm-lock.yaml` — @radix-ui/react-scroll-area, react-day-picker, @svgr/* 추가
+
+### 주요 변경
+- Calendar·Popover·ScrollArea: #22 DatePicker 의존 프리미티브 선행 추가
+- Icon 시스템: SVG → TSX 자동변환(generate-icons.mjs), 113개 아이콘, color/size 토큰 지원
+- 테스트 수정: jsdom hex→rgb 정규화(icon), Radix scrollbar jsdom 미렌더 조건(scroll-area)
+- SVGRProps export 수정으로 tsup dts 빌드 오류 해결
+
+### 다음 할 일
+- [ ] #21 커스텀 Primitives — Text · Thumbnail · LinkButton · SlideListBadge
+- [ ] #22 Composed 16개 — CheckMark · Chip · DatePicker · DocumentCell · EmptyState · FileIcon · IconButton · IconTabs · ImageCell · LogoOnlyHeader · Modal · MultilineButton · PageHeader · SelectButton · SelectIconButton · TextSkeleton
+- [ ] Storybook main.ts 온보딩 가이드 제거 커밋 (단발)
+
+---
+
 ## Session Update 2026-05-07 (Storybook 정리·커스텀 컴포넌트 이관 준비)
 
 ### 변경 파일
