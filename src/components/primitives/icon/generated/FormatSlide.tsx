@@ -1,0 +1,17 @@
+import type { SVGProps } from "react";
+import { useId } from 'react'
+export interface SVGRProps {
+  title?: string;
+}
+const FormatSlide = ({
+  title,
+  ...props
+}: SVGProps<SVGSVGElement> & SVGRProps) => {
+  const uniqueId = useId().replace(/:/g, '')
+  const FormatSlide___clip0_19993_147441Id = `FormatSlide-__clip0_19993_147441-${uniqueId}`
+  return (
+    <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" role={title ? 'img' : undefined} aria-label={title ?? undefined} aria-hidden={title ? undefined : true} {...props}><g clipPath={`url(#${FormatSlide___clip0_19993_147441Id})`}><path fillRule="evenodd" clipRule="evenodd" d="M5.60278 24.0001H19.3956C20.8271 24.0001 21.9984 22.7462 21.9984 21.2135V6.41996L15.0733 3.63379H5.60278C4.17131 3.63418 3 6.33815 3 7.87004V21.2135C3 22.7462 4.17131 24.0001 5.60278 24.0001Z" fill="white" /><path fillRule="evenodd" clipRule="evenodd" d="M21.9984 7.86998V6.4199L15.0733 0H5.60278C4.17131 0 3 1.25389 3 2.78656V7.86998H21.9984Z" fill="#D64420" /><path fillRule="evenodd" clipRule="evenodd" d="M15.0742 0V3.63412C15.0742 5.16678 16.2455 6.42029 17.677 6.42029H21.9993L15.0742 0Z" fill="#F16536" /><path fillRule="evenodd" clipRule="evenodd" d="M9.81724 15.6831V12.3655C7.98502 12.3655 6.5 13.8507 6.5 15.6831C6.5 17.5154 7.98533 19 9.81724 19C11.6492 19 13.1345 17.5148 13.1345 15.6831H9.81724ZM10.1828 15.3173V12C12.015 12 13.5 13.4852 13.5 15.3173H10.1828Z" fill="#F16536" /><path d="M14.5 13L18.5 13" stroke="#F16536" strokeWidth={0.6} /><path d="M14.5 15.5L18.5 15.5" stroke="#F16536" strokeWidth={0.6} /><path d="M14.5 18L18.5 18" stroke="#F16536" strokeWidth={0.6} /></g><defs><clipPath id={FormatSlide___clip0_19993_147441Id}><rect width={24} height={24} fill="white" /></clipPath></defs></svg>
+  )
+}
+
+export default FormatSlide

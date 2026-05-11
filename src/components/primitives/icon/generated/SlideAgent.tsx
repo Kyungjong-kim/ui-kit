@@ -1,0 +1,20 @@
+import type { SVGProps } from "react";
+import { useId } from 'react'
+export interface SVGRProps {
+  title?: string;
+}
+const SlideAgent = ({
+  title,
+  ...props
+}: SVGProps<SVGSVGElement> & SVGRProps) => {
+  const uniqueId = useId().replace(/:/g, '')
+  const SlideAgent___filter0_n_20258_156Id = `SlideAgent-__filter0_n_20258_156-${uniqueId}`
+  const SlideAgent___filter1_n_20258_156Id = `SlideAgent-__filter1_n_20258_156-${uniqueId}`
+  const SlideAgent___paint0_linear_20258_156Id = `SlideAgent-__paint0_linear_20258_156-${uniqueId}`
+  const SlideAgent___paint1_linear_20258_156Id = `SlideAgent-__paint1_linear_20258_156-${uniqueId}`
+  return (
+    <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" role={title ? 'img' : undefined} aria-label={title ?? undefined} aria-hidden={title ? undefined : true} {...props}><g filter={`url(#${SlideAgent___filter0_n_20258_156Id})`}><rect x={6.55078} y={6} width={13.4493} height={9.27536} fill={`url(#${SlideAgent___paint0_linear_20258_156Id})`} /></g><g filter={`url(#${SlideAgent___filter1_n_20258_156Id})`}><rect x={4} y={9} width={13} height={9} fill={`url(#${SlideAgent___paint1_linear_20258_156Id})`} /></g><defs><filter id={SlideAgent___filter0_n_20258_156Id} x={6.55078} y={6} width={13.4492} height={9.27539} filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB"><feFlood floodOpacity={0} result="BackgroundImageFix" /><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" /><feTurbulence type="fractalNoise" baseFrequency="2.1618506908416748 2.1618506908416748" stitchTiles="stitch" numOctaves={3} result="noise" seed={744} /><feColorMatrix in="noise" type="luminanceToAlpha" result="alphaNoise" /><feComponentTransfer in="alphaNoise" result="coloredNoise1"><feFuncA type="discrete" tableValues="1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 " /></feComponentTransfer><feComposite operator="in" in2="shape" in="coloredNoise1" result="noise1Clipped" /><feFlood floodColor="rgba(255, 255, 255, 0.15)" result="color1Flood" /><feComposite operator="in" in2="noise1Clipped" in="color1Flood" result="color1" /><feMerge result="effect1_noise_20258_156"><feMergeNode in="shape" /><feMergeNode in="color1" /></feMerge></filter><filter id={SlideAgent___filter1_n_20258_156Id} x={4} y={9} width={13} height={9} filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB"><feFlood floodOpacity={0} result="BackgroundImageFix" /><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" /><feTurbulence type="fractalNoise" baseFrequency="2.1618506908416748 2.1618506908416748" stitchTiles="stitch" numOctaves={3} result="noise" seed={9356} /><feColorMatrix in="noise" type="luminanceToAlpha" result="alphaNoise" /><feComponentTransfer in="alphaNoise" result="coloredNoise1"><feFuncA type="discrete" tableValues="1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 " /></feComponentTransfer><feComposite operator="in" in2="shape" in="coloredNoise1" result="noise1Clipped" /><feFlood floodColor="rgba(255, 255, 255, 0.15)" result="color1Flood" /><feComposite operator="in" in2="noise1Clipped" in="color1Flood" result="color1" /><feMerge result="effect1_noise_20258_156"><feMergeNode in="shape" /><feMergeNode in="color1" /></feMerge></filter><linearGradient id={SlideAgent___paint0_linear_20258_156Id} x1={6.55078} y1={15.2754} x2={19.1703} y2={4.98261} gradientUnits="userSpaceOnUse"><stop offset={0.519231} stopColor="#FF9101" /><stop offset={1} stopColor="#FF6F4B" /></linearGradient><linearGradient id={SlideAgent___paint1_linear_20258_156Id} x1={11.5} y1={18} x2={10.6256} y2={6.56687} gradientUnits="userSpaceOnUse"><stop stopColor="#FFA837" /><stop offset={0.5} stopColor="#FFD754" /><stop offset={1} stopColor="#FFF1D7" /></linearGradient></defs></svg>
+  )
+}
+
+export default SlideAgent

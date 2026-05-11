@@ -1,0 +1,10 @@
+import type { SVGProps } from "react";
+export interface SVGRProps {
+  title?: string;
+}
+const ThumbsUpFilledTrue = ({
+  title,
+  style: styleProp = {},
+  ...props
+}: SVGProps<SVGSVGElement> & SVGRProps) => <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" role={title ? 'img' : undefined} aria-label={title ?? undefined} aria-hidden={title ? undefined : true} {...props} style={{ color: '#1A1A1A', ...styleProp }}><path d="M11.25 1.5C12.2446 1.5 13.1981 1.89537 13.9014 2.59863C14.6046 3.30189 15 4.25544 15 5.25V6.75H20.25C20.5692 6.74994 20.8848 6.81797 21.1758 6.94922C21.4667 7.08047 21.7263 7.27244 21.9375 7.51172C22.1487 7.75107 22.3073 8.03282 22.4014 8.33789C22.4953 8.64292 22.5232 8.96458 22.4834 9.28125L21.3584 18.2812C21.2899 18.8251 21.0245 19.325 20.6133 19.6875C20.2021 20.0499 19.6731 20.2502 19.125 20.25H7.54688V7.97949L10.5791 1.91406C10.6415 1.78963 10.737 1.68444 10.8555 1.61133C10.974 1.53822 11.1107 1.4999 11.25 1.5ZM6.04688 20.25H3C2.60218 20.25 2.22076 20.0919 1.93945 19.8105C1.65815 19.5292 1.5 19.1478 1.5 18.75V10.5C1.5 10.1022 1.65815 9.72076 1.93945 9.43945C2.22076 9.15815 2.60218 9 3 9H6.04688V20.25Z" fill="currentColor" /></svg>;
+export default ThumbsUpFilledTrue;

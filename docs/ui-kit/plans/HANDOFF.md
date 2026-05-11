@@ -2,6 +2,98 @@
 
 > 이전 Session notes → [`history/세션_노트.md`](../history/세션_노트.md) 참고
 
+## Session Update 2026-05-11 (#22 Composed 컴포넌트 이관)
+
+### 변경 파일
+- `src/components/composed/` — 신규 디렉토리, 16개 컴포넌트 전체
+  - check-mark · chip · date-picker · document-cell · empty-state · file-icon · icon-button · icon-tabs · image-cell · logo-only-header · modal · multiline-button · page-header · select-button · select-icon-button · text-skeleton
+- `src/components/composed/index.ts` — 16개 barrel export
+- `src/components/index.ts` — `export * from "./composed"` 추가
+- `src/components/primitives/index.ts` — empty-state conflict 제거
+- `stories/` — 16개 stories 추가
+
+### 주요 변경
+- gen-portal design-system의 composed/ 16개 컴포넌트 이관
+- **IconButton**: ui-kit Button API 불일치(appearance/tertiary/danger/light 미지원) → 독립 `<button>` + cva로 구현
+- **MultilineButton·SelectButton**: ui-kit Button tertiary variant 없음 → 독립 `<button>` + cva
+- **TextSkeleton**: ui-kit Skeleton이 `style` prop 미지원 → 독립 `<div>` + animate-pulse
+- **Modal**: ui-kit Dialog에 `className` 없음 → ModalProps에서 className 제거
+- **IconTabs**: gen-portal 복합 Tooltip → ui-kit `<Tooltip content={...}>` 단일 API로 변환
+- **EmptyState**: PNG illust 에셋 번들 불가 → `illustSrc?: string` 외부 prop으로 교체
+- **primitives/EmptyState 충돌**: composed가 더 풍부한 API → primitives index에서 제거
+
+### 검증
+- test 178/178 · build 통과 · lint 통과
+
+### 다음 작업
+- Storybook main.ts 변경사항 커밋 (온보딩 가이드 제거, 단발)
+- Progress / Tag / RadioGroup 추가 (후순위)
+
+## Session Update 2026-05-11 (#21 커스텀 Primitives 이관)
+
+### 변경 파일
+- `src/components/primitives/text/` — Text 컴포넌트 신규 (polymorphic, cva typography variants)
+- `src/components/primitives/thumbnail/` — Thumbnail 컴포넌트 신규 (CSS 회색 배경 fallback)
+- `src/components/primitives/link-button/` — LinkButton 컴포넌트 신규 (cva, Icon 연동)
+- `src/components/primitives/slide-list-badge/` — SlideListBadge 컴포넌트 신규 (cva compound variants)
+- `src/components/primitives/index.ts` — 4개 export 추가 (알파벳 정렬)
+- `stories/` — 4개 stories 추가
+
+### 주요 변경
+- gen-portal design-system의 primitives/genon/ 4개 컴포넌트 이관
+- LinkButton: `@gen-portal/design-system` Icon → ui-kit 자체 Icon으로 교체, `danger→dangerDefault`·`light→inverse` 색상 매핑
+- Thumbnail: 이미지 에셋 대신 `bg-[var(--color-neutral-200)]` CSS fallback 사용 (tsup 라이브러리 빌드 호환)
+
+### 검증
+- test 99/99 · build 통과 · lint 통과
+
+### 다음 작업
+- #22 Composed 컴포넌트 이관 (16개)
+
+## Session Update 2026-05-11 (Calendar·Popover·ScrollArea·Icon 시스템 추가)
+
+### 변경 파일
+- `src/components/primitives/calendar/` — Calendar 컴포넌트 신규 (react-day-picker 기반)
+- `src/components/primitives/popover/` — Popover 컴포넌트 신규 (Radix 기반)
+- `src/components/primitives/scroll-area/` — ScrollArea 컴포넌트 신규 (Radix 기반)
+- `src/components/primitives/icon/` — Icon 컴포넌트 + SVG 자동생성 스크립트 + 생성 파일 113개
+- `src/components/primitives/index.ts` — 4개 신규 export 추가
+- `stories/` — calendar·popover·scroll-area·icon 스토리 추가
+- `biome.json` — `generated/` 디렉토리 lint/format 제외
+- `package.json` / `pnpm-lock.yaml` — @radix-ui/react-scroll-area, react-day-picker, @svgr/* 추가
+
+### 주요 변경
+- Calendar·Popover·ScrollArea: #22 DatePicker 의존 프리미티브 선행 추가
+- Icon 시스템: SVG → TSX 자동변환(generate-icons.mjs), 113개 아이콘, color/size 토큰 지원
+- 테스트 수정: jsdom hex→rgb 정규화(icon), Radix scrollbar jsdom 미렌더 조건(scroll-area)
+- SVGRProps export 수정으로 tsup dts 빌드 오류 해결
+
+### 다음 할 일
+- [ ] #21 커스텀 Primitives — Text · Thumbnail · LinkButton · SlideListBadge
+- [ ] #22 Composed 16개 — CheckMark · Chip · DatePicker · DocumentCell · EmptyState · FileIcon · IconButton · IconTabs · ImageCell · LogoOnlyHeader · Modal · MultilineButton · PageHeader · SelectButton · SelectIconButton · TextSkeleton
+- [ ] Storybook main.ts 온보딩 가이드 제거 커밋 (단발)
+
+---
+
+## Session Update 2026-05-07 (Storybook 정리·커스텀 컴포넌트 이관 준비)
+
+### 변경 파일
+- `.storybook/main.ts` — 온보딩 가이드 비활성화 (disableWhatsNewNotifications · sidebarOnboardingChecklist)
+- `package.json` / `pnpm-lock.yaml` — @chromatic-com/storybook 제거
+- `docs/ui-kit/status/HANDOFF_NOW.md` — 이관 작업 계획 반영
+
+### 주요 변경
+- Storybook "What's New" 알림 및 "Level up" 온보딩 체크리스트 제거
+- 커스텀 디자인 컴포넌트 이관 이슈 #20 생성 (하위: #21 Primitives · #22 Composed · #23 Icons)
+- 브랜치 `feat/#20-custom-component-migration` 생성
+
+### 다음 할 일
+- [ ] #21 커스텀 Primitives 이관 (Text · Thumbnail · LinkButton · SlideListBadge)
+- [ ] #22 Composed 컴포넌트 이관 (Chip · DatePicker · Modal · PageHeader · IconButton 등 16개)
+- [ ] #23 아이콘 시스템 이관
+
+---
+
 ## Session Update 2026-05-07 (토큰 보강·컴포넌트 개선·워크플로우 정비)
 
 ### 변경 파일 (PR #13·#14·#15 squash merge)
