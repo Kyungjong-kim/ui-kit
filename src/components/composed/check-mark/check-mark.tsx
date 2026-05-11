@@ -12,8 +12,8 @@ type Size = "sm" | "md";
 type CheckboxProps = ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>;
 
 const checkboxSizeStyles: Record<Size, string> = {
-  sm: "size-size-icon-sm",
-  md: "size-size-icon-md",
+  sm: "size-4",
+  md: "size-5",
 };
 
 const textVariantMap: Record<Size, Record<"base" | "bold", TextProps["variant"]>> = {
@@ -54,7 +54,7 @@ export function CheckMark({
     <CheckboxPrimitive.Root
       data-slot="check-mark"
       className={cn(
-        "group inline-flex items-center gap-group-sm focus-visible:outline-none focus-visible:ring focus-visible:ring-border-gray-lighter",
+        "group inline-flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-border-focus)]",
         disabled ? "cursor-not-allowed" : "cursor-pointer",
         className,
       )}
@@ -68,8 +68,8 @@ export function CheckMark({
         aria-hidden="true"
         className={cn(
           "bg-transparent shrink-0 outline-none transition-shadow",
-          "text-icon-tertiary group-data-[state=checked]:text-icon-brand-default group-data-[state=indeterminate]:text-icon-brand-default",
-          "group-disabled:text-text-disabled group-disabled:cursor-not-allowed",
+          "text-[var(--color-text-tertiary)] group-data-[state=checked]:text-[var(--color-text-brand-default)] group-data-[state=indeterminate]:text-[var(--color-text-brand-default)]",
+          "group-disabled:text-[var(--color-text-disabled)] group-disabled:cursor-not-allowed",
           checkboxSizeStyles[size],
           checkboxClassName,
         )}
@@ -89,9 +89,9 @@ export function CheckMark({
         id={labelId}
         variant={textVariant}
         className={cn(
-          "text-text-secondary",
-          "group-data-[state=checked]:text-text-primary",
-          "group-disabled:text-text-disabled",
+          "text-[var(--color-text-secondary)]",
+          "group-data-[state=checked]:text-[var(--color-text-primary)]",
+          "group-disabled:text-[var(--color-text-disabled)]",
           labelClassName,
         )}
       >

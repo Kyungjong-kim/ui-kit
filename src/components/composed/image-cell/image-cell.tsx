@@ -61,10 +61,12 @@ export function ImageCell({
         "relative",
         roundedClassMap[size],
         sizeClassMap[size],
-        "bg-surface-default",
+        "bg-[var(--color-bg-primary)]",
         "focus:outline-none focus-visible:outline-none focus-visible:ring-0",
-        isSelected ? "border-border-primary-default" : "border-border-default",
-        size === "xlg" ? "ds-border-strong" : "ds-border-default",
+        isSelected
+          ? "border-[var(--color-border-brand-default)]"
+          : "border-[var(--color-border-default)]",
+        size === "xlg" ? "border-2" : "border",
       )}
     >
       <button
@@ -92,7 +94,7 @@ export function ImageCell({
         )}
 
         {shouldShowOverlay && (
-          <div className="absolute inset-0 flex items-center justify-center bg-overlay-medium-bg">
+          <div className="absolute inset-0 flex items-center justify-center bg-black/50">
             {isLoading && loadingType === "spinner" && (
               <Spinner size={size === "sm" ? "sm" : "lg"} className="border-white border-t-white" />
             )}

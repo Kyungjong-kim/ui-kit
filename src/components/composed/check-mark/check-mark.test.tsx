@@ -21,6 +21,6 @@ describe("CheckMark", () => {
   it("size=sm 클래스가 적용된다", () => {
     const { container } = render(<CheckMark label="동의합니다" size="sm" />);
     const span = container.querySelector("[data-slot='check-mark-checkbox']");
-    expect(span).toHaveClass("size-size-icon-sm");
+    expect(span).toHaveClass("size-4");
   });
 });

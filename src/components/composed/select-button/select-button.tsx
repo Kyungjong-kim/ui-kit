@@ -35,16 +35,16 @@ export function SelectButton({
   const isSelected = isControlled ? selected : internalSelected;
 
   const outlineClassName = disabled
-    ? "bg-action-transparent-white border border-border-disabled"
+    ? "bg-transparent border border-[var(--color-border-disabled)]"
     : isSelected
-      ? "bg-action-gray-alpha-light border border-border-input-default hover:bg-action-tertiary-hover hover:border-border-tertiary-default"
-      : "bg-action-transparent-white border border-border-input-default hover:bg-action-tertiary-default hover:border-border-tertiary-default";
+      ? "bg-[var(--color-neutral-100)] border border-[var(--color-border-default)] hover:bg-[var(--color-interactive-ghost-bg-hover)] hover:border-[var(--color-border-default)]"
+      : "bg-transparent border border-[var(--color-border-default)] hover:bg-[var(--color-interactive-ghost-bg-hover)] hover:border-[var(--color-border-default)]";
 
   const ghostClassName = disabled
-    ? "bg-action-transparent-white"
+    ? "bg-transparent"
     : isSelected
-      ? "bg-action-gray-alpha-light hover:bg-action-tertiary-hover"
-      : "bg-action-transparent-white hover:bg-action-tertiary-default";
+      ? "bg-[var(--color-neutral-100)] hover:bg-[var(--color-interactive-ghost-bg-hover)]"
+      : "bg-transparent hover:bg-[var(--color-interactive-ghost-bg-hover)]";
 
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
     onClick?.(event);
@@ -62,7 +62,7 @@ export function SelectButton({
       disabled={disabled}
       className={cn(
         "inline-flex items-center justify-center gap-2 rounded-md h-8 px-3 text-xs font-medium transition-colors",
-        "focus-visible:outline-none focus-visible:ring focus-visible:ring-border-gray-lighter",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-border-focus)]",
         "disabled:pointer-events-none disabled:opacity-50",
         appearance === "ghost" ? ghostClassName : outlineClassName,
         className,

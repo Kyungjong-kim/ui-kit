@@ -1,5 +1,6 @@
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 import { cn } from "../../../utils/cn";
+import { Text } from "../../primitives/text";
 
 export type EmptyStateButtonAction = {
   label: string;
@@ -36,7 +37,7 @@ export function EmptyState({
   const buttonMode = tertiaryAction && primaryAction ? "two" : primaryAction ? "one" : "none";
   const shouldShowButtons = buttonMode !== "none";
   const shouldShowText = shouldShowTitle || shouldShowDescription;
-  const contentGapClassName = shouldShowButtons && shouldShowText ? "gap-group-xl" : "gap-group-md";
+  const contentGapClassName = shouldShowButtons && shouldShowText ? "gap-6" : "gap-3";
 
   const hasAnyContent =
     shouldShowIllust || shouldShowTitle || shouldShowDescription || shouldShowButtons;
@@ -46,13 +47,10 @@ export function EmptyState({
     <section
       data-slot="empty-state"
       aria-label={ariaLabel}
-      className={cn(
-        "flex flex-col items-center justify-center gap-group-md py-stack-xxl",
-        className,
-      )}
+      className={cn("flex flex-col items-center justify-center gap-3 py-16", className)}
     >
       {shouldShowIllust && (
-        <div className="p-inline-md shrink-0" aria-hidden={illustAlt ? undefined : true}>
+        <div className="p-4 shrink-0" aria-hidden={illustAlt ? undefined : true}>
           <img
             src={illustSrc}
             alt={illustAlt}
@@ -68,14 +66,19 @@ export function EmptyState({
       {(shouldShowText || shouldShowButtons) && (
         <div className={cn("flex flex-col items-center text-center", contentGapClassName)}>
           {shouldShowText && (
-            <div className="flex flex-col items-center gap-group-sm">
+            <div className="flex flex-col items-center gap-2">
               {shouldShowTitle && (
-                <div className="typography-headline-xl text-text-primary">{title}</div>
+                <Text variant="typography-headline-xl" className="text-[var(--color-text-primary)]">
+                  {title}
+                </Text>
               )}
               {shouldShowDescription && (
-                <div className="typography-body-lg-medium text-text-secondary whitespace-pre-line text-center">
+                <Text
+                  variant="typography-body-lg-medium"
+                  className="text-[var(--color-text-secondary)] whitespace-pre-line text-center"
+                >
                   {description}
-                </div>
+                </Text>
               )}
             </div>
           )}
@@ -83,7 +86,7 @@ export function EmptyState({
           {shouldShowButtons && (
             <>
               {buttonMode === "two" && primaryAction && tertiaryAction && (
-                <div className="flex items-center justify-center gap-group-md">
+                <div className="flex items-center justify-center gap-3">
                   <button
                     type="button"
                     onClick={tertiaryAction.onClick}

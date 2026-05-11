@@ -25,7 +25,7 @@ export function Modal({
 
   const footer = hasActions ? (
     hasBothActions ? (
-      <div className="flex gap-group-md">
+      <div className="flex gap-3">
         {secondaryAction}
         {primaryAction}
       </div>

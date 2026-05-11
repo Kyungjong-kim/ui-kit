@@ -28,6 +28,6 @@ describe("Chip", () => {
 
   it("variant 클래스가 적용된다", () => {
     render(<Chip variant="secondary">태그</Chip>);
-    expect(screen.getByRole("button").className).toMatch(/bg-action-tertiary-default/);
+    expect(screen.getByRole("button").className).toMatch(/bg-transparent/);
   });
 });

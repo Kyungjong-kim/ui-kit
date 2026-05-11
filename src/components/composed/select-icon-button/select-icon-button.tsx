@@ -32,10 +32,10 @@ export function SelectIconButton({
   const isSelected = isControlled ? selected : internalSelected;
 
   const backgroundClassName = disabled
-    ? "bg-action-transparent-white"
+    ? "bg-transparent"
     : isSelected
-      ? "bg-action-gray-alpha-light hover:bg-action-tertiary-hover"
-      : "bg-action-transparent-white hover:bg-action-tertiary-default";
+      ? "bg-[var(--color-neutral-100)] hover:bg-[var(--color-interactive-ghost-bg-hover)]"
+      : "bg-transparent hover:bg-[var(--color-interactive-ghost-bg-hover)]";
 
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
     onClick?.(event);

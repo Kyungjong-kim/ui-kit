@@ -13,32 +13,38 @@ const chipVariants = cva(
     "rounded-full",
     "transition-all",
     "cursor-pointer",
-    "focus-visible:outline-none focus-visible:ring focus-visible:ring-border-gray-lighter",
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-border-focus)]",
   ],
   {
     variants: {
       variant: {
-        primary: ["bg-action-primary-subtle", "ds-border-default"],
-        secondary: ["bg-action-tertiary-default"],
+        primary: [
+          "bg-[var(--color-bg-brand-subtle)]",
+          "border border-[var(--color-border-default)]",
+        ],
+        secondary: ["bg-transparent"],
       },
       appearance: {
         ghost: ["border-none"],
       },
       size: {
-        xs: ["h-size-control-xxs", "px-inline-sm", "gap-group-xxs"],
-        md: ["h-size-control-md", "px-inline-lg", "py-stack-sm"],
+        xs: ["h-5", "px-2", "gap-1"],
+        md: ["h-9", "px-4", "py-2"],
       },
     },
     compoundVariants: [
       {
         variant: "primary",
         appearance: "ghost",
-        className: ["text-text-brand-hover", "hover:bg-action-primary-subtle-hover"],
+        className: ["text-[var(--color-text-brand-hover)]", "hover:bg-[var(--color-brand-100)]"],
       },
       {
         variant: "secondary",
         appearance: "ghost",
-        className: ["text-text-secondary", "hover:bg-action-tertiary-hover"],
+        className: [
+          "text-[var(--color-text-secondary)]",
+          "hover:bg-[var(--color-interactive-ghost-bg-hover)]",
+        ],
       },
     ],
     defaultVariants: {
@@ -104,7 +110,7 @@ export function Chip({
         {children}
       </Text>
       {subDescription && (
-        <Text variant="typography-label-xs" className="text-text-tertiary">
+        <Text variant="typography-label-xs" className="text-[var(--color-text-tertiary)]">
           {subDescription}
         </Text>
       )}
