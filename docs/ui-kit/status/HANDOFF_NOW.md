@@ -24,11 +24,10 @@
 - 신규 컴포넌트는 **5개 산출물 동시 작성** (tsx + test + index + stories + primitives/index.ts export)
 - **이슈 먼저 생성** → 브랜치 `feat/#<번호>` → 커밋 `feat: 한국어 내용 #번호`
 
-**최근 변경 (2026-05-11)**: #22 Composed 컴포넌트 이관 완료 — CheckMark · Chip · DatePicker · DocumentCell · EmptyState · FileIcon · IconButton · IconTabs · ImageCell · LogoOnlyHeader · Modal · MultilineButton · PageHeader · SelectButton · SelectIconButton · TextSkeleton 16개 추가. test 178/178 · build · lint 통과.
+**최근 변경 (2026-05-11)**: Progress · Tag · RadioGroup 프리미티브 추가 완료 (#25·#26·#27). test 194/194 · build · lint 통과. PR #28 리뷰 대기 중.
 
 ---
 
 ## §2 다음 작업 (신규 세션)
 
-1. (단발) Storybook main.ts 변경사항 커밋 (온보딩 가이드 제거)
-2. (후순위) Progress / Tag / RadioGroup 추가
+1. (후순위) #23 아이콘 시스템 이관 검토 (gen-portal SVG → ui-kit Icon 매핑 확인)

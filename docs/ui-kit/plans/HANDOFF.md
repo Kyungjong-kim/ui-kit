@@ -2,6 +2,27 @@
 
 > 이전 Session notes → [`history/세션_노트.md`](../history/세션_노트.md) 참고
 
+## Session Update 2026-05-11 (Progress·Tag·RadioGroup 추가)
+
+### 변경 파일
+- `src/components/primitives/progress/` — Progress 컴포넌트 신규 (Radix 기반, indeterminate 지원)
+- `src/components/primitives/tag/` — Tag 컴포넌트 신규 (cva, 5 variant × 2 size, onRemove)
+- `src/components/primitives/radio-group/` — RadioGroup·RadioGroupItem 신규 (Radix 기반, label)
+- `src/components/primitives/index.ts` — 3개 export 추가 (progress·radio-group·tag)
+- `package.json` / `pnpm-lock.yaml` — @radix-ui/react-progress, @radix-ui/react-radio-group 추가
+- `stories/` — progress·tag·radio-group 스토리 추가
+
+### 주요 변경
+- 신규 프리미티브 3개 추가 (이관이 아닌 신규 개발)
+- RadioGroupItem: label 클릭으로도 선택 가능 (htmlFor 연동)
+- Tag: onRemove 전달 시 인라인 SVG X 버튼 렌더 (Icon 컴포넌트 미사용, 순환 의존 회피)
+
+### 검증
+- test 194/194 · build 통과 · lint 통과
+
+### 다음 작업
+- #23 아이콘 시스템 이관 검토
+
 ## Session Update 2026-05-11 (#22 Composed 컴포넌트 이관)
 
 ### 변경 파일
