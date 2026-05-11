@@ -1,0 +1,38 @@
+import * as ProgressPrimitive from "@radix-ui/react-progress";
+import { cn } from "../../../utils/cn";
+
+export interface ProgressProps {
+  value?: number;
+  max?: number;
+  size?: "sm" | "md";
+  className?: string;
+}
+
+export function Progress({ value, max = 100, size = "md", className }: ProgressProps) {
+  const isIndeterminate = value == null;
+  const percentage = isIndeterminate ? null : Math.min(100, Math.max(0, (value / max) * 100));
+
+  return (
+    <ProgressPrimitive.Root
+      className={cn(
+        "relative w-full overflow-hidden rounded-full bg-[var(--color-bg-tertiary)]",
+        size === "sm" ? "h-1" : "h-2",
+        className,
+      )}
+      value={value ?? null}
+      max={max}
+    >
+      <ProgressPrimitive.Indicator
+        className={cn(
+          "h-full bg-[var(--color-bg-brand-default)] transition-transform duration-300 ease-in-out",
+          isIndeterminate && "animate-pulse w-1/2",
+        )}
+        style={
+          isIndeterminate ? undefined : { transform: `translateX(-${100 - (percentage ?? 0)}%)` }
+        }
+      />
+    </ProgressPrimitive.Root>
+  );
+}
+
+Progress.displayName = "Progress";
