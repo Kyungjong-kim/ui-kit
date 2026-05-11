@@ -9,11 +9,16 @@ describe("LogoOnlyHeader", () => {
     expect(screen.getByRole("banner")).toBeInTheDocument();
   });
 
-  it("onClick이 전달되면 클릭 시 호출된다", async () => {
+  it("logoIcon과 onClick이 전달되면 클릭 시 호출된다", async () => {
     const onClick = vi.fn();
-    const { container } = render(<LogoOnlyHeader onClick={onClick} />);
+    const { container } = render(<LogoOnlyHeader logoIcon="globe" onClick={onClick} />);
     const svg = container.querySelector("svg");
     if (svg) await userEvent.click(svg);
     expect(onClick).toHaveBeenCalled();
+  });
+
+  it("logoIcon 없으면 아이콘을 렌더하지 않는다", () => {
+    const { container } = render(<LogoOnlyHeader />);
+    expect(container.querySelector("svg")).toBeNull();
   });
 });

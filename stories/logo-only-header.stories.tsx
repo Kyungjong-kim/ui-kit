@@ -11,8 +11,10 @@ const meta: Meta<typeof LogoOnlyHeader> = {
 export default meta;
 type Story = StoryObj<typeof LogoOnlyHeader>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  args: { logoIcon: "globe" },
+};
 
 export const WithClick: Story = {
-  args: { onClick: () => alert("로고 클릭") },
+  args: { logoIcon: "globe", onClick: () => {} },
 };

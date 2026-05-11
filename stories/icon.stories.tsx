@@ -100,7 +100,7 @@ export const AllIcons: Story = {
               fontSize: 9,
               marginTop: 4,
               wordBreak: "break-all",
-              color: "#666",
+              color: "var(--color-text-tertiary)",
             }}
           >
             {name}

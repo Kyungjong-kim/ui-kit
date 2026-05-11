@@ -26,7 +26,11 @@ const items = [
     trigger: "어떻게 설치하나요?",
     content: "pnpm add ui-kit 으로 설치할 수 있습니다.",
   },
-  { value: "q3", trigger: "브랜드 컬러는?", content: "골든 앰버(#FABC37)를 기반으로 합니다." },
+  {
+    value: "q3",
+    trigger: "어떤 토큰 시스템을 사용하나요?",
+    content: "core 토큰과 semantic 토큰 2계층으로 구성됩니다.",
+  },
 ];
 
 export const Default: Story = {
