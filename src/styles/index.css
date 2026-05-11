@@ -75,6 +75,7 @@
   --color-bg-brand-default: var(--color-bg-brand-default);
   --color-bg-brand-hover: var(--color-bg-brand-hover);
   --color-bg-brand-subtle: var(--color-bg-brand-subtle);
+  --color-bg-brand-subtle-hover: var(--color-bg-brand-subtle-hover);
   --color-bg-danger-default: var(--color-bg-danger-default);
   --color-bg-danger-subtle: var(--color-bg-danger-subtle);
   --color-bg-success-default: var(--color-bg-success-default);

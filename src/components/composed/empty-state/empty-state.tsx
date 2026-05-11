@@ -1,11 +1,13 @@
-import type { ButtonHTMLAttributes, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { cn } from "../../../utils/cn";
+import type { ButtonProps } from "../../primitives/button";
+import { Button } from "../../primitives/button";
 import { Text } from "../../primitives/text";
 
 export type EmptyStateButtonAction = {
   label: string;
   onClick?: () => void;
-  buttonProps?: Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children" | "onClick">;
+  buttonProps?: Omit<ButtonProps, "children" | "onClick">;
 };
 
 export type EmptyStateProps = {
@@ -87,33 +89,33 @@ export function EmptyState({
             <>
               {buttonMode === "two" && primaryAction && tertiaryAction && (
                 <div className="flex items-center justify-center gap-3">
-                  <button
-                    type="button"
+                  <Button
+                    variant="secondary"
+                    size="lg"
                     onClick={tertiaryAction.onClick}
-                    className="inline-flex items-center justify-center rounded-md h-11 px-6 text-base font-medium transition-colors bg-[var(--color-interactive-secondary-bg)] border border-[var(--color-interactive-secondary-border)] hover:bg-[var(--color-bg-secondary)] disabled:pointer-events-none disabled:opacity-50"
                     {...tertiaryAction.buttonProps}
                   >
                     {tertiaryAction.label}
-                  </button>
-                  <button
-                    type="button"
+                  </Button>
+                  <Button
+                    variant="primary"
+                    size="lg"
                     onClick={primaryAction.onClick}
-                    className="inline-flex items-center justify-center rounded-md h-11 px-6 text-base font-medium transition-colors bg-[var(--color-interactive-primary-bg)] text-white hover:bg-[var(--color-interactive-primary-bg-hover)] disabled:pointer-events-none disabled:opacity-50"
                     {...primaryAction.buttonProps}
                   >
                     {primaryAction.label}
-                  </button>
+                  </Button>
                 </div>
               )}
               {buttonMode === "one" && primaryAction && (
-                <button
-                  type="button"
+                <Button
+                  variant="primary"
+                  size="lg"
                   onClick={primaryAction.onClick}
-                  className="inline-flex items-center justify-center rounded-md h-11 px-6 text-base font-medium transition-colors bg-[var(--color-interactive-primary-bg)] text-white hover:bg-[var(--color-interactive-primary-bg-hover)] disabled:pointer-events-none disabled:opacity-50"
                   {...primaryAction.buttonProps}
                 >
                   {primaryAction.label}
-                </button>
+                </Button>
               )}
             </>
           )}

@@ -9,11 +9,10 @@ describe("LogoOnlyHeader", () => {
     expect(screen.getByRole("banner")).toBeInTheDocument();
   });
 
-  it("logoIcon과 onClick이 전달되면 클릭 시 호출된다", async () => {
+  it("logoIcon과 onClick이 전달되면 버튼 클릭 시 호출된다", async () => {
     const onClick = vi.fn();
-    const { container } = render(<LogoOnlyHeader logoIcon="globe" onClick={onClick} />);
-    const svg = container.querySelector("svg");
-    if (svg) await userEvent.click(svg);
+    render(<LogoOnlyHeader logoIcon="globe" onClick={onClick} />);
+    await userEvent.click(screen.getByRole("button"));
     expect(onClick).toHaveBeenCalled();
   });
 
