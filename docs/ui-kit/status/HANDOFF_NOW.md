@@ -9,9 +9,9 @@
 
 | 항목 | 값 |
 |---|---|
-| **브랜치** | `feat/#31-new-primitives` |
-| **브랜치 네이밍** | `feat/#8`, `chore/#10` 형식 (`타입/#이슈번호`) |
-| **활성 이슈** | #31 신규 프리미티브 4종 (하위: #32 AlertDialog · #33 Sheet · #34 Pagination · #35 Breadcrumb) |
+| **브랜치** | `fix/#37-component-behavior` |
+| **브랜치 네이밍** | `feat/#8`, `fix/#10` 형식 (`타입/#이슈번호`) |
+| **열린 PR / 이슈** | PR #36 (feat/#31 신규 프리미티브 4종, 리뷰 대기) · #37 부모 + #38~#41 (컴포넌트 동작성 수정) |
 | **빌드** | `pnpm build` (tsup) |
 | **테스트** | `pnpm test` (vitest) |
 | **시각 검증** | `pnpm storybook` (localhost:6006) |
@@ -23,13 +23,15 @@
 - 컴포넌트 className: `[var(--color-...)]` 또는 semantic 토큰(`bg-bg-brand-default` 등) 경유
 - 신규 컴포넌트는 **5개 산출물 동시 작성** (tsx + test + index + stories + primitives/index.ts export)
 - **이슈 먼저 생성** → 브랜치 `feat/#<번호>` → 커밋 `feat: 한국어 내용 #번호`
+- 디자인 토큰: ui-kit 자체 `--color-*` + 이관 컴포넌트용 `--token-*` (core.css·semantic.css)
 
-**최근 변경 (2026-05-13)**: 신규 프리미티브 4종 추가 (AlertDialog·Sheet·Pagination·Breadcrumb). `@radix-ui/react-alert-dialog` 추가. test 226/226·build·lint 통과.
+**최근 변경 (2026-05-13)**: 컴포넌트 동작성 수정 — `--token-*` 구조 토큰(radius·size·spacing·shadow·typography)을 core.css 에 추가, 시맨틱 alias(`--token-color-surface-*` 등)·icon 컬러를 semantic.css 에 추가, Tailwind utility 생성용 `--color-surface-*`·`--spacing-size-*`·`--shadow-default-*` 를 index.css `@theme` 에, `@utility typography-*` 26개를 index.css 하단에 정의. Toast·LogoOnlyHeader 스토리 수정. test 226/226·build·lint 통과.
 
 ---
 
 ## §2 다음 작업 (신규 세션)
 
-1. (대기) PR 생성 후 — 리뷰·머지
-2. (검토) 기존 작성 컴포넌트 동작성 검증 — 동작 안 되는 케이스 수집·수정 (시각 회귀·애니메이션 유틸 누락 가능성 포함)
-3. (정비) `src/components/primitives/empty-state/` 가 `primitives/index.ts` 에 export 안 됨 — 의도 확인 필요
+1. (대기) PR #36 (신규 프리미티브 4종) 리뷰·머지
+2. (대기) PR #37 fix (컴포넌트 동작성) 생성·머지
+3. (검토) Storybook 시각 회귀 확인 — Calendar·Text·SlideListBadge·CheckMark·Chip·DatePicker·ImageCell·Toast·LogoOnlyHeader
+4. (정비) `src/components/primitives/empty-state/` 가 `primitives/index.ts` 에 export 안 됨 — 의도 확인 필요
