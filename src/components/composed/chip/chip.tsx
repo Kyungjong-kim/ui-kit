@@ -36,7 +36,10 @@ const chipVariants = cva(
       {
         variant: "primary",
         appearance: "ghost",
-        className: ["text-[var(--color-text-brand-hover)]", "hover:bg-[var(--color-brand-100)]"],
+        className: [
+          "text-[var(--color-text-brand-hover)]",
+          "hover:bg-[var(--color-bg-brand-subtle-hover)]",
+        ],
       },
       {
         variant: "secondary",

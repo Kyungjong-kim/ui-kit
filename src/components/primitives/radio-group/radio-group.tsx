@@ -7,8 +7,7 @@ export interface RadioGroupItemProps
   label?: string;
 }
 
-export interface RadioGroupProps
-  extends ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root> {}
+export type RadioGroupProps = ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root>;
 
 export function RadioGroup({ className, orientation = "vertical", ...props }: RadioGroupProps) {
   return (

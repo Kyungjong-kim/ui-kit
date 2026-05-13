@@ -37,13 +37,13 @@ export function SelectButton({
   const outlineClassName = disabled
     ? "bg-transparent border border-[var(--color-border-disabled)]"
     : isSelected
-      ? "bg-[var(--color-neutral-100)] border border-[var(--color-border-default)] hover:bg-[var(--color-interactive-ghost-bg-hover)] hover:border-[var(--color-border-default)]"
+      ? "bg-[var(--color-bg-tertiary)] border border-[var(--color-border-default)] hover:bg-[var(--color-interactive-ghost-bg-hover)] hover:border-[var(--color-border-default)]"
       : "bg-transparent border border-[var(--color-border-default)] hover:bg-[var(--color-interactive-ghost-bg-hover)] hover:border-[var(--color-border-default)]";
 
   const ghostClassName = disabled
     ? "bg-transparent"
     : isSelected
-      ? "bg-[var(--color-neutral-100)] hover:bg-[var(--color-interactive-ghost-bg-hover)]"
+      ? "bg-[var(--color-bg-tertiary)] hover:bg-[var(--color-interactive-ghost-bg-hover)]"
       : "bg-transparent hover:bg-[var(--color-interactive-ghost-bg-hover)]";
 
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {

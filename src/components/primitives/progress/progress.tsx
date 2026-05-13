@@ -10,7 +10,8 @@ export interface ProgressProps {
 
 export function Progress({ value, max = 100, size = "md", className }: ProgressProps) {
   const isIndeterminate = value == null;
-  const percentage = isIndeterminate ? null : Math.min(100, Math.max(0, (value / max) * 100));
+  const safeMax = max > 0 ? max : 100;
+  const percentage = isIndeterminate ? null : Math.min(100, Math.max(0, (value / safeMax) * 100));
 
   return (
     <ProgressPrimitive.Root

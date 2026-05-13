@@ -55,7 +55,7 @@ export function DatePicker({
           type="button"
           disabled={disabled}
           className={cn(
-            "inline-flex items-center gap-[4px] typography-label-md-base text-text-primary disabled:cursor-not-allowed disabled:text-text-disabled",
+            "inline-flex items-center gap-1 typography-label-md-base text-[var(--color-text-primary)] disabled:cursor-not-allowed disabled:text-[var(--color-text-disabled)]",
             triggerClassName,
           )}
         >

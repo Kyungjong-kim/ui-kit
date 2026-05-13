@@ -93,7 +93,7 @@ export function DocumentCell({
           aria-label="파일 삭제"
           color="inverse"
           disabled={disabled}
-          className="right-[2px] top-[2px]"
+          className="absolute right-[2px] top-[2px]"
           onClick={(e: MouseEvent<HTMLButtonElement>) => {
             e.stopPropagation();
             onRemove(file.id);

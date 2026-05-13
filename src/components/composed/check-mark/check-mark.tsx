@@ -77,7 +77,7 @@ export function CheckMark({
         <CheckboxPrimitive.Indicator
           forceMount
           data-slot="checkbox-indicator"
-          className="grid place-content-center text-current transition-none"
+          className="grid place-content-center text-current transition-none data-[state=unchecked]:opacity-0"
         >
           <Icon name="checkThickTrue" size={size as IconSize} color="currentColor" />
         </CheckboxPrimitive.Indicator>

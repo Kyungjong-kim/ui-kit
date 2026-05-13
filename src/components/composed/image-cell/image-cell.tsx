@@ -15,7 +15,7 @@ export type ImageFile = {
 export interface ImageCellProps {
   image: ImageFile;
   size: "sm" | "lg" | "xlg";
-  isLoading: boolean;
+  isLoading?: boolean;
   loadingType?: "spinner" | "skeleton";
   selected?: boolean;
   onChange?: (selected: boolean) => void;
@@ -39,9 +39,9 @@ const roundedClassMap: Record<"sm" | "lg" | "xlg", string> = {
 export function ImageCell({
   image,
   size = "sm",
-  isLoading,
+  isLoading = false,
   loadingType = "spinner",
-  selected = false,
+  selected,
   onChange,
   onClick,
   onRemove,
