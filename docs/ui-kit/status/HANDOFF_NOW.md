@@ -9,9 +9,9 @@
 
 | 항목 | 값 |
 |---|---|
-| **브랜치** | `feat/#20-custom-component-migration` |
+| **브랜치** | `feat/#31-new-primitives` |
 | **브랜치 네이밍** | `feat/#8`, `chore/#10` 형식 (`타입/#이슈번호`) |
-| **활성 이슈** | #20 커스텀 디자인 컴포넌트 이관 (하위: #21 Primitives · #22 Composed · #23 Icons) |
+| **활성 이슈** | #31 신규 프리미티브 4종 (하위: #32 AlertDialog · #33 Sheet · #34 Pagination · #35 Breadcrumb) |
 | **빌드** | `pnpm build` (tsup) |
 | **테스트** | `pnpm test` (vitest) |
 | **시각 검증** | `pnpm storybook` (localhost:6006) |
@@ -24,11 +24,12 @@
 - 신규 컴포넌트는 **5개 산출물 동시 작성** (tsx + test + index + stories + primitives/index.ts export)
 - **이슈 먼저 생성** → 브랜치 `feat/#<번호>` → 커밋 `feat: 한국어 내용 #번호`
 
-**최근 변경 (2026-05-11)**: #23 아이콘 이관 완료 확인·이슈 close. Progress·Tag·RadioGroup 추가 (#25·#26·#27). PR #28 리뷰 대기 중.
+**최근 변경 (2026-05-13)**: 신규 프리미티브 4종 추가 (AlertDialog·Sheet·Pagination·Breadcrumb). `@radix-ui/react-alert-dialog` 추가. test 226/226·build·lint 통과.
 
 ---
 
 ## §2 다음 작업 (신규 세션)
 
-1. (대기) PR #28 머지 후 — 다음 이슈 검토
-2. (검토) #20 커스텀 컴포넌트 이관 부모 이슈 close 여부 확인 (#21·#22·#23 모두 완료)
+1. (대기) PR 생성 후 — 리뷰·머지
+2. (검토) 기존 작성 컴포넌트 동작성 검증 — 동작 안 되는 케이스 수집·수정 (시각 회귀·애니메이션 유틸 누락 가능성 포함)
+3. (정비) `src/components/primitives/empty-state/` 가 `primitives/index.ts` 에 export 안 됨 — 의도 확인 필요

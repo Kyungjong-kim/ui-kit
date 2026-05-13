@@ -2,6 +2,35 @@
 
 > 이전 Session notes → [`history/세션_노트.md`](../history/세션_노트.md) 참고
 
+## Session Update 2026-05-13 (신규 프리미티브 4종 — AlertDialog · Sheet · Pagination · Breadcrumb)
+
+### 변경 파일
+- `src/components/primitives/alert-dialog/` — AlertDialog 컴포넌트 신규 (Radix 기반, destructive variant·cancel/action 빌트인)
+- `src/components/primitives/sheet/` — Sheet 컴포넌트 신규 (Radix Dialog 재활용 + cva side variant top/right/bottom/left)
+- `src/components/primitives/pagination/` — Pagination 컴포넌트 신규 (자체 페이지 범위 계산·siblingCount·ellipsis·aria-current)
+- `src/components/primitives/breadcrumb/` — Breadcrumb compound 신규 (List·Item·Link[asChild]·Page·Separator·Ellipsis)
+- `src/components/primitives/index.ts` — 4종 export 추가
+- `package.json` / `pnpm-lock.yaml` — `@radix-ui/react-alert-dialog` 추가
+- `stories/` — alert-dialog·sheet·pagination·breadcrumb 스토리 추가
+
+### 주요 변경
+- AlertDialog: Dialog와 분리, 파괴적 액션용 단순 wrapper. `cancelText`/`actionText`/`destructive` props.
+- Sheet: Radix Dialog 재활용 (의존성 추가 X). cva로 4방향 슬라이드 variant.
+- Pagination: 비제어 입력값 클램프 처리(범위 벗어난 currentPage → totalPages로 보정). `siblingCount=1` 기본.
+- Breadcrumb: shadcn 패턴 답습 + 한국어 기본 aria-label("이동 경로", "더보기"). BreadcrumbLink는 asChild로 라우터 Link 호환.
+
+### 검증
+- test 226/226 · build 통과 · lint 통과
+- biome 수정 2건: BreadcrumbPage `role="link"` 제거(aria-current만 사용), Pagination ellipsis key 안정화
+
+### 알려진 이슈 (다음 세션 검증 대상)
+- 슬라이드/페이드 애니메이션 utility(`animate-in`/`slide-in-from-X`)는 다른 primitives와 동일 패턴이나 keyframes 미정의일 가능성 — 시각 회귀 점검 필요.
+- `src/components/primitives/empty-state/` 디렉토리가 존재하지만 primitives/index.ts에 export 되지 않음 (의도 여부 확인).
+
+### 다음 작업
+- PR 생성 → 머지
+- 기존 작성 컴포넌트 동작성 검증 (사용자 보고 — 동작 안 되는 케이스 있음)
+
 ## Session Update 2026-05-11 (Progress·Tag·RadioGroup 추가)
 
 ### 변경 파일
