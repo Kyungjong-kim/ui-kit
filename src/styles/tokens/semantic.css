@@ -56,4 +56,34 @@
   --color-interactive-destructive-bg: var(--color-red-500);
   --color-interactive-destructive-bg-hover: var(--color-red-600);
   --color-interactive-destructive-text: var(--color-white);
+
+  /* Icon — `Icon` 컴포넌트의 colorTokenMap 키와 매핑 */
+  --color-icon-primary: var(--color-text-primary);
+  --color-icon-secondary: var(--color-text-secondary);
+  --color-icon-tertiary: var(--color-text-tertiary);
+  --color-icon-subtle: var(--color-text-tertiary);
+  --color-icon-muted: var(--color-text-tertiary);
+  --color-icon-disabled: var(--color-text-disabled);
+  --color-icon-inverse: var(--color-text-inverse);
+  --color-icon-brand-default: var(--color-bg-brand-default);
+  --color-icon-brand-hover: var(--color-bg-brand-hover);
+  --color-icon-danger-default: var(--color-bg-danger-default);
+  --color-icon-danger-hover: var(--color-interactive-destructive-bg-hover);
+  --color-icon-success-default: var(--color-bg-success-default);
+
+  /* Surface · Action — Tailwind utility(`bg-surface-default` 등) 호환용 alias */
+  --token-color-surface-default: var(--color-bg-primary);
+  --token-color-surface-brand-default: var(--color-bg-brand-default);
+  --token-color-surface-brand-subtle: var(--color-bg-brand-subtle);
+  --token-color-surface-brand-subtlest: var(--color-bg-brand-subtle);
+  --token-color-surface-brand-muted: var(--color-bg-brand-subtle-hover);
+  --token-color-surface-brand-strong: var(--color-bg-brand-hover);
+  --token-color-text-primary: var(--color-text-primary);
+  --token-color-text-secondary: var(--color-text-secondary);
+  --token-color-text-tertiary: var(--color-text-tertiary);
+  --token-color-text-inverse: var(--color-text-inverse);
+  --token-color-action-primary-default: var(--color-bg-brand-default);
+  --token-color-action-primary-hover: var(--color-bg-brand-hover);
+  --token-color-action-tertiary-default: var(--color-bg-secondary);
+  --token-color-action-tertiary-hover: var(--color-bg-tertiary);
 }
