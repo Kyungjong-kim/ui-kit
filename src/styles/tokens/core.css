@@ -82,4 +82,193 @@
   /* White / Black */
   --color-white: #ffffff;
   --color-black: #000000;
+
+  /* Radius */
+  --token-radius-xxs: 4px;
+  --token-radius-xs: 6px;
+  --token-radius-sm: 8px;
+  --token-radius-md: 12px;
+  --token-radius-lg: 16px;
+  --token-radius-xl: 24px;
+  --token-radius-full: 99999px;
+
+  /* Size · Icon */
+  --token-size-icon-xxs: 8px;
+  --token-size-icon-xs: 12px;
+  --token-size-icon-sm: 16px;
+  --token-size-icon-md: 20px;
+  --token-size-icon-lg: 24px;
+  --token-size-icon-xl: 32px;
+  --token-size-icon-xxl: 48px;
+  --token-size-icon-xxxl: 80px;
+
+  /* Size · Control */
+  --token-size-control-xxxs: 20px;
+  --token-size-control-xxs: 24px;
+  --token-size-control-xs: 28px;
+  --token-size-control-sm: 32px;
+  --token-size-control-md: 36px;
+  --token-size-control-lg: 44px;
+  --token-size-control-xl: 48px;
+  --token-size-control-xxl: 360px;
+
+  /* Size · Image */
+  --token-size-image-xxs: 36px;
+  --token-size-image-xs: 56px;
+  --token-size-image-sm: 60px;
+  --token-size-image-md: 100px;
+  --token-size-image-lg: 104px;
+  --token-size-image-xl: 184px;
+  --token-size-image-xxl: 320px;
+
+  /* Spacing · Inline */
+  --token-spacing-inline-xs: 4px;
+  --token-spacing-inline-sm: 8px;
+  --token-spacing-inline-md: 12px;
+  --token-spacing-inline-lg: 16px;
+  --token-spacing-inline-xl: 20px;
+  --token-spacing-inline-xxl: 24px;
+  --token-spacing-inline-xxxl: 28px;
+
+  /* Shadow · Default */
+  --token-shadow-default-sm: 0 0 4px 0 rgba(0, 0, 0, 0.08);
+  --token-shadow-default-md: 0 0 8px 0 rgba(0, 0, 0, 0.12);
+  --token-shadow-default-lg: 0 0 12px 0 rgba(0, 0, 0, 0.16);
+  --token-shadow-default-xl: 0 0 16px 0 rgba(0, 0, 0, 0.2);
+
+  /* Typography — size·weight·line-height·letter-spacing */
+  --token-typography-display-md-size: 32px;
+  --token-typography-display-md-weight: 700;
+  --token-typography-display-md-line-height: 40px;
+  --token-typography-display-md-letter-spacing: -0.5px;
+
+  --token-typography-display-sm-size: 28px;
+  --token-typography-display-sm-weight: 700;
+  --token-typography-display-sm-line-height: 36px;
+  --token-typography-display-sm-letter-spacing: -0.4px;
+
+  --token-typography-headline-xl-size: 24px;
+  --token-typography-headline-xl-weight: 700;
+  --token-typography-headline-xl-line-height: 32px;
+  --token-typography-headline-xl-letter-spacing: -0.3px;
+
+  --token-typography-headline-lg-size: 20px;
+  --token-typography-headline-lg-weight: 700;
+  --token-typography-headline-lg-line-height: 28px;
+  --token-typography-headline-lg-letter-spacing: -0.2px;
+
+  --token-typography-headline-md-size: 18px;
+  --token-typography-headline-md-weight: 700;
+  --token-typography-headline-md-line-height: 26px;
+  --token-typography-headline-md-letter-spacing: -0.1px;
+
+  --token-typography-headline-sm-size: 16px;
+  --token-typography-headline-sm-weight: 700;
+  --token-typography-headline-sm-line-height: 24px;
+  --token-typography-headline-sm-letter-spacing: 0px;
+
+  --token-typography-body-lg-bold-size: 16px;
+  --token-typography-body-lg-bold-weight: 700;
+  --token-typography-body-lg-bold-line-height: 24px;
+  --token-typography-body-lg-bold-letter-spacing: 0px;
+
+  --token-typography-body-lg-medium-size: 16px;
+  --token-typography-body-lg-medium-weight: 500;
+  --token-typography-body-lg-medium-line-height: 24px;
+  --token-typography-body-lg-medium-letter-spacing: 0px;
+
+  --token-typography-body-lg-base-size: 16px;
+  --token-typography-body-lg-base-weight: 400;
+  --token-typography-body-lg-base-line-height: 24px;
+  --token-typography-body-lg-base-letter-spacing: 0px;
+
+  --token-typography-body-md-bold-size: 14px;
+  --token-typography-body-md-bold-weight: 700;
+  --token-typography-body-md-bold-line-height: 20px;
+  --token-typography-body-md-bold-letter-spacing: 0px;
+
+  --token-typography-body-md-medium-size: 14px;
+  --token-typography-body-md-medium-weight: 500;
+  --token-typography-body-md-medium-line-height: 20px;
+  --token-typography-body-md-medium-letter-spacing: 0px;
+
+  --token-typography-body-md-base-size: 14px;
+  --token-typography-body-md-base-weight: 400;
+  --token-typography-body-md-base-line-height: 20px;
+  --token-typography-body-md-base-letter-spacing: 0px;
+
+  --token-typography-body-sm-bold-size: 12px;
+  --token-typography-body-sm-bold-weight: 700;
+  --token-typography-body-sm-bold-line-height: 18px;
+  --token-typography-body-sm-bold-letter-spacing: 0px;
+
+  --token-typography-body-sm-medium-size: 12px;
+  --token-typography-body-sm-medium-weight: 500;
+  --token-typography-body-sm-medium-line-height: 18px;
+  --token-typography-body-sm-medium-letter-spacing: 0px;
+
+  --token-typography-body-sm-base-size: 12px;
+  --token-typography-body-sm-base-weight: 400;
+  --token-typography-body-sm-base-line-height: 18px;
+  --token-typography-body-sm-base-letter-spacing: 0px;
+
+  --token-typography-label-lg-bold-size: 16px;
+  --token-typography-label-lg-bold-weight: 700;
+  --token-typography-label-lg-bold-line-height: 24px;
+  --token-typography-label-lg-bold-letter-spacing: 0px;
+
+  --token-typography-label-lg-medium-size: 16px;
+  --token-typography-label-lg-medium-weight: 500;
+  --token-typography-label-lg-medium-line-height: 24px;
+  --token-typography-label-lg-medium-letter-spacing: 0px;
+
+  --token-typography-label-lg-base-size: 16px;
+  --token-typography-label-lg-base-weight: 400;
+  --token-typography-label-lg-base-line-height: 24px;
+  --token-typography-label-lg-base-letter-spacing: 0px;
+
+  --token-typography-label-md-bold-size: 14px;
+  --token-typography-label-md-bold-weight: 700;
+  --token-typography-label-md-bold-line-height: 20px;
+  --token-typography-label-md-bold-letter-spacing: 0px;
+
+  --token-typography-label-md-medium-size: 14px;
+  --token-typography-label-md-medium-weight: 500;
+  --token-typography-label-md-medium-line-height: 20px;
+  --token-typography-label-md-medium-letter-spacing: 0px;
+
+  --token-typography-label-md-base-size: 14px;
+  --token-typography-label-md-base-weight: 400;
+  --token-typography-label-md-base-line-height: 20px;
+  --token-typography-label-md-base-letter-spacing: 0px;
+
+  --token-typography-label-sm-bold-size: 12px;
+  --token-typography-label-sm-bold-weight: 700;
+  --token-typography-label-sm-bold-line-height: 18px;
+  --token-typography-label-sm-bold-letter-spacing: 0px;
+
+  --token-typography-label-sm-medium-size: 12px;
+  --token-typography-label-sm-medium-weight: 500;
+  --token-typography-label-sm-medium-line-height: 18px;
+  --token-typography-label-sm-medium-letter-spacing: 0px;
+
+  --token-typography-label-sm-base-size: 12px;
+  --token-typography-label-sm-base-weight: 400;
+  --token-typography-label-sm-base-line-height: 18px;
+  --token-typography-label-sm-base-letter-spacing: 0px;
+
+  --token-typography-label-xs-size: 10px;
+  --token-typography-label-xs-weight: 400;
+  --token-typography-label-xs-line-height: 10px;
+  --token-typography-label-xs-letter-spacing: 0px;
+
+  --token-typography-caption-size: 12px;
+  --token-typography-caption-weight: 400;
+  --token-typography-caption-line-height: 18px;
+  --token-typography-caption-letter-spacing: 0px;
+
+  --token-typography-code-size: 14px;
+  --token-typography-code-weight: 400;
+  --token-typography-code-line-height: 28px;
+  --token-typography-code-letter-spacing: 0px;
 }

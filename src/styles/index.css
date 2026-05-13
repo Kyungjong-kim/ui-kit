@@ -107,4 +107,208 @@
   --color-interactive-destructive-bg: var(--color-interactive-destructive-bg);
   --color-interactive-destructive-bg-hover: var(--color-interactive-destructive-bg-hover);
   --color-interactive-destructive-text: var(--color-interactive-destructive-text);
+
+  /* surface · action — bg-surface-default, bg-action-primary-default 등 */
+  --color-surface-default: var(--token-color-surface-default);
+  --color-action-primary-default: var(--token-color-action-primary-default);
+  --color-action-primary-hover: var(--token-color-action-primary-hover);
+  --color-action-tertiary-default: var(--token-color-action-tertiary-default);
+  --color-action-tertiary-hover: var(--token-color-action-tertiary-hover);
+
+  /* spacing (Tailwind v4: --spacing-X 가 w-/h-/p-/m-/gap- 등에 매핑) */
+  --spacing-inline-xs: var(--token-spacing-inline-xs);
+  --spacing-inline-sm: var(--token-spacing-inline-sm);
+  --spacing-inline-md: var(--token-spacing-inline-md);
+  --spacing-inline-lg: var(--token-spacing-inline-lg);
+  --spacing-inline-xl: var(--token-spacing-inline-xl);
+  --spacing-inline-xxl: var(--token-spacing-inline-xxl);
+  --spacing-inline-xxxl: var(--token-spacing-inline-xxxl);
+
+  --spacing-size-control-xxxs: var(--token-size-control-xxxs);
+  --spacing-size-control-xxs: var(--token-size-control-xxs);
+  --spacing-size-control-xs: var(--token-size-control-xs);
+  --spacing-size-control-sm: var(--token-size-control-sm);
+  --spacing-size-control-md: var(--token-size-control-md);
+  --spacing-size-control-lg: var(--token-size-control-lg);
+  --spacing-size-control-xl: var(--token-size-control-xl);
+  --spacing-size-control-xxl: var(--token-size-control-xxl);
+
+  --spacing-size-image-xxs: var(--token-size-image-xxs);
+  --spacing-size-image-xs: var(--token-size-image-xs);
+  --spacing-size-image-sm: var(--token-size-image-sm);
+  --spacing-size-image-md: var(--token-size-image-md);
+  --spacing-size-image-lg: var(--token-size-image-lg);
+  --spacing-size-image-xl: var(--token-size-image-xl);
+  --spacing-size-image-xxl: var(--token-size-image-xxl);
+
+  /* shadow — shadow-default-sm 등 */
+  --shadow-default-sm: var(--token-shadow-default-sm);
+  --shadow-default-md: var(--token-shadow-default-md);
+  --shadow-default-lg: var(--token-shadow-default-lg);
+  --shadow-default-xl: var(--token-shadow-default-xl);
+}
+
+/* Typography utility (Tailwind v4 @utility) — Text·Chip·SlideListBadge 등에서 사용 */
+@utility typography-display-md {
+  font-size: var(--token-typography-display-md-size);
+  line-height: var(--token-typography-display-md-line-height);
+  font-weight: var(--token-typography-display-md-weight);
+  letter-spacing: var(--token-typography-display-md-letter-spacing);
+}
+@utility typography-display-sm {
+  font-size: var(--token-typography-display-sm-size);
+  line-height: var(--token-typography-display-sm-line-height);
+  font-weight: var(--token-typography-display-sm-weight);
+  letter-spacing: var(--token-typography-display-sm-letter-spacing);
+}
+@utility typography-headline-xl {
+  font-size: var(--token-typography-headline-xl-size);
+  line-height: var(--token-typography-headline-xl-line-height);
+  font-weight: var(--token-typography-headline-xl-weight);
+  letter-spacing: var(--token-typography-headline-xl-letter-spacing);
+}
+@utility typography-headline-lg {
+  font-size: var(--token-typography-headline-lg-size);
+  line-height: var(--token-typography-headline-lg-line-height);
+  font-weight: var(--token-typography-headline-lg-weight);
+  letter-spacing: var(--token-typography-headline-lg-letter-spacing);
+}
+@utility typography-headline-md {
+  font-size: var(--token-typography-headline-md-size);
+  line-height: var(--token-typography-headline-md-line-height);
+  font-weight: var(--token-typography-headline-md-weight);
+  letter-spacing: var(--token-typography-headline-md-letter-spacing);
+}
+@utility typography-headline-sm {
+  font-size: var(--token-typography-headline-sm-size);
+  line-height: var(--token-typography-headline-sm-line-height);
+  font-weight: var(--token-typography-headline-sm-weight);
+  letter-spacing: var(--token-typography-headline-sm-letter-spacing);
+}
+@utility typography-body-lg-bold {
+  font-size: var(--token-typography-body-lg-bold-size);
+  line-height: var(--token-typography-body-lg-bold-line-height);
+  font-weight: var(--token-typography-body-lg-bold-weight);
+  letter-spacing: var(--token-typography-body-lg-bold-letter-spacing);
+}
+@utility typography-body-lg-medium {
+  font-size: var(--token-typography-body-lg-medium-size);
+  line-height: var(--token-typography-body-lg-medium-line-height);
+  font-weight: var(--token-typography-body-lg-medium-weight);
+  letter-spacing: var(--token-typography-body-lg-medium-letter-spacing);
+}
+@utility typography-body-lg-base {
+  font-size: var(--token-typography-body-lg-base-size);
+  line-height: var(--token-typography-body-lg-base-line-height);
+  font-weight: var(--token-typography-body-lg-base-weight);
+  letter-spacing: var(--token-typography-body-lg-base-letter-spacing);
+}
+@utility typography-body-md-bold {
+  font-size: var(--token-typography-body-md-bold-size);
+  line-height: var(--token-typography-body-md-bold-line-height);
+  font-weight: var(--token-typography-body-md-bold-weight);
+  letter-spacing: var(--token-typography-body-md-bold-letter-spacing);
+}
+@utility typography-body-md-medium {
+  font-size: var(--token-typography-body-md-medium-size);
+  line-height: var(--token-typography-body-md-medium-line-height);
+  font-weight: var(--token-typography-body-md-medium-weight);
+  letter-spacing: var(--token-typography-body-md-medium-letter-spacing);
+}
+@utility typography-body-md-base {
+  font-size: var(--token-typography-body-md-base-size);
+  line-height: var(--token-typography-body-md-base-line-height);
+  font-weight: var(--token-typography-body-md-base-weight);
+  letter-spacing: var(--token-typography-body-md-base-letter-spacing);
+}
+@utility typography-body-sm-bold {
+  font-size: var(--token-typography-body-sm-bold-size);
+  line-height: var(--token-typography-body-sm-bold-line-height);
+  font-weight: var(--token-typography-body-sm-bold-weight);
+  letter-spacing: var(--token-typography-body-sm-bold-letter-spacing);
+}
+@utility typography-body-sm-medium {
+  font-size: var(--token-typography-body-sm-medium-size);
+  line-height: var(--token-typography-body-sm-medium-line-height);
+  font-weight: var(--token-typography-body-sm-medium-weight);
+  letter-spacing: var(--token-typography-body-sm-medium-letter-spacing);
+}
+@utility typography-body-sm-base {
+  font-size: var(--token-typography-body-sm-base-size);
+  line-height: var(--token-typography-body-sm-base-line-height);
+  font-weight: var(--token-typography-body-sm-base-weight);
+  letter-spacing: var(--token-typography-body-sm-base-letter-spacing);
+}
+@utility typography-caption {
+  font-size: var(--token-typography-caption-size);
+  line-height: var(--token-typography-caption-line-height);
+  font-weight: var(--token-typography-caption-weight);
+  letter-spacing: var(--token-typography-caption-letter-spacing);
+}
+@utility typography-code {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: var(--token-typography-code-size);
+  line-height: var(--token-typography-code-line-height);
+  font-weight: var(--token-typography-code-weight);
+  letter-spacing: var(--token-typography-code-letter-spacing);
+}
+@utility typography-label-lg-bold {
+  font-size: var(--token-typography-label-lg-bold-size);
+  line-height: var(--token-typography-label-lg-bold-line-height);
+  font-weight: var(--token-typography-label-lg-bold-weight);
+  letter-spacing: var(--token-typography-label-lg-bold-letter-spacing);
+}
+@utility typography-label-lg-medium {
+  font-size: var(--token-typography-label-lg-medium-size);
+  line-height: var(--token-typography-label-lg-medium-line-height);
+  font-weight: var(--token-typography-label-lg-medium-weight);
+  letter-spacing: var(--token-typography-label-lg-medium-letter-spacing);
+}
+@utility typography-label-lg-base {
+  font-size: var(--token-typography-label-lg-base-size);
+  line-height: var(--token-typography-label-lg-base-line-height);
+  font-weight: var(--token-typography-label-lg-base-weight);
+  letter-spacing: var(--token-typography-label-lg-base-letter-spacing);
+}
+@utility typography-label-md-bold {
+  font-size: var(--token-typography-label-md-bold-size);
+  line-height: var(--token-typography-label-md-bold-line-height);
+  font-weight: var(--token-typography-label-md-bold-weight);
+  letter-spacing: var(--token-typography-label-md-bold-letter-spacing);
+}
+@utility typography-label-md-medium {
+  font-size: var(--token-typography-label-md-medium-size);
+  line-height: var(--token-typography-label-md-medium-line-height);
+  font-weight: var(--token-typography-label-md-medium-weight);
+  letter-spacing: var(--token-typography-label-md-medium-letter-spacing);
+}
+@utility typography-label-md-base {
+  font-size: var(--token-typography-label-md-base-size);
+  line-height: var(--token-typography-label-md-base-line-height);
+  font-weight: var(--token-typography-label-md-base-weight);
+  letter-spacing: var(--token-typography-label-md-base-letter-spacing);
+}
+@utility typography-label-sm-bold {
+  font-size: var(--token-typography-label-sm-bold-size);
+  line-height: var(--token-typography-label-sm-bold-line-height);
+  font-weight: var(--token-typography-label-sm-bold-weight);
+  letter-spacing: var(--token-typography-label-sm-bold-letter-spacing);
+}
+@utility typography-label-sm-medium {
+  font-size: var(--token-typography-label-sm-medium-size);
+  line-height: var(--token-typography-label-sm-medium-line-height);
+  font-weight: var(--token-typography-label-sm-medium-weight);
+  letter-spacing: var(--token-typography-label-sm-medium-letter-spacing);
+}
+@utility typography-label-sm-base {
+  font-size: var(--token-typography-label-sm-base-size);
+  line-height: var(--token-typography-label-sm-base-line-height);
+  font-weight: var(--token-typography-label-sm-base-weight);
+  letter-spacing: var(--token-typography-label-sm-base-letter-spacing);
+}
+@utility typography-label-xs {
+  font-size: var(--token-typography-label-xs-size);
+  line-height: var(--token-typography-label-xs-line-height);
+  font-weight: var(--token-typography-label-xs-weight);
+  letter-spacing: var(--token-typography-label-xs-letter-spacing);
 }

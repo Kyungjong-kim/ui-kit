@@ -2,6 +2,44 @@
 
 > 이전 Session notes → [`history/세션_노트.md`](../history/세션_노트.md) 참고
 
+## Session Update 2026-05-13 (컴포넌트 동작성 수정 — 디자인 토큰·utility 누락 보강)
+
+### 배경
+사용자가 Storybook에서 9개 컴포넌트의 시각/상호작용 이슈를 보고. 근본 원인:
+1. 이관 컴포넌트가 참조하던 `--token-color-*`·`--token-size-*`·`--token-radius-*` 정의 없음 → CSS 변수 미해결로 0 사이즈/색상 누락
+2. `typography-*` utility 클래스가 어디에도 정의되지 않음 → Text·Chip·SlideListBadge·CheckMark 모든 typography 미적용
+3. Toast 스토리는 각 스토리가 `<Toaster />`를 렌더 → autodocs 페이지에서 다중 Toaster가 같은 queue 구독 → 중복 발생
+4. LogoOnlyHeader 스토리는 `onClick: () => {}` 무동작
+
+### 변경 파일
+- `src/styles/tokens/core.css` — 구조 토큰 추가: radius(7), size·icon(8), size·control(8), size·image(7), spacing·inline(7), shadow·default(4), typography(26 variant × 4 attr ≈ 104 라인)
+- `src/styles/tokens/semantic.css` — icon 색상(12) + surface·action 색상 alias(14) 추가
+- `src/styles/index.css` — `@theme inline` 에 Tailwind utility 생성용 매핑 추가 (`--color-surface-*`, `--color-action-*`, `--spacing-inline-*`, `--spacing-size-control-*`, `--spacing-size-image-*`, `--shadow-default-*`) + `@utility typography-*` 26개 정의
+- `stories/toast.stories.tsx` — `<Toaster />` 를 `meta.decorators` 단일 인스턴스로 이동
+- `stories/logo-only-header.stories.tsx` — `WithClick` 스토리에 클릭 카운터 추가 (시각 피드백)
+
+### 영향 컴포넌트 (시각 복원)
+- Calendar / DatePicker — 선택색·기본색 복원 (`--token-color-surface-*` 해결)
+- Icon — md/sm/lg 등 사이즈 복원 → CheckMark·Chip·LogoOnlyHeader·DatePicker 아이콘 visible
+- Text — 26 typography variant 모두 동작
+- SlideListBadge — `bg-surface-default`·`bg-action-primary-default`·`w-size-control-xxxs`·`shadow-default-sm` 등 utility 생성
+- ImageCell — `w-size-image-{sm,lg,xxl}` 해결 → 셀·이미지 visible
+- Chip — typography + 아이콘 사이즈 복원으로 위치 정상화
+- Toast — 단일 Toaster decorator
+- LogoOnlyHeader — 클릭 피드백
+
+### 디자인 토큰 정책
+- 색상 토큰은 회사(gen-portal) 고유 색을 쓰지 않고 ui-kit 자체 `--color-*` 시맨틱 토큰을 alias.
+- 사이즈/타이포 구조 토큰은 ui-kit 자체 정의가 없어 합리적 표준값(`--token-radius-xxs: 4px` 등)으로 신규 정의.
+
+### 검증
+- test 226/226 · build 통과 (styles.css 4.55KB → 12.79KB) · lint 통과
+- IDE stylelint가 `@theme`/`@utility` 를 unknown at-rule 로 표기하나 Tailwind v4 build는 정상 처리
+
+### 다음 작업
+- PR 생성 → 머지
+- Storybook 시각 회귀 확인 (사용자 직접 — 9개 컴포넌트 visual smoke test)
+
 ## Session Update 2026-05-13 (신규 프리미티브 4종 — AlertDialog · Sheet · Pagination · Breadcrumb)
 
 ### 변경 파일
