@@ -1,0 +1,119 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Docs/Design Tokens" />
+
+# Design Tokens
+
+ui-kit 는 **2계층 토큰** 구조를 따른다. 컴포넌트는 **semantic 토큰만** 참조한다.
+
+```
+src/styles/tokens/
+├── core.css       # raw 값 (#fabc37 등) — 직접 참조 금지
+└── semantic.css   # core 참조 의미 토큰 — 컴포넌트가 사용
+```
+
+## 1. core.css — raw 색상 카테고리
+
+| 카테고리 | 변수 prefix | 단계 |
+|---|---|---|
+| brand | `--color-brand-*` | 25, 50, 100~900 |
+| neutral | `--color-neutral-*` | 25, 50, 100~900 |
+| red / green / orange / blue | `--color-{name}-*` | 25, 50, 100~900 |
+| white / black | `--color-white`, `--color-black` | — |
+
+## 2. semantic.css — 의미 토큰 (실사용)
+
+### Text
+
+export const TextSwatch = ({ name, label }) => (
+  <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", padding: "0.5rem 0" }}>
+    <span style={{ width: "12rem", fontFamily: "monospace", fontSize: "0.8rem" }}>{name}</span>
+    <span style={{ color: `var(${name})`, fontSize: "1rem", fontWeight: 600 }}>{label}</span>
+  </div>
+);
+
+<TextSwatch name="--color-text-primary" label="Primary text" />
+<TextSwatch name="--color-text-secondary" label="Secondary text" />
+<TextSwatch name="--color-text-tertiary" label="Tertiary text" />
+<TextSwatch name="--color-text-disabled" label="Disabled text" />
+<TextSwatch name="--color-text-brand-default" label="Brand text" />
+<TextSwatch name="--color-text-danger-default" label="Danger text" />
+<TextSwatch name="--color-text-success-default" label="Success text" />
+<TextSwatch name="--color-text-warning-default" label="Warning text" />
+<TextSwatch name="--color-text-info-default" label="Info text" />
+
+### Background
+
+export const BgSwatch = ({ name }) => (
+  <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", padding: "0.25rem 0" }}>
+    <div style={{ width: "3rem", height: "2rem", background: `var(${name})`, border: "1px solid var(--color-border-default)", borderRadius: "0.25rem" }} />
+    <span style={{ fontFamily: "monospace", fontSize: "0.8rem" }}>{name}</span>
+  </div>
+);
+
+<BgSwatch name="--color-bg-primary" />
+<BgSwatch name="--color-bg-secondary" />
+<BgSwatch name="--color-bg-tertiary" />
+<BgSwatch name="--color-bg-inverse" />
+<BgSwatch name="--color-bg-brand-default" />
+<BgSwatch name="--color-bg-brand-subtle" />
+<BgSwatch name="--color-bg-danger-default" />
+<BgSwatch name="--color-bg-danger-subtle" />
+<BgSwatch name="--color-bg-success-default" />
+<BgSwatch name="--color-bg-success-subtle" />
+<BgSwatch name="--color-bg-warning-default" />
+<BgSwatch name="--color-bg-warning-subtle" />
+<BgSwatch name="--color-bg-info-default" />
+<BgSwatch name="--color-bg-info-subtle" />
+<BgSwatch name="--color-bg-disabled" />
+
+### Border
+
+export const BorderSwatch = ({ name }) => (
+  <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", padding: "0.25rem 0" }}>
+    <div style={{ width: "3rem", height: "2rem", background: "var(--color-bg-primary)", border: `2px solid var(${name})`, borderRadius: "0.25rem" }} />
+    <span style={{ fontFamily: "monospace", fontSize: "0.8rem" }}>{name}</span>
+  </div>
+);
+
+<BorderSwatch name="--color-border-default" />
+<BorderSwatch name="--color-border-strong" />
+<BorderSwatch name="--color-border-brand-default" />
+<BorderSwatch name="--color-border-danger-default" />
+<BorderSwatch name="--color-border-info-default" />
+<BorderSwatch name="--color-border-focus" />
+
+### Interactive
+
+interactive 토큰은 버튼 등 상호작용 컴포넌트가 `bg`·`bg-hover`·`text`·`border` 4종을 묶어서 참조.
+
+| 프리셋 | 사용처 |
+|---|---|
+| `--color-interactive-primary-*` | Primary Button (브랜드 강조) |
+| `--color-interactive-secondary-*` | Secondary Button (외곽선) |
+| `--color-interactive-ghost-*` | Ghost Button (배경 호버만) |
+| `--color-interactive-destructive-*` | Destructive Button (삭제·경고) |
+
+## 3. 사용 원칙
+
+| 규칙 | 위반 예 | 올바른 예 |
+|---|---|---|
+| 하드코딩 색상 금지 | `bg-[#fabc37]` | `bg-[var(--color-bg-brand-default)]` |
+| core 토큰 직접 사용 금지 | `bg-brand-500` | `bg-[var(--color-bg-brand-default)]` |
+| 새 색상은 토큰 먼저 추가 | 컴포넌트에 직접 색상 정의 | `tokens/semantic.css` 에 토큰 추가 후 참조 |
+
+## 4. Tailwind v4 연동
+
+라이브러리 내부 컴포넌트는 항상 `[var(--...)]` 형태(CSS 임의값)를 사용한다.
+소비 앱이 `@theme inline` 으로 토큰을 노출하면 `bg-bg-brand-default` 형태 utility 도 동작.
+
+```css
+/* 소비 앱 example: app.css */
+@import "tailwindcss";
+@import "ui-kit/styles";
+
+@theme inline {
+  --color-bg-brand-default: var(--color-bg-brand-default);
+  /* ... 필요한 토큰 노출 */
+}
+```
