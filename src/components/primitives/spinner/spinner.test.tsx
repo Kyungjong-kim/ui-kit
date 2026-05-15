@@ -10,6 +10,6 @@ describe("Spinner", () => {
 
   it("size 클래스가 적용된다", () => {
     const { container } = render(<Spinner size="lg" />);
-    expect(container.firstChild).toHaveClass("h-8");
+    expect(container.firstChild).toHaveClass("h-size-icon-xl");
   });
 });

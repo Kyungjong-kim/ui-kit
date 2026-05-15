@@ -159,6 +159,12 @@
   --spacing-size-control-xl: var(--token-size-control-xl);
   --spacing-size-control-xxl: var(--token-size-control-xxl);
 
+  --spacing-size-avatar-xs: var(--token-size-avatar-xs);
+  --spacing-size-avatar-sm: var(--token-size-avatar-sm);
+  --spacing-size-avatar-md: var(--token-size-avatar-md);
+  --spacing-size-avatar-lg: var(--token-size-avatar-lg);
+  --spacing-size-avatar-xl: var(--token-size-avatar-xl);
+
   --spacing-size-image-xxs: var(--token-size-image-xxs);
   --spacing-size-image-xs: var(--token-size-image-xs);
   --spacing-size-image-sm: var(--token-size-image-sm);
