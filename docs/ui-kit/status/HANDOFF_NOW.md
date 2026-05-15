@@ -25,6 +25,10 @@
 - **이슈 먼저 생성** → 브랜치 `feat/#<번호>` → 커밋 `feat: 한국어 내용 #번호`
 - 디자인 토큰: ui-kit 자체 `--color-*` + 이관 컴포넌트용 `--token-*` (core.css·semantic.css)
 
+**최근 변경 (2026-05-15) Phase 1**: UI 컴포넌트 토큰화 — core.css spacing-stack/group 토큰, index.css radius/@theme 매핑(rounded-sm=8px, rounded-md=12px), button/badge/card/input/tag 전면 토큰화.
+
+**최근 변경 (2026-05-15) Phase 2**: UX 개선 — ① checkbox/radio hover 브랜드 border ② progress 슬라이딩 indeterminate 애니메이션 + h-stack 토큰 ③ file-upload 중복방지+FileRejection 에러표시(role=alert) ④ select size prop + checked 하이라이트 ⑤ stepper aria(ol/li/aria-current=step) ⑥ dialog aria-label+토큰 ⑦ pagination/switch/toast 토큰 정리. test 223/223 통과.
+
 **최근 변경 (2026-05-13)**: 컴포넌트 동작성 수정 — `--token-*` 구조 토큰(radius·size·spacing·shadow·typography)을 core.css 에 추가, 시맨틱 alias(`--token-color-surface-*` 등)·icon 컬러를 semantic.css 에 추가, Tailwind utility 생성용 `--color-surface-*`·`--spacing-size-*`·`--shadow-default-*` 를 index.css `@theme` 에, `@utility typography-*` 26개를 index.css 하단에 정의. Toast·LogoOnlyHeader 스토리 수정. test 226/226·build·lint 통과.
 
 ---

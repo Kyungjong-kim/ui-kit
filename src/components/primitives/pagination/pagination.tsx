@@ -35,10 +35,10 @@ function getPageRange(
 }
 
 const itemBase = cn(
-  "inline-flex h-9 min-w-9 items-center justify-center rounded-md px-2 text-sm font-medium",
-  "text-[var(--color-text-secondary)]",
+  "inline-flex h-size-control-md min-w-size-control-md items-center justify-center rounded-sm px-inline-xs typography-label-md-medium",
+  "text-[var(--color-text-secondary)] transition-colors",
   "hover:bg-[var(--color-bg-secondary)] hover:text-[var(--color-text-primary)]",
-  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-border-focus)]",
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-[var(--color-border-focus)]",
   "disabled:pointer-events-none disabled:opacity-50",
 );
 
@@ -60,7 +60,7 @@ export function Pagination({
   const isLast = safeCurrent === totalPages;
 
   return (
-    <nav aria-label={ariaLabel} className={cn("flex items-center gap-1", className)}>
+    <nav aria-label={ariaLabel} className={cn("flex items-center gap-group-xxs", className)}>
       <button
         type="button"
         onClick={() => onPageChange(safeCurrent - 1)}

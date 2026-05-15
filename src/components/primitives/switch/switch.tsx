@@ -13,7 +13,7 @@ export function Switch({ className, label, id, size = "md", ...props }: SwitchPr
   const switchId = id ?? generatedId;
 
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-group-sm">
       <SwitchPrimitive.Root
         id={switchId}
         className={cn(
@@ -47,7 +47,7 @@ export function Switch({ className, label, id, size = "md", ...props }: SwitchPr
       {label && (
         <Label.Root
           htmlFor={switchId}
-          className="text-sm text-[var(--color-text-primary)] cursor-pointer"
+          className="typography-label-md-base text-[var(--color-text-primary)] cursor-pointer select-none"
         >
           {label}
         </Label.Root>

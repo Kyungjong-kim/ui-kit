@@ -2,25 +2,22 @@ import { cva, type VariantProps } from "class-variance-authority";
 import type { HTMLAttributes } from "react";
 import { cn } from "../../../utils/cn";
 
-const tagVariants = cva(
-  "inline-flex items-center gap-1 rounded-full font-medium transition-colors",
-  {
-    variants: {
-      variant: {
-        default: "bg-[var(--color-bg-brand-subtle)] text-[var(--color-text-brand-default)]",
-        info: "bg-[var(--color-bg-info-subtle)] text-[var(--color-text-info-default)]",
-        success: "bg-[var(--color-bg-success-subtle)] text-[var(--color-text-success-default)]",
-        warning: "bg-[var(--color-bg-warning-subtle)] text-[var(--color-text-warning-default)]",
-        danger: "bg-[var(--color-bg-danger-subtle)] text-[var(--color-text-danger-default)]",
-      },
-      size: {
-        sm: "px-2 py-0.5 text-xs",
-        md: "px-2.5 py-1 text-sm",
-      },
+const tagVariants = cva("inline-flex items-center gap-group-xxs rounded-full transition-colors", {
+  variants: {
+    variant: {
+      default: "bg-[var(--color-bg-brand-subtle)] text-[var(--color-text-brand-default)]",
+      info: "bg-[var(--color-bg-info-subtle)] text-[var(--color-text-info-default)]",
+      success: "bg-[var(--color-bg-success-subtle)] text-[var(--color-text-success-default)]",
+      warning: "bg-[var(--color-bg-warning-subtle)] text-[var(--color-text-warning-default)]",
+      danger: "bg-[var(--color-bg-danger-subtle)] text-[var(--color-text-danger-default)]",
     },
-    defaultVariants: { variant: "default", size: "md" },
+    size: {
+      sm: "px-inline-xs py-stack-xxs typography-label-xs",
+      md: "px-inline-sm py-stack-xs typography-label-sm-medium",
+    },
   },
-);
+  defaultVariants: { variant: "default", size: "md" },
+});
 
 export interface TagProps
   extends HTMLAttributes<HTMLSpanElement>,
