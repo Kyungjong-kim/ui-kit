@@ -9,7 +9,7 @@ const linkButtonVariants = cva(
     "inline-flex",
     "justify-center",
     "items-center",
-    "gap-group-xs",
+    "gap-inline-xs",
     "bg-transparent",
     "hover:bg-transparent",
     "active:bg-transparent",

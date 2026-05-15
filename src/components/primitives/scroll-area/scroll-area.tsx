@@ -31,7 +31,7 @@ function ScrollArea({
   scrollbarClassNames?: ScrollbarClassNames;
 }) {
   const scrollbarGutterSize = size === "sm" ? 12 : 14;
-  const viewportStyle = noPadding
+  const paddingStyle = noPadding
     ? undefined
     : orientation === "vertical"
       ? { paddingInlineEnd: `${scrollbarGutterSize}px` }
@@ -41,6 +41,7 @@ function ScrollArea({
             paddingInlineEnd: `${scrollbarGutterSize}px`,
             paddingBlockEnd: `${scrollbarGutterSize}px`,
           };
+  const viewportStyle = maxHeight !== undefined ? { ...paddingStyle, maxHeight } : paddingStyle;
 
   return (
     <ScrollAreaPrimitive.Root
@@ -53,10 +54,7 @@ function ScrollArea({
         onScroll={onViewportScroll}
         data-slot="scroll-area-viewport"
         style={viewportStyle}
-        className={cn(
-          "size-full [&>div]:h-full outline-none transition-[color,box-shadow]",
-          maxHeight && `max-h-[${maxHeight}]`,
-        )}
+        className="size-full [&>div]:h-full outline-none transition-[color,box-shadow]"
       >
         {children}
       </ScrollAreaPrimitive.Viewport>
@@ -122,7 +120,7 @@ function ScrollBar({
       className={cn(
         "flex touch-none transition-colors select-none",
         orientation === "vertical" && `h-full px-inline-xs ${thickness}`,
-        orientation === "horizontal" && `w-full flex-col py-stack-xs ${thickness}`,
+        orientation === "horizontal" && `w-full flex-col py-inline-xs ${thickness}`,
         className,
       )}
       {...props}

@@ -20,6 +20,23 @@ const preview: Preview = {
     a11y: {
       test: "todo",
     },
+    options: {
+      storySort: {
+        order: [
+          "Docs",
+          ["Welcome", "Design Tokens", "Conventions"],
+          "Action",
+          "Form",
+          "Display",
+          "Feedback",
+          "Overlay",
+          "Navigation",
+          "Data",
+          "Layout",
+          "System",
+        ],
+      },
+    },
   },
 };
 
