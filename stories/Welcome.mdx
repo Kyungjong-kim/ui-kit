@@ -1,0 +1,54 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Docs/Welcome" />
+
+# ui-kit
+
+Personal design system — portfolio & reusable React component library.
+
+## 개요
+
+- React 19 + TypeScript 6 + Tailwind v4 + Radix Primitives 기반
+- tsup 으로 ESM/CJS dual + `.d.ts` 출력
+- `dist/` 산출물을 외부 앱이 npm 패키지처럼 소비
+
+## 카테고리
+
+| 그룹 | 비고 |
+|---|---|
+| **Form** | Input · Textarea · Checkbox · RadioGroup · Switch · Select · FileUpload · DatePicker |
+| **Action** | Button · LinkButton · IconButton · MultilineButton · SelectButton · SelectIconButton · CheckMark |
+| **Overlay** | Dialog · AlertDialog · Sheet · Popover · DropdownMenu · Tooltip · Modal |
+| **Feedback** | Toast · Spinner · Skeleton · Progress · EmptyState · TextSkeleton |
+| **Navigation** | Tabs · IconTabs · Pagination · Breadcrumb · Stepper |
+| **Display** | Badge · Tag · Chip · Avatar · Text · SlideListBadge · Card · Thumbnail · ImageCell · DocumentCell |
+| **Data** | Accordion · DndList · ScrollArea · Calendar · Separator |
+| **Layout** | PageHeader · LogoOnlyHeader |
+| **System** | Icon · FileIcon |
+
+## 설치
+
+```bash
+pnpm add ui-kit
+```
+
+`peerDependencies`: `react ^19`, `react-dom ^19`.
+
+## 사용
+
+```tsx
+import { Button } from "ui-kit";
+import "ui-kit/styles";
+
+export function Example() {
+  return <Button variant="primary">확인</Button>;
+}
+```
+
+`ui-kit/styles` 는 디자인 토큰만 포함 (`dist/styles.css`). Tailwind v4 사용 앱은 토큰 변수를 `@theme inline` 으로 노출해 utility class 로 활용 가능.
+
+## 다음 단계
+
+- 토큰 구조 → **Docs / DesignTokens**
+- 컴포넌트 작성 규칙 → **Docs / Conventions**
+- 컴포넌트별 카탈로그 → 좌측 사이드바 그룹 탐색
