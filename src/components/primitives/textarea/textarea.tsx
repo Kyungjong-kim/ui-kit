@@ -1,16 +1,44 @@
+import { cva, type VariantProps } from "class-variance-authority";
 import * as Label from "@radix-ui/react-label";
 import { forwardRef, type TextareaHTMLAttributes, useId } from "react";
 import { cn } from "../../../utils/cn";
 
-export interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
+const textareaVariants = cva(
+  [
+    "w-full rounded-sm border bg-[var(--color-bg-primary)]",
+    "text-[var(--color-text-primary)] placeholder:text-[var(--color-text-tertiary)]",
+    "transition-colors",
+    "focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-[var(--color-border-focus)] focus:border-[var(--color-border-focus)]",
+    "disabled:cursor-not-allowed disabled:bg-[var(--color-bg-disabled)] disabled:text-[var(--color-text-disabled)]",
+  ],
+  {
+    variants: {
+      size: {
+        sm: "px-inline-sm py-stack-xs typography-label-sm-base",
+        md: "px-inline-md py-stack-sm typography-label-md-base",
+        lg: "px-inline-lg py-stack-md typography-label-lg-base",
+      },
+      error: {
+        true: "border-[var(--color-border-danger-default)]",
+        false: "border-[var(--color-border-default)]",
+      },
+    },
+    defaultVariants: { size: "md", error: false },
+  },
+);
+
+export interface TextareaProps
+  extends TextareaHTMLAttributes<HTMLTextAreaElement>,
+    Omit<VariantProps<typeof textareaVariants>, "error"> {
   label?: string;
   error?: boolean;
   helperText?: string;
+  size?: "sm" | "md" | "lg";
   resize?: "none" | "vertical" | "horizontal" | "both";
 }
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
-  ({ className, label, error, helperText, resize = "vertical", id, ...props }, ref) => {
+  ({ className, label, error, helperText, size = "md", resize = "vertical", id, ...props }, ref) => {
     const generatedId = useId();
     const textareaId = id ?? generatedId;
 
@@ -29,12 +57,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           ref={ref}
           rows={props.rows ?? 4}
           className={cn(
-            "w-full rounded-sm border bg-[var(--color-bg-primary)] px-inline-md py-stack-sm typography-label-md-base text-[var(--color-text-primary)] placeholder:text-[var(--color-text-tertiary)] transition-colors",
-            "focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-[var(--color-border-focus)] focus:border-[var(--color-border-focus)]",
-            "disabled:cursor-not-allowed disabled:bg-[var(--color-bg-disabled)] disabled:text-[var(--color-text-disabled)]",
-            error
-              ? "border-[var(--color-border-danger-default)]"
-              : "border-[var(--color-border-default)]",
+            textareaVariants({ size, error: !!error }),
             {
               "resize-none": resize === "none",
               "resize-y": resize === "vertical",
