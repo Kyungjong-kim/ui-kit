@@ -20,7 +20,7 @@ export const BreadcrumbList = forwardRef<HTMLOListElement, ComponentPropsWithout
     <ol
       ref={ref}
       className={cn(
-        "flex flex-wrap items-center gap-1.5 text-sm text-[var(--color-text-secondary)]",
+        "flex flex-wrap items-center gap-group-xs typography-label-sm-base text-[var(--color-text-secondary)]",
         className,
       )}
       {...props}
@@ -31,7 +31,7 @@ BreadcrumbList.displayName = "BreadcrumbList";
 
 export const BreadcrumbItem = forwardRef<HTMLLIElement, ComponentPropsWithoutRef<"li">>(
   ({ className, ...props }, ref) => (
-    <li ref={ref} className={cn("inline-flex items-center gap-1.5", className)} {...props} />
+    <li ref={ref} className={cn("inline-flex items-center gap-group-xs", className)} {...props} />
   ),
 );
 BreadcrumbItem.displayName = "BreadcrumbItem";
@@ -63,7 +63,7 @@ export const BreadcrumbPage = forwardRef<HTMLSpanElement, ComponentPropsWithoutR
     <span
       ref={ref}
       aria-current="page"
-      className={cn("font-medium text-[var(--color-text-primary)]", className)}
+      className={cn("typography-label-sm-medium text-[var(--color-text-primary)]", className)}
       {...props}
     />
   ),
@@ -93,12 +93,12 @@ export function BreadcrumbEllipsis({ className, ...props }: HTMLAttributes<HTMLS
       role="presentation"
       aria-hidden="true"
       className={cn(
-        "inline-flex h-5 w-5 items-center justify-center text-[var(--color-text-tertiary)]",
+        "inline-flex h-size-icon-md w-size-icon-md items-center justify-center text-[var(--color-text-tertiary)]",
         className,
       )}
       {...props}
     >
-      <MoreHorizontalIcon className="h-3.5 w-3.5" />
+      <MoreHorizontalIcon className="h-size-icon-xs w-size-icon-xs" />
       <span className="sr-only">더보기</span>
     </span>
   );

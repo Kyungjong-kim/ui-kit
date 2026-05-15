@@ -15,11 +15,11 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
     const textareaId = id ?? generatedId;
 
     return (
-      <div className="flex flex-col gap-1.5">
+      <div className="flex flex-col gap-group-xs">
         {label && (
           <Label.Root
             htmlFor={textareaId}
-            className="text-sm font-medium text-[var(--color-text-primary)]"
+            className="typography-label-md-medium text-[var(--color-text-primary)]"
           >
             {label}
           </Label.Root>
@@ -29,8 +29,8 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           ref={ref}
           rows={props.rows ?? 4}
           className={cn(
-            "w-full rounded-md border bg-[var(--color-bg-primary)] px-3 py-2 text-sm text-[var(--color-text-primary)] placeholder:text-[var(--color-text-tertiary)] transition-colors",
-            "focus:outline-none focus:ring-2 focus:ring-[var(--color-border-focus)] focus:border-[var(--color-border-focus)]",
+            "w-full rounded-sm border bg-[var(--color-bg-primary)] px-inline-md py-stack-sm typography-label-md-base text-[var(--color-text-primary)] placeholder:text-[var(--color-text-tertiary)] transition-colors",
+            "focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-[var(--color-border-focus)] focus:border-[var(--color-border-focus)]",
             "disabled:cursor-not-allowed disabled:bg-[var(--color-bg-disabled)] disabled:text-[var(--color-text-disabled)]",
             error
               ? "border-[var(--color-border-danger-default)]"
@@ -48,7 +48,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         {helperText && (
           <p
             className={cn(
-              "text-xs",
+              "typography-caption",
               error
                 ? "text-[var(--color-text-danger-default)]"
                 : "text-[var(--color-text-tertiary)]",

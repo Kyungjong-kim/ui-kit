@@ -11,7 +11,7 @@ export function TabsList({
   return (
     <TabsPrimitive.List
       className={cn(
-        "inline-flex items-center rounded-lg bg-[var(--color-bg-tertiary)] p-1 gap-1",
+        "inline-flex items-center rounded-sm bg-[var(--color-bg-tertiary)] p-stack-xxs gap-group-xxs",
         className,
       )}
       {...props}
@@ -26,7 +26,7 @@ export function TabsTrigger({
   return (
     <TabsPrimitive.Trigger
       className={cn(
-        "inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1.5 text-sm font-medium transition-all",
+        "inline-flex items-center justify-center whitespace-nowrap rounded-xs px-inline-md py-stack-xs typography-label-md-medium transition-all",
         "text-[var(--color-text-tertiary)]",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-border-focus)]",
         "disabled:pointer-events-none disabled:opacity-50",
@@ -45,7 +45,7 @@ export function TabsContent({
   return (
     <TabsPrimitive.Content
       className={cn(
-        "mt-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-border-focus)]",
+        "mt-group-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-border-focus)]",
         className,
       )}
       {...props}

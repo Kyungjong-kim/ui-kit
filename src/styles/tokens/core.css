@@ -112,6 +112,13 @@
   --token-size-control-xl: 48px;
   --token-size-control-xxl: 360px;
 
+  /* Size · Avatar */
+  --token-size-avatar-xs: 24px;
+  --token-size-avatar-sm: 32px;
+  --token-size-avatar-md: 40px;
+  --token-size-avatar-lg: 48px;
+  --token-size-avatar-xl: 64px;
+
   /* Size · Image */
   --token-size-image-xxs: 36px;
   --token-size-image-xs: 56px;
