@@ -4,7 +4,7 @@ import { Button } from "../src/components/primitives/button";
 import { Dialog } from "../src/components/primitives/dialog";
 
 const meta: Meta = {
-  title: "Primitives/Dialog",
+  title: "Overlay/Dialog",
   parameters: { layout: "centered" },
   tags: ["autodocs"],
 };

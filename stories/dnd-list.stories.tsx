@@ -4,7 +4,7 @@ import { Badge } from "../src/components/primitives/badge";
 import { DndList } from "../src/components/primitives/dnd-list";
 
 const meta: Meta = {
-  title: "Primitives/DndList",
+  title: "Data/DndList",
   parameters: { layout: "centered" },
   tags: ["autodocs"],
 };
