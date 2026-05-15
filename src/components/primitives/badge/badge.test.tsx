@@ -8,13 +8,23 @@ describe("Badge", () => {
     expect(screen.getByText("New")).toBeInTheDocument();
   });
 
-  it("variant 클래스가 적용된다", () => {
+  it("variant=success 클래스가 적용된다", () => {
     render(<Badge variant="success">Active</Badge>);
-    expect(screen.getByText("Active").className).toMatch(/success/);
+    expect(screen.getByText("Active").className).toMatch(/color-green/);
   });
 
   it("variant=info가 렌더된다", () => {
     render(<Badge variant="info">정보</Badge>);
     expect(screen.getByText("정보")).toBeInTheDocument();
+  });
+
+  it("size=sm 클래스가 적용된다", () => {
+    render(<Badge size="sm">Small</Badge>);
+    expect(screen.getByText("Small").className).toMatch(/typography-label-xs/);
+  });
+
+  it("size=md 클래스가 적용된다 (기본값)", () => {
+    render(<Badge>Medium</Badge>);
+    expect(screen.getByText("Medium").className).toMatch(/typography-label-sm-medium/);
   });
 });

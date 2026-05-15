@@ -1,8 +1,35 @@
+import { cva, type VariantProps } from "class-variance-authority";
 import * as Label from "@radix-ui/react-label";
 import { forwardRef, type InputHTMLAttributes, useId } from "react";
 import { cn } from "../../../utils/cn";
 
-export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "size"> {
+const inputVariants = cva(
+  [
+    "w-full rounded-sm border bg-[var(--color-bg-primary)]",
+    "text-[var(--color-text-primary)] placeholder:text-[var(--color-text-tertiary)]",
+    "transition-[border-color,box-shadow]",
+    "focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-[var(--color-border-focus)] focus:border-[var(--color-border-focus)]",
+    "disabled:cursor-not-allowed disabled:bg-[var(--color-bg-disabled)] disabled:text-[var(--color-text-disabled)]",
+  ],
+  {
+    variants: {
+      size: {
+        sm: "h-size-control-sm px-inline-sm typography-label-sm-base",
+        md: "h-size-control-md px-inline-md typography-label-md-base",
+        lg: "h-size-control-lg px-inline-lg typography-label-lg-base",
+      },
+      error: {
+        true: "border-[var(--color-border-danger-default)]",
+        false: "border-[var(--color-border-default)]",
+      },
+    },
+    defaultVariants: { size: "md", error: false },
+  },
+);
+
+export interface InputProps
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, "size">,
+    Omit<VariantProps<typeof inputVariants>, "error"> {
   label?: string;
   error?: boolean;
   helperText?: string;
@@ -27,20 +54,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         <input
           id={inputId}
           ref={ref}
-          className={cn(
-            "w-full rounded-sm border bg-[var(--color-bg-primary)] text-[var(--color-text-primary)] placeholder:text-[var(--color-text-tertiary)] transition-[border-color,box-shadow]",
-            "focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-[var(--color-border-focus)] focus:border-[var(--color-border-focus)]",
-            "disabled:cursor-not-allowed disabled:bg-[var(--color-bg-disabled)] disabled:text-[var(--color-text-disabled)]",
-            error
-              ? "border-[var(--color-border-danger-default)]"
-              : "border-[var(--color-border-default)]",
-            {
-              "h-size-control-sm px-inline-sm typography-label-sm-base": size === "sm",
-              "h-size-control-md px-inline-md typography-label-md-base": size === "md",
-              "h-size-control-lg px-inline-lg typography-label-lg-base": size === "lg",
-            },
-            className,
-          )}
+          className={cn(inputVariants({ size, error: !!error }), className)}
           {...props}
         />
         {helperText && (

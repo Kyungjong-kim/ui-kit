@@ -1,8 +1,33 @@
+import { cva, type VariantProps } from "class-variance-authority";
 import * as Label from "@radix-ui/react-label";
 import * as SelectPrimitive from "@radix-ui/react-select";
 import { CheckIcon, ChevronDownIcon } from "lucide-react";
 import { useId } from "react";
 import { cn } from "../../../utils/cn";
+
+const triggerVariants = cva(
+  [
+    "flex w-full items-center justify-between rounded-sm border bg-[var(--color-bg-primary)]",
+    "text-[var(--color-text-primary)] transition-[border-color,box-shadow]",
+    "focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-[var(--color-border-focus)] focus:border-[var(--color-border-focus)]",
+    "disabled:cursor-not-allowed disabled:bg-[var(--color-bg-disabled)] disabled:opacity-50",
+    "data-[placeholder]:text-[var(--color-text-tertiary)]",
+  ],
+  {
+    variants: {
+      size: {
+        sm: "h-size-control-sm px-inline-sm typography-label-sm-base",
+        md: "h-size-control-md px-inline-md typography-label-md-base",
+        lg: "h-size-control-lg px-inline-lg typography-label-lg-base",
+      },
+      error: {
+        true: "border-[var(--color-border-danger-default)]",
+        false: "border-[var(--color-border-default)]",
+      },
+    },
+    defaultVariants: { size: "md", error: false },
+  },
+);
 
 export interface SelectOption {
   value: string;
@@ -10,7 +35,8 @@ export interface SelectOption {
   disabled?: boolean;
 }
 
-export interface SelectProps {
+export interface SelectProps
+  extends Omit<VariantProps<typeof triggerVariants>, "error"> {
   options: SelectOption[];
   value?: string;
   onValueChange?: (value: string) => void;
@@ -22,12 +48,6 @@ export interface SelectProps {
   size?: "sm" | "md" | "lg";
   className?: string;
 }
-
-const triggerSizeClasses = {
-  sm: "h-size-control-sm px-inline-sm typography-label-sm-base",
-  md: "h-size-control-md px-inline-md typography-label-md-base",
-  lg: "h-size-control-lg px-inline-lg typography-label-lg-base",
-} as const;
 
 export function Select({
   options,
@@ -56,17 +76,7 @@ export function Select({
       <SelectPrimitive.Root value={value} onValueChange={onValueChange} disabled={disabled}>
         <SelectPrimitive.Trigger
           id={generatedId}
-          className={cn(
-            "flex w-full items-center justify-between rounded-sm border bg-[var(--color-bg-primary)] text-[var(--color-text-primary)] transition-[border-color,box-shadow]",
-            "focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-[var(--color-border-focus)] focus:border-[var(--color-border-focus)]",
-            "disabled:cursor-not-allowed disabled:bg-[var(--color-bg-disabled)] disabled:opacity-50",
-            "data-[placeholder]:text-[var(--color-text-tertiary)]",
-            triggerSizeClasses[size],
-            error
-              ? "border-[var(--color-border-danger-default)]"
-              : "border-[var(--color-border-default)]",
-            className,
-          )}
+          className={cn(triggerVariants({ size, error: !!error }), className)}
         >
           <SelectPrimitive.Value placeholder={placeholder} />
           <SelectPrimitive.Icon aria-hidden="true">
