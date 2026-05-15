@@ -20,8 +20,9 @@
 **아키텍처**: React 디자인시스템 라이브러리. tsup ESM+CJS dual 빌드, `dist/` 산출물을 외부 앱이 소비.
 
 **주의**:
-- 컴포넌트 className: `[var(--color-...)]` 또는 semantic 토큰(`bg-bg-brand-default` 등) 경유
-- 신규 컴포넌트는 **5개 산출물 동시 작성** (tsx + test + index + stories + primitives/index.ts export)
+- 컴포넌트 className: semantic 토큰 `[var(--color-...)]` 임의값 형태만 사용 (Tailwind utility `bg-bg-brand-default` 형태 금지 — 라이브러리 이식성)
+- 컴포넌트는 **primitives** (Radix·단일 책임 36개) 또는 **composed** (조합·도메인 16개) 두 카테고리에 위치
+- 신규 컴포넌트는 **5개 산출물 동시 작성** (tsx + test + index + stories + `<카테고리>/index.ts` export)
 - **이슈 먼저 생성** → 브랜치 `feat/#<번호>` → 커밋 `feat: 한국어 내용 #번호`
 - 디자인 토큰: ui-kit 자체 `--color-*` + 이관 컴포넌트용 `--token-*` (core.css·semantic.css)
 
@@ -38,4 +39,4 @@
 1. (대기) PR #36 (신규 프리미티브 4종) 리뷰·머지
 2. (대기) PR #37 fix (컴포넌트 동작성) 생성·머지
 3. (검토) Storybook 시각 회귀 확인 — Calendar·Text·SlideListBadge·CheckMark·Chip·DatePicker·ImageCell·Toast·LogoOnlyHeader
-4. (정비) `src/components/primitives/empty-state/` 가 `primitives/index.ts` 에 export 안 됨 — 의도 확인 필요
+4. (확인 완료) `src/components/composed/empty-state/` — `composed/index.ts` L5에 정상 export됨 (구 경로 표기 오류 정정)

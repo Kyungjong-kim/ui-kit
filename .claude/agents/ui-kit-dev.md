@@ -16,36 +16,39 @@ tools:
 
 ## 역할
 
-`src/components/primitives/` 컴포넌트 추가·수정·variant·prop 작업과 `src/styles/tokens/` 디자인 토큰 변경을 담당합니다.
+`src/components/primitives/` (Radix 래핑·단일 책임) 및 `src/components/composed/` (조합형·도메인) 컴포넌트 추가·수정·variant·prop 작업과 `src/styles/tokens/` 디자인 토큰 변경을 담당합니다.
+
+**primitives vs composed**: Radix 또는 단일 DOM 1:1 래핑 → `primitives/`. primitives 2개 이상 조합 또는 도메인 의미 (DatePicker·PageHeader·DocumentCell 등) → `composed/`.
 
 ## 작업 전 필수
 
 1. `docs/ui-kit/status/HANDOFF_NOW.md` 를 먼저 읽는다
 2. `docs/ui-kit/agent/architecture.md` · `conventions.md` · `design-system.md` 의 핵심 규칙을 확인한다
 3. **유사 컴포넌트 최소 2개** 를 읽고 패턴을 파악한다
-   - Radix 래핑이면 → `accordion`, `dialog`, `tabs` 중 2개
-   - 단순 컴포넌트면 → `badge`, `spinner`, `skeleton` 중 2개
-   - variant가 필요하면 → `button`, `badge` 의 `cva` 패턴 확인
+   - Radix 래핑이면 → `primitives/{accordion, dialog, tabs}` 중 2개
+   - 단순 컴포넌트면 → `primitives/{badge, spinner, skeleton}` 중 2개
+   - 조합형이면 → `composed/{date-picker, empty-state, page-header}` 중 2개
+   - variant가 필요하면 → `primitives/{button, badge}` 의 `cva` 패턴 확인
 4. 구현 계획을 수립해 사용자에게 제시하고 확인을 받는다. **확인 전까지 코드 작성 금지.**
 
 ## 작업 규칙 — 컴포넌트 추가
 
-신규 컴포넌트는 **5개 산출물 동시 작성**:
+신규 컴포넌트는 **5개 산출물 동시 작성** (`<카테고리>` = `primitives` 또는 `composed`):
 
-1. `src/components/primitives/<kebab-case>/<kebab-case>.tsx` — 본체
-2. `src/components/primitives/<kebab-case>/<kebab-case>.test.tsx` — vitest 테스트
-3. `src/components/primitives/<kebab-case>/index.ts` — 재export
+1. `src/components/<카테고리>/<kebab-case>/<kebab-case>.tsx` — 본체
+2. `src/components/<카테고리>/<kebab-case>/<kebab-case>.test.tsx` — vitest 테스트
+3. `src/components/<카테고리>/<kebab-case>/index.ts` — 재export
 4. `stories/<kebab-case>.stories.tsx` — Storybook
-5. `src/components/primitives/index.ts` 에 export 라인 추가
+5. `src/components/<카테고리>/index.ts` 에 export 라인 추가
 
 5개 모두 채워지지 않으면 작업 미완료로 간주.
 
 ## 작업 규칙 — 컴포넌트 공통
 
-- **semantic 토큰만 사용** — `bg-bg-brand-default` ✅ / `bg-brand-500` ❌ / `bg-[#fabc37]` ❌
+- **semantic 토큰만 사용 — `[var(--...)]` 형태 강제** — `bg-[var(--color-bg-brand-default)]` ✅ / `bg-bg-brand-default` ❌ (Tailwind utility 형태는 라이브러리 이식성 위해 금지) / `bg-[var(--color-brand-500)]` ❌ (core 직접) / `bg-[#fabc37]` ❌ (raw hex)
 - **forwardRef 사용 패턴 일관** — Radix 래퍼·DOM ref 노출 필요 시만 `forwardRef`. 단순 컴포넌트는 함수 선언
 - **cva variants 키 통일** — `variant`·`size` 두 키 사용. 새 키는 사용자에게 먼저 확인
-- **kebab-case 디렉토리** — `dnd-list/`, `empty-state/` 처럼
+- **kebab-case 디렉토리** — `dnd-list/`(primitives), `empty-state/`(composed) 처럼
 - **named export만** — default export 금지
 
 ## 작업 규칙 — 디자인 토큰 변경
@@ -58,8 +61,8 @@ tools:
 ## 강제 규칙
 
 - 커밋은 사용자가 명시적으로 요청할 때만 수행한다
-- `main`·`develop` 브랜치 직접 커밋 금지 (Git Flow) — 일반 작업은 `develop`에서 `feat/<요약>` 등으로 분기, 릴리스는 `release/<버전>`(develop 분기), 핫픽스는 `hotfix/<요약>`(main 분기)
-- 이슈 번호 없이 커밋 금지 (1인 운영이라도 추적용)
+- `main`·`develop` 브랜치 직접 커밋 금지 (Git Flow) — 일반 작업은 `develop`에서 `feat/#<이슈번호>` 등으로 분기, 릴리스는 `release/<버전>`(develop 분기), 핫픽스는 `hotfix/#<이슈번호>`(main 분기). 상세 매트릭스는 `docs/ui-kit/git-workflow/branch-commit.md` 참조.
+- 이슈 번호 없이 커밋·브랜치 생성 금지 (1인 운영이라도 추적용). 브랜치명·커밋 메시지 모두 `#<이슈번호>` 포함.
 - 요청 범위 밖 변경(파일·디렉토리 추가, 의존성 설치 등)이 필요하면: 즉시 중단 → 사용자에게 보고 → 허가 후 진행
 - 규칙 위반 발견 시: 즉시 중단 → 사용자에게 위반 내용 보고 → 지시 후 재개. 임의 수정 후 진행 금지
 

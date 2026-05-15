@@ -17,15 +17,18 @@
 
 | 키워드 / 단서 | 작업 영역 |
 |---|---|
-| 컴포넌트 추가·수정·variant·prop | `src/components/primitives/<컴포넌트>/` |
+| Radix 래핑·단일 책임 컴포넌트 (Button·Dialog·Badge 등) | `src/components/primitives/<컴포넌트>/` |
+| 조합형·도메인 컴포넌트 (DatePicker·EmptyState·PageHeader 등) | `src/components/composed/<컴포넌트>/` |
 | 색상·spacing·radius 등 디자인 값 | `src/styles/tokens/` |
 | 스토리북·예시·시각 검증 | `stories/` |
-| 단위 테스트 | `src/components/primitives/<컴포넌트>/<컴포넌트>.test.tsx` |
+| 단위 테스트 | `<컴포넌트 디렉토리>/<컴포넌트>.test.tsx` |
 | 빌드·exports·릴리스 | `tsup.config.ts` · `package.json` · `.changeset/` |
 | 유틸 함수 (cn 등) | `src/utils/` |
 
+**primitives vs composed 분류 기준**: Radix 또는 단일 DOM 요소 1:1 래핑 → `primitives/`. primitives 2개 이상 조합 또는 도메인 의미(예: PageHeader, DocumentCell) → `composed/`. 애매하면 사용자에게 질문.
+
 불명확 시 질문:
-> "이 작업은 컴포넌트 추가/수정인가요, 디자인 토큰 변경인가요, 빌드 설정인가요?"
+> "이 작업은 primitives/composed 컴포넌트 추가/수정인가요, 디자인 토큰 변경인가요, 빌드 설정인가요?"
 
 ---
 
@@ -47,9 +50,10 @@
 ### 0-C. 기존 코드 분석 (코드 작성 전 필수)
 
 **컴포넌트 추가·수정 시 유사 컴포넌트 최소 2개를 먼저 읽는다.**
-- 새 컴포넌트가 Radix 기반이면 → `accordion`, `dialog`, `tabs` 중 2개
-- 새 컴포넌트가 단순(non-Radix)이면 → `badge`, `spinner`, `skeleton` 중 2개
-- variant 시스템이 필요하면 → `button`, `badge` 의 `cva` 패턴 확인
+- 새 컴포넌트가 Radix 기반이면 → `primitives/{accordion, dialog, tabs}` 중 2개
+- 새 컴포넌트가 단순(non-Radix)이면 → `primitives/{badge, spinner, skeleton}` 중 2개
+- 조합형이면 → `composed/{date-picker, empty-state, page-header}` 중 2개
+- variant 시스템이 필요하면 → `primitives/{button, badge}` 의 `cva` 패턴 확인
 
 확인 항목: 디렉토리 구조 / displayName / forwardRef 사용 여부 / cva variants / 테스트 형태 / 스토리 형태.
 
@@ -103,9 +107,9 @@
 
 | 규칙 | 위반 시 |
 |---|---|
-| **신규 컴포넌트는 5개 산출물 동시 작성** (`<name>.tsx` / `<name>.test.tsx` / `index.ts` / `stories/<name>.stories.tsx` / `src/components/primitives/index.ts` export 추가) | 즉시 중단 → 누락 항목 보고 후 보완 |
-| **디자인 토큰 직접 hex 사용 금지** — 컴포넌트 className에 `#fabc37` 같은 raw값 작성 금지. semantic 토큰 변수(`bg-bg-brand-default` 등) 경유 | 즉시 중단 → semantic 토큰으로 교체 |
-| **`src/components/primitives/index.ts` 갱신 누락 금지** — 신규 컴포넌트 export 추가 후 `pnpm build` 실행 | 즉시 중단 → export 추가 후 빌드 재실행 |
+| **신규 컴포넌트는 5개 산출물 동시 작성** (`<name>.tsx` / `<name>.test.tsx` / `index.ts` / `stories/<name>.stories.tsx` / `src/components/<primitives\|composed>/index.ts` export 추가) | 즉시 중단 → 누락 항목 보고 후 보완 |
+| **디자인 토큰 직접 hex 사용 금지** — 컴포넌트 className에 `#fabc37` 같은 raw값 작성 금지. semantic 토큰 `[var(--color-bg-brand-default)]` 형태(CSS 임의값) 경유. Tailwind utility(`bg-bg-brand-default`)는 라이브러리 이식성 위해 금지. | 즉시 중단 → `[var(--...)]` 형태로 교체 |
+| **카테고리별 `index.ts` 갱신 누락 금지** — primitives 추가 시 `src/components/primitives/index.ts`, composed 추가 시 `src/components/composed/index.ts`에 export 추가 후 `pnpm build` 실행 | 즉시 중단 → export 추가 후 빌드 재실행 |
 | **이슈 없이 커밋·PR 금지** — GitHub Issues 사용. 작업 시작 전 이슈 먼저 생성 (`/project-issue`). 이슈 번호를 커밋 메시지와 브랜치명에 포함 | 즉시 중단 → 이슈 생성 후 재개 |
 | **`main`·`develop` 직접 커밋 금지** (Git Flow — feature/release/hotfix 브랜치만 머지) | 즉시 중단 → 브랜치 생성 |
 | **커밋은 명시적 요청 시에만** | 사용자가 "커밋해줘" 전까지 커밋 불가 |
@@ -117,7 +121,7 @@
 ```
 [규칙 준수 체크]
 - [ ] 5개 산출물 모두 작성 (신규 컴포넌트 시)
-- [ ] 디자인 토큰 직접 hex 사용 없음
+- [ ] 디자인 토큰 직접 hex 사용 없음 — semantic 토큰 `[var(--...)]` 형태만 사용 (Tailwind utility 형태 금지)
 - [ ] forwardRef 사용 패턴 일관 (Radix 래퍼는 forwardRef, 단순 컴포넌트는 함수)
 - [ ] cva variants 네이밍 기존 패턴 따름 (variant·size 키)
 - [ ] 변경된 모든 줄이 사용자 요청에 추적 가능 (Surgical Changes)

@@ -60,14 +60,14 @@
 > 상세 규칙은 `design-system.md` 참조.
 
 - 컴포넌트 className에 raw hex(`#fabc37`) 작성 금지
-- semantic 토큰 변수(`bg-bg-brand-default` 등) 사용
-- spacing·radius도 토큰 변수 우선
+- semantic 토큰 `[var(--color-bg-brand-default)]` 형태(CSS 임의값)만 사용. Tailwind utility(`bg-bg-brand-default`) 형태는 라이브러리 이식성 위해 금지
+- spacing·radius도 토큰 `[var(--token-...)]` 또는 Tailwind 기본 spacing 우선
 
 ---
 
 ## 7. 에이전트 작업 시 주의
 
-- 새 컴포넌트 추가 시 **5개 산출물 동시 작성** (CLAUDE.md STEP 1 참조)
+- 새 컴포넌트 추가 시 **5개 산출물 동시 작성** (CLAUDE.md STEP 1 참조). primitives → `src/components/primitives/<name>/` + `primitives/index.ts`. composed → `src/components/composed/<name>/` + `composed/index.ts`.
 - biome 자동 포맷에 맡김 — 수동 들여쓰기 조정 금지
-- 기존 컴포넌트 카테고리(Radix / 단순 / DnD)와 동일한 패턴을 따른다
+- 기존 컴포넌트 카테고리(primitives Radix / primitives 단순 / DnD / composed)와 동일한 패턴을 따른다
 - 리팩토링은 **요청된 부분만** 변경 (Surgical Changes)

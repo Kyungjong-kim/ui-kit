@@ -2,6 +2,38 @@
 
 > 이전 Session notes → [`history/세션_노트.md`](../history/세션_노트.md) 참고
 
+## Session Update 2026-05-15 (디자인 하네스 문서 검증·수정 #55)
+
+### 배경
+신규 에이전트 진입 시나리오(컴포넌트 추가 / 버그 수정 / 세션 종료)로 ui-kit 디자인 하네스 문서 세트 점검 → 🔴 4건 · 🟡 4건 발견.
+
+### 발견 이슈
+1. `CLAUDE.md`·`architecture.md`·`ui-kit-dev.md`·`conventions.md` 가 `src/components/composed/` 카테고리 미인지 (실제 16개 컴포넌트 존재).
+2. 토큰 사용 규칙 자체 모순 — `design-system.md`·CLAUDE.md 안에서 `[var(--...)]` ↔ `bg-bg-brand-default` 권장 혼재.
+3. `branch-commit.md` 자체 모순 — `feat/<요약>` ↔ `feat/#<이슈번호>` 패턴 혼재.
+4. `ui-kit-dev.md` L61 옛 브랜치 규칙 (`feat/<요약>`).
+5. `architecture.md` 컴포넌트 개수(22 → 실제 36+16) / `styles.css` 크기(107줄 → 311줄) / test 수치(54 → 226) stale.
+6. `HANDOFF_NOW.md` §2 정비 항목 경로 오류 (`primitives/empty-state` → `composed/empty-state`).
+
+### 수정 방향
+- 토큰 사용 규칙은 라이브러리 이식성 위해 `[var(--color-...)]` 임의값 형태로 통일 (Tailwind utility 형태 금지).
+- 브랜치 네이밍 `<타입>/#<이슈번호>` 통일 (요약 suffix 허용).
+- 컴포넌트 영역 `primitives` / `composed` 두 카테고리 명시.
+- architecture.md 신선도·디렉토리 트리·수치 갱신 (2026-05-15 기준).
+
+### 변경 파일
+- `CLAUDE.md`
+- `.claude/agents/ui-kit-dev.md`
+- `docs/ui-kit/agent/architecture.md`
+- `docs/ui-kit/agent/conventions.md`
+- `docs/ui-kit/agent/design-system.md`
+- `docs/ui-kit/git-workflow/branch-commit.md`
+- `docs/ui-kit/status/HANDOFF_NOW.md`
+- `docs/ui-kit/plans/HANDOFF.md` + `history/세션_노트.md`
+
+### 영향 범위
+문서 전용. 소스 코드 변경 없음. 빌드·테스트 영향 없음.
+
 ## Session Update 2026-05-13 (컴포넌트 동작성 수정 — 디자인 토큰·utility 누락 보강)
 
 ### 배경
