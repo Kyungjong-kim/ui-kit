@@ -12,7 +12,7 @@ export function Toaster({ ...props }: ToasterProps) {
           background: "var(--color-bg-primary)",
           border: "1px solid var(--color-border-default)",
           color: "var(--color-text-primary)",
-          borderRadius: "8px",
+          borderRadius: "var(--token-radius-sm)",
         },
       }}
       {...props}

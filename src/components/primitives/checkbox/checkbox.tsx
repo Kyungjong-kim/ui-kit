@@ -13,14 +13,15 @@ export function Checkbox({ className, label, id, ...props }: CheckboxProps) {
   const checkboxId = id ?? generatedId;
 
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-group-sm">
       <CheckboxPrimitive.Root
         id={checkboxId}
         className={cn(
-          "h-4 w-4 shrink-0 rounded border border-[var(--color-border-strong)] bg-[var(--color-bg-primary)]",
-          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-border-focus)]",
+          "h-size-control-xxxs w-size-control-xxxs shrink-0 rounded-xxs border border-[var(--color-border-strong)] bg-[var(--color-bg-primary)] transition-colors",
+          "hover:border-[var(--color-border-brand-default)]",
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-[var(--color-border-focus)]",
           "data-[state=checked]:bg-[var(--color-bg-brand-default)] data-[state=checked]:border-[var(--color-bg-brand-default)] data-[state=checked]:text-white",
-          "disabled:cursor-not-allowed disabled:opacity-50",
+          "disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:border-[var(--color-border-strong)]",
           className,
         )}
         {...props}
@@ -32,7 +33,7 @@ export function Checkbox({ className, label, id, ...props }: CheckboxProps) {
       {label && (
         <Label.Root
           htmlFor={checkboxId}
-          className="text-sm text-[var(--color-text-primary)] cursor-pointer"
+          className="typography-label-md-base text-[var(--color-text-primary)] cursor-pointer select-none"
         >
           {label}
         </Label.Root>

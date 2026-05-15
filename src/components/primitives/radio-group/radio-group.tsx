@@ -13,7 +13,7 @@ export function RadioGroup({ className, orientation = "vertical", ...props }: Ra
   return (
     <RadioGroupPrimitive.Root
       className={cn(
-        "flex gap-2",
+        "flex gap-group-sm",
         orientation === "vertical" ? "flex-col" : "flex-row flex-wrap",
         className,
       )}
@@ -28,13 +28,14 @@ export function RadioGroupItem({ className, label, id, ...props }: RadioGroupIte
   const itemId = id ?? generatedId;
 
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-group-sm">
       <RadioGroupPrimitive.Item
         id={itemId}
         className={cn(
-          "h-4 w-4 rounded-full border border-[var(--color-border-strong)] bg-white",
-          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-border-focus)] focus-visible:ring-offset-2",
-          "disabled:cursor-not-allowed disabled:opacity-50",
+          "h-size-control-xxxs w-size-control-xxxs rounded-full border border-[var(--color-border-strong)] bg-white transition-colors",
+          "hover:border-[var(--color-border-brand-default)]",
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--color-border-focus)]",
+          "disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:border-[var(--color-border-strong)]",
           "data-[state=checked]:border-[var(--color-bg-brand-default)] data-[state=checked]:bg-[var(--color-bg-brand-default)]",
           className,
         )}

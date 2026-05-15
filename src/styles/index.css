@@ -115,6 +115,15 @@
   --color-action-tertiary-default: var(--token-color-action-tertiary-default);
   --color-action-tertiary-hover: var(--token-color-action-tertiary-hover);
 
+  /* radius — rounded-sm=8px, rounded-md=12px, rounded-lg=16px 등 */
+  --radius-xxs: var(--token-radius-xxs);
+  --radius-xs: var(--token-radius-xs);
+  --radius-sm: var(--token-radius-sm);
+  --radius-md: var(--token-radius-md);
+  --radius-lg: var(--token-radius-lg);
+  --radius-xl: var(--token-radius-xl);
+  --radius-full: var(--token-radius-full);
+
   /* spacing (Tailwind v4: --spacing-X 가 w-/h-/p-/m-/gap- 등에 매핑) */
   --spacing-inline-xs: var(--token-spacing-inline-xs);
   --spacing-inline-sm: var(--token-spacing-inline-sm);
@@ -123,6 +132,23 @@
   --spacing-inline-xl: var(--token-spacing-inline-xl);
   --spacing-inline-xxl: var(--token-spacing-inline-xxl);
   --spacing-inline-xxxl: var(--token-spacing-inline-xxxl);
+
+  /* spacing stack (세로 패딩) */
+  --spacing-stack-xxs: var(--token-spacing-stack-xxs);
+  --spacing-stack-xs: var(--token-spacing-stack-xs);
+  --spacing-stack-sm: var(--token-spacing-stack-sm);
+  --spacing-stack-md: var(--token-spacing-stack-md);
+  --spacing-stack-lg: var(--token-spacing-stack-lg);
+  --spacing-stack-xl: var(--token-spacing-stack-xl);
+  --spacing-stack-xxl: var(--token-spacing-stack-xxl);
+
+  /* spacing group (flex/grid gap) */
+  --spacing-group-xxs: var(--token-spacing-group-xxs);
+  --spacing-group-xs: var(--token-spacing-group-xs);
+  --spacing-group-sm: var(--token-spacing-group-sm);
+  --spacing-group-md: var(--token-spacing-group-md);
+  --spacing-group-lg: var(--token-spacing-group-lg);
+  --spacing-group-xl: var(--token-spacing-group-xl);
 
   --spacing-size-control-xxxs: var(--token-size-control-xxxs);
   --spacing-size-control-xxs: var(--token-size-control-xxs);
@@ -146,6 +172,31 @@
   --shadow-default-md: var(--token-shadow-default-md);
   --shadow-default-lg: var(--token-shadow-default-lg);
   --shadow-default-xl: var(--token-shadow-default-xl);
+}
+
+/* ── Keyframes ─────────────────────────────────────────────────────────── */
+
+@keyframes accordion-down {
+  from { height: 0; overflow: hidden; }
+  to { height: var(--radix-accordion-content-height); overflow: hidden; }
+}
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); overflow: hidden; }
+  to { height: 0; overflow: hidden; }
+}
+@keyframes progress-indeterminate {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(400%); }
+}
+
+@utility animate-accordion-down {
+  animation: accordion-down 0.2s ease-out;
+}
+@utility animate-accordion-up {
+  animation: accordion-up 0.2s ease-out;
+}
+@utility animate-progress-indeterminate {
+  animation: progress-indeterminate 1.4s infinite ease-in-out;
 }
 
 /* Typography utility (Tailwind v4 @utility) — Text·Chip·SlideListBadge 등에서 사용 */

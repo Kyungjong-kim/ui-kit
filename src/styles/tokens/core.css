@@ -121,7 +121,7 @@
   --token-size-image-xl: 184px;
   --token-size-image-xxl: 320px;
 
-  /* Spacing · Inline */
+  /* Spacing · Inline (가로 패딩) */
   --token-spacing-inline-xs: 4px;
   --token-spacing-inline-sm: 8px;
   --token-spacing-inline-md: 12px;
@@ -129,6 +129,23 @@
   --token-spacing-inline-xl: 20px;
   --token-spacing-inline-xxl: 24px;
   --token-spacing-inline-xxxl: 28px;
+
+  /* Spacing · Stack (세로 패딩) */
+  --token-spacing-stack-xxs: 2px;
+  --token-spacing-stack-xs: 4px;
+  --token-spacing-stack-sm: 8px;
+  --token-spacing-stack-md: 12px;
+  --token-spacing-stack-lg: 16px;
+  --token-spacing-stack-xl: 24px;
+  --token-spacing-stack-xxl: 32px;
+
+  /* Spacing · Group (flex/grid gap) */
+  --token-spacing-group-xxs: 2px;
+  --token-spacing-group-xs: 4px;
+  --token-spacing-group-sm: 8px;
+  --token-spacing-group-md: 12px;
+  --token-spacing-group-lg: 16px;
+  --token-spacing-group-xl: 24px;
 
   /* Shadow · Default */
   --token-shadow-default-sm: 0 0 4px 0 rgba(0, 0, 0, 0.08);

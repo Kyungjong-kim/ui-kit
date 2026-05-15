@@ -33,6 +33,6 @@ describe("Tag", () => {
 
   it("size=sm 클래스가 적용된다", () => {
     render(<Tag size="sm">소형</Tag>);
-    expect(screen.getByText("소형").className).toMatch(/text-xs/);
+    expect(screen.getByText("소형").className).toMatch(/typography-label-xs/);
   });
 });

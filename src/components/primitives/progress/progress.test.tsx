@@ -21,11 +21,11 @@ describe("Progress", () => {
 
   it("size=sm 클래스가 적용된다", () => {
     render(<Progress value={50} size="sm" />);
-    expect(screen.getByRole("progressbar").className).toMatch(/h-1/);
+    expect(screen.getByRole("progressbar").className).toMatch(/h-stack-xxs/);
   });
 
   it("size=md 클래스가 적용된다", () => {
     render(<Progress value={50} size="md" />);
-    expect(screen.getByRole("progressbar").className).toMatch(/h-2/);
+    expect(screen.getByRole("progressbar").className).toMatch(/h-stack-xs/);
   });
 });

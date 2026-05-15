@@ -17,7 +17,7 @@ export function Progress({ value, max = 100, size = "md", className }: ProgressP
     <ProgressPrimitive.Root
       className={cn(
         "relative w-full overflow-hidden rounded-full bg-[var(--color-bg-tertiary)]",
-        size === "sm" ? "h-1" : "h-2",
+        size === "sm" ? "h-stack-xxs" : "h-stack-xs",
         className,
       )}
       value={value ?? null}
@@ -26,7 +26,7 @@ export function Progress({ value, max = 100, size = "md", className }: ProgressP
       <ProgressPrimitive.Indicator
         className={cn(
           "h-full bg-[var(--color-bg-brand-default)] transition-transform duration-300 ease-in-out",
-          isIndeterminate && "animate-pulse w-1/2",
+          isIndeterminate && "w-1/3 animate-progress-indeterminate",
         )}
         style={
           isIndeterminate ? undefined : { transform: `translateX(-${100 - (percentage ?? 0)}%)` }
