@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { IconTab, IconTabs } from "../src/components/composed/icon-tabs";
 
 const meta: Meta<typeof IconTabs> = {
-  title: "Composed/IconTabs",
+  title: "Navigation/IconTabs",
   component: IconTabs,
   parameters: { layout: "centered" },
   tags: ["autodocs"],

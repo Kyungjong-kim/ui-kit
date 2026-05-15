@@ -4,7 +4,7 @@ import { Button } from "../src/components/primitives/button";
 import { Card, CardBody, CardFooter, CardHeader } from "../src/components/primitives/card";
 
 const meta: Meta = {
-  title: "Primitives/Card",
+  title: "Display/Card",
   parameters: { layout: "centered" },
   tags: ["autodocs"],
 };

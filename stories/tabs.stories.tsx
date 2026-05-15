@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../src/components/primitives/tabs";
 
 const meta: Meta = {
-  title: "Primitives/Tabs",
+  title: "Navigation/Tabs",
   parameters: { layout: "centered" },
   tags: ["autodocs"],
 };

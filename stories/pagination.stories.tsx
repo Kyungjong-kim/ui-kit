@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Pagination } from "../src/components/primitives/pagination";
 
 const meta: Meta = {
-  title: "Primitives/Pagination",
+  title: "Navigation/Pagination",
   parameters: { layout: "centered" },
   tags: ["autodocs"],
 };
