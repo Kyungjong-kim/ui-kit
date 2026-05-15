@@ -46,7 +46,7 @@ src/styles/
 | **border** | `--color-border-{default, strong, brand-default, danger-default, info-default, disabled, focus}` | `--color-border-default` |
 | **interactive** | `--color-interactive-{primary, secondary, ghost, destructive}-{bg, bg-hover, text, border}` | `--color-interactive-primary-bg` |
 
-**`index.css`의 `@theme inline` 블록을 통해 Storybook dev 환경에서 `bg-bg-brand-default` 같은 클래스로 노출됨. 컴포넌트 자체는 `[var(--...)]` 방식 사용.**
+**`index.css`의 `@theme inline` 블록은 Storybook dev 환경 전용. 컴포넌트 className은 항상 `[var(--...)]` 임의값 형태 사용 (라이브러리 이식성 보장 — 소비 앱이 `@theme inline` 미구성 시에도 동작).**
 
 ---
 
@@ -54,8 +54,9 @@ src/styles/
 
 | 규칙 | 위반 예 | 올바른 예 |
 |---|---|---|
-| **하드코딩 색상 금지** | `bg-[#fabc37]` | `bg-bg-brand-default` |
-| **core 토큰 직접 사용 금지** | `bg-brand-500` | `bg-bg-brand-default` (semantic 경유) |
+| **하드코딩 색상 금지** | `bg-[#fabc37]` | `bg-[var(--color-bg-brand-default)]` |
+| **Tailwind utility 사용 금지** | `bg-bg-brand-default` (소비 앱 `@theme` 의존) | `bg-[var(--color-bg-brand-default)]` |
+| **core 토큰 직접 사용 금지** | `bg-[var(--color-brand-500)]` | `bg-[var(--color-bg-brand-default)]` (semantic 경유) |
 | **임의 px 금지** | `p-[7px]` | `p-2` (Tailwind 기본 spacing) |
 | **새 색상 필요 시 토큰 먼저 추가** | 컴포넌트에 색상 직접 정의 | `tokens/semantic.css`에 토큰 추가 후 참조 |
 
@@ -69,10 +70,10 @@ src/styles/
 const buttonVariants = cva("기본 공통 클래스", {
   variants: {
     variant: {
-      primary: "bg-bg-brand-default text-white",
-      secondary: "bg-white border border-border-default",
-      ghost: "hover:bg-bg-tertiary",
-      destructive: "bg-bg-danger-default text-white",
+      primary: "bg-[var(--color-bg-brand-default)] text-[var(--color-text-inverse)]",
+      secondary: "bg-[var(--color-bg-primary)] border border-[var(--color-border-default)]",
+      ghost: "hover:bg-[var(--color-bg-tertiary)]",
+      destructive: "bg-[var(--color-bg-danger-default)] text-[var(--color-text-inverse)]",
     },
     size: {
       sm: "h-8 px-3 text-sm",
@@ -107,14 +108,14 @@ const buttonVariants = cva("기본 공통 클래스", {
 
 ## 7. 자주 사용하는 토큰 빠른 참조
 
-| 용도 | 토큰 |
+| 용도 | className |
 |------|------|
-| 본문 텍스트 | `text-text-primary` |
-| 보조 텍스트 | `text-text-secondary` |
-| 비활성 텍스트 | `text-text-disabled` |
-| 기본 배경 | `bg-bg-primary` |
-| 카드/패널 배경 | `bg-bg-secondary` |
-| 브랜드 강조 배경 | `bg-bg-brand-default` |
-| 위험 액션 배경 | `bg-bg-danger-default` |
-| 기본 보더 | `border-border-default` |
-| 포커스 보더 | `border-border-focus` |
+| 본문 텍스트 | `text-[var(--color-text-primary)]` |
+| 보조 텍스트 | `text-[var(--color-text-secondary)]` |
+| 비활성 텍스트 | `text-[var(--color-text-disabled)]` |
+| 기본 배경 | `bg-[var(--color-bg-primary)]` |
+| 카드/패널 배경 | `bg-[var(--color-bg-secondary)]` |
+| 브랜드 강조 배경 | `bg-[var(--color-bg-brand-default)]` |
+| 위험 액션 배경 | `bg-[var(--color-bg-danger-default)]` |
+| 기본 보더 | `border-[var(--color-border-default)]` |
+| 포커스 보더 | `border-[var(--color-border-focus)]` |

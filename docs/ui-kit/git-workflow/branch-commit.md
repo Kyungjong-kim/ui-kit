@@ -7,13 +7,15 @@
 **전략**: Git Flow
 
 ```
-main                     ← 프로덕션 (npm publish 시점만 머지)
-  ├── release/<버전>      ← 버전 cut · changeset 통합 (develop 분기 → main + develop 머지)
-  └── hotfix/<요약>       ← 프로덕션 긴급 수정 (main 분기 → main + develop 머지)
+main                              ← 프로덕션 (npm publish 시점만 머지)
+  ├── release/<버전>              ← 버전 cut · changeset 통합 (develop 분기 → main + develop 머지)
+  └── hotfix/#<이슈번호>          ← 프로덕션 긴급 수정 (main 분기 → main + develop 머지)
 
-develop                  ← 개발 통합 (feature PR 머지 대상)
-  └── feat|fix|refactor|docs|test|chore/<요약>   ← 일반 작업 (develop 분기 → develop 머지)
+develop                           ← 개발 통합 (feature PR 머지 대상)
+  └── feat|fix|refactor|docs|test|chore/#<이슈번호>   ← 일반 작업 (develop 분기 → develop 머지)
 ```
+
+> **브랜치명 형식**: `<타입>/#<이슈번호>` 고정. 요약 suffix 허용(예: `fix/#37-component-behavior`) 단 이슈번호는 필수. release 브랜치만 버전명 사용.
 
 ### 브랜치별 역할·머지 규칙
 
@@ -21,9 +23,9 @@ develop                  ← 개발 통합 (feature PR 머지 대상)
 |---|---|---|---|
 | `main` | — | — | 프로덕션 / 릴리스 태깅 |
 | `develop` | `main` (최초 1회) | — | 개발 통합 |
-| `feat/<요약>` 등 | `develop` | `develop` | 컴포넌트·prop·variant·토큰·문서 등 일반 작업 |
+| `feat/#<이슈번호>` 등 | `develop` | `develop` | 컴포넌트·prop·variant·토큰·문서 등 일반 작업 |
 | `release/<버전>` | `develop` | `main` + `develop` 백머지 | 버전 cut · changeset 모음 · QA |
-| `hotfix/<요약>` | `main` | `main` + `develop` 백머지 | 프로덕션 긴급 수정 |
+| `hotfix/#<이슈번호>` | `main` | `main` + `develop` 백머지 | 프로덕션 긴급 수정 |
 
 ### 작업 시작 명령
 
@@ -31,7 +33,7 @@ develop                  ← 개발 통합 (feature PR 머지 대상)
 # 일반 작업 (feat/fix/refactor/docs/test/chore)
 git checkout develop
 git pull origin develop
-git checkout -b feat/<요약>
+git checkout -b feat/#<이슈번호>
 
 # 릴리스 cut
 git checkout develop
@@ -41,7 +43,7 @@ git checkout -b release/<버전>
 # 핫픽스
 git checkout main
 git pull origin main
-git checkout -b hotfix/<요약>
+git checkout -b hotfix/#<이슈번호>
 ```
 
 ---
