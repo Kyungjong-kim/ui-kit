@@ -1,6 +1,6 @@
-import { cva, type VariantProps } from "class-variance-authority";
 import * as Label from "@radix-ui/react-label";
 import * as SelectPrimitive from "@radix-ui/react-select";
+import { cva, type VariantProps } from "class-variance-authority";
 import { CheckIcon, ChevronDownIcon } from "lucide-react";
 import { useId } from "react";
 import { cn } from "../../../utils/cn";
@@ -35,8 +35,7 @@ export interface SelectOption {
   disabled?: boolean;
 }
 
-export interface SelectProps
-  extends Omit<VariantProps<typeof triggerVariants>, "error"> {
+export interface SelectProps extends Omit<VariantProps<typeof triggerVariants>, "error"> {
   options: SelectOption[];
   value?: string;
   onValueChange?: (value: string) => void;

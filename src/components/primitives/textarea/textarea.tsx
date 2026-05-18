@@ -1,5 +1,5 @@
-import { cva, type VariantProps } from "class-variance-authority";
 import * as Label from "@radix-ui/react-label";
+import { cva, type VariantProps } from "class-variance-authority";
 import { forwardRef, type TextareaHTMLAttributes, useId } from "react";
 import { cn } from "../../../utils/cn";
 
@@ -38,7 +38,10 @@ export interface TextareaProps
 }
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
-  ({ className, label, error, helperText, size = "md", resize = "vertical", id, ...props }, ref) => {
+  (
+    { className, label, error, helperText, size = "md", resize = "vertical", id, ...props },
+    ref,
+  ) => {
     const generatedId = useId();
     const textareaId = id ?? generatedId;
 

@@ -1,6 +1,6 @@
-import { cva } from "class-variance-authority";
-import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
 import * as Label from "@radix-ui/react-label";
+import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
+import { cva } from "class-variance-authority";
 import { type ComponentPropsWithoutRef, useId } from "react";
 import { cn } from "../../../utils/cn";
 
@@ -65,9 +65,7 @@ export function RadioGroup({
         <p
           className={cn(
             "typography-caption",
-            error
-              ? "text-[var(--color-text-danger-default)]"
-              : "text-[var(--color-text-tertiary)]",
+            error ? "text-[var(--color-text-danger-default)]" : "text-[var(--color-text-tertiary)]",
           )}
         >
           {helperText}

@@ -183,16 +183,32 @@
 /* ── Keyframes ─────────────────────────────────────────────────────────── */
 
 @keyframes accordion-down {
-  from { height: 0; overflow: hidden; }
-  to { height: var(--radix-accordion-content-height); overflow: hidden; }
+  from {
+    height: 0;
+    overflow: hidden;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+    overflow: hidden;
+  }
 }
 @keyframes accordion-up {
-  from { height: var(--radix-accordion-content-height); overflow: hidden; }
-  to { height: 0; overflow: hidden; }
+  from {
+    height: var(--radix-accordion-content-height);
+    overflow: hidden;
+  }
+  to {
+    height: 0;
+    overflow: hidden;
+  }
 }
 @keyframes progress-indeterminate {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(400%); }
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(400%);
+  }
 }
 
 @utility animate-accordion-down {

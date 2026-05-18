@@ -1,6 +1,6 @@
-import { cva } from "class-variance-authority";
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
 import * as Label from "@radix-ui/react-label";
+import { cva } from "class-variance-authority";
 import { CheckIcon } from "lucide-react";
 import { type ComponentPropsWithoutRef, useId } from "react";
 import { cn } from "../../../utils/cn";
