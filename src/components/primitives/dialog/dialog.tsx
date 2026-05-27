@@ -42,9 +42,9 @@ export function Dialog({
           )}
         >
           {(title || showClose) && (
-            <div className="flex items-start justify-between mb-group-md">
+            <div className="mb-group-xs flex items-start justify-between gap-group-md">
               {title && (
-                <DialogPrimitive.Title className="typography-headline-sm text-[var(--color-text-primary)]">
+                <DialogPrimitive.Title className="typography-headline-md text-[var(--color-text-primary)]">
                   {title}
                 </DialogPrimitive.Title>
               )}
@@ -64,7 +64,7 @@ export function Dialog({
             </DialogPrimitive.Description>
           )}
           <div>{children}</div>
-          {footer && <div className="mt-group-sm flex justify-end gap-group-sm">{footer}</div>}
+          {footer && <div className="mt-group-xl flex justify-end gap-group-sm">{footer}</div>}
         </DialogPrimitive.Content>
       </DialogPrimitive.Portal>
     </DialogPrimitive.Root>

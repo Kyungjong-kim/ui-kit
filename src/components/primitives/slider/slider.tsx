@@ -89,10 +89,11 @@ export function Slider({
             // biome-ignore lint/suspicious/noArrayIndexKey: thumb 개수는 value 길이로 고정
             key={index}
             className={cn(
-              "block rounded-full border-2 border-[var(--color-bg-brand-default)] bg-[var(--color-bg-primary)] shadow-default-sm transition-colors",
-              "focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-[var(--color-border-focus)]",
+              "block shrink-0 cursor-grab rounded-full border-2 border-[var(--color-bg-brand-default)] bg-[var(--color-bg-primary)] shadow-default-md transition-transform",
+              "hover:scale-110 active:scale-105 active:cursor-grabbing",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--color-border-focus)]",
               "disabled:pointer-events-none",
-              size === "sm" ? "h-size-icon-sm w-size-icon-sm" : "h-size-icon-md w-size-icon-md",
+              size === "sm" ? "size-4" : "size-5",
             )}
             aria-label={label}
           />
