@@ -69,9 +69,12 @@ export function Combobox({
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [activeIndex, setActiveIndex] = useState(0);
+  const [internalValue, setInternalValue] = useState<string | undefined>(undefined);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const selectedOption = options.find((opt) => opt.value === value);
+  const isControlled = value !== undefined;
+  const currentValue = isControlled ? value : internalValue;
+  const selectedOption = options.find((opt) => opt.value === currentValue);
 
   const filteredOptions = useMemo(() => {
     const normalized = query.trim().toLowerCase();
@@ -89,6 +92,7 @@ export function Combobox({
 
   function selectOption(option: ComboboxOption) {
     if (option.disabled) return;
+    if (!isControlled) setInternalValue(option.value);
     onValueChange?.(option.value);
     setOpen(false);
   }
@@ -173,7 +177,7 @@ export function Combobox({
                 </p>
               ) : (
                 filteredOptions.map((opt, index) => {
-                  const isSelected = opt.value === value;
+                  const isSelected = opt.value === currentValue;
                   const isActive = index === activeIndex;
                   return (
                     <button
