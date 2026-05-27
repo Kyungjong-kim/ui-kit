@@ -26,11 +26,11 @@ export function TabsTrigger({
   return (
     <TabsPrimitive.Trigger
       className={cn(
-        "inline-flex items-center justify-center whitespace-nowrap rounded-xs px-inline-md py-stack-xs typography-label-md-medium transition-all",
-        "text-[var(--color-text-tertiary)]",
+        "inline-flex items-center justify-center whitespace-nowrap rounded-xs px-inline-md py-stack-xs typography-label-md-medium transition-all duration-150",
+        "text-[var(--color-text-tertiary)] hover:text-[var(--color-text-secondary)]",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-border-focus)]",
         "disabled:pointer-events-none disabled:opacity-50",
-        "data-[state=active]:bg-[var(--color-bg-primary)] data-[state=active]:text-[var(--color-text-primary)] data-[state=active]:shadow-sm",
+        "data-[state=active]:bg-[var(--color-bg-primary)] data-[state=active]:text-[var(--color-text-primary)] data-[state=active]:shadow-default-sm",
         className,
       )}
       {...props}
