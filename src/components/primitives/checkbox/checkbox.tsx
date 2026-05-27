@@ -7,8 +7,8 @@ import { cn } from "../../../utils/cn";
 
 const checkboxVariants = cva(
   [
-    "h-size-control-xxxs w-size-control-xxxs shrink-0 rounded-xxs border bg-[var(--color-bg-primary)] transition-colors",
-    "hover:border-[var(--color-border-brand-default)]",
+    "h-size-control-xxxs w-size-control-xxxs shrink-0 rounded-xxs border bg-[var(--color-bg-primary)] transition-[background-color,border-color,transform] duration-150",
+    "hover:border-[var(--color-border-brand-default)] active:scale-90",
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-[var(--color-border-focus)]",
     "data-[state=checked]:bg-[var(--color-bg-brand-default)] data-[state=checked]:border-[var(--color-bg-brand-default)] data-[state=checked]:text-white",
     "disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:border-[var(--color-border-strong)]",

@@ -6,8 +6,8 @@ import { cn } from "../../../utils/cn";
 
 const radioVariants = cva(
   [
-    "h-size-control-xxxs w-size-control-xxxs rounded-full border bg-white transition-colors",
-    "hover:border-[var(--color-border-brand-default)]",
+    "h-size-control-xxxs w-size-control-xxxs rounded-full border bg-white transition-[background-color,border-color,transform] duration-150",
+    "hover:border-[var(--color-border-brand-default)] active:scale-90",
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--color-border-focus)]",
     "disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:border-[var(--color-border-strong)]",
     "data-[state=checked]:border-[var(--color-bg-brand-default)] data-[state=checked]:bg-[var(--color-bg-brand-default)]",

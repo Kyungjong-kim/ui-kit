@@ -39,7 +39,7 @@ export function Switch({
       <SwitchPrimitive.Root
         id={switchId}
         className={cn(
-          "relative inline-flex shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors",
+          "relative inline-flex shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200",
           helperText && "mt-[1px]",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-border-focus)] focus-visible:ring-offset-2",
           "disabled:cursor-not-allowed disabled:opacity-50",
@@ -54,7 +54,7 @@ export function Switch({
       >
         <SwitchPrimitive.Thumb
           className={cn(
-            "pointer-events-none block rounded-full bg-white shadow-md transition-transform",
+            "pointer-events-none block rounded-full bg-white shadow-default-sm transition-transform duration-200 ease-out",
             thumbSize[size],
           )}
         />
