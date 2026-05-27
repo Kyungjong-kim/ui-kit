@@ -7,9 +7,9 @@ import { cn } from "../../../utils/cn";
 
 const triggerVariants = cva(
   [
-    "flex w-full items-center justify-between rounded-sm border bg-[var(--color-bg-primary)]",
+    "flex w-size-field-md items-center justify-between rounded-xs border bg-[var(--color-bg-primary)]",
     "text-[var(--color-text-primary)] transition-[border-color,box-shadow]",
-    "focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-[var(--color-border-focus)] focus:border-[var(--color-border-focus)]",
+    "focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--color-border-focus)] focus:border-[var(--color-border-focus)]",
     "disabled:cursor-not-allowed disabled:bg-[var(--color-bg-disabled)] disabled:opacity-50",
     "data-[placeholder]:text-[var(--color-text-tertiary)]",
   ],
@@ -95,18 +95,16 @@ export function Select({
                   value={opt.value}
                   disabled={opt.disabled}
                   className={cn(
-                    "relative flex cursor-pointer select-none items-center rounded-xs py-stack-xs pl-inline-xxl pr-inline-sm typography-label-md-base text-[var(--color-text-primary)] outline-none transition-colors",
+                    "flex cursor-pointer select-none items-center justify-between gap-inline-sm rounded-xs px-inline-md py-stack-xs typography-label-md-base text-[var(--color-text-primary)] outline-none transition-colors",
                     "hover:bg-[var(--color-bg-tertiary)] focus:bg-[var(--color-bg-tertiary)]",
-                    "data-[state=checked]:bg-[var(--color-bg-brand-subtle)] data-[state=checked]:text-[var(--color-text-brand-default)]",
+                    "data-[state=checked]:font-medium data-[state=checked]:text-[var(--color-text-brand-default)]",
                     "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
                   )}
                 >
-                  <span className="absolute left-inline-sm flex h-size-icon-sm w-size-icon-sm items-center justify-center">
-                    <SelectPrimitive.ItemIndicator>
-                      <CheckIcon className="h-size-icon-sm w-size-icon-sm" aria-hidden="true" />
-                    </SelectPrimitive.ItemIndicator>
-                  </span>
                   <SelectPrimitive.ItemText>{opt.label}</SelectPrimitive.ItemText>
+                  <SelectPrimitive.ItemIndicator className="flex h-size-icon-sm w-size-icon-sm shrink-0 items-center justify-center">
+                    <CheckIcon className="h-size-icon-sm w-size-icon-sm" aria-hidden="true" />
+                  </SelectPrimitive.ItemIndicator>
                 </SelectPrimitive.Item>
               ))}
             </SelectPrimitive.Viewport>

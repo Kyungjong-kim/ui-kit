@@ -42,16 +42,16 @@ export function Dialog({
           )}
         >
           {(title || showClose) && (
-            <div className="flex items-center justify-between mb-group-sm">
+            <div className="mb-group-xs flex items-start justify-between gap-group-md">
               {title && (
-                <DialogPrimitive.Title className="typography-headline-sm text-[var(--color-text-primary)]">
+                <DialogPrimitive.Title className="typography-headline-md text-[var(--color-text-primary)]">
                   {title}
                 </DialogPrimitive.Title>
               )}
               {showClose && (
                 <DialogPrimitive.Close
                   aria-label="닫기"
-                  className="ml-auto rounded-xxs p-stack-xxs text-[var(--color-text-tertiary)] hover:text-[var(--color-text-primary)] transition-colors focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-[var(--color-border-focus)]"
+                  className="-mr-stack-xxs -mt-stack-xxs ml-auto rounded-xs p-stack-xxs text-[var(--color-text-tertiary)] transition-colors hover:bg-[var(--color-bg-tertiary)] hover:text-[var(--color-text-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-border-focus)]"
                 >
                   <XIcon className="h-4 w-4" />
                 </DialogPrimitive.Close>
@@ -64,7 +64,7 @@ export function Dialog({
             </DialogPrimitive.Description>
           )}
           <div>{children}</div>
-          {footer && <div className="mt-group-sm flex justify-end gap-group-sm">{footer}</div>}
+          {footer && <div className="mt-group-xl flex justify-end gap-group-sm">{footer}</div>}
         </DialogPrimitive.Content>
       </DialogPrimitive.Portal>
     </DialogPrimitive.Root>

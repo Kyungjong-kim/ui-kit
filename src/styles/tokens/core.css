@@ -112,6 +112,11 @@
   --token-size-control-xl: 48px;
   --token-size-control-xxl: 360px;
 
+  /* Field width — 폼 컨트롤(Input/Select/Combobox) 기본 너비. 내용 길이와 무관한 정적 레이아웃 보장 */
+  --token-size-field-sm: 200px;
+  --token-size-field-md: 280px;
+  --token-size-field-lg: 320px;
+
   /* Size · Avatar */
   --token-size-avatar-xs: 24px;
   --token-size-avatar-sm: 32px;
@@ -155,10 +160,13 @@
   --token-spacing-group-xl: 24px;
 
   /* Shadow · Default */
-  --token-shadow-default-sm: 0 0 4px 0 rgba(0, 0, 0, 0.08);
-  --token-shadow-default-md: 0 0 8px 0 rgba(0, 0, 0, 0.12);
-  --token-shadow-default-lg: 0 0 12px 0 rgba(0, 0, 0, 0.16);
-  --token-shadow-default-xl: 0 0 16px 0 rgba(0, 0, 0, 0.2);
+  --token-shadow-default-sm: 0 1px 2px 0 rgba(20, 18, 16, 0.06);
+  --token-shadow-default-md:
+    0 2px 8px -2px rgba(20, 18, 16, 0.1), 0 1px 2px -1px rgba(20, 18, 16, 0.06);
+  --token-shadow-default-lg:
+    0 8px 24px -6px rgba(20, 18, 16, 0.14), 0 2px 6px -2px rgba(20, 18, 16, 0.08);
+  --token-shadow-default-xl:
+    0 16px 40px -8px rgba(20, 18, 16, 0.18), 0 4px 10px -4px rgba(20, 18, 16, 0.1);
 
   /* Typography — size·weight·line-height·letter-spacing */
   --token-typography-display-md-size: 32px;

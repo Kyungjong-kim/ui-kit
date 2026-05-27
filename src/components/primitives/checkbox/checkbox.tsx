@@ -7,8 +7,8 @@ import { cn } from "../../../utils/cn";
 
 const checkboxVariants = cva(
   [
-    "h-size-control-xxxs w-size-control-xxxs shrink-0 rounded-xxs border bg-[var(--color-bg-primary)] transition-colors",
-    "hover:border-[var(--color-border-brand-default)]",
+    "h-size-control-xxxs w-size-control-xxxs shrink-0 rounded-xxs border bg-[var(--color-bg-primary)] transition-[background-color,border-color,transform] duration-150",
+    "hover:border-[var(--color-border-brand-default)] active:scale-90",
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-[var(--color-border-focus)]",
     "data-[state=checked]:bg-[var(--color-bg-brand-default)] data-[state=checked]:border-[var(--color-bg-brand-default)] data-[state=checked]:text-white",
     "disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:border-[var(--color-border-strong)]",
@@ -35,10 +35,10 @@ export function Checkbox({ className, label, error, helperText, id, ...props }: 
   const checkboxId = id ?? generatedId;
 
   return (
-    <div className="flex items-start gap-group-sm">
+    <div className={cn("flex gap-group-sm", helperText ? "items-start" : "items-center")}>
       <CheckboxPrimitive.Root
         id={checkboxId}
-        className={cn(checkboxVariants({ error: !!error }), "mt-[2px]", className)}
+        className={cn(checkboxVariants({ error: !!error }), helperText && "mt-[2px]", className)}
         {...props}
       >
         <CheckboxPrimitive.Indicator className="flex items-center justify-center">
@@ -50,7 +50,7 @@ export function Checkbox({ className, label, error, helperText, id, ...props }: 
           {label && (
             <Label.Root
               htmlFor={checkboxId}
-              className="typography-label-md-base text-[var(--color-text-primary)] cursor-pointer select-none leading-none pt-[2px]"
+              className="typography-label-md-base text-[var(--color-text-primary)] cursor-pointer select-none"
             >
               {label}
             </Label.Root>

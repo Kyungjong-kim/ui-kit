@@ -46,26 +46,28 @@ export function AlertDialog({
             },
           )}
         >
-          <AlertDialogPrimitive.Title className="typography-headline-sm text-[var(--color-text-primary)] mb-group-xs">
-            {title}
-          </AlertDialogPrimitive.Title>
-          {description && (
-            <AlertDialogPrimitive.Description className="mb-group-sm typography-body-md-base text-[var(--color-text-secondary)]">
-              {description}
-            </AlertDialogPrimitive.Description>
-          )}
-          {children && <div className="mb-group-sm">{children}</div>}
-          <div className="mt-group-sm flex justify-end gap-group-sm">
+          <div className="flex flex-col gap-group-xs">
+            <AlertDialogPrimitive.Title className="typography-headline-md text-[var(--color-text-primary)]">
+              {title}
+            </AlertDialogPrimitive.Title>
+            {description && (
+              <AlertDialogPrimitive.Description className="typography-body-md-base text-[var(--color-text-secondary)]">
+                {description}
+              </AlertDialogPrimitive.Description>
+            )}
+          </div>
+          {children && <div className="mt-group-md">{children}</div>}
+          <div className="mt-group-xl flex justify-end gap-group-sm">
             <AlertDialogPrimitive.Cancel
               onClick={onCancel}
-              className="inline-flex h-size-control-md items-center justify-center rounded-sm border border-[var(--color-interactive-secondary-border)] bg-[var(--color-interactive-secondary-bg)] px-inline-lg typography-label-md-medium text-[var(--color-interactive-secondary-text)] hover:bg-[var(--color-bg-secondary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-[var(--color-border-focus)]"
+              className="inline-flex h-size-control-md items-center justify-center rounded-xs border border-[var(--color-interactive-secondary-border)] bg-[var(--color-interactive-secondary-bg)] px-inline-lg typography-label-md-medium text-[var(--color-interactive-secondary-text)] hover:bg-[var(--color-bg-secondary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--color-border-focus)]"
             >
               {cancelText}
             </AlertDialogPrimitive.Cancel>
             <AlertDialogPrimitive.Action
               onClick={onAction}
               className={cn(
-                "inline-flex h-size-control-md items-center justify-center rounded-sm px-inline-lg typography-label-md-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-[var(--color-border-focus)]",
+                "inline-flex h-size-control-md items-center justify-center rounded-xs px-inline-lg typography-label-md-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--color-border-focus)]",
                 destructive
                   ? "bg-[var(--color-interactive-destructive-bg)] text-[var(--color-interactive-destructive-text)] hover:bg-[var(--color-interactive-destructive-bg-hover)]"
                   : "bg-[var(--color-interactive-primary-bg)] text-[var(--color-interactive-primary-text)] hover:bg-[var(--color-interactive-primary-bg-hover)]",

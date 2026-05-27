@@ -20,6 +20,15 @@ export const Default: Story = {
   ),
 };
 
+export const WithLabel: Story = {
+  args: { value: 72, label: "업로드 진행률", showValue: true },
+  render: (args) => (
+    <div className="w-64">
+      <Progress {...args} />
+    </div>
+  ),
+};
+
 export const Sizes: Story = {
   render: () => (
     <div className="flex flex-col gap-4 w-64">
