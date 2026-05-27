@@ -35,10 +35,10 @@ export function Checkbox({ className, label, error, helperText, id, ...props }: 
   const checkboxId = id ?? generatedId;
 
   return (
-    <div className="flex items-start gap-group-sm">
+    <div className={cn("flex gap-group-sm", helperText ? "items-start" : "items-center")}>
       <CheckboxPrimitive.Root
         id={checkboxId}
-        className={cn(checkboxVariants({ error: !!error }), "mt-[2px]", className)}
+        className={cn(checkboxVariants({ error: !!error }), helperText && "mt-[2px]", className)}
         {...props}
       >
         <CheckboxPrimitive.Indicator className="flex items-center justify-center">
@@ -50,7 +50,7 @@ export function Checkbox({ className, label, error, helperText, id, ...props }: 
           {label && (
             <Label.Root
               htmlFor={checkboxId}
-              className="typography-label-md-base text-[var(--color-text-primary)] cursor-pointer select-none leading-none pt-[2px]"
+              className="typography-label-md-base text-[var(--color-text-primary)] cursor-pointer select-none"
             >
               {label}
             </Label.Root>

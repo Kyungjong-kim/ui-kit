@@ -35,11 +35,12 @@ export function Switch({
   const switchId = id ?? generatedId;
 
   return (
-    <div className="flex items-start gap-group-sm">
+    <div className={cn("flex gap-group-sm", helperText ? "items-start" : "items-center")}>
       <SwitchPrimitive.Root
         id={switchId}
         className={cn(
-          "relative inline-flex shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors mt-[1px]",
+          "relative inline-flex shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors",
+          helperText && "mt-[1px]",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-border-focus)] focus-visible:ring-offset-2",
           "disabled:cursor-not-allowed disabled:opacity-50",
           error
@@ -63,7 +64,7 @@ export function Switch({
           {label && (
             <Label.Root
               htmlFor={switchId}
-              className="typography-label-md-base text-[var(--color-text-primary)] cursor-pointer select-none leading-none pt-[2px]"
+              className="typography-label-md-base text-[var(--color-text-primary)] cursor-pointer select-none"
             >
               {label}
             </Label.Root>

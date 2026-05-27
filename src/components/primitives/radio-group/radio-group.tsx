@@ -87,10 +87,10 @@ export function RadioGroupItem({
   const itemId = id ?? generatedId;
 
   return (
-    <div className="flex items-start gap-group-sm">
+    <div className={cn("flex gap-group-sm", helperText ? "items-start" : "items-center")}>
       <RadioGroupPrimitive.Item
         id={itemId}
-        className={cn(radioVariants({ error: !!error }), "mt-[2px]", className)}
+        className={cn(radioVariants({ error: !!error }), helperText && "mt-[2px]", className)}
         {...props}
       >
         <RadioGroupPrimitive.Indicator className="flex items-center justify-center">
@@ -102,7 +102,7 @@ export function RadioGroupItem({
           {label && (
             <Label.Root
               htmlFor={itemId}
-              className="typography-label-md-base text-[var(--color-text-primary)] cursor-pointer select-none leading-none pt-[2px]"
+              className="typography-label-md-base text-[var(--color-text-primary)] cursor-pointer select-none"
             >
               {label}
             </Label.Root>
