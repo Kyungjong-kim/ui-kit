@@ -2,6 +2,32 @@
 
 > 이전 Session notes → [`history/세션_노트.md`](../history/세션_노트.md) 참고
 
+## Session Update 2026-05-18 (CI bootstrap — `.github/workflows/{ci,release}.yml` #60)
+
+### 배경
+ui-kit 레포에 CI workflow 미구축 상태. PR/push 시 자동 검증 없어 사람이 직접 build·test·lint 실행해야 함. 외부 사용자(포트폴리오) 신뢰도·안정성 위해 GitHub Actions 자동화 필요.
+
+### 변경 파일
+- `.github/workflows/ci.yml` — PR(target develop·main) + develop push 트리거. verify job(lint·test·build) → storybook job(needs verify). pnpm 9 / Node 22 / pnpm store cache.
+- `.github/workflows/release.yml` — main push 트리거. changesets/action@v1 으로 version PR 자동 생성. permissions: contents·pull-requests write.
+- `docs/ui-kit/status/HANDOFF_NOW.md` — §1·§2 stale 갱신. PR #36·#37·#56·#53·#58·#59 머지 반영, #60 추가, 최근 변경 3건 요약.
+
+### 주요 결정
+- pnpm 버전 9 (package.json packageManager 명시 없으므로 latest LTS-safe 선택).
+- Node 22 LTS.
+- Storybook artifact 7일 보관 (시각 회귀 자산).
+- changesets config baseBranch=main 정합 → release.yml main push 트리거.
+- `access: restricted` 유지 (private — npm publish 미실행, version PR만 자동화).
+- `concurrency` 그룹으로 동일 브랜치 중복 실행 취소.
+
+### 검증
+- (예정) PR 생성 후 ci.yml 4 job 모두 green 확인
+- (예정) main 머지 후 changeset PR 자동 생성 동작 확인 (changeset 없는 경우 PR 미생성이 정상)
+
+### 영향 범위
+- 소스 코드 무변경. workflow 파일 추가 + HANDOFF 갱신만.
+- GitHub Actions 사용량 추가 (PR 당 약 5~10분).
+
 ## Session Update 2026-05-15 (디자인 하네스 문서 검증·수정 #55)
 
 ### 배경

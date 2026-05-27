@@ -10,8 +10,7 @@ const badgeVariants = cva("inline-flex items-center rounded-full transition-colo
       warning: "bg-[var(--color-orange-50)] text-[var(--color-orange-700)]",
       danger: "bg-[var(--color-red-50)] text-[var(--color-red-600)]",
       info: "bg-[var(--color-bg-info-subtle)] text-[var(--color-text-info-default)]",
-      outline:
-        "border border-[var(--color-border-default)] text-[var(--color-text-secondary)]",
+      outline: "border border-[var(--color-border-default)] text-[var(--color-text-secondary)]",
     },
     size: {
       sm: "px-inline-xs py-stack-xxs typography-label-xs",

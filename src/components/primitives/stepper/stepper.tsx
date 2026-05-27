@@ -28,11 +28,7 @@ export function Stepper({
 
   return (
     <div className={cn("flex flex-col gap-group-xl", className)}>
-      <ol
-        role="list"
-        aria-label="단계 진행"
-        className="flex items-center"
-      >
+      <ol aria-label="단계 진행" className="flex items-center">
         {steps.map((step, index) => {
           const isDone = index < activeStep;
           const isCurrent = index === activeStep;
@@ -41,7 +37,6 @@ export function Stepper({
           return (
             <li
               key={step}
-              role="listitem"
               aria-label={`${index + 1}단계: ${step} (${stepState})`}
               aria-current={isCurrent ? "step" : undefined}
               className="flex flex-1 items-center"
@@ -50,8 +45,7 @@ export function Stepper({
                 <div
                   className={cn(
                     "flex h-size-control-sm w-size-control-sm items-center justify-center rounded-full typography-label-sm-medium transition-colors",
-                    isDone &&
-                      "bg-[var(--color-bg-brand-default)] text-[var(--color-neutral-900)]",
+                    isDone && "bg-[var(--color-bg-brand-default)] text-[var(--color-neutral-900)]",
                     isCurrent &&
                       "border-2 border-[var(--color-border-brand-default)] text-[var(--color-text-brand-default)]",
                     !isDone &&

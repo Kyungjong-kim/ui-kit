@@ -104,7 +104,10 @@ export function FileUpload({
               key={err}
               className="flex items-center gap-group-xs rounded-xs border border-[var(--color-border-danger-default)] bg-[var(--color-bg-danger-subtle)] px-inline-md py-stack-xs typography-caption text-[var(--color-text-danger-default)]"
             >
-              <AlertCircleIcon className="h-size-icon-xs w-size-icon-xs shrink-0" aria-hidden="true" />
+              <AlertCircleIcon
+                className="h-size-icon-xs w-size-icon-xs shrink-0"
+                aria-hidden="true"
+              />
               {err}
             </li>
           ))}

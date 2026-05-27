@@ -1,5 +1,5 @@
-import { cva, type VariantProps } from "class-variance-authority";
 import * as Label from "@radix-ui/react-label";
+import { cva, type VariantProps } from "class-variance-authority";
 import { forwardRef, type InputHTMLAttributes, useId } from "react";
 import { cn } from "../../../utils/cn";
 
