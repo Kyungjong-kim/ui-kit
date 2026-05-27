@@ -159,6 +159,16 @@
   --spacing-size-control-xl: var(--token-size-control-xl);
   --spacing-size-control-xxl: var(--token-size-control-xxl);
 
+  /* icon size — h-size-icon-{xxs..xxxl} (div·아이콘 래퍼 크기 지정용) */
+  --spacing-size-icon-xxs: var(--token-size-icon-xxs);
+  --spacing-size-icon-xs: var(--token-size-icon-xs);
+  --spacing-size-icon-sm: var(--token-size-icon-sm);
+  --spacing-size-icon-md: var(--token-size-icon-md);
+  --spacing-size-icon-lg: var(--token-size-icon-lg);
+  --spacing-size-icon-xl: var(--token-size-icon-xl);
+  --spacing-size-icon-xxl: var(--token-size-icon-xxl);
+  --spacing-size-icon-xxxl: var(--token-size-icon-xxxl);
+
   /* field width — w-size-field-{sm,md,lg} */
   --spacing-size-field-sm: var(--token-size-field-sm);
   --spacing-size-field-md: var(--token-size-field-md);
