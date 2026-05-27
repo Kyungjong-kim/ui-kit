@@ -159,6 +159,11 @@
   --spacing-size-control-xl: var(--token-size-control-xl);
   --spacing-size-control-xxl: var(--token-size-control-xxl);
 
+  /* field width — w-size-field-{sm,md,lg} */
+  --spacing-size-field-sm: var(--token-size-field-sm);
+  --spacing-size-field-md: var(--token-size-field-md);
+  --spacing-size-field-lg: var(--token-size-field-lg);
+
   --spacing-size-avatar-xs: var(--token-size-avatar-xs);
   --spacing-size-avatar-sm: var(--token-size-avatar-sm);
   --spacing-size-avatar-md: var(--token-size-avatar-md);

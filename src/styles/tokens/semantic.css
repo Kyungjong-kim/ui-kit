@@ -40,8 +40,8 @@
   --color-border-danger-default: var(--color-red-500);
   --color-border-info-default: var(--color-blue-500);
   --color-border-disabled: var(--color-neutral-200);
-  /* focus ring: 브랜드 컬러가 밝아서 포커스 링은 딥 앰버 사용 */
-  --color-border-focus: var(--color-brand-700);
+  /* focus ring: 밝은 골든 앰버로 선명한 포커스 표시 (offset과 함께 사용) */
+  --color-border-focus: var(--color-brand-400);
 
   /* Interactive
    * ⚠️ primary 버튼 배경이 #FABC37(밝은 골든)이므로 텍스트는 반드시 다크(neutral-900) */
