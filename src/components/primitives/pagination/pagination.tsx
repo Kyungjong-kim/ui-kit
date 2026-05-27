@@ -96,7 +96,7 @@ export function Pagination({
             className={cn(
               itemBase,
               isCurrent &&
-                "bg-[var(--color-bg-brand-default)] text-[var(--color-text-inverse)] hover:bg-[var(--color-bg-brand-hover)] hover:text-[var(--color-text-inverse)]",
+                "bg-[var(--color-bg-brand-default)] text-[var(--color-interactive-primary-text)] hover:bg-[var(--color-bg-brand-hover)] hover:text-[var(--color-interactive-primary-text)]",
             )}
           >
             {page}
