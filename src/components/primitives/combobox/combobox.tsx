@@ -1,0 +1,223 @@
+import * as Label from "@radix-ui/react-label";
+import * as PopoverPrimitive from "@radix-ui/react-popover";
+import { cva, type VariantProps } from "class-variance-authority";
+import { CheckIcon, ChevronDownIcon, SearchIcon } from "lucide-react";
+import type * as React from "react";
+import { useId, useMemo, useRef, useState } from "react";
+import { cn } from "../../../utils/cn";
+
+const triggerVariants = cva(
+  [
+    "flex w-full items-center justify-between rounded-sm border bg-[var(--color-bg-primary)]",
+    "text-[var(--color-text-primary)] transition-[border-color,box-shadow]",
+    "focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-[var(--color-border-focus)] focus:border-[var(--color-border-focus)]",
+    "disabled:cursor-not-allowed disabled:bg-[var(--color-bg-disabled)] disabled:opacity-50",
+  ],
+  {
+    variants: {
+      size: {
+        sm: "h-size-control-sm px-inline-sm typography-label-sm-base",
+        md: "h-size-control-md px-inline-md typography-label-md-base",
+        lg: "h-size-control-lg px-inline-lg typography-label-lg-base",
+      },
+      error: {
+        true: "border-[var(--color-border-danger-default)]",
+        false: "border-[var(--color-border-default)]",
+      },
+    },
+    defaultVariants: { size: "md", error: false },
+  },
+);
+
+export interface ComboboxOption {
+  value: string;
+  label: string;
+  disabled?: boolean;
+}
+
+export interface ComboboxProps extends Omit<VariantProps<typeof triggerVariants>, "error"> {
+  options: ComboboxOption[];
+  value?: string;
+  onValueChange?: (value: string) => void;
+  placeholder?: string;
+  searchPlaceholder?: string;
+  emptyText?: string;
+  label?: string;
+  error?: boolean;
+  helperText?: string;
+  disabled?: boolean;
+  size?: "sm" | "md" | "lg";
+  className?: string;
+}
+
+export function Combobox({
+  options,
+  value,
+  onValueChange,
+  placeholder = "선택",
+  searchPlaceholder = "검색",
+  emptyText = "결과 없음",
+  label,
+  error,
+  helperText,
+  disabled,
+  size = "md",
+  className,
+}: ComboboxProps) {
+  const generatedId = useId();
+  const listId = `${generatedId}-list`;
+  const [open, setOpen] = useState(false);
+  const [query, setQuery] = useState("");
+  const [activeIndex, setActiveIndex] = useState(0);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const selectedOption = options.find((opt) => opt.value === value);
+
+  const filteredOptions = useMemo(() => {
+    const normalized = query.trim().toLowerCase();
+    if (!normalized) return options;
+    return options.filter((opt) => opt.label.toLowerCase().includes(normalized));
+  }, [options, query]);
+
+  function handleOpenChange(next: boolean) {
+    setOpen(next);
+    if (next) {
+      setQuery("");
+      setActiveIndex(0);
+    }
+  }
+
+  function selectOption(option: ComboboxOption) {
+    if (option.disabled) return;
+    onValueChange?.(option.value);
+    setOpen(false);
+  }
+
+  function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
+    if (event.key === "ArrowDown") {
+      event.preventDefault();
+      setActiveIndex((prev) => Math.min(prev + 1, filteredOptions.length - 1));
+    } else if (event.key === "ArrowUp") {
+      event.preventDefault();
+      setActiveIndex((prev) => Math.max(prev - 1, 0));
+    } else if (event.key === "Enter") {
+      event.preventDefault();
+      const option = filteredOptions[activeIndex];
+      if (option) selectOption(option);
+    }
+  }
+
+  return (
+    <div className="flex flex-col gap-group-xs">
+      {label && (
+        <Label.Root
+          htmlFor={generatedId}
+          className="typography-label-md-medium text-[var(--color-text-primary)]"
+        >
+          {label}
+        </Label.Root>
+      )}
+      <PopoverPrimitive.Root open={open} onOpenChange={handleOpenChange}>
+        <PopoverPrimitive.Trigger
+          id={generatedId}
+          disabled={disabled}
+          role="combobox"
+          aria-expanded={open}
+          aria-controls={listId}
+          className={cn(triggerVariants({ size, error: !!error }), className)}
+        >
+          <span className={cn(!selectedOption && "text-[var(--color-text-tertiary)]")}>
+            {selectedOption ? selectedOption.label : placeholder}
+          </span>
+          <ChevronDownIcon
+            className="h-size-icon-sm w-size-icon-sm text-[var(--color-text-tertiary)]"
+            aria-hidden="true"
+          />
+        </PopoverPrimitive.Trigger>
+        <PopoverPrimitive.Portal>
+          <PopoverPrimitive.Content
+            align="start"
+            sideOffset={4}
+            onOpenAutoFocus={(event) => {
+              event.preventDefault();
+              inputRef.current?.focus();
+            }}
+            className="z-50 w-[var(--radix-popover-trigger-width)] overflow-hidden rounded-sm border border-[var(--color-border-default)] bg-[var(--color-bg-primary)] shadow-default-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95"
+          >
+            <div className="flex items-center gap-inline-xs border-b border-[var(--color-border-default)] px-inline-md">
+              <SearchIcon
+                className="h-size-icon-sm w-size-icon-sm shrink-0 text-[var(--color-text-tertiary)]"
+                aria-hidden="true"
+              />
+              <input
+                ref={inputRef}
+                type="text"
+                value={query}
+                placeholder={searchPlaceholder}
+                aria-controls={listId}
+                aria-activedescendant={
+                  filteredOptions[activeIndex] ? `${listId}-${activeIndex}` : undefined
+                }
+                onChange={(event) => {
+                  setQuery(event.target.value);
+                  setActiveIndex(0);
+                }}
+                onKeyDown={handleKeyDown}
+                className="h-size-control-md w-full bg-transparent text-[var(--color-text-primary)] outline-none typography-label-md-base placeholder:text-[var(--color-text-tertiary)]"
+              />
+            </div>
+            <div id={listId} role="listbox" className="max-h-60 overflow-y-auto p-stack-xxs">
+              {filteredOptions.length === 0 ? (
+                <p className="px-inline-md py-stack-xs typography-label-md-base text-[var(--color-text-tertiary)]">
+                  {emptyText}
+                </p>
+              ) : (
+                filteredOptions.map((opt, index) => {
+                  const isSelected = opt.value === value;
+                  const isActive = index === activeIndex;
+                  return (
+                    <button
+                      key={opt.value}
+                      id={`${listId}-${index}`}
+                      type="button"
+                      role="option"
+                      tabIndex={-1}
+                      aria-selected={isSelected}
+                      disabled={opt.disabled}
+                      onMouseEnter={() => setActiveIndex(index)}
+                      onClick={() => selectOption(opt)}
+                      className={cn(
+                        "relative flex w-full cursor-pointer select-none items-center rounded-xs py-stack-xs pl-inline-xxl pr-inline-sm typography-label-md-base text-[var(--color-text-primary)] outline-none transition-colors",
+                        isActive && "bg-[var(--color-bg-tertiary)]",
+                        isSelected &&
+                          "bg-[var(--color-bg-brand-subtle)] text-[var(--color-text-brand-default)]",
+                        "disabled:pointer-events-none disabled:opacity-50",
+                      )}
+                    >
+                      {isSelected && (
+                        <span className="absolute left-inline-sm flex h-size-icon-sm w-size-icon-sm items-center justify-center">
+                          <CheckIcon className="h-size-icon-sm w-size-icon-sm" aria-hidden="true" />
+                        </span>
+                      )}
+                      {opt.label}
+                    </button>
+                  );
+                })
+              )}
+            </div>
+          </PopoverPrimitive.Content>
+        </PopoverPrimitive.Portal>
+      </PopoverPrimitive.Root>
+      {helperText && (
+        <p
+          className={cn(
+            "typography-caption",
+            error ? "text-[var(--color-text-danger-default)]" : "text-[var(--color-text-tertiary)]",
+          )}
+        >
+          {helperText}
+        </p>
+      )}
+    </div>
+  );
+}

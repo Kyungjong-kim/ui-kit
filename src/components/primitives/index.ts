@@ -7,6 +7,7 @@ export * from "./button";
 export * from "./calendar";
 export * from "./card";
 export * from "./checkbox";
+export * from "./combobox";
 export * from "./dialog";
 export * from "./dnd-list";
 export * from "./dropdown-menu";
