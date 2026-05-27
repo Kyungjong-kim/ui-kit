@@ -54,6 +54,15 @@ describe("Combobox", () => {
     expect(onValueChange).toHaveBeenCalledWith("orange");
   });
 
+  it("uncontrolled 모드에서 선택값이 trigger에 반영된다", () => {
+    render(<Combobox options={options} placeholder="과일 선택" />);
+    const trigger = screen.getByRole("combobox");
+    expect(trigger).toHaveTextContent("과일 선택");
+    fireEvent.click(trigger);
+    fireEvent.click(screen.getByText("오렌지"));
+    expect(trigger).toHaveTextContent("오렌지");
+  });
+
   it("키보드 ↓·Enter로 옵션을 선택한다", () => {
     const onValueChange = vi.fn();
     render(<Combobox options={options} onValueChange={onValueChange} searchPlaceholder="검색" />);
