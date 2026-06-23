@@ -99,7 +99,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Button } from "../src/components/primitives/button";
 
 const meta: Meta<typeof Button> = {
-  title: "Action/Button",
+  title: "Actions/Button",
   component: Button,
   parameters: { layout: "centered" },
   tags: ["autodocs"],
@@ -112,6 +112,14 @@ export const Default: Story = {
   args: { children: "버튼" },
 };
 ```
+
+### 카테고리 (title prefix) — 8종 고정
+
+`title` 의 `/` 앞 그룹은 아래 8종 중 하나만 사용한다. 사이드바 순서는 `.storybook/preview.ts` 의 `storySort` 가 결정.
+
+`Foundation` · `Actions` · `Inputs` · `Data Display` · `Feedback` · `Navigation` · `Overlay` · `Layout`
+
+> 신규 그룹 임의 추가 금지(`Form`·`Display`·`System` 등 구 명칭 사용 금지). 분류 애매 시 가장 가까운 그룹 + 컴포넌트 문서(`docs/design-system/components/`)에 사양 기재.
 
 ### 권장 4종
 
@@ -146,3 +154,8 @@ it("클릭 시 onClick 호출", async () => {
 | `pnpm test` | vitest |
 | `pnpm lint` / `pnpm format` | biome |
 | `pnpm changeset` → `pnpm version` → `pnpm release` | 버전 + 배포 |
+
+## 10. 설계 원칙·패턴 문서
+
+코드 컨벤션 외 **디자인 원칙·접근성·조합 패턴**은 레포 `docs/design-system/` 참조:
+`foundation/`(원칙·컬러·타이포·a11y) · `tokens/`(토큰 가이드) · `patterns/`(폼·목록·상세·빈 상태·확인 모달). 새 컴포넌트 추가 시 사양은 `docs/design-system/components/` 에 기재.

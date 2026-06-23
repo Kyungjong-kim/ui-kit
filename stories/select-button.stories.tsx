@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { SelectButton } from "../src/components/composed/select-button";
 
 const meta: Meta<typeof SelectButton> = {
-  title: "Action/SelectButton",
+  title: "Actions/SelectButton",
   component: SelectButton,
   parameters: { layout: "centered" },
   tags: ["autodocs"],

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Input } from "../src/components/primitives/input";
 
 const meta: Meta<typeof Input> = {
-  title: "Form/Input",
+  title: "Inputs/Input",
   component: Input,
   parameters: { layout: "centered" },
   tags: ["autodocs"],

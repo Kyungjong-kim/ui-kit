@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Thumbnail } from "../src/components/primitives/thumbnail";
 
 const meta: Meta<typeof Thumbnail> = {
-  title: "Display/Thumbnail",
+  title: "Data Display/Thumbnail",
   component: Thumbnail,
   parameters: { layout: "centered" },
   tags: ["autodocs"],

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { CheckMark } from "../src/components/composed/check-mark";
 
 const meta: Meta<typeof CheckMark> = {
-  title: "Action/CheckMark",
+  title: "Actions/CheckMark",
   component: CheckMark,
   parameters: { layout: "centered" },
   tags: ["autodocs"],

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { SlideListBadge } from "../src/components/primitives/slide-list-badge";
 
 const meta: Meta<typeof SlideListBadge> = {
-  title: "Display/SlideListBadge",
+  title: "Data Display/SlideListBadge",
   component: SlideListBadge,
   parameters: { layout: "centered" },
   tags: ["autodocs"],
