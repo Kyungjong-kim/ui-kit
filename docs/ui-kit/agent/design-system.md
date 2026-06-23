@@ -1,5 +1,7 @@
 # ui-kit 디자인 시스템 (에이전트용 가이드)
 
+> 이 문서 = 에이전트 작업용 quickref(토큰·variant·절차). 컴포넌트별 Props·패턴·foundation 원칙 등 캐노니컬 문서는 [`docs/design-system/`](../../design-system/README.md) 참조.
+
 ---
 
 ## 1. 디자인 토큰 구조

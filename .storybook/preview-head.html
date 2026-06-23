@@ -28,4 +28,16 @@
     border-radius: 0.25rem;
     font-size: 0.85em;
   }
+  /* 위 표 스타일은 MDX 마크다운 표 전용. 렌더된 컴포넌트 프리뷰(.docs-story) 내부
+     table(Calendar 등 자체 <table> 사용)에는 day-cell 보더·패딩·줄무늬가 적용되지 않도록 무효화. */
+  .sbdocs .docs-story table {
+    margin: 0;
+  }
+  .sbdocs .docs-story th,
+  .sbdocs .docs-story td {
+    border: 0;
+    padding: 0;
+    background: none;
+    vertical-align: middle;
+  }
 </style>

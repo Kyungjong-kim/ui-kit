@@ -6,6 +6,7 @@ const meta: Meta<typeof Popover> = {
   title: "Overlay/Popover",
   component: Popover,
   parameters: { layout: "centered" },
+  tags: ["autodocs"],
 };
 
 export default meta;

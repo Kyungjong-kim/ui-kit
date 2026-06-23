@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { ImageCell } from "../src/components/composed/image-cell";
 
 const meta: Meta<typeof ImageCell> = {
-  title: "Display/ImageCell",
+  title: "Data Display/ImageCell",
   component: ImageCell,
   parameters: { layout: "centered" },
   tags: ["autodocs"],

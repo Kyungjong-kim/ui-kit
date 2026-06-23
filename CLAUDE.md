@@ -41,9 +41,12 @@
 | **HANDOFF_NOW** (현재 상태·다음 작업) | `docs/ui-kit/status/HANDOFF_NOW.md` |
 | **agent/architecture.md** (라이브러리 구조) | `docs/ui-kit/agent/architecture.md` |
 | **agent/conventions.md** (코딩 규칙) | `docs/ui-kit/agent/conventions.md` |
-| **agent/design-system.md** (토큰·variant 패턴) | `docs/ui-kit/agent/design-system.md` |
+| **agent/design-system.md** (토큰·variant 패턴 quickref) | `docs/ui-kit/agent/design-system.md` |
+| **design-system/** (캐노니컬 DS 문서: 원칙·토큰·컴포넌트 사양·패턴) | `docs/design-system/README.md` |
 
 읽은 후 §1(현재 상태)·§2(다음 작업)를 사용자에게 요약 출력한다.
+
+> UI/컴포넌트 작업 시: `agent/design-system.md`(빠른 규칙) → 상세 사양·원칙·조합 패턴은 `docs/design-system/`(foundation·tokens·components·patterns). 새 컴포넌트 추가 시 `docs/design-system/components/`에 사양 기재.
 
 ---
 
@@ -151,6 +154,7 @@
 | `agent/architecture.md` | 빌드 시스템 변경, 새 디렉토리 구조 추가, peerDependencies 변경 |
 | `agent/conventions.md` | 린터 설정 변경, 파일 네이밍 규칙 변경, 새 컨벤션 결정 |
 | `agent/design-system.md` | 디자인 토큰 추가·변경, 새 variant 패턴 도입, semantic 토큰 재정의 |
+| `docs/design-system/` | 새 컴포넌트 추가 시 `components/<name>.md` 사양 기재, 토큰·원칙·패턴 변경 시 해당 문서(foundation·tokens·patterns) 갱신 |
 
 ---
 

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Select } from "../src/components/primitives/select";
 
 const meta: Meta<typeof Select> = {
-  title: "Form/Select",
+  title: "Inputs/Select",
   component: Select,
   parameters: { layout: "centered" },
   tags: ["autodocs"],

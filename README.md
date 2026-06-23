@@ -88,6 +88,19 @@ src/styles/
 
 ---
 
+## 디자인 시스템 문서
+
+토큰·컴포넌트·패턴·원칙의 캐노니컬 문서는 [`docs/design-system/`](docs/design-system/README.md)에 있습니다.
+
+| 영역 | 내용 |
+|------|------|
+| [`foundation/`](docs/design-system/foundation) | 원칙·컬러·타이포·레이아웃·모션·접근성 |
+| [`tokens/`](docs/design-system/tokens) | core→semantic 2계층 토큰 가이드 |
+| [`components/`](docs/design-system/components) | 컴포넌트별 Props·예제·when-to-use |
+| [`patterns/`](docs/design-system/patterns) | 폼·목록·상세 레이아웃, 빈 상태, 확인 모달 등 조합 규칙 |
+
+---
+
 ## 개발
 
 ```bash
@@ -119,7 +132,8 @@ pnpm release      # build + npm publish
 | [`CLAUDE.md`](CLAUDE.md) | 작업 진입 규칙 (STEP 0~3, 강제 규칙, 검증 하네스) |
 | [`docs/ui-kit/agent/architecture.md`](docs/ui-kit/agent/architecture.md) | 라이브러리 빌드·exports·디렉토리 구조 |
 | [`docs/ui-kit/agent/conventions.md`](docs/ui-kit/agent/conventions.md) | 코딩 컨벤션 (biome·네이밍·forwardRef 등) |
-| [`docs/ui-kit/agent/design-system.md`](docs/ui-kit/agent/design-system.md) | 토큰·variant 패턴·새 토큰 추가 절차 |
+| [`docs/ui-kit/agent/design-system.md`](docs/ui-kit/agent/design-system.md) | 토큰·variant 패턴·새 토큰 추가 절차 (에이전트 quickref) |
+| [`docs/design-system/`](docs/design-system/README.md) | 디자인 시스템 캐노니컬 문서 (foundation·tokens·components·patterns) |
 | [`docs/ui-kit/git-workflow/branch-commit.md`](docs/ui-kit/git-workflow/branch-commit.md) | Git Flow + 컨벤셔널 커밋 |
 | [`docs/ui-kit/status/HANDOFF_NOW.md`](docs/ui-kit/status/HANDOFF_NOW.md) | 현재 상태·다음 작업 (Hot 문서) |
 

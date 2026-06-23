@@ -94,13 +94,32 @@ interactive 토큰은 버튼 등 상호작용 컴포넌트가 `bg`·`bg-hover`·
 | `--color-interactive-ghost-*` | Ghost Button (배경 호버만) |
 | `--color-interactive-destructive-*` | Destructive Button (삭제·경고) |
 
+## 2-1. 비색상 토큰 (spacing · radius · size · typography · shadow)
+
+색 외 토큰도 동일하게 `core.css` 정의 → `index.css` `@theme` 가 Tailwind 유틸로 매핑. 컴포넌트는 raw px 대신 아래 유틸을 사용한다.
+
+| 패밀리 | core 변수 | 유틸 예 | 용도 |
+|---|---|---|---|
+| spacing-inline | `--token-spacing-inline-*` | `px-inline-md` | 가로 패딩·간격 |
+| spacing-stack | `--token-spacing-stack-*` | `py-stack-xl` · `gap-stack-md` | 세로 패딩·간격 |
+| spacing-group | `--token-spacing-group-*` | `gap-group-sm` | 묶음 내 근접 간격 |
+| radius | `--token-radius-*` | `rounded-xs` · `rounded-lg` · `rounded-full` | 모서리 |
+| size | `--token-size-{control,field,icon,avatar,image}-*` | `min-h-size-control-sm` | 컨트롤·아이콘 규격 |
+| shadow | `--shadow-default-*` | `shadow-default-md` | 그림자 |
+| typography | `--token-typography-{display,headline,body,label,caption,code}-*` | `typography-body-md-base` · `typography-label-md-medium` | 타이포 스케일(size·weight·line-height·letter-spacing 묶음) |
+
+> 단계: `xxs · xs · sm · md · lg · xl · xxl · xxxl`. 임의 px(`p-[7px]`·`text-[14px]`) 금지 — 토큰 유틸만.
+
 ## 3. 사용 원칙
 
 | 규칙 | 위반 예 | 올바른 예 |
 |---|---|---|
 | 하드코딩 색상 금지 | `bg-[#fabc37]` | `bg-[var(--color-bg-brand-default)]` |
 | core 토큰 직접 사용 금지 | `bg-brand-500` | `bg-[var(--color-bg-brand-default)]` |
+| 임의 px 금지 | `p-[7px]` · `text-[14px]` | `px-inline-md` · `typography-body-md-base` |
 | 새 색상은 토큰 먼저 추가 | 컴포넌트에 직접 색상 정의 | `tokens/semantic.css` 에 토큰 추가 후 참조 |
+
+> 전체 토큰 카탈로그·추가 절차: 레포 `docs/design-system/tokens/`(`_convention` · `core` · `semantic`).
 
 ## 4. Tailwind v4 연동
 
