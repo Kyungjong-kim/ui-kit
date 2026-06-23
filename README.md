@@ -1,7 +1,7 @@
 # ui-kit
 
 > Personal React 디자인시스템 라이브러리.
-> Tailwind v4 + Radix UI + cva 기반 22개 primitive 컴포넌트 제공.
+> Tailwind v4 + Radix UI + cva 기반 65개 컴포넌트(primitives 38 · composed 27) + 캐노니컬 DS 문서 제공.
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![React](https://img.shields.io/badge/React-19-61dafb.svg)](https://react.dev)
@@ -58,15 +58,20 @@ export function App() {
 
 ## 컴포넌트
 
+Storybook 사이드바와 동일한 8개 카테고리.
+
 | 카테고리 | 컴포넌트 |
 |---|---|
-| **기본** | `Button`, `Badge`, `Avatar`, `Spinner`, `Skeleton`, `Separator` |
-| **폼** | `Input`, `Textarea`, `Select`, `Checkbox`, `Switch` |
-| **레이아웃** | `Card`, `Tabs`, `Accordion`, `EmptyState` |
-| **오버레이** | `Dialog`, `DropdownMenu`, `Tooltip`, `Toast` (`Toaster` + `toast()`) |
-| **고급** | `Stepper`, `FileUpload`, `DndList` |
+| **Foundation** | `Icon`, `FileIcon` |
+| **Actions** | `Button`, `LinkButton`, `IconButton`, `MultilineButton`, `SelectButton`, `SelectIconButton`, `CheckMark` |
+| **Inputs** | `Input`, `Textarea`, `Select`, `Combobox`, `Checkbox`, `RadioGroup`, `Switch`, `Slider`, `DatePicker`, `FileUpload`, `MultiSelect`, `TagInput`, `SegmentedControl` |
+| **Data Display** | `Text`, `Badge`, `Tag`, `Chip`, `Card`, `Avatar`, `Thumbnail`, `ImageCell`, `DocumentCell`, `SlideListBadge`, `Accordion`, `Separator`, `ScrollArea`, `Calendar`, `DndList`, `SectionTitle`, `TruncateText`, `MetaItem`, `DescriptionList`, `SettingRow`, `StatCard`, `SummaryGrid`, `Timeline` |
+| **Feedback** | `Toast` (`Toaster` + `toast()`), `Spinner`, `Skeleton`, `TextSkeleton`, `Progress`, `EmptyState` |
+| **Navigation** | `Tabs`, `IconTabs`, `Pagination`, `Breadcrumb`, `Stepper` |
+| **Overlay** | `Dialog`, `AlertDialog`, `Sheet`, `Popover`, `DropdownMenu`, `Tooltip`, `Modal` |
+| **Layout** | `PageHeader`, `LogoOnlyHeader` |
 
-총 22개 primitive — 자세한 예시는 Storybook 참고.
+총 65개(primitives 38 · composed 27) — 컴포넌트별 Props·예제는 Storybook Docs 또는 [`docs/design-system/components/`](docs/design-system/components) 참고.
 
 ---
 
@@ -82,7 +87,7 @@ src/styles/
     └── semantic.css           # 의미 토큰 (컴포넌트가 사용)
 ```
 
-**원칙**: 컴포넌트는 semantic 토큰만 참조 (`bg-bg-brand-default` 등). core 토큰(`bg-brand-500`)·hex(`bg-[#fabc37]`) 직접 사용 금지.
+**원칙**: 컴포넌트는 semantic 토큰만 참조하되, 라이브러리 이식성 위해 **CSS 변수 직접 참조 형태**(`[var(--color-bg-brand-default)]`)를 쓴다 — 소비 앱이 `@theme`를 구성하지 않아도 동작. core 토큰(`--color-brand-500`)·raw hex(`#fabc37`) 직접 사용 금지.
 
 자세한 토큰 카탈로그와 variant 패턴은 [`docs/ui-kit/agent/design-system.md`](docs/ui-kit/agent/design-system.md) 참고.
 
