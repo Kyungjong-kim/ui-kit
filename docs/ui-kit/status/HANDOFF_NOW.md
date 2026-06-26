@@ -27,6 +27,8 @@
 - **이슈 먼저 생성** → 브랜치 `feat/#<번호>` → 커밋 `feat: 한국어 내용 #번호`
 - 디자인 토큰: ui-kit 자체 `--color-*` + 이관 컴포넌트용 `--token-*` (core.css·semantic.css)
 
+**최근 변경 (2026-06-26) 소비자용 Tailwind v4 theme entry 출하**: `dist/theme.css` 신규 — `@theme inline` 매핑+keyframes+`@utility`(animation·typography)를 `src/styles/index.css`에서 `src/styles/theme.css`로 추출, tsup entry·`package.json` exports `"./theme"` 추가. 소비자가 `@import "ui-kit/theme"` 로 `gap-group-xl`·`h-size-control-sm`·`shadow-default-sm` 등 커스텀 유틸 생성 가능(180줄 수동 복사 제거). index.css는 theme.css re-import → storybook 무변경. temp Tailwind compile 검증 통과. README 셋업 갱신. test 304/304.
+
 **최근 변경 (2026-05-27) PR #69 디자인 시스템 재정비 + 풍부화**: shadcn 미니멀 + depth·gradient·press·hover 단서 기조. 토큰(shadow 방향성·필드너비 `--size-field-*`·focus brand-400·`--spacing-size-icon-*` 매핑 보완). 폼·오버레이·Button·Progress·Slider·Tabs·Pagination. 버그수정 2건: Slider thumb 안보임(무효토큰 크기0), size-icon 매핑 누락. 비토큰 shadow 0건.
 
 **최근 변경 (2026-05-27) PR #62·#64·#66**: Combobox(검색형 select, uncontrolled fallback) + Slider(Radix) 신규.
@@ -44,4 +46,5 @@
 1. **인터랙티브**: tooltip·sheet·accordion·stepper·dnd-list·file-upload·calendar·link-button·scroll-area
 2. **디스플레이**(점검만, 풍부화 미적용): card·badge·tag·avatar·breadcrumb·thumbnail·slide-list-badge
 3. **단순**(필요 시): separator·skeleton·spinner·text·icon·toast
-4. (예정) changesets 첫 release 검증 — main push 후 version PR 자동 생성 확인
+4. (후속) claude-tag-poc `frontend/app/globals.css` @theme 복사본 → `@import "ui-kit/theme"` 교체 (별도 repo)
+5. (예정) changesets 첫 release 검증 — main push 후 version PR 자동 생성 확인
