@@ -19,26 +19,28 @@ pnpm add react react-dom
 
 ## 사용법
 
-### 1. 디자인 토큰 CSS 로드
+### 1. Tailwind v4 CSS 설정
 
-앱 진입 파일에서 한 번만 import:
-
-```ts
-// main.tsx (또는 _app.tsx 등)
-import "ui-kit/styles";
-```
-
-### 2. Tailwind v4 설정
-
-ui-kit dist를 스캔하도록 추가합니다 (Tailwind v4는 컴포넌트 사용처에서 유틸리티 클래스를 생성):
+앱 전역 CSS(예: `app.css` · `globals.css`)에서 한 번만 구성:
 
 ```css
-/* app.css */
 @import "tailwindcss";
-@source "../node_modules/ui-kit/dist";
+@import "ui-kit/styles";   /* 디자인 토큰 :root (--token-*, --color-*) */
+@import "ui-kit/theme";    /* @theme inline 매핑 — gap-group-xl·h-size-control-sm 등 커스텀 유틸 생성 */
+@source "../node_modules/ui-kit/dist";  /* 컴포넌트 클래스 스캔 */
 ```
 
-### 3. 컴포넌트 사용
+| import | 내용 | 필수 |
+|---|---|---|
+| `ui-kit/styles` | core+semantic 토큰 `:root` 값 (런타임 CSS 변수) | ✅ |
+| `ui-kit/theme` | Tailwind v4 `@theme inline` 매핑 (radius·spacing·size·shadow·color·typography 유틸 매핑) | ✅ Tailwind v4 |
+| `@source` | ui-kit dist 스캔 → 컴포넌트가 쓰는 유틸 생성 | ✅ |
+
+> `ui-kit/theme` 없이는 컴포넌트가 쓰는 `gap-group-xl`·`h-size-control-sm`·`w-size-icon-sm`·`rounded-md`·`shadow-default-sm`·`typography-*` 같은 커스텀 theme 유틸이 생성되지 않아 레이아웃이 깨진다. (`@import "tailwindcss"` 는 소비 앱이 직접 선언 — `ui-kit/theme` 에는 포함하지 않는다.)
+>
+> CSS `@import` 대신 JS 진입에서 토큰만 로드하려면 `import "ui-kit/styles";` 도 가능하나, `ui-kit/theme` 는 Tailwind 가 처리해야 하므로 반드시 CSS `@import` 로 둔다.
+
+### 2. 컴포넌트 사용
 
 ```tsx
 import { Button, Badge, Toaster, toast } from "ui-kit";

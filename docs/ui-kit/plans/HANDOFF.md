@@ -2,6 +2,27 @@
 
 > 이전 Session notes → [`history/세션_노트.md`](../history/세션_노트.md) 참고
 
+## Session Update 2026-06-26 (소비자용 Tailwind v4 theme entry — `dist/theme.css` 출하)
+
+### 배경
+ui-kit `dist/styles.css` 는 `:root` 토큰(`--token-*`·`--color-*`)만 포함. Tailwind v4 `@theme inline` 매핑(`--spacing-group-xl→var(--token-spacing-group-xl)`, `--radius-*`, `--shadow-*`, `--color-*` 등)은 `src/styles/index.css`(라이브러리 내부 전용)에만 존재하고 `files:['dist']` 라 소비자 미노출. 결과: 소비 앱(Next.js 등)이 컴포넌트가 쓰는 커스텀 theme 유틸(`gap-group-xl`·`h-size-control-sm`·`w-size-icon-sm`)을 생성하려면 `@theme inline` 블록 약 180줄을 손으로 복사해야 했음(claude-tag-poc가 `globals.css` 에 복사해 우회 중).
+
+### 변경 파일
+- `src/styles/theme.css` (신규) — `index.css` 의 `@theme inline` 블록 + keyframes + `@utility`(animation·typography) 추출. `@import "tailwindcss"` 없음, 토큰 `@import` 없음 (매핑/유틸만 — 소비자 Tailwind 가 처리).
+- `src/styles/index.css` — `@theme`/keyframes/`@utility` 제거 후 `@import "./theme.css"` 로 대체. 앞단 `@import "tailwindcss"`+core+semantic 유지 → 최종 cascade 동일, storybook(`.storybook/preview.ts`)·dev 무변경.
+- `tsup.config.ts` — entry 에 `theme: "src/styles/theme.css"` 추가 → `dist/theme.css` 산출.
+- `package.json` — exports 에 `"./theme": "./dist/theme.css"` 추가.
+- `README.md` — 소비자 셋업 갱신: `@import "tailwindcss"; @import "ui-kit/styles"; @import "ui-kit/theme"; @source "../node_modules/ui-kit/dist";` + import별 역할 표.
+
+### 검증
+- `pnpm build` → `dist/theme.css`(16KB). grep: `@theme`×1·`@utility`×30·`@keyframes`×3 보존 (esbuild 가 Tailwind at-rule 통과 — raw `cp` 폴백 불필요).
+- temp Tailwind v4 `compile()` API(`tailwindcss` 패키지)로 소비자 셋업(`@import "tailwindcss"+"ui-kit/styles"+"ui-kit/theme"`) 재현. candidate 8종(`gap-group-xl`·`h-size-control-sm`·`w-size-icon-sm`·`rounded-md`·`shadow-default-sm`·`typography-body-md-base`·`p-stack-lg`·`w-size-field-md`) 전부 생성, `var(--token-*)` 해석 확인. (검증 스크립트는 temp, 커밋 안 함.)
+- `pnpm test` 304/304 · `pnpm lint` clean.
+
+### 후속
+- claude-tag-poc `frontend/app/globals.css` @theme 복사본 → `@import "ui-kit/theme"` 교체 가능 (별도 repo).
+- 미커밋 상태. 커밋 전 이슈 생성 필요(STEP 1 규칙).
+
 ## Session Update 2026-05-18 (CI bootstrap — `.github/workflows/{ci,release}.yml` #60)
 
 ### 배경
