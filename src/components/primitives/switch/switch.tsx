@@ -45,7 +45,7 @@ export function Switch({
           "disabled:cursor-not-allowed disabled:opacity-50",
           error
             ? "data-[state=unchecked]:bg-[var(--color-border-danger-default)]"
-            : "data-[state=unchecked]:bg-[var(--color-neutral-300)]",
+            : "data-[state=unchecked]:bg-[var(--color-border-strong)]",
           "data-[state=checked]:bg-[var(--color-bg-brand-default)]",
           trackSize[size],
           className,

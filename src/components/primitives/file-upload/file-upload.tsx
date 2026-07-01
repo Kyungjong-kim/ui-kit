@@ -77,7 +77,7 @@ export function FileUpload({
       <div
         {...getRootProps()}
         className={cn(
-          "flex flex-col items-center justify-center rounded-md border-2 border-dashed p-inline-xxl transition-colors cursor-pointer",
+          "flex flex-col items-center justify-center rounded-sm border-2 border-dashed p-inline-xxl transition-colors cursor-pointer",
           isDragActive
             ? "border-[var(--color-border-brand-default)] bg-[var(--color-bg-brand-subtle)]"
             : "border-[var(--color-border-default)] hover:border-[var(--color-border-strong)] hover:bg-[var(--color-bg-secondary)]",

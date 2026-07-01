@@ -207,10 +207,8 @@ export function MultiSelect({
         onClick={() => toggle(opt.value)}
         className={cn(
           "flex min-h-size-control-sm w-full items-center justify-between gap-group-sm",
-          "rounded-xs px-inline-md py-stack-xs",
-          optDisabled
-            ? "cursor-not-allowed"
-            : "cursor-pointer hover:bg-[var(--color-bg-secondary)]",
+          "rounded-xs px-inline-md py-stack-xs transition-colors",
+          optDisabled ? "cursor-not-allowed" : "cursor-pointer hover:bg-[var(--color-bg-tertiary)]",
         )}
       >
         <span className="flex min-w-0 items-center gap-group-sm">
@@ -299,13 +297,13 @@ export function MultiSelect({
                 }
               }}
               className={cn(
-                "group flex w-full items-center justify-between gap-group-sm",
-                "border bg-[var(--color-bg-primary)] transition-colors outline-none",
+                "group flex w-full items-center justify-between gap-group-sm rounded-sm",
+                "border bg-[var(--color-bg-primary)] transition-[border-color,box-shadow] outline-none",
                 currentState === "disabled" ? "cursor-not-allowed" : "cursor-pointer",
-                "data-[size=md]:min-h-size-control-md data-[size=md]:px-inline-md data-[size=md]:py-stack-xs data-[size=md]:rounded-xs",
-                "data-[size=lg]:min-h-size-control-lg data-[size=lg]:px-inline-lg data-[size=lg]:py-stack-sm data-[size=lg]:rounded-sm",
+                "data-[size=md]:min-h-size-control-md data-[size=md]:px-inline-md data-[size=md]:py-stack-xs",
+                "data-[size=lg]:min-h-size-control-lg data-[size=lg]:px-inline-lg data-[size=lg]:py-stack-sm",
                 "border-[var(--color-border-default)]",
-                "focus-within:border-[var(--color-border-focus)]",
+                "focus-within:border-[var(--color-border-focus)] focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-[var(--color-border-focus)]",
                 "data-[state=open]:border-[var(--color-border-focus)]",
                 currentState === "error" &&
                   "border-[var(--color-border-danger-default)] focus-within:border-[var(--color-border-danger-default)]",
@@ -390,7 +388,7 @@ export function MultiSelect({
                         role="checkbox"
                         aria-checked={allSelected ? "true" : someSelected ? "mixed" : "false"}
                         onClick={handleSelectAll}
-                        className="flex min-h-size-control-sm w-full cursor-pointer items-center justify-between gap-group-sm rounded-xs px-inline-md py-stack-xs hover:bg-[var(--color-bg-secondary)]"
+                        className="flex min-h-size-control-sm w-full cursor-pointer items-center justify-between gap-group-sm rounded-xs px-inline-md py-stack-xs transition-colors hover:bg-[var(--color-bg-tertiary)]"
                       >
                         <span className="flex min-w-0 items-center gap-group-sm">
                           <CheckVisual checked={allSelected} indeterminate={someSelected} />

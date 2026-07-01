@@ -61,7 +61,7 @@ export function SelectButton({
       aria-pressed={isSelected}
       disabled={disabled}
       className={cn(
-        "inline-flex items-center justify-center gap-2 rounded-md h-8 px-3 text-xs font-medium transition-colors",
+        "inline-flex items-center justify-center gap-group-xs rounded-sm h-size-control-sm px-inline-md typography-label-sm-medium transition-colors",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-border-focus)]",
         "disabled:pointer-events-none disabled:opacity-50",
         appearance === "ghost" ? ghostClassName : outlineClassName,

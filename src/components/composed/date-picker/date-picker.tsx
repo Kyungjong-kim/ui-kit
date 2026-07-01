@@ -55,7 +55,7 @@ export function DatePicker({
           type="button"
           disabled={disabled}
           className={cn(
-            "inline-flex items-center gap-1 typography-label-md-base text-[var(--color-text-primary)] disabled:cursor-not-allowed disabled:text-[var(--color-text-disabled)]",
+            "inline-flex items-center gap-group-xs typography-label-md-base text-[var(--color-text-primary)] disabled:cursor-not-allowed disabled:text-[var(--color-text-disabled)]",
             triggerClassName,
           )}
         >
@@ -70,7 +70,7 @@ export function DatePicker({
       <PopoverContent
         align="start"
         className={cn(
-          "w-auto p-0 bg-[var(--color-bg-primary)] rounded-md border border-[var(--color-border-default)] overflow-hidden",
+          "w-auto p-0 bg-[var(--color-bg-primary)] rounded-sm border border-[var(--color-border-default)] overflow-hidden",
           className,
         )}
       >

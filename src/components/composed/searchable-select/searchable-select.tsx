@@ -8,7 +8,7 @@ import { cn } from "../../../utils/cn";
 
 const triggerVariants = cva(
   [
-    "flex w-size-field-md items-center justify-between rounded-xs border bg-[var(--color-bg-primary)]",
+    "flex w-size-field-md items-center justify-between rounded-sm border bg-[var(--color-bg-primary)]",
     "text-[var(--color-text-primary)] transition-[border-color,box-shadow]",
     "focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--color-border-focus)] focus:border-[var(--color-border-focus)]",
     "disabled:cursor-not-allowed disabled:bg-[var(--color-bg-disabled)] disabled:opacity-50",

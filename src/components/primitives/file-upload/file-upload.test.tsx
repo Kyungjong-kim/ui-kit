@@ -17,7 +17,7 @@ describe("FileUpload", () => {
 
   it("disabled 상태에서 opacity-50 클래스가 적용된다", () => {
     render(<FileUpload onFilesChange={() => {}} disabled />);
-    const dropzone = screen.getByText(/파일을 드래그하거나/).closest('[class*="rounded-md"]');
+    const dropzone = screen.getByText(/파일을 드래그하거나/).closest('[class*="rounded-sm"]');
     expect(dropzone).toHaveClass("opacity-50");
   });
 
