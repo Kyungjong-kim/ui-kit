@@ -83,8 +83,8 @@ export function TagInput({
   disabled = false,
   showClearAll = true,
   showAddButton = true,
-  addButtonLabel = "Add",
-  clearAllLabel = (count) => `Clear all (${count})`,
+  addButtonLabel = "추가",
+  clearAllLabel = (count) => `전체 삭제 (${count})`,
   className,
   id,
 }: TagInputProps) {
