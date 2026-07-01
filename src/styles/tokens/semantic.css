@@ -99,3 +99,53 @@
   --token-color-action-tertiary-default: var(--color-bg-secondary);
   --token-color-action-tertiary-hover: var(--color-bg-tertiary);
 }
+
+[data-theme="dark"] {
+  /* Text */
+  --color-text-primary: var(--color-neutral-25);
+  --color-text-secondary: var(--color-neutral-300);
+  --color-text-tertiary: var(--color-neutral-400);
+  --color-text-disabled: var(--color-neutral-600);
+  --color-text-inverse: var(--color-neutral-900);
+  --color-text-brand-default: var(--color-brand-300);
+  --color-text-brand-hover: var(--color-brand-200);
+  --color-text-danger-default: var(--color-red-400);
+  --color-text-success-default: var(--color-green-400);
+  --color-text-warning-default: var(--color-orange-400);
+  --color-text-info-default: var(--color-blue-400);
+
+  /* Background */
+  --color-bg-primary: var(--color-neutral-900);
+  --color-bg-secondary: var(--color-neutral-800);
+  --color-bg-tertiary: var(--color-neutral-700);
+  --color-bg-inverse: var(--color-neutral-25);
+  --color-bg-brand-hover: var(--color-brand-400);
+  --color-bg-brand-subtle: var(--color-brand-900);
+  --color-bg-brand-subtle-hover: var(--color-brand-800);
+  --color-bg-danger-subtle: var(--color-red-900);
+  --color-bg-success-subtle: var(--color-green-900);
+  --color-bg-warning-subtle: var(--color-orange-900);
+  --color-bg-info-subtle: var(--color-blue-900);
+  --color-bg-disabled: var(--color-neutral-700);
+
+  /* Border */
+  --color-border-default: var(--color-neutral-700);
+  --color-border-strong: var(--color-neutral-600);
+  --color-border-disabled: var(--color-neutral-700);
+
+  /* Interactive
+   * ⚠️ primary 버튼 배경이 #FABC37(밝은 골든)이므로 텍스트는 반드시 다크(neutral-900) */
+  --color-interactive-primary-bg-hover: var(--color-brand-400);
+  --color-interactive-secondary-bg: var(--color-neutral-800);
+  --color-interactive-secondary-border: var(--color-neutral-600);
+  --color-interactive-secondary-text: var(--color-neutral-25);
+  --color-interactive-ghost-text: var(--color-neutral-300);
+  --color-interactive-ghost-bg-hover: var(--color-neutral-800);
+  --color-interactive-destructive-bg-hover: var(--color-red-400);
+
+  /* Surface · Action — Tailwind utility(`bg-surface-default` 등) 호환용 alias */
+  --token-color-surface-subtlest: var(--color-neutral-900);
+  --token-color-surface-strong: var(--color-neutral-700);
+  --token-color-surface-stronger: var(--color-neutral-600);
+  --token-color-surface-strongest: var(--color-neutral-500);
+}

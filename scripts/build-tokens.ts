@@ -17,6 +17,13 @@ import { fileURLToPath } from "node:url";
 interface Token {
   name: string;
   value: string;
+  /**
+   * Dark-mode override value. When present, this token is re-emitted inside the
+   * `[data-theme="dark"]` block with this value. Tokens without `dark` are shared
+   * across both themes (light `value` applies everywhere). Optional — omitting it
+   * keeps the original single-value behaviour (backward compatible).
+   */
+  dark?: string;
   /** Comment line(s) rendered immediately above this token (no blank line separates them). */
   commentBefore?: string;
   /** Insert a blank line before this token (used to visually separate sub-blocks). */
@@ -84,6 +91,30 @@ function generate(data: TokenFile): string {
     }
   });
   out.push("}");
+
+  // Dark-mode overrides — emitted only for tokens carrying a `dark` value, so
+  // the `:root` (light) block above stays byte-for-byte identical when no dark
+  // values exist. Grouped by the same source group headers for readability.
+  const darkGroups = data.groups
+    .map((group) => ({
+      comment: group.comment,
+      tokens: group.tokens.filter((token) => token.dark !== undefined),
+    }))
+    .filter((group) => group.tokens.length > 0);
+
+  if (darkGroups.length > 0) {
+    out.push("");
+    out.push('[data-theme="dark"] {');
+    darkGroups.forEach((group, groupIndex) => {
+      if (groupIndex > 0) out.push("");
+      out.push(indentComment(group.comment));
+      for (const token of group.tokens) {
+        out.push(renderToken({ name: token.name, value: token.dark as string }));
+      }
+    });
+    out.push("}");
+  }
+
   return `${out.join("\n")}\n`;
 }
 
