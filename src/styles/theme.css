@@ -118,6 +118,21 @@
 
   /* surface · action — bg-surface-default, bg-action-primary-default 등 */
   --color-surface-default: var(--token-color-surface-default);
+  --color-surface-subtlest: var(--token-color-surface-subtlest);
+  --color-surface-subtle: var(--token-color-surface-subtle);
+  --color-surface-muted: var(--token-color-surface-muted);
+  --color-surface-strong: var(--token-color-surface-strong);
+  --color-surface-stronger: var(--token-color-surface-stronger);
+  --color-surface-strongest: var(--token-color-surface-strongest);
+  --color-surface-success-subtle: var(--token-color-surface-success-subtle);
+  --color-surface-danger-subtle: var(--token-color-surface-danger-subtle);
+  --color-surface-warning-subtle: var(--token-color-surface-warning-subtle);
+  --color-surface-info-subtle: var(--token-color-surface-info-subtle);
+  --color-surface-brand-default: var(--token-color-surface-brand-default);
+  --color-surface-brand-subtle: var(--token-color-surface-brand-subtle);
+  --color-surface-brand-subtlest: var(--token-color-surface-brand-subtlest);
+  --color-surface-brand-muted: var(--token-color-surface-brand-muted);
+  --color-surface-brand-strong: var(--token-color-surface-brand-strong);
   --color-action-primary-default: var(--token-color-action-primary-default);
   --color-action-primary-hover: var(--token-color-action-primary-hover);
   --color-action-tertiary-default: var(--token-color-action-tertiary-default);

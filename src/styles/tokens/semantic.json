@@ -268,6 +268,48 @@
           "value": "var(--color-bg-primary)"
         },
         {
+          "name": "--token-color-surface-subtlest",
+          "value": "var(--color-neutral-25)",
+          "commentBefore": "/* neutral surface 계층 — subtlest(25) → strongest(400) 로 갈수록 진해짐 */"
+        },
+        {
+          "name": "--token-color-surface-subtle",
+          "value": "var(--color-bg-secondary)"
+        },
+        {
+          "name": "--token-color-surface-muted",
+          "value": "var(--color-bg-tertiary)"
+        },
+        {
+          "name": "--token-color-surface-strong",
+          "value": "var(--color-neutral-200)"
+        },
+        {
+          "name": "--token-color-surface-stronger",
+          "value": "var(--color-neutral-300)"
+        },
+        {
+          "name": "--token-color-surface-strongest",
+          "value": "var(--color-neutral-400)"
+        },
+        {
+          "name": "--token-color-surface-success-subtle",
+          "value": "var(--color-bg-success-subtle)",
+          "commentBefore": "/* 상태 surface — 기존 bg-*-subtle 재활용 */"
+        },
+        {
+          "name": "--token-color-surface-danger-subtle",
+          "value": "var(--color-bg-danger-subtle)"
+        },
+        {
+          "name": "--token-color-surface-warning-subtle",
+          "value": "var(--color-bg-warning-subtle)"
+        },
+        {
+          "name": "--token-color-surface-info-subtle",
+          "value": "var(--color-bg-info-subtle)"
+        },
+        {
           "name": "--token-color-surface-brand-default",
           "value": "var(--color-bg-brand-default)"
         },
