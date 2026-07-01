@@ -72,7 +72,7 @@ export function NavFlyout({
       <PopoverContent
         align={align}
         side={side}
-        className={cn("w-56 p-stack-xxs", contentClassName)}
+        className={cn("w-56 p-stack-xxs shadow-default-md", contentClassName)}
       >
         <nav className="flex flex-col gap-stack-xxs" aria-label="네비게이션">
           {items.map((item) => (

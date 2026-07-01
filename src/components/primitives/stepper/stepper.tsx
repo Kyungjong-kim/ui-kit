@@ -61,7 +61,7 @@ export function Stepper({
                   className={cn(
                     "mt-stack-xxs typography-caption whitespace-nowrap",
                     isCurrent
-                      ? "text-[var(--color-text-brand-default)] font-medium"
+                      ? "text-[var(--color-text-brand-default)]"
                       : "text-[var(--color-text-tertiary)]",
                   )}
                 >

@@ -79,7 +79,10 @@ export function BreadcrumbSeparator({
     <li
       role="presentation"
       aria-hidden="true"
-      className={cn("text-[var(--color-text-tertiary)] [&>svg]:size-3.5", className)}
+      className={cn(
+        "text-[var(--color-text-tertiary)] [&>svg]:h-size-icon-xs [&>svg]:w-size-icon-xs",
+        className,
+      )}
       {...props}
     >
       {children ?? <ChevronRightIcon />}
