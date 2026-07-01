@@ -4,7 +4,7 @@ import { AlertDialog } from "../src/components/primitives/alert-dialog";
 import { Button } from "../src/components/primitives/button";
 
 const meta: Meta = {
-  title: "Overlay/AlertDialog",
+  title: "Organisms/Overlay/AlertDialog",
   parameters: { layout: "centered" },
   tags: ["autodocs"],
 };

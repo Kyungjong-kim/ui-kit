@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { UserCell } from "../src/components/composed/user-cell";
 
 const meta: Meta<typeof UserCell> = {
-  title: "Data Display/UserCell",
+  title: "Organisms/Cells/UserCell",
   component: UserCell,
   parameters: { layout: "padded" },
   tags: ["autodocs"],

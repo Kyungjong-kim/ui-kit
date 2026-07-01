@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { DateTimeCell } from "../src/components/composed/date-time-cell";
 
 const meta: Meta<typeof DateTimeCell> = {
-  title: "Data Display/DateTimeCell",
+  title: "Organisms/Cells/DateTimeCell",
   component: DateTimeCell,
   parameters: { layout: "padded" },
   tags: ["autodocs"],

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { MetricCard } from "../src/components/composed/metric-card";
 
 const meta: Meta<typeof MetricCard> = {
-  title: "Data Display/MetricCard",
+  title: "Organisms/Metric/MetricCard",
   component: MetricCard,
   parameters: { layout: "padded" },
   tags: ["autodocs"],

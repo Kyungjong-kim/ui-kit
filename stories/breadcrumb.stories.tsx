@@ -10,7 +10,7 @@ import {
 } from "../src/components/primitives/breadcrumb";
 
 const meta: Meta = {
-  title: "Navigation/Breadcrumb",
+  title: "Molecules/Navigation/Breadcrumb",
   parameters: { layout: "centered" },
   tags: ["autodocs"],
 };

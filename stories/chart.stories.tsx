@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { BarChart, DonutChart, LineChart } from "../src/components/composed/chart";
 
 const meta: Meta = {
-  title: "Data Display/Chart",
+  title: "Organisms/Charts/Chart",
   parameters: { layout: "padded" },
   tags: ["autodocs"],
 };

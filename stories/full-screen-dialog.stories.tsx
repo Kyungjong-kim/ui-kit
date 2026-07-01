@@ -3,7 +3,7 @@ import { useState } from "react";
 import { FullScreenDialog } from "../src/components/composed/full-screen-dialog";
 
 const meta: Meta<typeof FullScreenDialog> = {
-  title: "Overlay/FullScreenDialog",
+  title: "Organisms/Overlay/FullScreenDialog",
   component: FullScreenDialog,
   parameters: { layout: "fullscreen" },
   tags: ["autodocs"],

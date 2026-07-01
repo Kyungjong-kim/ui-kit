@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { HelpTooltipIcon } from "../src/components/composed/help-tooltip-icon";
 
 const meta: Meta<typeof HelpTooltipIcon> = {
-  title: "Actions/HelpTooltipIcon",
+  title: "Atoms/Display/HelpTooltipIcon",
   component: HelpTooltipIcon,
   parameters: { layout: "centered" },
   tags: ["autodocs"],

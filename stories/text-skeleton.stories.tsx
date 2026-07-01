@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { TextSkeleton } from "../src/components/composed/text-skeleton";
 
 const meta: Meta<typeof TextSkeleton> = {
-  title: "Feedback/TextSkeleton",
+  title: "Atoms/Loading/TextSkeleton",
   component: TextSkeleton,
   parameters: { layout: "centered" },
   tags: ["autodocs"],

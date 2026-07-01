@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { SelectIconButton } from "../src/components/composed/select-icon-button";
 
 const meta: Meta<typeof SelectIconButton> = {
-  title: "Actions/SelectIconButton",
+  title: "Atoms/Buttons/SelectIconButton",
   component: SelectIconButton,
   parameters: { layout: "centered" },
   tags: ["autodocs"],

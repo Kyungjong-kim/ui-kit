@@ -11,7 +11,7 @@ const options: MultiSelectOption[] = [
 ];
 
 const meta: Meta<typeof MultiSelect> = {
-  title: "Inputs/MultiSelect",
+  title: "Molecules/Select/MultiSelect",
   component: MultiSelect,
   parameters: { layout: "padded" },
   tags: ["autodocs"],

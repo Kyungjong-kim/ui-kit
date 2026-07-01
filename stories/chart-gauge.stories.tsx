@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { GaugeChart } from "../src/components/composed/chart";
 
 const meta: Meta = {
-  title: "Data Display/Chart/GaugeChart",
+  title: "Organisms/Charts/GaugeChart",
   parameters: { layout: "padded" },
   tags: ["autodocs"],
 };

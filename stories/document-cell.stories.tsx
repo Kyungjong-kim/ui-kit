@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { DocumentCell } from "../src/components/composed/document-cell";
 
 const meta: Meta<typeof DocumentCell> = {
-  title: "Data Display/DocumentCell",
+  title: "Organisms/Cells/DocumentCell",
   component: DocumentCell,
   parameters: { layout: "centered" },
   tags: ["autodocs"],

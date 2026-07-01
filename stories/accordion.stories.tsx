@@ -7,7 +7,7 @@ import {
 } from "../src/components/primitives/accordion";
 
 const meta: Meta = {
-  title: "Data Display/Accordion",
+  title: "Molecules/Navigation/Accordion",
   parameters: { layout: "centered" },
   tags: ["autodocs"],
 };

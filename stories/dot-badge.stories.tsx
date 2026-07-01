@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { DotBadge } from "../src/components/composed/dot-badge";
 
 const meta: Meta<typeof DotBadge> = {
-  title: "Data Display/DotBadge",
+  title: "Atoms/Status/DotBadge",
   component: DotBadge,
   parameters: { layout: "centered" },
   tags: ["autodocs"],

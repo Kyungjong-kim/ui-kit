@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Heatmap } from "../src/components/composed/chart";
 
 const meta: Meta = {
-  title: "Data Display/Chart/Heatmap",
+  title: "Organisms/Charts/Heatmap",
   parameters: { layout: "padded" },
   tags: ["autodocs"],
 };

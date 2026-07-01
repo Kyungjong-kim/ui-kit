@@ -3,7 +3,7 @@ import { useState } from "react";
 import { SidePanel } from "../src/components/composed/side-panel";
 
 const meta: Meta<typeof SidePanel> = {
-  title: "Overlay/SidePanel",
+  title: "Organisms/Overlay/SidePanel",
   component: SidePanel,
   parameters: { layout: "fullscreen" },
   tags: ["autodocs"],

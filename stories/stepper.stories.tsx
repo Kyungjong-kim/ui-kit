@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Stepper } from "../src/components/primitives/stepper";
 
 const meta: Meta = {
-  title: "Navigation/Stepper",
+  title: "Molecules/Navigation/Stepper",
   parameters: { layout: "centered" },
   tags: ["autodocs"],
 };

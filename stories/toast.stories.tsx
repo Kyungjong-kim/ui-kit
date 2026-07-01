@@ -3,7 +3,7 @@ import { Button } from "../src/components/primitives/button";
 import { Toaster, toast } from "../src/components/primitives/toast";
 
 const meta: Meta = {
-  title: "Feedback/Toast",
+  title: "Molecules/Feedback/Toast",
   parameters: { layout: "centered" },
   tags: ["autodocs"],
   decorators: [

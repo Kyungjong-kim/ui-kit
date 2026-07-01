@@ -6,7 +6,7 @@ import {
 } from "../src/components/composed/segmented-control";
 
 const meta: Meta<typeof SegmentedControl> = {
-  title: "Inputs/SegmentedControl",
+  title: "Molecules/Form/SegmentedControl",
   component: SegmentedControl,
   parameters: { layout: "centered" },
   tags: ["autodocs"],

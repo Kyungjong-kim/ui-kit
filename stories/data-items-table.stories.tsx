@@ -21,7 +21,7 @@ const data: Server[] = [
 ];
 
 const meta: Meta<typeof DataItemsTable<Server>> = {
-  title: "Data Display/DataItemsTable",
+  title: "Organisms/Tables/DataItemsTable",
   component: DataItemsTable,
   parameters: { layout: "padded" },
   tags: ["autodocs"],

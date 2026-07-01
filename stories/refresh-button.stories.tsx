@@ -3,7 +3,7 @@ import { useState } from "react";
 import { RefreshButton } from "../src/components/composed/refresh-button";
 
 const meta: Meta<typeof RefreshButton> = {
-  title: "Actions/RefreshButton",
+  title: "Atoms/Buttons/RefreshButton",
   component: RefreshButton,
   parameters: { layout: "centered" },
   tags: ["autodocs"],

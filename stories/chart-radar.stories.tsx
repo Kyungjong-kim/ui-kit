@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { RadarChart } from "../src/components/composed/chart";
 
 const meta: Meta = {
-  title: "Data Display/Chart/RadarChart",
+  title: "Organisms/Charts/RadarChart",
   parameters: { layout: "padded" },
   tags: ["autodocs"],
 };

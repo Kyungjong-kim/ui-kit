@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { ComparisonBar } from "../src/components/composed/comparison-bar";
 
 const meta: Meta<typeof ComparisonBar> = {
-  title: "Data Display/ComparisonBar",
+  title: "Organisms/Charts/ComparisonBar",
   component: ComparisonBar,
   parameters: { layout: "padded" },
   tags: ["autodocs"],

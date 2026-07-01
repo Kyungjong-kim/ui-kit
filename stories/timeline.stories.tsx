@@ -22,7 +22,7 @@ const groups: TimelineGroup<Entry>[] = [
 ];
 
 const meta: Meta<typeof Timeline> = {
-  title: "Data Display/Timeline",
+  title: "Organisms/Misc/Timeline",
   component: Timeline,
   parameters: { layout: "padded" },
   tags: ["autodocs"],

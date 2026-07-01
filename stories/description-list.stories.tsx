@@ -3,7 +3,7 @@ import { DescriptionList } from "../src/components/composed/description-list";
 import { MetaItem } from "../src/components/composed/meta-item";
 
 const meta: Meta<typeof DescriptionList> = {
-  title: "Data Display/DescriptionList",
+  title: "Organisms/Misc/DescriptionList",
   component: DescriptionList,
   parameters: { layout: "padded" },
   tags: ["autodocs"],

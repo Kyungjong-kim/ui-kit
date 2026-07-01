@@ -32,7 +32,7 @@ const levels: CascadingLevel[] = [
 ];
 
 const meta: Meta<typeof CascadingSelect> = {
-  title: "Inputs/CascadingSelect",
+  title: "Molecules/Select/CascadingSelect",
   component: CascadingSelect,
   parameters: { layout: "padded" },
   tags: ["autodocs"],

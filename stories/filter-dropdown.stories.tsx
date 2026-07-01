@@ -10,7 +10,7 @@ const options: FilterOption[] = [
 ];
 
 const meta: Meta<typeof FilterDropdown> = {
-  title: "Inputs/FilterDropdown",
+  title: "Molecules/Filter/FilterDropdown",
   component: FilterDropdown,
   parameters: { layout: "padded" },
   tags: ["autodocs"],

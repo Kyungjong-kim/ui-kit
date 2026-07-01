@@ -10,7 +10,7 @@ import { iconMap } from "../src/components/primitives/icon/generated/icon-map";
 const allIconNames = Object.keys(iconMap) as IconName[];
 
 const meta: Meta<typeof Icon> = {
-  title: "Foundation/Icon",
+  title: "Foundations/Icon/Icon",
   component: Icon,
   parameters: { layout: "centered" },
   tags: ["autodocs"],

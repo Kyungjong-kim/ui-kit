@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { BarList } from "../src/components/composed/bar-list";
 
 const meta: Meta<typeof BarList> = {
-  title: "Data Display/BarList",
+  title: "Organisms/Charts/BarList",
   component: BarList,
   parameters: { layout: "padded" },
   tags: ["autodocs"],

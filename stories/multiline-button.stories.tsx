@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { MultilineButton } from "../src/components/composed/multiline-button";
 
 const meta: Meta<typeof MultilineButton> = {
-  title: "Actions/MultilineButton",
+  title: "Atoms/Buttons/MultilineButton",
   component: MultilineButton,
   parameters: { layout: "centered" },
   tags: ["autodocs"],
