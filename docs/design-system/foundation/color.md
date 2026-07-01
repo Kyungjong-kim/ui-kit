@@ -6,8 +6,8 @@
 
 raw 팔레트(`core.css`) → **의미 토큰(`semantic.css`)** → 컴포넌트 className. 컴포넌트는 semantic 토큰만 `[var(--color-...)]` 형태로 참조한다.
 
-- raw 팔레트: `src/styles/tokens/core.css` — `--color-{brand,neutral,red,green,orange,blue}-{25..900}` 등 (직접 참조 금지)
-- 의미 토큰: `src/styles/tokens/semantic.css` — `--color-text-*` · `--color-bg-*` · `--color-border-*` · `--color-interactive-*`
+- raw 팔레트: `src/styles/tokens/core.css` — `--color-{brand,neutral,red,green,orange,blue,purple}-{25..900}` 등 (직접 참조 금지)
+- 의미 토큰: `src/styles/tokens/semantic.css` — `--color-text-*` · `--color-bg-*` · `--color-surface-*` · `--color-border-*` · `--color-icon-*` · `--color-interactive-*`
 
 ## raw 팔레트 (core)
 
@@ -21,6 +21,7 @@ raw 팔레트(`core.css`) → **의미 토큰(`semantic.css`)** → 컴포넌트
 | **green** | 성공 | `#e6f8ef` | `#28c76f` | `#1e9553` |
 | **orange** | 경고 (브랜드가 골든이라 노랑 대신 오렌지로 구분) | `#fff1e0` | `#f97316` | `#783908` |
 | **blue** | 정보 | `#eff6ff` | `#3b82f6` | `#1e3a8a` |
+| **purple** | 분류·태그(category) | `#f4eeff` | `#8b5cf6` | `#472a85` |
 
 > ⚠️ 브랜드 500(`#fabc37`)은 **밝은 색**이다. 이 색을 배경으로 쓰면 그 위 텍스트는 반드시 다크(neutral-900)를 사용한다 — 흰 텍스트는 대비 미달.
 
@@ -39,6 +40,9 @@ raw 팔레트(`core.css`) → **의미 토큰(`semantic.css`)** → 컴포넌트
 | `--color-text-success-default` | green-500 | 성공 텍스트 |
 | `--color-text-warning-default` | orange-600 | 경고 텍스트 |
 | `--color-text-info-default` | blue-700 | 정보 텍스트 |
+| `--color-text-category-default` | purple-600 | 분류·태그(category) 텍스트 |
+
+> 각 상태·브랜드·category 계열에는 `-hover` 변형도 있다(`*-hover` = default보다 한 단계 진하게). 전체 목록은 [tokens/semantic.md](../tokens/semantic.md).
 
 ## 배경 (`--color-bg-*`)
 
@@ -62,12 +66,17 @@ raw 팔레트(`core.css`) → **의미 토큰(`semantic.css`)** → 컴포넌트
 | 토큰 | 값 | 용도 |
 |---|---|---|
 | `--color-border-default` | neutral-200 | 기본 구분선·카드 테두리 |
-| `--color-border-strong` | neutral-300 | 강한 구분·입력 기본 테두리 |
-| `--color-border-brand-default` | brand-500 | 브랜드 강조 테두리 |
-| `--color-border-danger-default` | red-500 | 에러 입력 테두리 |
-| `--color-border-info-default` | blue-500 | 정보 강조 테두리 |
-| `--color-border-disabled` | neutral-200 | 비활성 테두리 |
+| `--color-border-subtle` | neutral-100 | default보다 옅은 경계(카드·푸터) |
+| `--color-border-strong` | neutral-300 | 강한 구분 |
+| `--color-border-hover` | neutral-300 | hover 테두리 |
+| `--color-border-inverse` | neutral-700 | 반전 테두리 |
+| `--color-border-input-default` / `-input-focus` | neutral-300 / brand-500 | 입력 컨트롤 테두리 |
 | `--color-border-focus` | brand-400 | 포커스 링 (offset과 함께 사용) |
+| `--color-border-disabled` | neutral-200 | 비활성 테두리 |
+| `--color-border-{brand,danger,info,success,warning}-default` | 각 계열 500 | 상태 강조 테두리 |
+| `--color-border-category-default` | purple-500 | 분류·태그 테두리 |
+
+> 각 상태·category 계열에는 `-hover`·`-subtle` 변형이 함께 있다(예: `--color-border-danger-subtle` = red-200). 전체 목록은 [tokens/semantic.md](../tokens/semantic.md).
 
 ## 인터랙티브 (`--color-interactive-*`)
 
@@ -80,6 +89,29 @@ raw 팔레트(`core.css`) → **의미 토큰(`semantic.css`)** → 컴포넌트
 | `--color-interactive-secondary-bg` / `-border` / `-text` | white / neutral-300 / neutral-900 | 아웃라인 버튼 |
 | `--color-interactive-ghost-text` / `-bg-hover` | neutral-700 / neutral-100 | 배경 없는 버튼 |
 | `--color-interactive-destructive-bg` / `-bg-hover` / `-text` | red-500 / red-600 / white | 파괴적 액션 |
+
+## 표면 (`--token-color-surface-*`)
+
+Tailwind `bg-surface-*` 유틸 호환용 표면 계층. neutral 은 `subtlest`(25) → `strongest`(400) 로 진해진다. 상태·brand·category 계열도 `subtlest → strongest` 단계를 가진다.
+
+| 계열 | 단계 |
+|---|---|
+| neutral | `subtlest` · `subtle` · `muted` · `default` · `strong` · `stronger` · `strongest` |
+| brand | `subtlest` · `subtle` · `muted` · `default` · `strong` · `stronger` · `strongest` |
+| success · danger · warning · info | `subtlest` · `subtle` · `muted` · `strong` · `stronger` · `strongest` |
+| category (purple) | `subtlest` · `subtle` · `muted` · `default` · `strong` · `stronger` · `strongest` |
+
+## 아이콘 (`--color-icon-*`)
+
+`Icon` 컴포넌트 `colorTokenMap` 키와 매핑. 다수가 text/bg 토큰을 다시 가리킨다.
+
+| 토큰 | 값 |
+|---|---|
+| `--color-icon-primary` / `-secondary` / `-tertiary` | text-primary / -secondary / -tertiary |
+| `--color-icon-disabled` / `-inverse` | text-disabled / -inverse |
+| `--color-icon-{brand,danger,success,warning,info}-default` | 각 계열 bg-default |
+| `--color-icon-{danger,warning,info}-muted` | 각 계열 300 (옅은 아이콘) |
+| `--color-icon-category-default` / `-hover` / `-muted` | purple-500 / -600 / -300 |
 
 ## 상태 컬러 요약
 
@@ -106,6 +138,13 @@ raw 팔레트(`core.css`) → **의미 토큰(`semantic.css`)** → 컴포넌트
 // 약한 성공 배지
 <span className="bg-[var(--color-bg-success-subtle)] text-[var(--color-text-success-default)]">완료</span>
 ```
+
+## 다크모드 (`[data-theme="dark"]`)
+
+`semantic.css` 는 `[data-theme="dark"]` 셀렉터로 text·bg·surface·border·icon 계열을 재정의한다. core 팔레트(raw hex)는 불변이고, semantic 토큰만 다크 값으로 재매핑된다. 소비 앱이 최상위 요소에 `data-theme="dark"` 를 지정하면 활성화된다.
+
+- 예: 라이트 `--color-bg-primary` = white → 다크 = neutral-900, `--color-text-primary` = neutral-900 → 다크 = neutral-25.
+- 시각 전시·라이트/다크 비교: Storybook `Docs/Design Tokens` 7절.
 
 ## 규칙
 
