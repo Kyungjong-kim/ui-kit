@@ -73,6 +73,18 @@
 
   /* Surface · Action — Tailwind utility(`bg-surface-default` 등) 호환용 alias */
   --token-color-surface-default: var(--color-bg-primary);
+  /* neutral surface 계층 — subtlest(25) → strongest(400) 로 갈수록 진해짐 */
+  --token-color-surface-subtlest: var(--color-neutral-25);
+  --token-color-surface-subtle: var(--color-bg-secondary);
+  --token-color-surface-muted: var(--color-bg-tertiary);
+  --token-color-surface-strong: var(--color-neutral-200);
+  --token-color-surface-stronger: var(--color-neutral-300);
+  --token-color-surface-strongest: var(--color-neutral-400);
+  /* 상태 surface — 기존 bg-*-subtle 재활용 */
+  --token-color-surface-success-subtle: var(--color-bg-success-subtle);
+  --token-color-surface-danger-subtle: var(--color-bg-danger-subtle);
+  --token-color-surface-warning-subtle: var(--color-bg-warning-subtle);
+  --token-color-surface-info-subtle: var(--color-bg-info-subtle);
   --token-color-surface-brand-default: var(--color-bg-brand-default);
   --token-color-surface-brand-subtle: var(--color-bg-brand-subtle);
   --token-color-surface-brand-subtlest: var(--color-bg-brand-subtle);
