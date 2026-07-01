@@ -28,16 +28,16 @@ const timezoneOptions = [
  */
 const FormBody = (
   <>
-    <section className="flex flex-col gap-group-md">
+    <section className="flex flex-col gap-stack-xl">
       <SectionTitle title="기본 정보" description="프로젝트를 식별하는 필수 정보입니다." />
       <Input label="프로젝트 이름" placeholder="예: 2026 리브랜딩" />
       <Select label="담당 팀" options={teamOptions} placeholder="팀을 선택하세요" />
       <Textarea label="설명" placeholder="프로젝트 목표와 범위를 입력하세요." />
     </section>
 
-    <section className="flex flex-col gap-group-md">
+    <section className="flex flex-col gap-stack-xl">
       <SectionTitle title="일정" description="프로젝트 기간과 우선순위를 설정합니다." />
-      <div className="flex flex-col gap-group-xxs">
+      <div className="flex flex-col gap-group-xs">
         <span className="typography-label-md-medium text-[var(--color-text-primary)]">시작일</span>
         <DatePicker />
       </div>
@@ -54,7 +54,7 @@ const FormBody = (
       <Select label="타임존" options={timezoneOptions} placeholder="타임존을 선택하세요" />
     </section>
 
-    <section className="flex flex-col gap-group-md">
+    <section className="flex flex-col gap-stack-xl">
       <SectionTitle title="알림 설정" description="이벤트 발생 시 받을 알림을 선택합니다." />
       <Checkbox label="상태 변경 시 이메일 알림" defaultChecked />
       <Checkbox label="댓글이 달리면 알림" />

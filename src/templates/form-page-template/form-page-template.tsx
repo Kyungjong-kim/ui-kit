@@ -65,11 +65,11 @@ export function FormPageTemplate({
         }
       />
 
-      <div className="flex-1 min-h-0 overflow-y-auto px-6 py-stack-lg">
-        <div className="flex flex-col gap-stack-lg">{children}</div>
+      <div className="flex-1 min-h-0 overflow-y-auto px-inline-xxl py-stack-xxl">
+        <div className="flex flex-col gap-stack-xxl">{children}</div>
       </div>
 
-      <div className="flex items-center justify-end gap-group-sm w-full px-6 py-stack-md border-t border-[var(--color-border-subtle)] bg-[var(--color-bg-primary)]">
+      <div className="flex items-center justify-end gap-group-sm w-full px-inline-xxl py-stack-md border-t border-[var(--color-border-subtle)] bg-[var(--color-bg-primary)]">
         {onCancel && (
           <Button type="button" variant="secondary" onClick={onCancel} disabled={isSubmitting}>
             {cancelLabel}

@@ -66,7 +66,7 @@ type Story = StoryObj<typeof BulkActionListPageTemplate<Document>>;
  */
 export const DocumentManagementPage: Story = {
   render: () => (
-    <div className="p-8">
+    <div className="px-inline-xxl py-stack-xxl">
       <BulkActionListPageTemplate
         title="문서 관리"
         count={data.length}

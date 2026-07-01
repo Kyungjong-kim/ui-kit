@@ -4,7 +4,7 @@ import type { DataItemsField, PageHeaderProps } from "../../components";
 import { DataItemsTable, ListControl, PageHeader } from "../../components";
 import { cn } from "../../utils/cn";
 
-const dataItemsLayout = cva("flex w-full flex-col gap-group-lg");
+const dataItemsLayout = cva("flex w-full flex-col gap-stack-xxl");
 
 export interface DataItemsLayoutProps<T> {
   /** 페이지 제목 — PageHeader에 전달 */
@@ -68,21 +68,23 @@ export function DataItemsLayout<T>({
         rightTrailingButton={headerActions}
         isLoading={loading}
       />
-      {hasControl && (
-        <ListControl
-          count={count}
-          countUnit={countUnit}
-          search={search}
-          sort={sort}
-          filter={filter}
+      <div className="flex flex-col gap-stack-md">
+        {hasControl && (
+          <ListControl
+            count={count}
+            countUnit={countUnit}
+            search={search}
+            sort={sort}
+            filter={filter}
+          />
+        )}
+        <DataItemsTable
+          fields={fields}
+          data={data}
+          minCardWidth={minCardWidth}
+          emptyMessage={emptyMessage}
         />
-      )}
-      <DataItemsTable
-        fields={fields}
-        data={data}
-        minCardWidth={minCardWidth}
-        emptyMessage={emptyMessage}
-      />
+      </div>
     </div>
   );
 }

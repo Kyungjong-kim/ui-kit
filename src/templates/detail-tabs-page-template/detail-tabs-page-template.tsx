@@ -48,7 +48,7 @@ export function DetailTabsPageTemplate({
       <PageHeader title={title} rightTrailingButton={headerActions} />
 
       <Tabs defaultValue={initialTab} className="flex flex-col flex-1 min-h-0">
-        <div className="px-6 pt-stack-sm">
+        <div className="px-inline-xxl pt-stack-sm">
           <TabsList>
             {tabs.map((tab) => (
               <TabsTrigger key={tab.value} value={tab.value}>
@@ -58,7 +58,7 @@ export function DetailTabsPageTemplate({
           </TabsList>
         </div>
 
-        <div className="flex-1 min-h-0 overflow-y-auto px-6 pb-stack-lg">
+        <div className="flex-1 min-h-0 overflow-y-auto px-inline-xxl pb-stack-lg">
           {tabs.map((tab) => (
             <TabsContent key={tab.value} value={tab.value}>
               {tab.content}

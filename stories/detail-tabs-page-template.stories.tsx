@@ -68,7 +68,7 @@ const tabs = [
     label: "개요",
     value: "overview",
     content: (
-      <div className="flex flex-col gap-stack-lg pt-stack-md">
+      <div className="flex flex-col gap-stack-xxl pt-stack-md">
         <DescriptionList>
           <MetaItem label="프로젝트 ID" value="PRJ-2026-0142" />
           <MetaItem label="담당 팀" value="플랫폼" />
