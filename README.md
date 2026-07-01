@@ -159,6 +159,27 @@ develop               ← 개발 통합 (모든 feature PR 머지 대상)
 
 ---
 
+## 변경 이력
+
+주요 변경을 여기 누적한다(세부 버전 릴리스는 changesets → `CHANGELOG.md`).
+
+### 2026-07-01 — 관리자 DS 격차 보완 (컴포넌트 대량 확충·토큰 파이프라인·아이콘)
+
+성숙 관리자 DS를 벤치마크로 부재 컴포넌트 43종 및 인프라 보강 (이슈 #74~95).
+
+- **컴포넌트(+43)**
+  - 데이터: `DataTable`(정렬·페이지·선택) · `Table` · `TreeTable` · `DataItemsTable`
+  - 차트(recharts): `LineChart` · `BarChart` · `DonutChart` · `AreaChart` · `PieChart` · `RadarChart` · `GaugeChart` · `SemiCircleChart` · `Sparkline` · `Heatmap`
+  - 데이터 보조: `BarList` · `ResourceUsage` · `ComparisonBar` · `ClusterResourceBar`
+  - 고급 입력: `DateRangePicker` · `DateTimePicker` · `MonthPicker` · `SearchableSelect` · `CascadingSelect` · `FilterDropdown` · `PeriodFilterDropdown` · `SliderField`
+  - 표시: `Alert` · `MetricCard` · `DotBadge` · `VersionInfoCard` · `DateTimeCell` · `UserCell` · `GuideBlock`
+  - 액션·오버레이: `FullScreenDialog` · `SidePanel` · `RefreshButton` · `ResetButton` · `FavoriteButton` · `HelpTooltipIcon` · `ListControl` · `NavFlyout`
+  - 코드: `CodeEditor`(CodeMirror 6)
+- **토큰**: JSON 단일 소스 파이프라인(`scripts/build-tokens.ts`) 도입 · `surface-*` 계층 확장(subtle~strongest·상태) · 소비자용 Tailwind v4 `theme.css` 출하
+- **아이콘**: semantic alias 레이어(37종 — `success`·`close`·`refresh` 등 의미명)
+
+---
+
 ## 라이선스
 
 [MIT](LICENSE) © Kyungjong Kim

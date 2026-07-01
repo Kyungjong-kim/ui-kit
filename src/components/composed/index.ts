@@ -5,6 +5,7 @@ export * from "./chart";
 export * from "./check-mark";
 export * from "./chip";
 export * from "./cluster-resource-bar";
+export * from "./code-editor";
 export * from "./comparison-bar";
 export * from "./data-items-table";
 export * from "./data-table";
