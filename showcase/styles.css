@@ -1,0 +1,12 @@
+/*
+ * Showcase 전용 스타일 진입점.
+ * ui-kit 디자인 토큰·Tailwind theme 유틸을 그대로 로드하고,
+ * @source 로 라이브러리 소스(../src)를 스캔해 컴포넌트가 쓰는 유틸을 생성한다.
+ */
+@import "tailwindcss";
+@import "../src/styles/tokens/core.css";
+@import "../src/styles/tokens/semantic.css";
+@import "../src/styles/theme.css";
+
+@source "../src";
+@source "./";
