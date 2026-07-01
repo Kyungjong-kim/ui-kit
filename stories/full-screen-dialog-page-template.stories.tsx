@@ -1,6 +1,18 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
+import { SectionTitle } from "../src/components/composed/section-title";
+import { TagInput } from "../src/components/composed/tag-input";
+import { Button } from "../src/components/primitives/button";
+import { Input } from "../src/components/primitives/input";
+import { Select } from "../src/components/primitives/select";
+import { Textarea } from "../src/components/primitives/textarea";
 import { FullScreenDialogPageTemplate } from "../src/templates/full-screen-dialog-page-template";
+
+const categoryOptions = [
+  { value: "guide", label: "가이드" },
+  { value: "release", label: "릴리스 노트" },
+  { value: "faq", label: "FAQ" },
+];
 
 const meta: Meta<typeof FullScreenDialogPageTemplate> = {
   title: "Templates/FullScreenDialogPageTemplate",
@@ -12,34 +24,50 @@ const meta: Meta<typeof FullScreenDialogPageTemplate> = {
 export default meta;
 type Story = StoryObj<typeof FullScreenDialogPageTemplate>;
 
-export const Default: Story = {
+/**
+ * 실제 "문서 편집" 전체화면 목업.
+ * 상단바(제목·임시저장 액션·닫기) + 스크롤 본문에 제목·카테고리·태그·본문 필드로
+ * 구성된 완성 편집 폼 + 하단 게시 버튼을 담았다.
+ */
+export const DocumentEditor: Story = {
   render: () => {
     const [open, setOpen] = useState(false);
+    const [tags, setTags] = useState<string[]>(["온보딩", "가이드"]);
     return (
       <div className="p-8">
-        <button type="button" onClick={() => setOpen(true)}>
-          전체화면 열기
-        </button>
+        <Button onClick={() => setOpen(true)}>문서 편집 열기</Button>
         <FullScreenDialogPageTemplate
           open={open}
           onClose={() => setOpen(false)}
           title="문서 편집"
           headerActions={
-            <button type="button" onClick={() => setOpen(false)}>
-              저장
-            </button>
+            <Button variant="secondary" onClick={() => setOpen(false)}>
+              임시 저장
+            </Button>
           }
-          footer={
-            <button type="button" onClick={() => setOpen(false)}>
-              완료
-            </button>
-          }
+          footer={<Button onClick={() => setOpen(false)}>게시하기</Button>}
         >
-          <div className="space-y-4">
-            {Array.from({ length: 40 }).map((_, i) => (
-              // biome-ignore lint/suspicious/noArrayIndexKey: 데모 정적 목록
-              <p key={i}>스크롤되는 본문 문단 {i + 1}</p>
-            ))}
+          <div className="mx-auto flex w-full max-w-3xl flex-col gap-stack-lg py-stack-lg">
+            <section className="flex flex-col gap-group-md">
+              <SectionTitle title="문서 정보" />
+              <Input label="제목" placeholder="문서 제목을 입력하세요" />
+              <Select label="카테고리" options={categoryOptions} placeholder="카테고리 선택" />
+              <div className="flex flex-col gap-group-xxs">
+                <span className="typography-label-md-medium text-[var(--color-text-primary)]">
+                  태그
+                </span>
+                <TagInput value={tags} onChange={setTags} placeholder="태그 입력 후 Enter" />
+              </div>
+            </section>
+
+            <section className="flex flex-col gap-group-md">
+              <SectionTitle title="본문" />
+              <Textarea
+                label="내용"
+                placeholder="문서 본문을 작성하세요."
+                className="min-h-[320px]"
+              />
+            </section>
           </div>
         </FullScreenDialogPageTemplate>
       </div>
