@@ -8,7 +8,7 @@ import {
 } from "../../primitives/accordion";
 import { TextSkeleton } from "../text-skeleton";
 
-const CARD = "rounded-lg bg-[var(--color-bg-secondary)] px-inline-xxxl py-stack-xl";
+const CARD = "rounded-lg bg-[var(--color-bg-secondary)] px-inline-xxl py-stack-xl";
 
 export interface DescriptionListProps {
   children: ReactNode;
