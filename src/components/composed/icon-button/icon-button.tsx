@@ -38,10 +38,10 @@ const iconButtonVariants = cva(
         ghost: ["bg-transparent border-none hover:bg-[var(--color-interactive-ghost-bg-hover)]"],
       },
       size: {
-        xs: ["h-6 w-6"],
-        sm: ["h-8 w-8"],
-        md: ["h-9 w-9"],
-        lg: ["h-11 w-11"],
+        xs: ["h-size-control-xxs w-size-control-xxs"],
+        sm: ["h-size-control-sm w-size-control-sm"],
+        md: ["h-size-control-md w-size-control-md"],
+        lg: ["h-size-control-lg w-size-control-lg"],
       },
       shape: {
         square: ["rounded-sm"],
