@@ -197,10 +197,10 @@
 
 | 토큰 | 값 |
 |---|---|
-| `--token-shadow-default-sm` | `0 1px 2px 0 rgba(20,18,16,.06)` |
-| `--token-shadow-default-md` | `0 2px 8px -2px rgba(20,18,16,.1), 0 1px 2px -1px rgba(20,18,16,.06)` |
-| `--token-shadow-default-lg` | `0 8px 24px -6px rgba(20,18,16,.14), 0 2px 6px -2px rgba(20,18,16,.08)` |
-| `--token-shadow-default-xl` | `0 16px 40px -8px rgba(20,18,16,.18), 0 4px 10px -4px rgba(20,18,16,.1)` |
+| `--token-shadow-default-sm` | `0 1px 2px 0 rgba(20,18,16,.06), 0 1px 3px 0 rgba(20,18,16,.08)` |
+| `--token-shadow-default-md` | `0 1px 2px -1px rgba(20,18,16,.08), 0 4px 12px -2px rgba(20,18,16,.1)` |
+| `--token-shadow-default-lg` | `0 2px 4px -2px rgba(20,18,16,.08), 0 10px 28px -6px rgba(20,18,16,.16)` |
+| `--token-shadow-default-xl` | `0 4px 8px -3px rgba(20,18,16,.1), 0 20px 48px -10px rgba(20,18,16,.2)` |
 
 ## 타이포그래피
 

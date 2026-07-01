@@ -146,7 +146,7 @@ export function DataTable<TData>({
                             ? "descending"
                             : undefined
                       }
-                      className="typography-label-sm-medium border-b border-[var(--color-border-default)] px-4 py-3 text-[var(--color-text-secondary)]"
+                      className="typography-label-sm-medium border-b border-[var(--color-border-default)] px-4 py-3.5 text-[var(--color-text-secondary)]"
                     >
                       {header.isPlaceholder ? null : canSort ? (
                         <button
@@ -199,12 +199,12 @@ export function DataTable<TData>({
                 <tr
                   key={row.id}
                   data-state={row.getIsSelected() ? "selected" : undefined}
-                  className="border-b border-[var(--color-border-default)] last:border-b-0 data-[state=selected]:bg-[var(--color-bg-secondary)]"
+                  className="border-b border-[var(--color-border-default)] transition-colors last:border-b-0 hover:bg-[var(--color-bg-secondary)] data-[state=selected]:bg-[var(--color-bg-secondary)]"
                 >
                   {row.getVisibleCells().map((cell) => (
                     <td
                       key={cell.id}
-                      className="typography-body-sm-base px-4 py-3 text-[var(--color-text-primary)]"
+                      className="typography-body-sm-base px-4 py-3.5 text-[var(--color-text-primary)]"
                     >
                       {flexRender(cell.column.columnDef.cell, cell.getContext())}
                     </td>

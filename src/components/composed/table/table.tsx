@@ -29,12 +29,12 @@ export function Table<T>({
     <div className={cn("w-full overflow-x-auto", className)}>
       <table className="w-full border-collapse text-sm">
         <thead>
-          <tr className="border-b border-[var(--color-border-default)]">
+          <tr className="border-b border-[var(--color-border-default)] bg-[var(--color-bg-secondary)]">
             {columns.map((column) => (
               <th
                 key={column.key}
                 className={cn(
-                  "px-4 py-3 text-left font-semibold text-[var(--color-text-secondary)]",
+                  "px-4 py-3.5 text-left font-semibold text-[var(--color-text-secondary)]",
                   column.className,
                 )}
               >
@@ -58,12 +58,12 @@ export function Table<T>({
               <tr
                 // biome-ignore lint/suspicious/noArrayIndexKey: 정적 표시용 테이블(정렬·재정렬은 DataTable 담당)
                 key={rowIndex}
-                className="border-b border-[var(--color-border-default)] last:border-b-0"
+                className="border-b border-[var(--color-border-default)] transition-colors last:border-b-0 hover:bg-[var(--color-bg-secondary)]"
               >
                 {columns.map((column) => (
                   <td
                     key={column.key}
-                    className={cn("px-4 py-3 text-[var(--color-text-primary)]", column.className)}
+                    className={cn("px-4 py-3.5 text-[var(--color-text-primary)]", column.className)}
                   >
                     {column.render
                       ? column.render(row, rowIndex)
