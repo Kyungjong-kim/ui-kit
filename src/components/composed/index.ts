@@ -1,5 +1,6 @@
 export * from "./check-mark";
 export * from "./chip";
+export * from "./data-table";
 export * from "./date-picker";
 export * from "./description-list";
 export * from "./document-cell";

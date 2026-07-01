@@ -1,0 +1,325 @@
+{
+  "header": "Semantic Design Tokens — 의미 계층 (core 참조)",
+  "groups": [
+    {
+      "comment": "/* Text */",
+      "tokens": [
+        {
+          "name": "--color-text-primary",
+          "value": "var(--color-neutral-900)"
+        },
+        {
+          "name": "--color-text-secondary",
+          "value": "var(--color-neutral-700)"
+        },
+        {
+          "name": "--color-text-tertiary",
+          "value": "var(--color-neutral-500)"
+        },
+        {
+          "name": "--color-text-disabled",
+          "value": "var(--color-neutral-400)"
+        },
+        {
+          "name": "--color-text-inverse",
+          "value": "var(--color-white)"
+        },
+        {
+          "name": "--color-text-brand-default",
+          "value": "var(--color-brand-700)",
+          "commentBefore": "/* 브랜드 텍스트: 흰 배경 위에서 가독성을 위해 700(딥 앰버) 사용 */"
+        },
+        {
+          "name": "--color-text-brand-hover",
+          "value": "var(--color-brand-800)"
+        },
+        {
+          "name": "--color-text-danger-default",
+          "value": "var(--color-red-500)"
+        },
+        {
+          "name": "--color-text-success-default",
+          "value": "var(--color-green-500)"
+        },
+        {
+          "name": "--color-text-warning-default",
+          "value": "var(--color-orange-600)"
+        },
+        {
+          "name": "--color-text-info-default",
+          "value": "var(--color-blue-700)"
+        }
+      ]
+    },
+    {
+      "comment": "/* Background */",
+      "tokens": [
+        {
+          "name": "--color-bg-primary",
+          "value": "var(--color-white)"
+        },
+        {
+          "name": "--color-bg-secondary",
+          "value": "var(--color-neutral-50)"
+        },
+        {
+          "name": "--color-bg-tertiary",
+          "value": "var(--color-neutral-100)"
+        },
+        {
+          "name": "--color-bg-inverse",
+          "value": "var(--color-neutral-900)"
+        },
+        {
+          "name": "--color-bg-brand-default",
+          "value": "var(--color-brand-500)"
+        },
+        {
+          "name": "--color-bg-brand-hover",
+          "value": "var(--color-brand-600)"
+        },
+        {
+          "name": "--color-bg-brand-subtle",
+          "value": "var(--color-brand-50)"
+        },
+        {
+          "name": "--color-bg-brand-subtle-hover",
+          "value": "var(--color-brand-100)"
+        },
+        {
+          "name": "--color-bg-danger-default",
+          "value": "var(--color-red-500)"
+        },
+        {
+          "name": "--color-bg-danger-subtle",
+          "value": "var(--color-red-50)"
+        },
+        {
+          "name": "--color-bg-success-default",
+          "value": "var(--color-green-500)"
+        },
+        {
+          "name": "--color-bg-success-subtle",
+          "value": "var(--color-green-50)"
+        },
+        {
+          "name": "--color-bg-warning-default",
+          "value": "var(--color-orange-500)"
+        },
+        {
+          "name": "--color-bg-warning-subtle",
+          "value": "var(--color-orange-50)"
+        },
+        {
+          "name": "--color-bg-info-default",
+          "value": "var(--color-blue-500)"
+        },
+        {
+          "name": "--color-bg-info-subtle",
+          "value": "var(--color-blue-50)"
+        },
+        {
+          "name": "--color-bg-disabled",
+          "value": "var(--color-neutral-100)"
+        }
+      ]
+    },
+    {
+      "comment": "/* Border */",
+      "tokens": [
+        {
+          "name": "--color-border-default",
+          "value": "var(--color-neutral-200)"
+        },
+        {
+          "name": "--color-border-strong",
+          "value": "var(--color-neutral-300)"
+        },
+        {
+          "name": "--color-border-brand-default",
+          "value": "var(--color-brand-500)"
+        },
+        {
+          "name": "--color-border-danger-default",
+          "value": "var(--color-red-500)"
+        },
+        {
+          "name": "--color-border-info-default",
+          "value": "var(--color-blue-500)"
+        },
+        {
+          "name": "--color-border-disabled",
+          "value": "var(--color-neutral-200)"
+        },
+        {
+          "name": "--color-border-focus",
+          "value": "var(--color-brand-400)",
+          "commentBefore": "/* focus ring: 밝은 골든 앰버로 선명한 포커스 표시 (offset과 함께 사용) */"
+        }
+      ]
+    },
+    {
+      "comment": "/* Interactive\n * ⚠️ primary 버튼 배경이 #FABC37(밝은 골든)이므로 텍스트는 반드시 다크(neutral-900) */",
+      "tokens": [
+        {
+          "name": "--color-interactive-primary-bg",
+          "value": "var(--color-brand-500)"
+        },
+        {
+          "name": "--color-interactive-primary-bg-hover",
+          "value": "var(--color-brand-600)"
+        },
+        {
+          "name": "--color-interactive-primary-text",
+          "value": "var(--color-neutral-900)"
+        },
+        {
+          "name": "--color-interactive-secondary-bg",
+          "value": "var(--color-white)"
+        },
+        {
+          "name": "--color-interactive-secondary-border",
+          "value": "var(--color-neutral-300)"
+        },
+        {
+          "name": "--color-interactive-secondary-text",
+          "value": "var(--color-neutral-900)"
+        },
+        {
+          "name": "--color-interactive-ghost-text",
+          "value": "var(--color-neutral-700)"
+        },
+        {
+          "name": "--color-interactive-ghost-bg-hover",
+          "value": "var(--color-neutral-100)"
+        },
+        {
+          "name": "--color-interactive-destructive-bg",
+          "value": "var(--color-red-500)"
+        },
+        {
+          "name": "--color-interactive-destructive-bg-hover",
+          "value": "var(--color-red-600)"
+        },
+        {
+          "name": "--color-interactive-destructive-text",
+          "value": "var(--color-white)"
+        }
+      ]
+    },
+    {
+      "comment": "/* Icon — `Icon` 컴포넌트의 colorTokenMap 키와 매핑 */",
+      "tokens": [
+        {
+          "name": "--color-icon-primary",
+          "value": "var(--color-text-primary)"
+        },
+        {
+          "name": "--color-icon-secondary",
+          "value": "var(--color-text-secondary)"
+        },
+        {
+          "name": "--color-icon-tertiary",
+          "value": "var(--color-text-tertiary)"
+        },
+        {
+          "name": "--color-icon-subtle",
+          "value": "var(--color-text-tertiary)"
+        },
+        {
+          "name": "--color-icon-muted",
+          "value": "var(--color-text-tertiary)"
+        },
+        {
+          "name": "--color-icon-disabled",
+          "value": "var(--color-text-disabled)"
+        },
+        {
+          "name": "--color-icon-inverse",
+          "value": "var(--color-text-inverse)"
+        },
+        {
+          "name": "--color-icon-brand-default",
+          "value": "var(--color-bg-brand-default)"
+        },
+        {
+          "name": "--color-icon-brand-hover",
+          "value": "var(--color-bg-brand-hover)"
+        },
+        {
+          "name": "--color-icon-danger-default",
+          "value": "var(--color-bg-danger-default)"
+        },
+        {
+          "name": "--color-icon-danger-hover",
+          "value": "var(--color-interactive-destructive-bg-hover)"
+        },
+        {
+          "name": "--color-icon-success-default",
+          "value": "var(--color-bg-success-default)"
+        }
+      ]
+    },
+    {
+      "comment": "/* Surface · Action — Tailwind utility(`bg-surface-default` 등) 호환용 alias */",
+      "tokens": [
+        {
+          "name": "--token-color-surface-default",
+          "value": "var(--color-bg-primary)"
+        },
+        {
+          "name": "--token-color-surface-brand-default",
+          "value": "var(--color-bg-brand-default)"
+        },
+        {
+          "name": "--token-color-surface-brand-subtle",
+          "value": "var(--color-bg-brand-subtle)"
+        },
+        {
+          "name": "--token-color-surface-brand-subtlest",
+          "value": "var(--color-bg-brand-subtle)"
+        },
+        {
+          "name": "--token-color-surface-brand-muted",
+          "value": "var(--color-bg-brand-subtle-hover)"
+        },
+        {
+          "name": "--token-color-surface-brand-strong",
+          "value": "var(--color-bg-brand-hover)"
+        },
+        {
+          "name": "--token-color-text-primary",
+          "value": "var(--color-text-primary)"
+        },
+        {
+          "name": "--token-color-text-secondary",
+          "value": "var(--color-text-secondary)"
+        },
+        {
+          "name": "--token-color-text-tertiary",
+          "value": "var(--color-text-tertiary)"
+        },
+        {
+          "name": "--token-color-text-inverse",
+          "value": "var(--color-text-inverse)"
+        },
+        {
+          "name": "--token-color-action-primary-default",
+          "value": "var(--color-bg-brand-default)"
+        },
+        {
+          "name": "--token-color-action-primary-hover",
+          "value": "var(--color-bg-brand-hover)"
+        },
+        {
+          "name": "--token-color-action-tertiary-default",
+          "value": "var(--color-bg-secondary)"
+        },
+        {
+          "name": "--token-color-action-tertiary-hover",
+          "value": "var(--color-bg-tertiary)"
+        }
+      ]
+    }
+  ]
+}
