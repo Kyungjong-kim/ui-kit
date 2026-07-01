@@ -3,7 +3,7 @@ import { SectionTitle } from "../src/components/composed/section-title";
 import { Icon } from "../src/components/primitives/icon";
 
 const meta: Meta<typeof SectionTitle> = {
-  title: "Data Display/SectionTitle",
+  title: "Molecules/Heading/SectionTitle",
   component: SectionTitle,
   parameters: { layout: "padded" },
   tags: ["autodocs"],

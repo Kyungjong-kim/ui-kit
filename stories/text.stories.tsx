@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Text } from "../src/components/primitives/text";
 
 const meta: Meta<typeof Text> = {
-  title: "Data Display/Text",
+  title: "Foundations/Typography/Text",
   component: Text,
   parameters: { layout: "centered" },
   tags: ["autodocs"],

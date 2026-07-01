@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { ResourceUsage } from "../src/components/composed/resource-usage";
 
 const meta: Meta<typeof ResourceUsage> = {
-  title: "Data Display/ResourceUsage",
+  title: "Organisms/Metric/ResourceUsage",
   component: ResourceUsage,
   parameters: { layout: "padded" },
   tags: ["autodocs"],

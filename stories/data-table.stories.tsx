@@ -22,7 +22,7 @@ const data: User[] = [
 ];
 
 const meta: Meta<typeof DataTable<User>> = {
-  title: "Data Display/DataTable",
+  title: "Organisms/Tables/DataTable",
   component: DataTable,
   parameters: { layout: "padded" },
   tags: ["autodocs"],

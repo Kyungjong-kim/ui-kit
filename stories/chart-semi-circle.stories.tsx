@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { SemiCircleChart } from "../src/components/composed/chart";
 
 const meta: Meta = {
-  title: "Data Display/Chart/SemiCircleChart",
+  title: "Organisms/Charts/SemiCircleChart",
   parameters: { layout: "padded" },
   tags: ["autodocs"],
 };

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { DateRangePicker } from "../src/components/composed/date-range-picker";
 
 const meta: Meta<typeof DateRangePicker> = {
-  title: "Inputs/DateRangePicker",
+  title: "Molecules/Date/DateRangePicker",
   component: DateRangePicker,
   parameters: { layout: "centered" },
   tags: ["autodocs"],

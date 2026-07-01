@@ -6,7 +6,7 @@ import {
 } from "../src/components/composed/period-filter-dropdown";
 
 const meta: Meta<typeof PeriodFilterDropdown> = {
-  title: "Inputs/PeriodFilterDropdown",
+  title: "Molecules/Date/PeriodFilterDropdown",
   component: PeriodFilterDropdown,
   parameters: { layout: "padded" },
   tags: ["autodocs"],

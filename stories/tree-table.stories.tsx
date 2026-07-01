@@ -41,7 +41,7 @@ const data: FileRow[] = [
 ];
 
 const meta: Meta<typeof TreeTable<FileRow>> = {
-  title: "Data Display/TreeTable",
+  title: "Organisms/Tables/TreeTable",
   component: TreeTable,
   parameters: { layout: "padded" },
   tags: ["autodocs"],

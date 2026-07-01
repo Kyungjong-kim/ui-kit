@@ -3,7 +3,7 @@ import { useState } from "react";
 import { TagInput } from "../src/components/composed/tag-input";
 
 const meta: Meta<typeof TagInput> = {
-  title: "Inputs/TagInput",
+  title: "Molecules/Form/TagInput",
   component: TagInput,
   parameters: { layout: "padded" },
   tags: ["autodocs"],

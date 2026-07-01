@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { VersionInfoCard } from "../src/components/composed/version-info-card";
 
 const meta: Meta<typeof VersionInfoCard> = {
-  title: "Data Display/VersionInfoCard",
+  title: "Organisms/Card/VersionInfoCard",
   component: VersionInfoCard,
   parameters: { layout: "padded" },
   tags: ["autodocs"],

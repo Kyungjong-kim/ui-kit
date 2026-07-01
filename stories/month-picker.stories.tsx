@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { MonthPicker } from "../src/components/composed/month-picker";
 
 const meta: Meta<typeof MonthPicker> = {
-  title: "Inputs/MonthPicker",
+  title: "Molecules/Date/MonthPicker",
   component: MonthPicker,
   parameters: { layout: "centered" },
   tags: ["autodocs"],

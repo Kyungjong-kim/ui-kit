@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Sparkline } from "../src/components/composed/chart";
 
 const meta: Meta = {
-  title: "Data Display/Chart/Sparkline",
+  title: "Organisms/Charts/Sparkline",
   parameters: { layout: "padded" },
   tags: ["autodocs"],
 };

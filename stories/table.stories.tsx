@@ -20,7 +20,7 @@ const data: User[] = [
 ];
 
 const meta: Meta<typeof Table<User>> = {
-  title: "Data Display/Table",
+  title: "Organisms/Tables/Table",
   component: Table,
   parameters: { layout: "padded" },
   tags: ["autodocs"],

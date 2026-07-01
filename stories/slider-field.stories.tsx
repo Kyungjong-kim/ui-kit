@@ -3,7 +3,7 @@ import { useState } from "react";
 import { SliderField } from "../src/components/composed/slider-field";
 
 const meta: Meta<typeof SliderField> = {
-  title: "Inputs/SliderField",
+  title: "Molecules/Progress/SliderField",
   component: SliderField,
   parameters: { layout: "padded" },
   tags: ["autodocs"],

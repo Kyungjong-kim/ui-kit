@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { SearchableSelect } from "../src/components/composed/searchable-select";
 
 const meta: Meta<typeof SearchableSelect> = {
-  title: "Inputs/SearchableSelect",
+  title: "Molecules/Select/SearchableSelect",
   component: SearchableSelect,
   parameters: { layout: "centered" },
   tags: ["autodocs"],

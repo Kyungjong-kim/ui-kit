@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { SummaryGrid } from "../src/components/composed/summary-grid";
 
 const meta: Meta<typeof SummaryGrid> = {
-  title: "Data Display/SummaryGrid",
+  title: "Organisms/Metric/SummaryGrid",
   component: SummaryGrid,
   parameters: { layout: "padded" },
   tags: ["autodocs"],

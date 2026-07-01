@@ -3,7 +3,7 @@ import { NavFlyout } from "../src/components/composed/nav-flyout";
 import { Button } from "../src/components/primitives/button";
 
 const meta: Meta<typeof NavFlyout> = {
-  title: "Navigation/NavFlyout",
+  title: "Organisms/Overlay/NavFlyout",
   component: NavFlyout,
   parameters: { layout: "centered" },
   tags: ["autodocs"],

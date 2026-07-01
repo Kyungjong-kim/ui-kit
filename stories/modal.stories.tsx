@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Modal } from "../src/components/composed/modal";
 
 const meta: Meta<typeof Modal> = {
-  title: "Overlay/Modal",
+  title: "Organisms/Overlay/Modal",
   component: Modal,
   parameters: { layout: "centered" },
   tags: ["autodocs"],

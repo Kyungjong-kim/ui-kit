@@ -4,7 +4,7 @@ import { Button } from "../src/components/primitives/button";
 import { Sheet } from "../src/components/primitives/sheet";
 
 const meta: Meta = {
-  title: "Overlay/Sheet",
+  title: "Organisms/Overlay/Sheet",
   parameters: { layout: "centered" },
   tags: ["autodocs"],
 };

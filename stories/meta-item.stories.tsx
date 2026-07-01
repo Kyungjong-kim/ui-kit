@@ -3,7 +3,7 @@ import { MetaInfo, MetaItem } from "../src/components/composed/meta-item";
 import { Badge } from "../src/components/primitives/badge";
 
 const meta: Meta<typeof MetaItem> = {
-  title: "Data Display/MetaItem",
+  title: "Organisms/Misc/MetaItem",
   component: MetaItem,
   parameters: { layout: "padded" },
   tags: ["autodocs"],

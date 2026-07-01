@@ -4,7 +4,7 @@ import { SelectButton } from "../src/components/composed/select-button";
 import { Input } from "../src/components/primitives/input";
 
 const meta: Meta<typeof ListControl> = {
-  title: "Data Display/ListControl",
+  title: "Molecules/Filter/ListControl",
   component: ListControl,
   parameters: { layout: "padded" },
   tags: ["autodocs"],

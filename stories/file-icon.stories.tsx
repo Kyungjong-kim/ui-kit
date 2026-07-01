@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { FileIcon } from "../src/components/composed/file-icon";
 
 const meta: Meta<typeof FileIcon> = {
-  title: "Foundation/FileIcon",
+  title: "Foundations/Icon/FileIcon",
   component: FileIcon,
   parameters: { layout: "centered" },
   tags: ["autodocs"],

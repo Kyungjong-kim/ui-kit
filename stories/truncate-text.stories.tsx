@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { TruncateText } from "../src/components/composed/truncate-text";
 
 const meta: Meta<typeof TruncateText> = {
-  title: "Data Display/TruncateText",
+  title: "Organisms/Misc/TruncateText",
   component: TruncateText,
   parameters: { layout: "padded" },
   tags: ["autodocs"],

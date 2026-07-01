@@ -3,7 +3,7 @@ import { useState } from "react";
 import { LogoOnlyHeader } from "../src/components/composed/logo-only-header";
 
 const meta: Meta<typeof LogoOnlyHeader> = {
-  title: "Layout/LogoOnlyHeader",
+  title: "Organisms/Misc/LogoOnlyHeader",
   component: LogoOnlyHeader,
   parameters: { layout: "fullscreen" },
   tags: ["autodocs"],

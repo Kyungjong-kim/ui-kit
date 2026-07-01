@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { GuideBlock } from "../src/components/composed/guide-block";
 
 const meta: Meta<typeof GuideBlock> = {
-  title: "Feedback/GuideBlock",
+  title: "Molecules/Feedback/GuideBlock",
   component: GuideBlock,
   parameters: { layout: "padded" },
   tags: ["autodocs"],

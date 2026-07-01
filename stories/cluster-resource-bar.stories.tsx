@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { ClusterResourceBar } from "../src/components/composed/cluster-resource-bar";
 
 const meta: Meta<typeof ClusterResourceBar> = {
-  title: "Data Display/ClusterResourceBar",
+  title: "Organisms/Metric/ClusterResourceBar",
   component: ClusterResourceBar,
   parameters: { layout: "padded" },
   tags: ["autodocs"],

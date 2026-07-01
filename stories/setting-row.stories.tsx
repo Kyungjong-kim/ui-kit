@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { SettingRow } from "../src/components/composed/setting-row";
 
 const meta: Meta<typeof SettingRow> = {
-  title: "Data Display/SettingRow",
+  title: "Organisms/Misc/SettingRow",
   component: SettingRow,
   parameters: { layout: "padded" },
   tags: ["autodocs"],

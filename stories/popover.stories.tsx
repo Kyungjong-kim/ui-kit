@@ -3,7 +3,7 @@ import { Button } from "../src/components/primitives/button";
 import { Popover, PopoverContent, PopoverTrigger } from "../src/components/primitives/popover";
 
 const meta: Meta<typeof Popover> = {
-  title: "Overlay/Popover",
+  title: "Organisms/Overlay/Popover",
   component: Popover,
   parameters: { layout: "centered" },
   tags: ["autodocs"],

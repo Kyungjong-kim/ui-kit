@@ -10,7 +10,7 @@ import {
 } from "../src/components/primitives/dropdown-menu";
 
 const meta: Meta = {
-  title: "Overlay/DropdownMenu",
+  title: "Molecules/Filter/DropdownMenu",
   parameters: { layout: "centered" },
   tags: ["autodocs"],
 };
