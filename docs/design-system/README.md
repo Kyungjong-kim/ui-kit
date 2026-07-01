@@ -13,6 +13,7 @@ React 19 + Radix UI 프리미티브 + Tailwind CSS v4 + `class-variance-authorit
 ```
 docs/design-system/
 ├── README.md          ← 지금 이 문서 (진입점)
+├── DESIGN.md          디자인 정체성·정량 규격 한눈 요약 (색·타입·간격·elevation·shape)
 ├── foundation/        디자인 원칙·시각 언어
 │   ├── principles.md      DS 전반의 설계 원칙
 │   ├── color.md           색 사용 규칙 (semantic 매핑)
