@@ -38,7 +38,7 @@ import type { TooltipProps } from "ui-kit";
 ## When to use
 
 - 아이콘 버튼의 의미 보충, 잘린 텍스트의 전체값, 짧은 힌트 등 **부가적·비필수 정보**에 사용.
-- 필수 정보나 긴 설명은 툴팁에 두지 않는다 — 본문이나 [helperText](./input.md)로 노출한다.
+- 필수 정보나 긴 설명은 툴팁에 두지 않는다 — 본문이나 [helperText](../inputs/input.md)로 노출한다.
 - 모바일/터치 환경에서는 호버가 없으므로 핵심 정보를 툴팁에만 의존하지 않는다.
 
 ## 접근성
