@@ -13,7 +13,7 @@ export function Toaster({ ...props }: ToasterProps) {
           border: "1px solid var(--color-border-default)",
           color: "var(--color-text-primary)",
           borderRadius: "var(--token-radius-sm)",
-          boxShadow: "var(--token-shadow-default-md)",
+          boxShadow: "var(--token-shadow-default-xl)",
         },
       }}
       {...props}

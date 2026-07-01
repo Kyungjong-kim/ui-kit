@@ -41,7 +41,6 @@ export function Progress({
       <ProgressPrimitive.Root
         className={cn(
           "relative w-full overflow-hidden rounded-full bg-[var(--color-bg-tertiary)]",
-          "shadow-[inset_0_1px_2px_rgba(20,18,16,0.08)]",
           size === "sm" ? "h-stack-xxs" : "h-stack-xs",
         )}
         value={value ?? null}
@@ -49,7 +48,7 @@ export function Progress({
       >
         <ProgressPrimitive.Indicator
           className={cn(
-            "h-full rounded-full bg-gradient-to-r from-[var(--color-brand-400)] to-[var(--color-bg-brand-hover)] transition-transform duration-500 ease-out",
+            "h-full rounded-full bg-gradient-to-r from-[var(--color-bg-brand-default)] to-[var(--color-bg-brand-hover)] transition-transform duration-500 ease-out",
             isIndeterminate && "w-1/3 animate-progress-indeterminate",
           )}
           style={
