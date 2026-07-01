@@ -31,8 +31,8 @@ describe("IconButton", () => {
     expect(screen.getByRole("button").className).toMatch(/rounded-full/);
   });
 
-  it("size=xs이면 h-6 w-6 클래스가 적용된다", () => {
+  it("size=xs이면 control-xxs 크기 클래스가 적용된다", () => {
     render(<IconButton icon="x" aria-label="닫기" size="xs" />);
-    expect(screen.getByRole("button").className).toMatch(/h-6/);
+    expect(screen.getByRole("button").className).toMatch(/h-size-control-xxs/);
   });
 });
