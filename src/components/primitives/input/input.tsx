@@ -5,7 +5,7 @@ import { cn } from "../../../utils/cn";
 
 const inputVariants = cva(
   [
-    "w-size-field-md rounded-xs border bg-[var(--color-bg-primary)]",
+    "w-size-field-md rounded-sm border bg-[var(--color-bg-primary)]",
     "text-[var(--color-text-primary)] placeholder:text-[var(--color-text-tertiary)]",
     "transition-[border-color,box-shadow] duration-150",
     "hover:border-[var(--color-border-strong)]",

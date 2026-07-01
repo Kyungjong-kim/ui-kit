@@ -5,7 +5,7 @@ import { cn } from "../../../utils/cn";
 
 const textareaVariants = cva(
   [
-    "w-size-field-lg rounded-xs border bg-[var(--color-bg-primary)]",
+    "w-size-field-lg rounded-sm border bg-[var(--color-bg-primary)]",
     "text-[var(--color-text-primary)] placeholder:text-[var(--color-text-tertiary)]",
     "transition-[border-color,box-shadow] duration-150",
     "hover:border-[var(--color-border-strong)]",
