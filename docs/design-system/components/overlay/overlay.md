@@ -104,7 +104,7 @@ const [open, setOpen] = useState(false);
 |---|---|
 | 짧은 확인·결정(삭제 확인 등) | **Dialog** |
 | 폼·상세·필터 등 보조 컨텍스트 패널 | **Sheet** |
-| 단순 비파괴 알림 | [Toast](./toast.md) |
+| 단순 비파괴 알림 | [Toast](../feedback/toast.md) |
 
 - 파괴적 확인이라면 footer의 액션 버튼을 `variant="destructive"`로 둔다.
 - 본문이 길고 스크롤이 예상되면 Sheet(`side="right"`)가 모달보다 적합하다.
