@@ -10,55 +10,63 @@ import { Button, Input, Dialog, Toaster } from "ui-kit";
 
 토큰 규약: 색상·간격·타이포는 CSS 변수(`var(--color-...)`)와 토큰 유틸리티 클래스(`typography-*`, `h-size-control-*`, `px-inline-*` 등)로 표현한다. raw hex·임의 px 값은 사용하지 않는다.
 
-## 컴포넌트 구현 계층
+## 구현 계층 (소스 기준)
 
 - **primitives** — 단일 책임의 기본 빌딩 블록. 다수가 Radix UI primitive 위에 토큰 스타일을 입힌 래퍼.
 - **composed** — primitives를 조합한 상위 컴포넌트.
+- **templates** — composed·primitives를 조합한 페이지 골격.
 
-## 문서 카테고리
+## 문서 계층 (Atomic Design)
 
-문서는 기능 역할에 따라 8개 카테고리로 나뉜다. 각 카테고리 폴더의 `README.md`에 소속 컴포넌트 전체 목록이 있다.
+문서는 [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/) 계층으로 나뉜다.
+각 단계는 **단계 > 서브그룹 > 컴포넌트**의 2단계 하위 구조를 갖는다.
+각 단계 폴더의 `README.md`에 서브그룹 목록이, 각 서브그룹 폴더의 `README.md`에 소속 컴포넌트 목록이 있다.
 
-| 카테고리 | 개요 | 인덱스 |
-|---|---|---|
-| Foundation | 타이포·아이콘·구분선 등 원자 요소 | [foundation/](./foundation/README.md) |
-| Actions | 버튼 계열 액션 트리거 | [actions/](./actions/README.md) |
-| Inputs | 폼 입력·선택 컨트롤 | [inputs/](./inputs/README.md) |
-| Data Display | 표·차트·카드·지표 시각화 | [data-display/](./data-display/README.md) |
-| Feedback | 경고·토스트·빈 상태 알림 | [feedback/](./feedback/README.md) |
-| Navigation | 탭·페이지네이션·헤더 탐색 | [navigation/](./navigation/README.md) |
-| Overlay | 다이얼로그·시트·툴팁 레이어 | [overlay/](./overlay/README.md) |
-| Layout | 카드·아코디언 등 컨테이너 | [layout/](./layout/README.md) |
+| 단계 | 개요 | 서브그룹 | 인덱스 |
+|---|---|---|---|
+| Foundation | 타이포·아이콘·로고·토큰 등 시각 언어의 재료 (0단계) | — | [foundation/](./foundation/README.md) |
+| Atoms | 더 쪼갤 수 없는 최소 UI 단위 | buttons · status · form-controls · loading · display | [atoms/](./atoms/README.md) |
+| Molecules | atoms를 묶은 재사용 단위 컨트롤 | form · select · date · navigation · feedback · filter · heading · progress | [molecules/](./molecules/README.md) |
+| Organisms | 도메인 맥락을 갖는 복합 블록 | charts · tables · metric · overlay · cells · card · misc | [organisms/](./organisms/README.md) |
+| Templates | 페이지 수준 레이아웃 골격 | 8종 페이지 템플릿 | [templates/](./templates/README.md) |
 
 ## 작성된 문서
 
-| 문서 | 컴포넌트 | 카테고리 |
+| 문서 | 컴포넌트 | 단계 · 서브그룹 |
 |---|---|---|
-| [actions/button.md](./actions/button.md) | Button | Actions |
-| [inputs/input.md](./inputs/input.md) | Input | Inputs |
-| [inputs/textarea.md](./inputs/textarea.md) | Textarea | Inputs |
-| [inputs/select.md](./inputs/select.md) | Select | Inputs |
-| [inputs/form-controls.md](./inputs/form-controls.md) | Checkbox · RadioGroup · Switch | Inputs |
-| [inputs/date-picker.md](./inputs/date-picker.md) | DatePicker | Inputs |
-| [inputs/multi-select.md](./inputs/multi-select.md) | MultiSelect | Inputs |
-| [inputs/code-editor.md](./inputs/code-editor.md) | CodeEditor | Inputs |
-| [data-display/table.md](./data-display/table.md) | Table | Data Display |
-| [data-display/tree-table.md](./data-display/tree-table.md) | TreeTable | Data Display |
-| [data-display/data-table.md](./data-display/data-table.md) | DataTable | Data Display |
-| [data-display/chart.md](./data-display/chart.md) | LineChart · BarChart · DonutChart | Data Display |
-| [data-display/bar-list.md](./data-display/bar-list.md) | BarList | Data Display |
-| [data-display/metric-card.md](./data-display/metric-card.md) | MetricCard | Data Display |
-| [data-display/badge-chip-tag.md](./data-display/badge-chip-tag.md) | Badge · Tag · Chip | Data Display |
-| [feedback/alert.md](./feedback/alert.md) | Alert | Feedback |
-| [feedback/toast.md](./feedback/toast.md) | Toaster · toast | Feedback |
-| [feedback/empty-state.md](./feedback/empty-state.md) | EmptyState | Feedback |
-| [navigation/tabs.md](./navigation/tabs.md) | Tabs | Navigation |
-| [navigation/pagination.md](./navigation/pagination.md) | Pagination | Navigation |
-| [navigation/page-header.md](./navigation/page-header.md) | PageHeader | Navigation |
-| [overlay/overlay.md](./overlay/overlay.md) | Dialog · Sheet | Overlay |
-| [overlay/tooltip.md](./overlay/tooltip.md) | Tooltip | Overlay |
+| [atoms/buttons/button.md](./atoms/buttons/button.md) | Button | Atoms · buttons |
+| [atoms/status/badge-chip-tag.md](./atoms/status/badge-chip-tag.md) | Badge · Tag · Chip | Atoms · status |
+| [atoms/form-controls/form-controls.md](./atoms/form-controls/form-controls.md) | Checkbox · RadioGroup · Switch | Atoms · form-controls |
+| [atoms/display/tooltip.md](./atoms/display/tooltip.md) | Tooltip | Atoms · display |
+| [molecules/form/input.md](./molecules/form/input.md) | Input | Molecules · form |
+| [molecules/form/textarea.md](./molecules/form/textarea.md) | Textarea | Molecules · form |
+| [molecules/form/code-editor.md](./molecules/form/code-editor.md) | CodeEditor | Molecules · form |
+| [molecules/select/select.md](./molecules/select/select.md) | Select | Molecules · select |
+| [molecules/select/multi-select.md](./molecules/select/multi-select.md) | MultiSelect | Molecules · select |
+| [molecules/date/date-picker.md](./molecules/date/date-picker.md) | DatePicker | Molecules · date |
+| [molecules/navigation/tabs.md](./molecules/navigation/tabs.md) | Tabs | Molecules · navigation |
+| [molecules/navigation/pagination.md](./molecules/navigation/pagination.md) | Pagination | Molecules · navigation |
+| [molecules/feedback/alert.md](./molecules/feedback/alert.md) | Alert | Molecules · feedback |
+| [molecules/feedback/toast.md](./molecules/feedback/toast.md) | Toaster · toast | Molecules · feedback |
+| [molecules/feedback/empty-state.md](./molecules/feedback/empty-state.md) | EmptyState | Molecules · feedback |
+| [molecules/heading/page-header.md](./molecules/heading/page-header.md) | PageHeader | Molecules · heading |
+| [organisms/charts/chart.md](./organisms/charts/chart.md) | LineChart · BarChart · DonutChart | Organisms · charts |
+| [organisms/charts/bar-list.md](./organisms/charts/bar-list.md) | BarList | Organisms · charts |
+| [organisms/tables/table.md](./organisms/tables/table.md) | Table | Organisms · tables |
+| [organisms/tables/tree-table.md](./organisms/tables/tree-table.md) | TreeTable | Organisms · tables |
+| [organisms/tables/data-table.md](./organisms/tables/data-table.md) | DataTable | Organisms · tables |
+| [organisms/metric/metric-card.md](./organisms/metric/metric-card.md) | MetricCard | Organisms · metric |
+| [organisms/overlay/overlay.md](./organisms/overlay/overlay.md) | Dialog · Sheet | Organisms · overlay |
+| [templates/list-page.md](./templates/list-page.md) | ListPageTemplate | Templates |
+| [templates/bulk-action-list-page.md](./templates/bulk-action-list-page.md) | BulkActionListPageTemplate | Templates |
+| [templates/data-items-layout.md](./templates/data-items-layout.md) | DataItemsLayout | Templates |
+| [templates/form-page.md](./templates/form-page.md) | FormPageTemplate | Templates |
+| [templates/detail-tabs-page.md](./templates/detail-tabs-page.md) | DetailTabsPageTemplate | Templates |
+| [templates/side-panel-page.md](./templates/side-panel-page.md) | SidePanelPageTemplate | Templates |
+| [templates/modal-page.md](./templates/modal-page.md) | ModalPageTemplate | Templates |
+| [templates/full-screen-dialog-page.md](./templates/full-screen-dialog-page.md) | FullScreenDialogPageTemplate | Templates |
 
-> 나머지 컴포넌트는 각 카테고리 `README.md`에 "문서 예정"으로 표기되어 있다.
+> 나머지 컴포넌트는 각 서브그룹 `README.md`에 "문서 예정"으로 표기되어 있다.
 
 ## 공통 패턴
 
