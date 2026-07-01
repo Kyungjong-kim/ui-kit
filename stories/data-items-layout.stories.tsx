@@ -66,7 +66,7 @@ type Story = StoryObj<typeof DataItemsLayout<Server>>;
  */
 export const InstanceOverviewPage: Story = {
   render: () => (
-    <div className="p-8">
+    <div className="px-inline-xxl py-stack-xxl">
       <DataItemsLayout
         title="인스턴스 현황"
         count={data.length}
@@ -85,7 +85,7 @@ export const InstanceOverviewPage: Story = {
 /** 등록된 인스턴스가 없는 빈 상태 화면. */
 export const EmptyState: Story = {
   render: () => (
-    <div className="p-8">
+    <div className="px-inline-xxl py-stack-xxl">
       <DataItemsLayout
         title="인스턴스 현황"
         count={0}

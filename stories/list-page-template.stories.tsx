@@ -91,7 +91,7 @@ type Story = StoryObj<typeof ListPageTemplate<Member>>;
  */
 export const MemberManagementPage: Story = {
   render: () => (
-    <div className="p-8">
+    <div className="px-inline-xxl py-stack-xxl">
       <ListPageTemplate
         title="구성원 관리"
         count={data.length}
@@ -120,7 +120,7 @@ export const MemberManagementPage: Story = {
 /** 검색 결과가 없는 빈 상태 화면. */
 export const EmptyState: Story = {
   render: () => (
-    <div className="p-8">
+    <div className="px-inline-xxl py-stack-xxl">
       <ListPageTemplate
         title="구성원 관리"
         count={0}
@@ -136,7 +136,7 @@ export const EmptyState: Story = {
 /** 데이터 로딩 중 스켈레톤 화면. */
 export const Loading: Story = {
   render: () => (
-    <div className="p-8">
+    <div className="px-inline-xxl py-stack-xxl">
       <ListPageTemplate
         title="구성원 관리"
         count={data.length}

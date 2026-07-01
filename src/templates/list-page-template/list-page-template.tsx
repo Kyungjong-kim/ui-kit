@@ -5,7 +5,7 @@ import type { PageHeaderProps } from "../../components";
 import { DataTable, ListControl, PageHeader } from "../../components";
 import { cn } from "../../utils/cn";
 
-const listPageTemplate = cva("flex w-full flex-col gap-group-lg");
+const listPageTemplate = cva("flex w-full flex-col gap-stack-xxl");
 
 export interface ListPageTemplateProps<TData> {
   /** 페이지 제목 — PageHeader에 전달 */
@@ -76,24 +76,26 @@ export function ListPageTemplate<TData>({
         rightTrailingButton={headerActions}
         isLoading={loading}
       />
-      {hasControl && (
-        <ListControl
-          count={count}
-          countUnit={countUnit}
-          search={search}
-          sort={sort}
-          filter={filter}
+      <div className="flex flex-col gap-stack-md">
+        {hasControl && (
+          <ListControl
+            count={count}
+            countUnit={countUnit}
+            search={search}
+            sort={sort}
+            filter={filter}
+          />
+        )}
+        <DataTable
+          columns={columns}
+          data={data}
+          getRowId={getRowId}
+          enableSorting={enableSorting}
+          pageSize={pageSize}
+          loading={loading}
+          emptyContent={emptyContent}
         />
-      )}
-      <DataTable
-        columns={columns}
-        data={data}
-        getRowId={getRowId}
-        enableSorting={enableSorting}
-        pageSize={pageSize}
-        loading={loading}
-        emptyContent={emptyContent}
-      />
+      </div>
     </div>
   );
 }
