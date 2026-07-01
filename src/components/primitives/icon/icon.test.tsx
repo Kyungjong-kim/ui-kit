@@ -44,4 +44,27 @@ describe("Icon", () => {
     const span = container.querySelector(".test-class");
     expect(span).toBeTruthy();
   });
+
+  it("의미명 alias를 원본 아이콘으로 렌더한다", () => {
+    const { container } = render(<Icon name="success" />);
+    // success alias → coloredCircleCheck 원본으로 해석
+    const span = container.querySelector("[data-icon='coloredCircleCheck']");
+    expect(span).toBeTruthy();
+    expect(container.querySelector("svg")).toBeTruthy();
+  });
+
+  it("alias와 원본 이름이 동일한 아이콘을 렌더한다", () => {
+    const alias = render(<Icon name="close" />);
+    const original = render(<Icon name="x" />);
+    const aliasIcon = alias.container.querySelector("[data-icon]")?.getAttribute("data-icon");
+    const originalIcon = original.container.querySelector("[data-icon]")?.getAttribute("data-icon");
+    expect(aliasIcon).toBe(originalIcon);
+    expect(aliasIcon).toBe("x");
+  });
+
+  it("원본 이름은 alias 도입 후에도 그대로 동작한다(회귀 방지)", () => {
+    const { container } = render(<Icon name="gear" />);
+    const span = container.querySelector("[data-icon='gear']");
+    expect(span).toBeTruthy();
+  });
 });
