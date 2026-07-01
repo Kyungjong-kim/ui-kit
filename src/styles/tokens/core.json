@@ -296,6 +296,55 @@
       ]
     },
     {
+      "comment": "/* Purple (Category — 분류/태그 계열. 앰버·상태색과 구분되는 중립 강조색) */",
+      "tokens": [
+        {
+          "name": "--color-purple-25",
+          "value": "#faf7ff"
+        },
+        {
+          "name": "--color-purple-50",
+          "value": "#f4eeff"
+        },
+        {
+          "name": "--color-purple-100",
+          "value": "#e9ddff"
+        },
+        {
+          "name": "--color-purple-200",
+          "value": "#d3bbff"
+        },
+        {
+          "name": "--color-purple-300",
+          "value": "#b794f6"
+        },
+        {
+          "name": "--color-purple-400",
+          "value": "#9f7aea"
+        },
+        {
+          "name": "--color-purple-500",
+          "value": "#8b5cf6"
+        },
+        {
+          "name": "--color-purple-600",
+          "value": "#7c4ddb"
+        },
+        {
+          "name": "--color-purple-700",
+          "value": "#6b3fc4"
+        },
+        {
+          "name": "--color-purple-800",
+          "value": "#5a34a8"
+        },
+        {
+          "name": "--color-purple-900",
+          "value": "#472a85"
+        }
+      ]
+    },
+    {
       "comment": "/* White / Black */",
       "tokens": [
         {

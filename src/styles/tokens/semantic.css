@@ -13,6 +13,14 @@
   --color-text-success-default: var(--color-green-500);
   --color-text-warning-default: var(--color-orange-600);
   --color-text-info-default: var(--color-blue-700);
+  /* 상태 텍스트 hover — default보다 한 단계 진하게 */
+  --color-text-danger-hover: var(--color-red-600);
+  --color-text-success-hover: var(--color-green-600);
+  --color-text-warning-hover: var(--color-orange-700);
+  --color-text-info-hover: var(--color-blue-800);
+  /* category(purple) 텍스트 */
+  --color-text-category-default: var(--color-purple-600);
+  --color-text-category-hover: var(--color-purple-700);
 
   /* Background */
   --color-bg-primary: var(--color-white);
@@ -42,6 +50,33 @@
   --color-border-disabled: var(--color-neutral-200);
   /* focus ring: 밝은 골든 앰버로 선명한 포커스 표시 (offset과 함께 사용) */
   --color-border-focus: var(--color-brand-400);
+  /* subtle: default(200)보다 옅은 구분선 — 카드·푸터 등 약한 경계용 */
+  --color-border-subtle: var(--color-neutral-100);
+  --color-border-hover: var(--color-neutral-300);
+  --color-border-inverse: var(--color-neutral-700);
+  /* 입력 컨트롤 테두리 — default/focus */
+  --color-border-input-default: var(--color-neutral-300);
+  --color-border-input-focus: var(--color-brand-500);
+  /* 상태 border — 각 계열 default/hover/subtle */
+  --color-border-brand-hover: var(--color-brand-600);
+  --color-border-brand-subtle: var(--color-brand-200);
+  --color-border-danger-hover: var(--color-red-600);
+  --color-border-danger-subtle: var(--color-red-200);
+  --color-border-info-hover: var(--color-blue-600);
+  --color-border-info-subtle: var(--color-blue-200);
+  --color-border-success-default: var(--color-green-500);
+  --color-border-success-hover: var(--color-green-600);
+  --color-border-success-subtle: var(--color-green-200);
+  --color-border-warning-default: var(--color-orange-500);
+  --color-border-warning-hover: var(--color-orange-600);
+  --color-border-warning-subtle: var(--color-orange-200);
+  /* tertiary: 약한 중립 테두리 (secondary보다 옅음) */
+  --color-border-tertiary-default: var(--color-neutral-200);
+  --color-border-tertiary-hover: var(--color-neutral-300);
+  /* category(purple): 분류/태그 계열 */
+  --color-border-category-default: var(--color-purple-500);
+  --color-border-category-hover: var(--color-purple-600);
+  --color-border-category-subtle: var(--color-purple-200);
 
   /* Interactive
    * ⚠️ primary 버튼 배경이 #FABC37(밝은 골든)이므로 텍스트는 반드시 다크(neutral-900) */
@@ -70,6 +105,18 @@
   --color-icon-danger-default: var(--color-bg-danger-default);
   --color-icon-danger-hover: var(--color-interactive-destructive-bg-hover);
   --color-icon-success-default: var(--color-bg-success-default);
+  --color-icon-success-hover: var(--color-green-600);
+  --color-icon-danger-muted: var(--color-red-300);
+  --color-icon-warning-default: var(--color-bg-warning-default);
+  --color-icon-warning-hover: var(--color-orange-600);
+  --color-icon-warning-muted: var(--color-orange-300);
+  --color-icon-info-default: var(--color-bg-info-default);
+  --color-icon-info-hover: var(--color-blue-600);
+  --color-icon-info-muted: var(--color-blue-300);
+  /* category(purple) 아이콘 */
+  --color-icon-category-default: var(--color-purple-500);
+  --color-icon-category-hover: var(--color-purple-600);
+  --color-icon-category-muted: var(--color-purple-300);
 
   /* Surface · Action — Tailwind utility(`bg-surface-default` 등) 호환용 alias */
   --token-color-surface-default: var(--color-bg-primary);
@@ -90,6 +137,41 @@
   --token-color-surface-brand-subtlest: var(--color-bg-brand-subtle);
   --token-color-surface-brand-muted: var(--color-bg-brand-subtle-hover);
   --token-color-surface-brand-strong: var(--color-bg-brand-hover);
+  /* brand surface 계층 보강 — stronger·strongest */
+  --token-color-surface-brand-stronger: var(--color-brand-700);
+  --token-color-surface-brand-strongest: var(--color-brand-900);
+  /* success surface 계층 — subtlest → strongest */
+  --token-color-surface-success-subtlest: var(--color-green-25);
+  --token-color-surface-success-muted: var(--color-green-100);
+  --token-color-surface-success-strong: var(--color-green-500);
+  --token-color-surface-success-stronger: var(--color-green-700);
+  --token-color-surface-success-strongest: var(--color-green-900);
+  /* danger surface 계층 — subtlest → strongest */
+  --token-color-surface-danger-subtlest: var(--color-red-25);
+  --token-color-surface-danger-muted: var(--color-red-100);
+  --token-color-surface-danger-strong: var(--color-red-500);
+  --token-color-surface-danger-stronger: var(--color-red-700);
+  --token-color-surface-danger-strongest: var(--color-red-900);
+  /* warning surface 계층 — subtlest → strongest */
+  --token-color-surface-warning-subtlest: var(--color-orange-25);
+  --token-color-surface-warning-muted: var(--color-orange-100);
+  --token-color-surface-warning-strong: var(--color-orange-500);
+  --token-color-surface-warning-stronger: var(--color-orange-700);
+  --token-color-surface-warning-strongest: var(--color-orange-900);
+  /* info surface 계층 — subtlest → strongest */
+  --token-color-surface-info-subtlest: var(--color-blue-25);
+  --token-color-surface-info-muted: var(--color-blue-100);
+  --token-color-surface-info-strong: var(--color-blue-500);
+  --token-color-surface-info-stronger: var(--color-blue-700);
+  --token-color-surface-info-strongest: var(--color-blue-900);
+  /* category(purple) surface 계층 — subtlest → strongest */
+  --token-color-surface-category-subtlest: var(--color-purple-25);
+  --token-color-surface-category-subtle: var(--color-purple-50);
+  --token-color-surface-category-muted: var(--color-purple-100);
+  --token-color-surface-category-default: var(--color-purple-500);
+  --token-color-surface-category-strong: var(--color-purple-600);
+  --token-color-surface-category-stronger: var(--color-purple-700);
+  --token-color-surface-category-strongest: var(--color-purple-900);
   --token-color-text-primary: var(--color-text-primary);
   --token-color-text-secondary: var(--color-text-secondary);
   --token-color-text-tertiary: var(--color-text-tertiary);
@@ -113,6 +195,12 @@
   --color-text-success-default: var(--color-green-400);
   --color-text-warning-default: var(--color-orange-400);
   --color-text-info-default: var(--color-blue-400);
+  --color-text-danger-hover: var(--color-red-300);
+  --color-text-success-hover: var(--color-green-300);
+  --color-text-warning-hover: var(--color-orange-300);
+  --color-text-info-hover: var(--color-blue-300);
+  --color-text-category-default: var(--color-purple-300);
+  --color-text-category-hover: var(--color-purple-200);
 
   /* Background */
   --color-bg-primary: var(--color-neutral-900);
@@ -132,6 +220,25 @@
   --color-border-default: var(--color-neutral-700);
   --color-border-strong: var(--color-neutral-600);
   --color-border-disabled: var(--color-neutral-700);
+  --color-border-subtle: var(--color-neutral-800);
+  --color-border-hover: var(--color-neutral-500);
+  --color-border-inverse: var(--color-neutral-300);
+  --color-border-input-default: var(--color-neutral-600);
+  --color-border-input-focus: var(--color-brand-400);
+  --color-border-brand-hover: var(--color-brand-400);
+  --color-border-brand-subtle: var(--color-brand-800);
+  --color-border-danger-hover: var(--color-red-400);
+  --color-border-danger-subtle: var(--color-red-800);
+  --color-border-info-hover: var(--color-blue-400);
+  --color-border-info-subtle: var(--color-blue-800);
+  --color-border-success-hover: var(--color-green-400);
+  --color-border-success-subtle: var(--color-green-800);
+  --color-border-warning-hover: var(--color-orange-400);
+  --color-border-warning-subtle: var(--color-orange-800);
+  --color-border-tertiary-default: var(--color-neutral-700);
+  --color-border-tertiary-hover: var(--color-neutral-600);
+  --color-border-category-hover: var(--color-purple-400);
+  --color-border-category-subtle: var(--color-purple-800);
 
   /* Interactive
    * ⚠️ primary 버튼 배경이 #FABC37(밝은 골든)이므로 텍스트는 반드시 다크(neutral-900) */
@@ -142,6 +249,16 @@
   --color-interactive-ghost-text: var(--color-neutral-300);
   --color-interactive-ghost-bg-hover: var(--color-neutral-800);
   --color-interactive-destructive-bg-hover: var(--color-red-400);
+
+  /* Icon — `Icon` 컴포넌트의 colorTokenMap 키와 매핑 */
+  --color-icon-success-hover: var(--color-green-400);
+  --color-icon-danger-muted: var(--color-red-700);
+  --color-icon-warning-hover: var(--color-orange-400);
+  --color-icon-warning-muted: var(--color-orange-700);
+  --color-icon-info-hover: var(--color-blue-400);
+  --color-icon-info-muted: var(--color-blue-700);
+  --color-icon-category-hover: var(--color-purple-400);
+  --color-icon-category-muted: var(--color-purple-700);
 
   /* Surface · Action — Tailwind utility(`bg-surface-default` 등) 호환용 alias */
   --token-color-surface-subtlest: var(--color-neutral-900);
