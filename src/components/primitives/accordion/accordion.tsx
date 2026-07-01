@@ -4,7 +4,18 @@ import type { ComponentPropsWithoutRef } from "react";
 import { cn } from "../../../utils/cn";
 
 export const Accordion = AccordionPrimitive.Root;
-export const AccordionItem = AccordionPrimitive.Item;
+
+export function AccordionItem({
+  className,
+  ...props
+}: ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>) {
+  return (
+    <AccordionPrimitive.Item
+      className={cn("border-b border-[var(--color-border-default)]", className)}
+      {...props}
+    />
+  );
+}
 
 export function AccordionTrigger({
   className,

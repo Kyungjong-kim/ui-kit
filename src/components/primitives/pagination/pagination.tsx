@@ -68,7 +68,7 @@ export function Pagination({
         aria-label={previousLabel}
         className={itemBase}
       >
-        <ChevronLeftIcon className="h-4 w-4" />
+        <ChevronLeftIcon className="h-size-icon-sm w-size-icon-sm" />
       </button>
 
       {pages.map((page, idx) => {
@@ -79,9 +79,9 @@ export function Pagination({
             <span
               key={`ellipsis-${prev ?? "start"}-${next ?? "end"}`}
               aria-hidden="true"
-              className="inline-flex h-9 min-w-9 items-center justify-center text-[var(--color-text-tertiary)]"
+              className="inline-flex h-size-control-md min-w-size-control-md items-center justify-center text-[var(--color-text-tertiary)]"
             >
-              <MoreHorizontalIcon className="h-4 w-4" />
+              <MoreHorizontalIcon className="h-size-icon-sm w-size-icon-sm" />
             </span>
           );
         }
@@ -111,7 +111,7 @@ export function Pagination({
         aria-label={nextLabel}
         className={itemBase}
       >
-        <ChevronRightIcon className="h-4 w-4" />
+        <ChevronRightIcon className="h-size-icon-sm w-size-icon-sm" />
       </button>
     </nav>
   );
