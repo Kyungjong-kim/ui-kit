@@ -146,13 +146,13 @@ export function DataTable<TData>({
                             ? "descending"
                             : undefined
                       }
-                      className="typography-label-sm-medium border-b border-[var(--color-border-default)] px-4 py-3.5 text-[var(--color-text-secondary)]"
+                      className="typography-label-sm-medium border-b border-[var(--color-border-default)] px-inline-lg py-stack-md text-[var(--color-text-secondary)]"
                     >
                       {header.isPlaceholder ? null : canSort ? (
                         <button
                           type="button"
                           onClick={header.column.getToggleSortingHandler()}
-                          className="inline-flex items-center gap-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-[var(--color-border-focus)]"
+                          className="inline-flex items-center gap-group-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-[var(--color-border-focus)]"
                         >
                           {flexRender(header.column.columnDef.header, header.getContext())}
                           {sortDir === "asc" ? (
@@ -182,7 +182,7 @@ export function DataTable<TData>({
                 >
                   {Array.from({ length: leafColumnCount }, (_, colIdx) => (
                     // biome-ignore lint/suspicious/noArrayIndexKey: 스켈레톤은 정적 플레이스홀더
-                    <td key={`skeleton-${rowIdx}-${colIdx}`} className="px-4 py-3">
+                    <td key={`skeleton-${rowIdx}-${colIdx}`} className="px-inline-lg py-stack-md">
                       <Skeleton className="h-4 w-full" rounded="sm" />
                     </td>
                   ))}
@@ -190,7 +190,7 @@ export function DataTable<TData>({
               ))
             ) : isEmpty ? (
               <tr>
-                <td colSpan={leafColumnCount} className="px-4 py-3">
+                <td colSpan={leafColumnCount} className="px-inline-lg py-stack-md">
                   {emptyContent ?? <EmptyState title="데이터가 없습니다" />}
                 </td>
               </tr>
@@ -204,7 +204,7 @@ export function DataTable<TData>({
                   {row.getVisibleCells().map((cell) => (
                     <td
                       key={cell.id}
-                      className="typography-body-sm-base px-4 py-3.5 text-[var(--color-text-primary)]"
+                      className="typography-body-sm-base px-inline-lg py-stack-md text-[var(--color-text-primary)]"
                     >
                       {flexRender(cell.column.columnDef.cell, cell.getContext())}
                     </td>
