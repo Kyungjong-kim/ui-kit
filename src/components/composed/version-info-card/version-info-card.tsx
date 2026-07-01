@@ -48,6 +48,7 @@ export function VersionInfoCard({
       {items && items.length > 0 && (
         <dl className="flex flex-col gap-1.5 border-t border-[var(--color-border-default)] pt-3">
           {items.map((item, index) => (
+            // biome-ignore lint/suspicious/noArrayIndexKey: 정적 라벨-값 목록(재정렬 없음)
             <div key={index} className="flex justify-between gap-3 text-sm">
               <dt className="text-[var(--color-text-tertiary)]">{item.label}</dt>
               <dd className="text-right font-medium text-[var(--color-text-primary)]">

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Table, type TableColumn } from "../src/components/primitives/table";
+import { Table, type TableColumn } from "../src/components/composed/table";
 
 interface User {
   name: string;

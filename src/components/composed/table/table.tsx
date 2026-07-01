@@ -56,6 +56,7 @@ export function Table<T>({
           ) : (
             data.map((row, rowIndex) => (
               <tr
+                // biome-ignore lint/suspicious/noArrayIndexKey: 정적 표시용 테이블(정렬·재정렬은 DataTable 담당)
                 key={rowIndex}
                 className="border-b border-[var(--color-border-default)] last:border-b-0"
               >

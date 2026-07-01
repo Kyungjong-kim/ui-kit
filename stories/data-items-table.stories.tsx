@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { type DataItemsField, DataItemsTable } from "../src/components/primitives/data-items-table";
+import { type DataItemsField, DataItemsTable } from "../src/components/composed/data-items-table";
 
 interface Server {
   name: string;

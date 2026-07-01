@@ -3,7 +3,7 @@ import {
   TreeTable,
   type TreeTableColumn,
   type TreeTableNode,
-} from "../src/components/primitives/tree-table";
+} from "../src/components/composed/tree-table";
 
 interface FileRow extends TreeTableNode {
   name: string;

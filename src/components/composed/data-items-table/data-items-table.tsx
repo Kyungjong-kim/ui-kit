@@ -45,6 +45,7 @@ export function DataItemsTable<T>({
     >
       {data.map((item, index) => (
         <div
+          // biome-ignore lint/suspicious/noArrayIndexKey: 정적 카드 목록(재정렬 없음)
           key={index}
           className="rounded-lg border border-[var(--color-border-default)] bg-[var(--color-bg-primary)] p-4"
         >
