@@ -20,8 +20,8 @@ export interface SettingRowProps {
 
 export function SettingRow({ label, tooltip, children, className }: SettingRowProps) {
   return (
-    <div className={cn("flex items-start gap-3", className)}>
-      <span className="flex w-[120px] shrink-0 items-center gap-1 typography-body-md-base text-[var(--color-text-secondary)]">
+    <div className={cn("flex items-start gap-group-md", className)}>
+      <span className="flex w-[120px] shrink-0 items-center gap-group-xs typography-body-md-base text-[var(--color-text-secondary)]">
         {label}
         {tooltip}
       </span>

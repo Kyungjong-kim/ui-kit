@@ -33,25 +33,29 @@ export function VersionInfoCard({
   return (
     <div
       className={cn(
-        "flex flex-col gap-3 rounded-lg border border-[var(--color-border-default)] bg-[var(--color-bg-primary)] p-4",
+        "flex flex-col gap-stack-md rounded-lg border border-[var(--color-border-default)] bg-[var(--color-bg-primary)] px-inline-lg py-stack-lg",
         className,
       )}
       {...props}
     >
-      <div className="flex items-center justify-between gap-3">
-        <span className="text-base font-semibold text-[var(--color-text-primary)]">{version}</span>
+      <div className="flex items-baseline justify-between gap-group-md">
+        <span className="typography-label-lg-bold text-[var(--color-text-primary)]">{version}</span>
         {releaseDate && (
-          <span className="text-xs text-[var(--color-text-tertiary)]">{releaseDate}</span>
+          <span className="typography-caption shrink-0 text-[var(--color-text-tertiary)]">
+            {releaseDate}
+          </span>
         )}
       </div>
-      {summary && <p className="text-sm text-[var(--color-text-secondary)]">{summary}</p>}
+      {summary && (
+        <p className="typography-body-sm-base text-[var(--color-text-secondary)]">{summary}</p>
+      )}
       {items && items.length > 0 && (
-        <dl className="flex flex-col gap-1.5 border-t border-[var(--color-border-default)] pt-3">
+        <dl className="flex flex-col gap-stack-sm border-t border-[var(--color-border-default)] pt-stack-md">
           {items.map((item, index) => (
             // biome-ignore lint/suspicious/noArrayIndexKey: 정적 라벨-값 목록(재정렬 없음)
-            <div key={index} className="flex justify-between gap-3 text-sm">
+            <div key={index} className="flex justify-between gap-group-md typography-body-sm-base">
               <dt className="text-[var(--color-text-tertiary)]">{item.label}</dt>
-              <dd className="text-right font-medium text-[var(--color-text-primary)]">
+              <dd className="text-right typography-body-sm-medium text-[var(--color-text-primary)]">
                 {item.value}
               </dd>
             </div>

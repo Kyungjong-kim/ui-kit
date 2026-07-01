@@ -31,11 +31,11 @@ export function DocumentCell({
   return (
     <div
       className={cn(
-        "relative flex w-[240px] overflow-hidden items-start py-2 px-3 rounded-md border border-[var(--color-border-default)]",
+        "relative flex w-[240px] overflow-hidden items-start py-stack-sm px-inline-md rounded-md border border-[var(--color-border-default)]",
         disabled ? "bg-[var(--color-bg-secondary)]" : "bg-[var(--color-bg-primary)]",
       )}
     >
-      <div className="flex items-center gap-2 flex-1 min-w-0">
+      <div className="flex items-center gap-group-sm flex-1 min-w-0">
         <div
           className={cn(
             "relative flex shrink-0 items-center justify-center overflow-hidden rounded-sm w-[52px] h-[52px]",
@@ -50,9 +50,9 @@ export function DocumentCell({
           )}
         </div>
         <div className="flex min-w-0 flex-1 flex-row items-center">
-          <div className="flex min-w-0 flex-1 flex-col pr-2">
+          <div className="flex min-w-0 flex-1 flex-col pr-inline-sm">
             <Text
-              variant="typography-body-md-bold"
+              variant="typography-body-md-medium"
               className={cn(
                 "block h-[20px] w-full overflow-hidden text-ellipsis whitespace-nowrap leading-[20px]",
                 disabled ? "text-[var(--color-text-disabled)]" : "text-[var(--color-text-primary)]",

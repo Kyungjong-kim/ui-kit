@@ -33,11 +33,17 @@ export function SummaryGrid({
   className,
 }: SummaryGridProps) {
   return (
-    <div className={cn("grid grid-cols-2 gap-x-4 gap-y-3", COLUMN_CLASS[columns], className)}>
+    <div
+      className={cn(
+        "grid grid-cols-2 gap-x-group-lg gap-y-group-md",
+        COLUMN_CLASS[columns],
+        className,
+      )}
+    >
       {loading
         ? Array.from({ length: skeletonCount ?? columns }).map((_, i) => (
             // biome-ignore lint/suspicious/noArrayIndexKey: 정적 스켈레톤 셀 — 순서 변경 없음
-            <div key={i} className="flex flex-col gap-2">
+            <div key={i} className="flex flex-col gap-group-xs">
               <TextSkeleton size="sm" width={50} />
               <TextSkeleton width={70} />
             </div>

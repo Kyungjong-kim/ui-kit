@@ -54,7 +54,7 @@ export function CheckMark({
     <CheckboxPrimitive.Root
       data-slot="check-mark"
       className={cn(
-        "group inline-flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-border-focus)]",
+        "group inline-flex items-center gap-group-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-border-focus)]",
         disabled ? "cursor-not-allowed" : "cursor-pointer",
         className,
       )}
