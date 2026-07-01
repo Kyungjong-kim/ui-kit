@@ -81,6 +81,21 @@ font-size·line-height 등을 개별 토큰으로 적용한다.
 |---|---|
 | 페이지 최상단 타이틀 | `headline-xl` (24) |
 | 섹션/모달 헤더 | `headline-lg` (20) |
+| 폼 섹션 타이틀 | `headline-sm` (16) |
 | 본문 | `body-md` (14) |
+| 강조 본문·값 | `body-md-medium` (14/500) |
+| 폼/버튼 라벨 | `label-md-medium` (14/500) |
 | 보조 설명·캡션 | `caption` (12) |
 | 인라인 코드 | `code` (14) |
+
+## 텍스트 위계 3단계 (크기 × 색)
+
+위계는 **크기(스케일) + 색([color.md](color.md) text 3단계)**를 함께 써서 만든다. 색만 또는 크기만으로는 위계가 약하다.
+
+| 단계 | 색 토큰 | 대표 스케일 |
+|---|---|---|
+| 1차 (본문·제목) | `--color-text-primary` | `body-md-base` · `headline-*` |
+| 2차 (보조·라벨) | `--color-text-secondary` | `body-md-base` · `label-md-medium` |
+| 3차 (캡션·메타) | `--color-text-tertiary` | `caption` |
+
+- 비활성 텍스트는 `--color-text-disabled`(본문에 쓰지 말 것), 어두운 면 위는 `--color-text-inverse`.
