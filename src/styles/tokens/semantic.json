@@ -718,6 +718,60 @@
           "value": "var(--color-bg-tertiary)"
         }
       ]
+    },
+    {
+      "comment": "/* Chart — 시리즈 구분색(의미색 아님) + 축·그리드. 다크는 대비 위해 한 단계 밝게 */",
+      "tokens": [
+        {
+          "name": "--color-chart-1",
+          "value": "var(--color-brand-500)",
+          "dark": "var(--color-brand-400)"
+        },
+        {
+          "name": "--color-chart-2",
+          "value": "var(--color-blue-500)",
+          "dark": "var(--color-blue-400)"
+        },
+        {
+          "name": "--color-chart-3",
+          "value": "var(--color-green-500)",
+          "dark": "var(--color-green-400)"
+        },
+        {
+          "name": "--color-chart-4",
+          "value": "var(--color-orange-500)",
+          "dark": "var(--color-orange-400)"
+        },
+        {
+          "name": "--color-chart-5",
+          "value": "var(--color-red-500)",
+          "dark": "var(--color-red-400)"
+        },
+        {
+          "name": "--color-chart-6",
+          "value": "var(--color-brand-300)",
+          "dark": "var(--color-brand-300)"
+        },
+        {
+          "name": "--color-chart-7",
+          "value": "var(--color-blue-300)",
+          "dark": "var(--color-blue-300)"
+        },
+        {
+          "name": "--color-chart-8",
+          "value": "var(--color-green-300)",
+          "dark": "var(--color-green-300)"
+        },
+        {
+          "name": "--color-chart-grid",
+          "value": "var(--color-border-default)",
+          "commentBefore": "/* 그리드·축 — 기존 CHART_GRID_COLOR·AXIS 정합(참조 semantic 토큰이 다크값 보유) */"
+        },
+        {
+          "name": "--color-chart-axis",
+          "value": "var(--color-text-tertiary)"
+        }
+      ]
     }
   ]
 }
