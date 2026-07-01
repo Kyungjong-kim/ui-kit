@@ -35,4 +35,22 @@ describe("Tag", () => {
     render(<Tag size="sm">소형</Tag>);
     expect(screen.getByText("소형").className).toMatch(/typography-label-xs/);
   });
+
+  it("appearance 미지정 시 subtle 스타일을 유지한다 (기존 호환)", () => {
+    render(<Tag variant="success">성공</Tag>);
+    const cls = screen.getByText("성공").className;
+    expect(cls).toMatch(/color-bg-success-subtle/);
+    expect(cls).not.toMatch(/color-text-inverse/);
+  });
+
+  it("appearance=solid이 진한 배경과 대비 텍스트를 적용한다", () => {
+    render(
+      <Tag variant="success" appearance="solid">
+        성공
+      </Tag>,
+    );
+    const cls = screen.getByText("성공").className;
+    expect(cls).toMatch(/color-bg-success-default/);
+    expect(cls).toMatch(/color-text-inverse/);
+  });
 });

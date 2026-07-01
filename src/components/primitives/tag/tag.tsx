@@ -11,12 +11,23 @@ const tagVariants = cva("inline-flex items-center gap-group-xxs rounded-full tra
       warning: "bg-[var(--color-bg-warning-subtle)] text-[var(--color-text-warning-default)]",
       danger: "bg-[var(--color-bg-danger-subtle)] text-[var(--color-text-danger-default)]",
     },
+    appearance: {
+      subtle: "",
+      solid: "text-[var(--color-text-inverse)]",
+    },
     size: {
       sm: "px-inline-xs py-stack-xxs typography-label-xs",
       md: "px-inline-sm py-stack-xs typography-label-sm-medium",
     },
   },
-  defaultVariants: { variant: "default", size: "md" },
+  compoundVariants: [
+    { variant: "default", appearance: "solid", className: "bg-[var(--color-bg-brand-default)]" },
+    { variant: "info", appearance: "solid", className: "bg-[var(--color-bg-info-default)]" },
+    { variant: "success", appearance: "solid", className: "bg-[var(--color-bg-success-default)]" },
+    { variant: "warning", appearance: "solid", className: "bg-[var(--color-bg-warning-default)]" },
+    { variant: "danger", appearance: "solid", className: "bg-[var(--color-bg-danger-default)]" },
+  ],
+  defaultVariants: { variant: "default", appearance: "subtle", size: "md" },
 });
 
 export interface TagProps
@@ -25,9 +36,17 @@ export interface TagProps
   onRemove?: () => void;
 }
 
-export function Tag({ className, variant, size, onRemove, children, ...props }: TagProps) {
+export function Tag({
+  className,
+  variant,
+  appearance,
+  size,
+  onRemove,
+  children,
+  ...props
+}: TagProps) {
   return (
-    <span className={cn(tagVariants({ variant, size }), className)} {...props}>
+    <span className={cn(tagVariants({ variant, appearance, size }), className)} {...props}>
       {children}
       {onRemove && (
         <button
