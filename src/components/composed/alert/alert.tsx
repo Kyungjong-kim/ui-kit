@@ -10,11 +10,11 @@ const alertVariants = cva("relative flex gap-3 rounded-lg border p-4 text-sm", {
     variant: {
       info: "border-[var(--color-border-default)] bg-[var(--color-bg-secondary)] text-[var(--color-text-secondary)]",
       success:
-        "border-[var(--color-green-200)] bg-[var(--color-bg-success-subtle)] text-[var(--color-green-700)]",
+        "border-[var(--color-border-success-subtle)] bg-[var(--color-bg-success-subtle)] text-[var(--color-text-success-default)]",
       warning:
-        "border-[var(--color-orange-200)] bg-[var(--color-bg-warning-subtle)] text-[var(--color-orange-700)]",
+        "border-[var(--color-border-warning-subtle)] bg-[var(--color-bg-warning-subtle)] text-[var(--color-text-warning-default)]",
       danger:
-        "border-[var(--color-red-200)] bg-[var(--color-bg-danger-subtle)] text-[var(--color-red-600)]",
+        "border-[var(--color-border-danger-subtle)] bg-[var(--color-bg-danger-subtle)] text-[var(--color-text-danger-default)]",
     },
   },
   defaultVariants: { variant: "info" },

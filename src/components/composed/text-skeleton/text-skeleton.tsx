@@ -16,7 +16,7 @@ export function TextSkeleton({ className, width = 100, size = "md", style }: Tex
   return (
     <div
       className={cn(
-        "animate-pulse bg-[var(--color-neutral-200)]",
+        "animate-pulse bg-[var(--color-surface-strong)]",
         "rounded-xxs",
         sizeClassName,
         className,

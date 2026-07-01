@@ -34,7 +34,7 @@ export function DropdownMenuItem({
     <DropdownMenuPrimitive.Item
       className={cn(
         "relative flex cursor-pointer select-none items-center rounded-xs px-inline-sm py-stack-xs typography-label-md-base text-[var(--color-text-primary)] outline-none transition-colors",
-        "hover:bg-[var(--color-bg-tertiary)] focus:bg-[var(--color-bg-tertiary)]",
+        "hover:bg-[var(--color-bg-secondary)] focus:bg-[var(--color-bg-secondary)]",
         "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
         className,
       )}
