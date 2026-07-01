@@ -13,11 +13,18 @@ src/styles/
 ├── tokens.css                 # dist 배포 진입점 (core + semantic import)
 ├── index.css                  # Storybook/dev 전용 (tailwindcss + @theme inline 포함)
 └── tokens/
-    ├── core.css               # raw 값 (#fabc37 등) — 직접 참조 금지
-    └── semantic.css           # core 참조하는 의미 토큰 — 컴포넌트가 사용
+    ├── core.json              # ★ 단일 소스 — raw 값 (#fabc37 등)
+    ├── core.css               # core.json에서 생성 — 직접 편집 금지
+    ├── semantic.json          # ★ 단일 소스 — core 참조 의미 토큰
+    ├── semantic.css           # semantic.json에서 생성 — 직접 편집 금지
+    └── tokens.ts              # 생성된 토큰 이름 union 타입 (public export)
 ```
 
 **원칙**: 컴포넌트는 **semantic 토큰만** 참조한다. core 토큰을 직접 쓰지 않는다.
+
+> **토큰 파이프라인**: `core.css`·`semantic.css`·`tokens.ts`는 JSON 단일 소스에서 생성된 산출물이다.
+> **토큰 값을 바꿀 때는 `.css`가 아니라 `core.json`·`semantic.json`을 수정한 뒤 `pnpm tokens`로 재생성한다.**
+> 생성기는 `scripts/build-tokens.ts` (Node TS strip, `node scripts/build-tokens.ts`).
 
 > **라이브러리 이식성**: 컴포넌트 className에는 `bg-[var(--color-bg-brand-default)]` 형태(CSS 임의값)를 사용한다.
 > Tailwind 유틸리티 클래스(`bg-bg-brand-default`)는 소비 앱이 `@theme inline`을 구성한 경우에만 동작하므로
@@ -99,12 +106,13 @@ const buttonVariants = cva("기본 공통 클래스", {
 ## 6. 새 토큰 추가 절차
 
 1. 의미 토큰이 부족한 상황을 판단 (예: `info` 카테고리 추가 필요)
-2. core 토큰에 색상 단계 추가 (필요 시) — `tokens/core.css`
-3. semantic 토큰 추가 — `tokens/semantic.css`
-4. `index.css` `@theme inline` 블록에 새 토큰 추가
-5. `pnpm build` 실행해 `dist/styles.css` 갱신 확인
-5. 기존 컴포넌트에 영향이 있는지 grep 검토
-6. `agent/design-system.md` 갱신 (이 문서)
+2. core 토큰에 색상 단계 추가 (필요 시) — `tokens/core.json`
+3. semantic 토큰 추가 — `tokens/semantic.json`
+4. `pnpm tokens` 실행 — `core.css`·`semantic.css`·`tokens.ts` 재생성
+5. `index.css` `@theme inline` 블록에 새 토큰 추가
+6. `pnpm build` 실행해 `dist/styles.css` 갱신 확인
+7. 기존 컴포넌트에 영향이 있는지 grep 검토
+8. `agent/design-system.md` 갱신 (이 문서)
 
 ---
 

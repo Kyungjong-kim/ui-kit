@@ -34,6 +34,7 @@ import { Button, Input, Dialog, Toaster } from "ui-kit";
 | [page-header.md](./page-header.md) | PageHeader | composed | `PageHeader` |
 | [date-picker.md](./date-picker.md) | DatePicker | composed | `DatePicker` |
 | [chart.md](./chart.md) | LineChart · BarChart · DonutChart | composed | `LineChart`, `BarChart`, `DonutChart` |
+| [data-table.md](./data-table.md) | DataTable | composed | `DataTable` |
 
 ## 공통 패턴
 
