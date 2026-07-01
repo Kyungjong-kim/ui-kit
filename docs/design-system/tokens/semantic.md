@@ -28,6 +28,9 @@
 | `--color-text-success-default` | `green-500` |
 | `--color-text-warning-default` | `orange-600` |
 | `--color-text-info-default` | `blue-700` |
+| `--color-text-category-default` | `purple-600` |
+
+> 브랜드·상태·category 계열에는 `-hover` 변형도 있다(default보다 한 단계 진하게): `--color-text-{brand,danger,success,warning,info,category}-hover`.
 
 ## Background
 
@@ -56,12 +59,18 @@
 | 토큰 | → core |
 |---|---|
 | `--color-border-default` | `neutral-200` |
+| `--color-border-subtle` | `neutral-100` (default보다 옅은 경계) |
 | `--color-border-strong` | `neutral-300` |
-| `--color-border-brand-default` | `brand-500` |
-| `--color-border-danger-default` | `red-500` |
-| `--color-border-info-default` | `blue-500` |
-| `--color-border-disabled` | `neutral-200` |
+| `--color-border-hover` | `neutral-300` |
+| `--color-border-inverse` | `neutral-700` |
+| `--color-border-input-default` / `-input-focus` | `neutral-300` / `brand-500` |
 | `--color-border-focus` | `brand-400` (포커스 링 — offset과 함께 사용) |
+| `--color-border-disabled` | `neutral-200` |
+| `--color-border-tertiary-default` / `-hover` | `neutral-200` / `neutral-300` |
+| `--color-border-{brand,danger,info,success,warning}-default` | 각 계열 `500` |
+| `--color-border-{brand,danger,info,success,warning}-hover` | 각 계열 `600` |
+| `--color-border-{brand,danger,info,success,warning}-subtle` | 각 계열 `200` |
+| `--color-border-category-default` / `-hover` / `-subtle` | `purple-500` / `-600` / `-200` |
 
 ## Interactive
 
@@ -98,21 +107,31 @@
 | `--color-icon-brand-hover` | `bg-brand-hover` |
 | `--color-icon-danger-default` | `bg-danger-default` |
 | `--color-icon-danger-hover` | `interactive-destructive-bg-hover` |
-| `--color-icon-success-default` | `bg-success-default` |
+| `--color-icon-success-default` / `-hover` | `bg-success-default` / `green-600` |
+| `--color-icon-{danger,warning,info}-muted` | 각 계열 `300` (옅은 아이콘) |
+| `--color-icon-{warning,info}-default` / `-hover` | 각 계열 bg-default / `600` |
+| `--color-icon-category-default` / `-hover` / `-muted` | `purple-500` / `-600` / `-300` |
 
 ## Surface · Action (alias)
 
 `bg-surface-default` 같은 Tailwind 유틸 호환용 alias. 기존 semantic 토큰을 다시 가리킨다.
 신규 코드는 위의 text/bg/border/interactive 토큰을 우선 사용하고, 이 alias는 호환이 필요할 때만 쓴다.
 
+neutral surface 는 `subtlest`(25) → `strongest`(400) 로 진해진다. 상태·brand·category 계열도 `subtlest → strongest` 단계.
+
 | 토큰 | → |
 |---|---|
 | `--token-color-surface-default` | `bg-primary` |
-| `--token-color-surface-brand-default` | `bg-brand-default` |
-| `--token-color-surface-brand-subtle` | `bg-brand-subtle` |
-| `--token-color-surface-brand-subtlest` | `bg-brand-subtle` |
-| `--token-color-surface-brand-muted` | `bg-brand-subtle-hover` |
-| `--token-color-surface-brand-strong` | `bg-brand-hover` |
+| `--token-color-surface-subtlest` | `neutral-25` |
+| `--token-color-surface-subtle` | `bg-secondary` (neutral-50) |
+| `--token-color-surface-muted` | `bg-tertiary` (neutral-100) |
+| `--token-color-surface-strong` / `-stronger` / `-strongest` | `neutral-200` / `-300` / `-400` |
+| `--token-color-surface-brand-{subtlest,subtle,muted,default,strong,stronger,strongest}` | brand 계층 (subtlest→900) |
+| `--token-color-surface-success-{subtlest,subtle,muted,strong,stronger,strongest}` | green 계층 |
+| `--token-color-surface-danger-{subtlest,subtle,muted,strong,stronger,strongest}` | red 계층 |
+| `--token-color-surface-warning-{subtlest,subtle,muted,strong,stronger,strongest}` | orange 계층 |
+| `--token-color-surface-info-{subtlest,subtle,muted,strong,stronger,strongest}` | blue 계층 |
+| `--token-color-surface-category-{subtlest,subtle,muted,default,strong,stronger,strongest}` | purple 계층 |
 | `--token-color-text-primary` | `text-primary` |
 | `--token-color-text-secondary` | `text-secondary` |
 | `--token-color-text-tertiary` | `text-tertiary` |
@@ -121,3 +140,19 @@
 | `--token-color-action-primary-hover` | `bg-brand-hover` |
 | `--token-color-action-tertiary-default` | `bg-secondary` |
 | `--token-color-action-tertiary-hover` | `bg-tertiary` |
+
+## 다크모드 (`[data-theme="dark"]`)
+
+`semantic.css` 는 `:root`(라이트) 외에 `[data-theme="dark"]` 블록에서 text·bg·surface·border·icon 계열을 재정의한다. core 팔레트는 불변이며 semantic 매핑만 다크 값으로 교체된다.
+
+| 토큰 | 라이트 | 다크 |
+|---|---|---|
+| `--color-text-primary` | `neutral-900` | `neutral-25` |
+| `--color-text-secondary` | `neutral-700` | `neutral-300` |
+| `--color-bg-primary` | `white` | `neutral-900` |
+| `--color-bg-secondary` | `neutral-50` | `neutral-800` |
+| `--color-border-default` | `neutral-200` | `neutral-700` |
+| `--color-text-brand-default` | `brand-700` | `brand-300` |
+| `--token-color-surface-strong` | `neutral-200` | `neutral-700` |
+
+> 라이트/다크 나란히 비교: Storybook `Docs/Design Tokens` 7절. 전체 다크 매핑은 `semantic.css` `[data-theme="dark"]` 블록이 SoT.
