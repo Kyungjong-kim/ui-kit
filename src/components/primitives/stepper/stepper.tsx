@@ -45,7 +45,8 @@ export function Stepper({
                 <div
                   className={cn(
                     "flex h-size-control-sm w-size-control-sm items-center justify-center rounded-full typography-label-sm-medium transition-colors",
-                    isDone && "bg-[var(--color-bg-brand-default)] text-[var(--color-neutral-900)]",
+                    isDone &&
+                      "bg-[var(--color-bg-brand-default)] text-[var(--color-interactive-primary-text)]",
                     isCurrent &&
                       "border-2 border-[var(--color-border-brand-default)] text-[var(--color-text-brand-default)]",
                     !isDone &&

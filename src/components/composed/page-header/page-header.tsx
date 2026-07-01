@@ -31,11 +31,11 @@ export function PageHeader({
   return (
     <header
       className={cn(
-        "bg-[var(--color-bg-primary)] flex items-start gap-6 w-full h-[48px] px-6 pt-2",
+        "bg-[var(--color-bg-primary)] flex items-start gap-group-xl w-full h-size-control-xl px-inline-xxl pt-stack-sm border-b border-[var(--color-border-default)]",
         roundedStyle && "rounded-t-md rounded-b-none",
       )}
     >
-      <div className="flex w-full h-[32px] gap-2 items-center">
+      <div className="flex w-full h-size-control-sm gap-group-sm items-center">
         {leftLeadingElement}
         {leftLeadingIcon && <Icon name={leftLeadingIcon} size="lg" />}
         <div className="min-w-0">
@@ -53,7 +53,7 @@ export function PageHeader({
         </div>
         {leftTrailingButton}
       </div>
-      <div className="flex gap-2">
+      <div className="flex gap-group-sm">
         {rightLeadingButton}
         {rightTrailingButton}
       </div>

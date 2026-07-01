@@ -69,8 +69,12 @@ export function NavFlyout({
   return (
     <Popover open={isOpen} onOpenChange={setOpen}>
       <PopoverTrigger asChild>{trigger}</PopoverTrigger>
-      <PopoverContent align={align} side={side} className={cn("w-56 p-1", contentClassName)}>
-        <nav className="flex flex-col gap-0.5" aria-label="네비게이션">
+      <PopoverContent
+        align={align}
+        side={side}
+        className={cn("w-56 p-stack-xxs", contentClassName)}
+      >
+        <nav className="flex flex-col gap-stack-xxs" aria-label="네비게이션">
           {items.map((item) => (
             <button
               key={item.id}
@@ -79,7 +83,7 @@ export function NavFlyout({
               disabled={item.disabled}
               onClick={() => handleSelect(item)}
               className={cn(
-                "flex items-center gap-group-sm rounded-sm px-2 py-1.5 text-left",
+                "flex items-center gap-group-sm rounded-sm px-inline-sm py-stack-xs text-left",
                 "typography-body-sm-medium text-[var(--color-text-primary)]",
                 "hover:bg-[var(--color-bg-tertiary)]",
                 "focus-visible:outline-none focus-visible:bg-[var(--color-bg-tertiary)]",
