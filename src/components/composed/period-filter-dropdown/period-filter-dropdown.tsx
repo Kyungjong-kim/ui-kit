@@ -102,7 +102,7 @@ export function PeriodFilterDropdown({
           type="button"
           disabled={disabled}
           className={cn(
-            "inline-flex h-size-control-md items-center gap-group-xs rounded-xs border px-inline-md",
+            "inline-flex h-size-control-md items-center gap-group-xs rounded-sm border px-inline-md",
             "typography-label-md-medium transition-colors outline-none",
             "border-[var(--color-border-default)] bg-[var(--color-bg-primary)] text-[var(--color-text-primary)]",
             "hover:bg-[var(--color-bg-secondary)]",
@@ -139,7 +139,7 @@ export function PeriodFilterDropdown({
                   "typography-label-md-base transition-colors",
                   active
                     ? "bg-[var(--color-bg-brand-subtle)] typography-label-md-medium text-[var(--color-text-brand-default)]"
-                    : "text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-secondary)]",
+                    : "text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-tertiary)]",
                 )}
               >
                 <span>{labelOf(preset)}</span>

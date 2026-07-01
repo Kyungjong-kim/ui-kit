@@ -12,15 +12,16 @@ export function MultilineButton({ className, children, disabled, ...rest }: Mult
       type="button"
       disabled={disabled}
       className={cn(
-        "inline-flex items-start justify-center rounded-md transition-colors",
+        "inline-flex items-start justify-center rounded-sm transition-colors",
         "bg-[var(--color-interactive-secondary-bg)] border border-[var(--color-interactive-secondary-border)]",
         "hover:bg-[var(--color-bg-secondary)] disabled:pointer-events-none disabled:opacity-50",
-        "h-auto max-h-[56px] min-h-[36px] max-w-full min-w-0 px-4 py-2",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--color-border-focus)]",
+        "h-auto max-h-[56px] min-h-[36px] max-w-full min-w-0 px-inline-md py-stack-xs",
         className,
       )}
       {...rest}
     >
-      <span className="line-clamp-2 whitespace-normal typography-label-md-base text-text-primary text-left">
+      <span className="line-clamp-2 whitespace-normal typography-label-md-medium text-text-primary text-left">
         {children}
       </span>
     </button>

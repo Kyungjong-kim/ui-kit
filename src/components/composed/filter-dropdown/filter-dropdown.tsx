@@ -85,7 +85,7 @@ export function FilterDropdown({
           type="button"
           disabled={disabled}
           className={cn(
-            "inline-flex h-size-control-md items-center gap-group-xs rounded-xs border px-inline-md",
+            "inline-flex h-size-control-md items-center gap-group-xs rounded-sm border px-inline-md",
             "typography-label-md-medium transition-colors outline-none",
             "border-[var(--color-border-default)] bg-[var(--color-bg-primary)] text-[var(--color-text-primary)]",
             "hover:bg-[var(--color-bg-secondary)]",

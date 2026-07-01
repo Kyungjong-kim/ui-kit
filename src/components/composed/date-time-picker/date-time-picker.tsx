@@ -108,7 +108,7 @@ export function DateTimePicker({
           type="button"
           disabled={disabled}
           className={cn(
-            "inline-flex items-center gap-1 typography-label-md-base text-[var(--color-text-primary)] disabled:cursor-not-allowed disabled:text-[var(--color-text-disabled)]",
+            "inline-flex items-center gap-group-xs typography-label-md-base text-[var(--color-text-primary)] disabled:cursor-not-allowed disabled:text-[var(--color-text-disabled)]",
             triggerClassName,
           )}
         >
@@ -123,7 +123,7 @@ export function DateTimePicker({
       <PopoverContent
         align="start"
         className={cn(
-          "w-auto p-0 bg-[var(--color-bg-primary)] rounded-md border border-[var(--color-border-default)] overflow-hidden",
+          "w-auto p-0 bg-[var(--color-bg-primary)] rounded-sm border border-[var(--color-border-default)] overflow-hidden",
           className,
         )}
       >
@@ -148,7 +148,7 @@ export function DateTimePicker({
             value={currentValue ? pad2(currentValue.getHours()) : ""}
             placeholder="00"
             onChange={(event) => handleTimeChange("hours", event.target.value)}
-            className="w-10 rounded-xs border border-[var(--color-border-default)] bg-[var(--color-bg-primary)] px-inline-xs py-stack-xxs text-center typography-label-md-base text-[var(--color-text-primary)] outline-none focus:border-[var(--color-border-focus)]"
+            className="w-10 rounded-xs border border-[var(--color-border-default)] bg-[var(--color-bg-primary)] px-inline-xs py-stack-xxs text-center typography-label-md-base text-[var(--color-text-primary)] outline-none transition-[border-color,box-shadow] focus:border-[var(--color-border-focus)] focus:ring-2 focus:ring-[var(--color-border-focus)]"
           />
           <span className="typography-label-md-base text-[var(--color-text-primary)]">:</span>
           <input
@@ -159,7 +159,7 @@ export function DateTimePicker({
             value={currentValue ? pad2(currentValue.getMinutes()) : ""}
             placeholder="00"
             onChange={(event) => handleTimeChange("minutes", event.target.value)}
-            className="w-10 rounded-xs border border-[var(--color-border-default)] bg-[var(--color-bg-primary)] px-inline-xs py-stack-xxs text-center typography-label-md-base text-[var(--color-text-primary)] outline-none focus:border-[var(--color-border-focus)]"
+            className="w-10 rounded-xs border border-[var(--color-border-default)] bg-[var(--color-bg-primary)] px-inline-xs py-stack-xxs text-center typography-label-md-base text-[var(--color-text-primary)] outline-none transition-[border-color,box-shadow] focus:border-[var(--color-border-focus)] focus:ring-2 focus:ring-[var(--color-border-focus)]"
           />
         </div>
       </PopoverContent>

@@ -44,7 +44,7 @@ const iconButtonVariants = cva(
         lg: ["h-11 w-11"],
       },
       shape: {
-        square: ["rounded-xs"],
+        square: ["rounded-sm"],
         circle: ["rounded-full"],
       },
     },
