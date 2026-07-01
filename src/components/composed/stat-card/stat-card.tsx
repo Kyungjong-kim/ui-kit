@@ -98,7 +98,7 @@ export function StatCard({
     <section
       aria-label={label}
       className={cn(
-        "flex flex-col gap-2 rounded-lg bg-[var(--color-bg-secondary)] px-5 py-4",
+        "flex flex-col gap-2 rounded-lg border border-[var(--color-border-default)] bg-[var(--color-bg-primary)] px-5 py-4 shadow-default-sm",
         className,
       )}
     >

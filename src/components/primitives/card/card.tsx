@@ -9,7 +9,7 @@ export function Card({ className, shadow = "sm", ...props }: CardProps) {
   return (
     <div
       className={cn(
-        "rounded-md border border-[var(--color-border-default)] bg-[var(--color-bg-primary)]",
+        "rounded-lg border border-[var(--color-border-default)] bg-[var(--color-bg-primary)] transition-shadow",
         {
           "shadow-none": shadow === "none",
           "shadow-default-sm": shadow === "sm",
