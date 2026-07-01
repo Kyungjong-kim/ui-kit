@@ -9,7 +9,7 @@ export function Skeleton({ className, rounded = "md" }: SkeletonProps) {
   return (
     <div
       className={cn(
-        "animate-pulse bg-[var(--color-neutral-200)]",
+        "animate-pulse bg-[var(--color-surface-strong)]",
         {
           "rounded-none": rounded === "none",
           "rounded-sm": rounded === "sm",
