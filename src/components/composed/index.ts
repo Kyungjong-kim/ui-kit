@@ -1,3 +1,4 @@
+export * from "./chart";
 export * from "./check-mark";
 export * from "./chip";
 export * from "./date-picker";
