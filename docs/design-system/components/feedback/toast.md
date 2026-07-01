@@ -56,8 +56,8 @@ toast.promise(saveData(), {
 ## When to use
 
 - 사용자 행동에 대한 **짧은 비차단 피드백**(저장됨·복사됨·실패함).
-- 사용자의 확인/결정이 필요하거나 흐름을 멈춰야 하면 토스트가 아니라 [Dialog](./overlay.md)를 쓴다.
-- 지속적으로 보여야 하는 상태는 토스트로 두지 않는다 — 인라인 [Badge](./badge-chip-tag.md)나 배너로 표현한다.
+- 사용자의 확인/결정이 필요하거나 흐름을 멈춰야 하면 토스트가 아니라 [Dialog](../overlay/overlay.md)를 쓴다.
+- 지속적으로 보여야 하는 상태는 토스트로 두지 않는다 — 인라인 [Badge](../data-display/badge-chip-tag.md)나 배너로 표현한다.
 
 ## 접근성
 

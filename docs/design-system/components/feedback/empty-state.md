@@ -53,7 +53,7 @@ import type { EmptyStateProps, EmptyStateButtonAction } from "ui-kit";
 ## 동작 노트
 
 - `primaryAction`만 있으면 버튼 1개, `primaryAction` + `tertiaryAction`이면 버튼 2개(보조=secondary, 주요=primary)가 렌더된다. `tertiaryAction`만 단독으로 주면 버튼은 표시되지 않는다.
-- 액션 버튼은 내부적으로 [Button](./button.md) `size="lg"`로 렌더된다.
+- 액션 버튼은 내부적으로 [Button](../actions/button.md) `size="lg"`로 렌더된다.
 - 일러스트·제목·설명·버튼 중 **아무 것도 없으면 `null`**을 반환한다.
 
 ## When to use

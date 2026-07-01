@@ -85,7 +85,7 @@ const columns: ColumnDef<User, unknown>[] = [
 ## 동작 노트
 
 - **정렬 방향**: 숫자 컬럼은 첫 클릭 시 내림차순(desc-first, TanStack 기본). 문자열 컬럼은 오름차순 우선. 재클릭으로 토글되며 정렬된 헤더에 `aria-sort`가 반영된다.
-- **페이지네이션**: `pageSize` 지정 시에만 하단에 [Pagination](./pagination.md)이 나타나고, 총 페이지가 1 이하면 숨겨진다. 페이지 상태는 컴포넌트 내부에서 관리한다(클라이언트 페이징).
+- **페이지네이션**: `pageSize` 지정 시에만 하단에 [Pagination](../navigation/pagination.md)이 나타나고, 총 페이지가 1 이하면 숨겨진다. 페이지 상태는 컴포넌트 내부에서 관리한다(클라이언트 페이징).
 - **행 선택**: `enableRowSelection`이면 맨 앞에 체크박스 컬럼이 주입된다. 헤더 체크박스는 전체 선택이며, 일부만 선택되면 `indeterminate` 상태가 된다. `getRowId`를 주면 데이터 재정렬·페이지 이동에도 선택이 안정적으로 유지된다.
 - **우선순위**: `loading` → 스켈레톤, 그다음 `data`가 비면 `emptyContent`(기본 `EmptyState`), 그 외 데이터 행.
 
