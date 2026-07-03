@@ -50,8 +50,13 @@ export const DocumentEditor: Story = {
           <div className="mx-auto flex w-full max-w-3xl flex-col gap-stack-lg py-stack-lg">
             <section className="flex flex-col gap-group-md">
               <SectionTitle title="문서 정보" />
-              <Input label="제목" placeholder="문서 제목을 입력하세요" />
-              <Select label="카테고리" options={categoryOptions} placeholder="카테고리 선택" />
+              <Input label="제목" placeholder="문서 제목을 입력하세요" className="w-full" />
+              <Select
+                label="카테고리"
+                options={categoryOptions}
+                placeholder="카테고리 선택"
+                className="w-full"
+              />
               <div className="flex flex-col gap-group-xxs">
                 <span className="typography-label-md-medium text-[var(--color-text-primary)]">
                   태그
@@ -65,7 +70,7 @@ export const DocumentEditor: Story = {
               <Textarea
                 label="내용"
                 placeholder="문서 본문을 작성하세요."
-                className="min-h-[320px]"
+                className="min-h-[320px] w-full"
               />
             </section>
           </div>
