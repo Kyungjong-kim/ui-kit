@@ -178,7 +178,17 @@ export type ColorToken =
   | "--color-icon-info-muted"
   | "--color-icon-category-default"
   | "--color-icon-category-hover"
-  | "--color-icon-category-muted";
+  | "--color-icon-category-muted"
+  | "--color-chart-1"
+  | "--color-chart-2"
+  | "--color-chart-3"
+  | "--color-chart-4"
+  | "--color-chart-5"
+  | "--color-chart-6"
+  | "--color-chart-7"
+  | "--color-chart-8"
+  | "--color-chart-grid"
+  | "--color-chart-axis";
 
 /** Sizing, spacing, radius, shadow and typography tokens (`--token-*`). */
 export type SizingToken =

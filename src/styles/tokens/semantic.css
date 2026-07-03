@@ -180,6 +180,19 @@
   --token-color-action-primary-hover: var(--color-bg-brand-hover);
   --token-color-action-tertiary-default: var(--color-bg-secondary);
   --token-color-action-tertiary-hover: var(--color-bg-tertiary);
+
+  /* Chart — 시리즈 구분색(의미색 아님) + 축·그리드. 다크는 대비 위해 한 단계 밝게 */
+  --color-chart-1: var(--color-brand-500);
+  --color-chart-2: var(--color-blue-500);
+  --color-chart-3: var(--color-green-500);
+  --color-chart-4: var(--color-orange-500);
+  --color-chart-5: var(--color-red-500);
+  --color-chart-6: var(--color-brand-300);
+  --color-chart-7: var(--color-blue-300);
+  --color-chart-8: var(--color-green-300);
+  /* 그리드·축 — 기존 CHART_GRID_COLOR·AXIS 정합(참조 semantic 토큰이 다크값 보유) */
+  --color-chart-grid: var(--color-border-default);
+  --color-chart-axis: var(--color-text-tertiary);
 }
 
 [data-theme="dark"] {
@@ -265,4 +278,14 @@
   --token-color-surface-strong: var(--color-neutral-700);
   --token-color-surface-stronger: var(--color-neutral-600);
   --token-color-surface-strongest: var(--color-neutral-500);
+
+  /* Chart — 시리즈 구분색(의미색 아님) + 축·그리드. 다크는 대비 위해 한 단계 밝게 */
+  --color-chart-1: var(--color-brand-400);
+  --color-chart-2: var(--color-blue-400);
+  --color-chart-3: var(--color-green-400);
+  --color-chart-4: var(--color-orange-400);
+  --color-chart-5: var(--color-red-400);
+  --color-chart-6: var(--color-brand-300);
+  --color-chart-7: var(--color-blue-300);
+  --color-chart-8: var(--color-green-300);
 }

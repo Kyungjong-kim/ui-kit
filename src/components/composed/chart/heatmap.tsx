@@ -32,7 +32,7 @@ export function Heatmap({
   yLabels,
   cellSize = 32,
   cellGap = 4,
-  color = "var(--color-brand-500)",
+  color = "var(--color-chart-1)",
   showValues = false,
   className,
 }: HeatmapProps) {

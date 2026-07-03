@@ -3,25 +3,26 @@ import type { CSSProperties } from "react";
 /**
  * 차트 공통 상수·유틸 — Line/Bar/Donut 등 recharts 기반 차트가 공유한다.
  *
- * 색은 DS core 색 토큰을 직접 참조한다(차트 시리즈 색은 의미색이 아닌 구분색이라
- * semantic 계층을 거치지 않는다). SVG fill/stroke에 CSS 변수를 그대로 넘긴다.
+ * 색은 semantic 차트 토큰(--color-chart-*)을 참조한다(차트 시리즈 색은 의미색이
+ * 아닌 구분색이지만 semantic 계층을 경유해 다크모드 대비를 조정한다).
+ * SVG fill/stroke에 CSS 변수를 그대로 넘긴다.
  */
 
 /** 시리즈 구분 색 팔레트(순서대로 순환) */
 export const CHART_SERIES_COLORS = [
-  "var(--color-brand-500)",
-  "var(--color-blue-500)",
-  "var(--color-green-500)",
-  "var(--color-orange-500)",
-  "var(--color-red-500)",
-  "var(--color-brand-300)",
-  "var(--color-blue-300)",
-  "var(--color-green-300)",
+  "var(--color-chart-1)",
+  "var(--color-chart-2)",
+  "var(--color-chart-3)",
+  "var(--color-chart-4)",
+  "var(--color-chart-5)",
+  "var(--color-chart-6)",
+  "var(--color-chart-7)",
+  "var(--color-chart-8)",
 ] as const;
 
 /** 축·그리드·툴팁 공통 색 */
-export const CHART_GRID_COLOR = "var(--color-border-default)";
-export const CHART_AXIS_COLOR = "var(--color-text-tertiary)";
+export const CHART_GRID_COLOR = "var(--color-chart-grid)";
+export const CHART_AXIS_COLOR = "var(--color-chart-axis)";
 export const CHART_TOOLTIP_BG = "var(--color-bg-primary)";
 export const CHART_TOOLTIP_BORDER = "var(--color-border-default)";
 
