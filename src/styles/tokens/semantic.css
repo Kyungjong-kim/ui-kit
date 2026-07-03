@@ -18,6 +18,10 @@
   --color-text-success-hover: var(--color-green-600);
   --color-text-warning-hover: var(--color-orange-700);
   --color-text-info-hover: var(--color-blue-800);
+  /* 상태 텍스트 strong — subtle 배경 위 대비 확보용(Badge 등) */
+  --color-text-danger-strong: var(--color-red-600);
+  --color-text-success-strong: var(--color-green-700);
+  --color-text-warning-strong: var(--color-orange-700);
   /* category(purple) 텍스트 */
   --color-text-category-default: var(--color-purple-600);
   --color-text-category-hover: var(--color-purple-700);
@@ -212,6 +216,9 @@
   --color-text-success-hover: var(--color-green-300);
   --color-text-warning-hover: var(--color-orange-300);
   --color-text-info-hover: var(--color-blue-300);
+  --color-text-danger-strong: var(--color-red-300);
+  --color-text-success-strong: var(--color-green-300);
+  --color-text-warning-strong: var(--color-orange-300);
   --color-text-category-default: var(--color-purple-300);
   --color-text-category-hover: var(--color-purple-200);
 

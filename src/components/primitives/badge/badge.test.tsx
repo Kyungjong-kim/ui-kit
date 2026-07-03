@@ -10,7 +10,7 @@ describe("Badge", () => {
 
   it("variant=success 클래스가 적용된다", () => {
     render(<Badge variant="success">Active</Badge>);
-    expect(screen.getByText("Active").className).toMatch(/color-green/);
+    expect(screen.getByText("Active").className).toMatch(/color-text-success-strong/);
   });
 
   it("variant=info가 렌더된다", () => {
@@ -31,7 +31,7 @@ describe("Badge", () => {
   it("appearance 미지정 시 subtle 스타일을 유지한다 (기존 호환)", () => {
     render(<Badge variant="success">Active</Badge>);
     const cls = screen.getByText("Active").className;
-    expect(cls).toMatch(/color-green-50/);
+    expect(cls).toMatch(/color-bg-success-subtle/);
     expect(cls).not.toMatch(/color-text-inverse/);
   });
 

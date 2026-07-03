@@ -6,9 +6,9 @@ const badgeVariants = cva("inline-flex items-center rounded-full transition-colo
   variants: {
     variant: {
       default: "bg-[var(--color-bg-brand-subtle)] text-[var(--color-text-brand-default)]",
-      success: "bg-[var(--color-green-50)] text-[var(--color-green-700)]",
-      warning: "bg-[var(--color-orange-50)] text-[var(--color-orange-700)]",
-      danger: "bg-[var(--color-red-50)] text-[var(--color-red-600)]",
+      success: "bg-[var(--color-bg-success-subtle)] text-[var(--color-text-success-strong)]",
+      warning: "bg-[var(--color-bg-warning-subtle)] text-[var(--color-text-warning-strong)]",
+      danger: "bg-[var(--color-bg-danger-subtle)] text-[var(--color-text-danger-strong)]",
       info: "bg-[var(--color-bg-info-subtle)] text-[var(--color-text-info-default)]",
       outline: "border border-[var(--color-border-default)] text-[var(--color-text-secondary)]",
     },
