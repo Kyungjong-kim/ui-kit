@@ -82,6 +82,22 @@
           "dark": "var(--color-blue-300)"
         },
         {
+          "name": "--color-text-danger-strong",
+          "value": "var(--color-red-600)",
+          "dark": "var(--color-red-300)",
+          "commentBefore": "/* 상태 텍스트 strong — subtle 배경 위 대비 확보용(Badge 등) */"
+        },
+        {
+          "name": "--color-text-success-strong",
+          "value": "var(--color-green-700)",
+          "dark": "var(--color-green-300)"
+        },
+        {
+          "name": "--color-text-warning-strong",
+          "value": "var(--color-orange-700)",
+          "dark": "var(--color-orange-300)"
+        },
+        {
           "name": "--color-text-category-default",
           "value": "var(--color-purple-600)",
           "dark": "var(--color-purple-300)",

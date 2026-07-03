@@ -10,7 +10,7 @@ const dotColorMap: Record<DotBadgeTone, string> = {
   warning: "bg-[var(--color-bg-warning-default)]",
   danger: "bg-[var(--color-bg-danger-default)]",
   neutral: "bg-[var(--color-neutral-400)]",
-  info: "bg-[var(--color-bg-brand-default)]",
+  info: "bg-[var(--color-bg-info-default)]",
 };
 
 export interface DotBadgeProps extends HTMLAttributes<HTMLSpanElement> {
