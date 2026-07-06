@@ -108,7 +108,7 @@ ui-kit 레포에 CI workflow 미구축 상태. PR/push 시 자동 검증 없어 
 - LogoOnlyHeader — 클릭 피드백
 
 ### 디자인 토큰 정책
-- 색상 토큰은 회사(gen-portal) 고유 색을 쓰지 않고 ui-kit 자체 `--color-*` 시맨틱 토큰을 alias.
+- 색상 토큰은 회사(사내 포털) 고유 색을 쓰지 않고 ui-kit 자체 `--color-*` 시맨틱 토큰을 alias.
 - 사이즈/타이포 구조 토큰은 ui-kit 자체 정의가 없어 합리적 표준값(`--token-radius-xxs: 4px` 등)으로 신규 정의.
 
 ### 검증
@@ -180,12 +180,12 @@ ui-kit 레포에 CI workflow 미구축 상태. PR/push 시 자동 검증 없어 
 - `stories/` — 16개 stories 추가
 
 ### 주요 변경
-- gen-portal design-system의 composed/ 16개 컴포넌트 이관
+- 사내 포털 DS의 composed/ 16개 컴포넌트 이관
 - **IconButton**: ui-kit Button API 불일치(appearance/tertiary/danger/light 미지원) → 독립 `<button>` + cva로 구현
 - **MultilineButton·SelectButton**: ui-kit Button tertiary variant 없음 → 독립 `<button>` + cva
 - **TextSkeleton**: ui-kit Skeleton이 `style` prop 미지원 → 독립 `<div>` + animate-pulse
 - **Modal**: ui-kit Dialog에 `className` 없음 → ModalProps에서 className 제거
-- **IconTabs**: gen-portal 복합 Tooltip → ui-kit `<Tooltip content={...}>` 단일 API로 변환
+- **IconTabs**: 사내 포털 DS 복합 Tooltip → ui-kit `<Tooltip content={...}>` 단일 API로 변환
 - **EmptyState**: PNG illust 에셋 번들 불가 → `illustSrc?: string` 외부 prop으로 교체
 - **primitives/EmptyState 충돌**: composed가 더 풍부한 API → primitives index에서 제거
 
@@ -207,8 +207,8 @@ ui-kit 레포에 CI workflow 미구축 상태. PR/push 시 자동 검증 없어 
 - `stories/` — 4개 stories 추가
 
 ### 주요 변경
-- gen-portal design-system의 primitives/genon/ 4개 컴포넌트 이관
-- LinkButton: `@gen-portal/design-system` Icon → ui-kit 자체 Icon으로 교체, `danger→dangerDefault`·`light→inverse` 색상 매핑
+- 사내 포털 DS의 primitives/ 4개 컴포넌트 이관
+- LinkButton: `사내 포털 DS 패키지` Icon → ui-kit 자체 Icon으로 교체, `danger→dangerDefault`·`light→inverse` 색상 매핑
 - Thumbnail: 이미지 에셋 대신 `bg-[var(--color-neutral-200)]` CSS fallback 사용 (tsup 라이브러리 빌드 호환)
 
 ### 검증

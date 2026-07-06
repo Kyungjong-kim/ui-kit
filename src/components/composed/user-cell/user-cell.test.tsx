@@ -9,8 +9,8 @@ describe("UserCell", () => {
   });
 
   it("부가 정보를 렌더한다", () => {
-    render(<UserCell name="홍길동" description="admin@genon.ai" />);
-    expect(screen.getByText("admin@genon.ai")).toBeInTheDocument();
+    render(<UserCell name="홍길동" description="admin@example.com" />);
+    expect(screen.getByText("admin@example.com")).toBeInTheDocument();
   });
 
   it("avatarSrc가 없으면 이름 첫 글자를 fallback으로 표시한다", () => {
@@ -26,6 +26,6 @@ describe("UserCell", () => {
 
   it("description이 없으면 부가 정보 텍스트를 렌더하지 않는다", () => {
     render(<UserCell name="홍길동" />);
-    expect(screen.queryByText("admin@genon.ai")).not.toBeInTheDocument();
+    expect(screen.queryByText("admin@example.com")).not.toBeInTheDocument();
   });
 });

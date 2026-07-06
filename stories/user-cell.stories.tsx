@@ -16,7 +16,7 @@ export const Default: Story = {
 };
 
 export const WithDescription: Story = {
-  args: { name: "홍길동", description: "admin@genon.ai" },
+  args: { name: "홍길동", description: "admin@example.com" },
 };
 
 export const WithImage: Story = {
@@ -28,5 +28,5 @@ export const WithImage: Story = {
 };
 
 export const LargeSize: Story = {
-  args: { name: "홍길동", description: "admin@genon.ai", size: "md" },
+  args: { name: "홍길동", description: "admin@example.com", size: "md" },
 };
