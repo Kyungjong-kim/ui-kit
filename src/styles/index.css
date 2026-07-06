@@ -2,3 +2,7 @@
 @import "./tokens/core.css";
 @import "./tokens/semantic.css";
 @import "./theme.css";
+
+/* docs/는 산문 문서 — 예시 표기(`rounded-[var(--token-radius-*)]` 등)가
+   Tailwind 자동 스캔에 실제 유틸로 오인·생성돼 CSS 경고를 내므로 스캔 제외. */
+@source not "../../docs";
