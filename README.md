@@ -1,8 +1,11 @@
 # ui-kit
 
 > Personal React 디자인시스템 라이브러리.
-> Tailwind v4 + Radix UI + cva 기반 65개 컴포넌트(primitives 38 · composed 27) + 캐노니컬 DS 문서 제공.
+> Tailwind v4 + Radix UI + cva 기반 106개 컴포넌트(primitives 38 · composed 60 · templates 8) + JSON 단일 소스 토큰 파이프라인 + 다크모드 + 캐노니컬 DS 문서 제공.
 
+**📖 라이브 Storybook → https://kyungjong-kim.github.io/ui-kit/**
+
+[![Storybook](https://img.shields.io/badge/Storybook-live-ff4785.svg)](https://kyungjong-kim.github.io/ui-kit/)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![React](https://img.shields.io/badge/React-19-61dafb.svg)](https://react.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-6-3178c6.svg)](https://www.typescriptlang.org)
@@ -60,20 +63,17 @@ export function App() {
 
 ## 컴포넌트
 
-Storybook 사이드바와 동일한 8개 카테고리.
+Storybook 사이드바와 동일한 **Atomic Design 계층 + 서브그룹** 구조.
 
-| 카테고리 | 컴포넌트 |
+| 계층 | 서브그룹 · 컴포넌트 |
 |---|---|
-| **Foundation** | `Icon`, `FileIcon` |
-| **Actions** | `Button`, `LinkButton`, `IconButton`, `MultilineButton`, `SelectButton`, `SelectIconButton`, `CheckMark` |
-| **Inputs** | `Input`, `Textarea`, `Select`, `Combobox`, `Checkbox`, `RadioGroup`, `Switch`, `Slider`, `DatePicker`, `FileUpload`, `MultiSelect`, `TagInput`, `SegmentedControl` |
-| **Data Display** | `Text`, `Badge`, `Tag`, `Chip`, `Card`, `Avatar`, `Thumbnail`, `ImageCell`, `DocumentCell`, `SlideListBadge`, `Accordion`, `Separator`, `ScrollArea`, `Calendar`, `DndList`, `SectionTitle`, `TruncateText`, `MetaItem`, `DescriptionList`, `SettingRow`, `StatCard`, `SummaryGrid`, `Timeline` |
-| **Feedback** | `Toast` (`Toaster` + `toast()`), `Spinner`, `Skeleton`, `TextSkeleton`, `Progress`, `EmptyState` |
-| **Navigation** | `Tabs`, `IconTabs`, `Pagination`, `Breadcrumb`, `Stepper` |
-| **Overlay** | `Dialog`, `AlertDialog`, `Sheet`, `Popover`, `DropdownMenu`, `Tooltip`, `Modal` |
-| **Layout** | `PageHeader`, `LogoOnlyHeader` |
+| **Foundations** | Design Tokens · `Text` · `Icon` · `FileIcon` |
+| **Atoms** | **Buttons** `Button` `IconButton` `LinkButton` `MultilineButton` `SelectButton` `SelectIconButton` `FavoriteButton` `RefreshButton` `ResetButton` / **Status** `Badge` `Tag` `Chip` `DotBadge` `SlideListBadge` / **Form Controls** `Checkbox` `RadioGroup` `Switch` / **Loading** `Skeleton` `TextSkeleton` `Spinner` `Progress` / **Display** `Avatar` `Thumbnail` `Tooltip` `HelpTooltipIcon` `Separator` `CheckMark` |
+| **Molecules** | **Form** `Input` `Textarea` `TagInput` `CodeEditor` `SegmentedControl` `FileUpload` / **Select** `Select` `MultiSelect` `Combobox` `SearchableSelect` `CascadingSelect` / **Date** `Calendar` `DatePicker` `DateRangePicker` `DateTimePicker` `MonthPicker` `PeriodFilterDropdown` / **Navigation** `Tabs` `IconTabs` `Breadcrumb` `Pagination` `Stepper` `Accordion` / **Feedback** `Toast` `Alert` `GuideBlock` `EmptyState` / **Filter** `DropdownMenu` `FilterDropdown` `ListControl` / **Heading** `PageHeader` `SectionTitle` / **Progress** `Slider` `SliderField` |
+| **Organisms** | **Charts** `LineChart` `BarChart` `AreaChart` `PieChart` `DonutChart` `RadarChart` `GaugeChart` `SemiCircleChart` `Sparkline` `Heatmap` `BarList` `ComparisonBar` / **Tables** `Table` `DataTable` `TreeTable` `DataItemsTable` / **Metric** `StatCard` `MetricCard` `ResourceUsage` `ClusterResourceBar` `SummaryGrid` / **Cells** `UserCell` `DateTimeCell` `ImageCell` `DocumentCell` / **Overlay** `Dialog` `AlertDialog` `Modal` `Sheet` `Popover` `SidePanel` `FullScreenDialog` `NavFlyout` / **Card** `Card` `VersionInfoCard` / **Misc** `Timeline` `SettingRow` `DescriptionList` `MetaItem` `DndList` `ScrollArea` `TruncateText` `LogoOnlyHeader` |
+| **Templates** | `ListPageTemplate` `FormPageTemplate` `DetailTabsPageTemplate` `BulkActionListPageTemplate` `ModalPageTemplate` `SidePanelPageTemplate` `FullScreenDialogPageTemplate` `DataItemsLayout` — 실사용 조합 화면 목업 |
 
-총 65개(primitives 38 · composed 27) — 컴포넌트별 Props·예제는 Storybook Docs 또는 [`docs/design-system/components/`](docs/design-system/components) 참고.
+총 **106개**(primitives 38 · composed 60 · templates 8) — 컴포넌트별 Props·예제는 [라이브 Storybook](https://kyungjong-kim.github.io/ui-kit/) 또는 [`docs/design-system/components/`](docs/design-system/components) 참고.
 
 ---
 
@@ -162,6 +162,19 @@ develop               ← 개발 통합 (모든 feature PR 머지 대상)
 ## 변경 이력
 
 주요 변경을 여기 누적한다(세부 버전 릴리스는 changesets → `CHANGELOG.md`).
+
+### 2026-07-06 — Storybook 공개 배포·마감 품질
+
+- **GitHub Pages 자동 배포**(#151) — develop push 시 Storybook 배포 → https://kyungjong-kim.github.io/ui-kit/
+- 실화면 조합 버그 일괄(#146·#149): Button `whitespace-nowrap` · TagInput 한글 라벨 · cn `size-*` 토큰 병합 등록(`w-full` override 신뢰성) · Storybook docs 표 리셋 스코프 격리 · DotBadge `info` 파랑 정정 · Badge 톤 semantic 경유(`text-*-strong` 신설)
+- 차트 semantic 토큰 `--color-chart-*`(#145) · 공개 자산 식별자 마스킹 정리(#153)
+
+### 2026-07-02 — 템플릿·다크모드·문서 계층·규격
+
+- **페이지 템플릿 8종** — 실사용 조합 화면 목업(List·Form·DetailTabs·BulkAction·Modal·SidePanel·FullScreenDialog·DataItems)
+- **다크모드** — `[data-theme="dark"]` semantic 오버라이드(라이트 회귀 0)
+- **Atomic Design 재편** — 문서·Storybook 사이드바 5계층+서브그룹
+- **정량 디자인 규격** `docs/design-system/DESIGN.md` — spacing 리듬·타이포 스케일·elevation 4단계·radius 정책 + 규격 감사 일괄 적용
 
 ### 2026-07-01 — 관리자 DS 격차 보완 (컴포넌트 대량 확충·토큰 파이프라인·아이콘)
 

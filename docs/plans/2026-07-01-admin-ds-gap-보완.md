@@ -1,5 +1,7 @@
 # ui-kit 보완 플랜 — 성숙 관리자 DS 대비 격차 분석 (2026-07-01)
 
+> ✅ **종결 (2026-07-06)** — T1~T18 전 태스크 완료·머지. 산출: 컴포넌트 43종+템플릿 8종 확충(총 106종), JSON 토큰 파이프라인, 다크모드, Atomic 문서 재편, DESIGN.md 정량 규격, Storybook 공개 배포(https://kyungjong-kim.github.io/ui-kit/). numeric→named spacing 전면 전환은 기능 무관(거버넌스 선택)으로 보류.
+
 > **목적**: 성숙한 사내 관리자 프론트 디자인시스템(이하 **레퍼런스 DS**)을 벤치마크로, ui-kit의 격차를 식별하고 보완 로드맵을 세운다.
 > **전제 (중요)**: 레퍼런스 DS는 **성숙도 벤치마크로만** 사용한다. 코드·토큰 값·비즈니스 로직을 복사하지 않는다. ui-kit는 독립 구현하며, 격차 항목의 *기능 종류·설계 패턴* 수준만 참고한다.
 
@@ -111,28 +113,28 @@
 > ui-kit 규칙: **신규 컴포넌트 = 5산출물 동시** (tsx + test + index + stories + `<카테고리>/index.ts` export). **이슈 먼저** → 브랜치 `feat/#<번호>` → 커밋 `feat: 한국어 내용 #번호`. TDD(테스트 우선).
 
 **M1 태스크**
-- [ ] T1. `@tanstack/react-table` 의존 추가 + `DataTable` 최소 골격(컬럼·행 렌더) — test 포함
-- [ ] T2. DataTable 정렬 + 페이지네이션(기존 `Pagination` 재사용) — test
-- [ ] T3. DataTable 행 선택 + 빈 상태(`EmptyState`) + 로딩 스켈레톤 — test
-- [ ] T4. DataTable stories(기본·정렬·빈·로딩) + docs 페이지
-- [ ] T5. `tokens/core.json`·`semantic.json` 소스 정의 (현 CSS 값 그대로 이관)
-- [ ] T6. `scripts/build-tokens.ts` — JSON → `core.css`·`semantic.css` 생성 + 기존 CSS diff 0 검증
-- [ ] T7. 토큰 TS 타입 export(`tokens.ts`) + `pnpm tokens` 스크립트 + README 갱신
+- [x] T1. `@tanstack/react-table` 의존 추가 + `DataTable` 최소 골격(컬럼·행 렌더) — test 포함
+- [x] T2. DataTable 정렬 + 페이지네이션(기존 `Pagination` 재사용) — test
+- [x] T3. DataTable 행 선택 + 빈 상태(`EmptyState`) + 로딩 스켈레톤 — test
+- [x] T4. DataTable stories(기본·정렬·빈·로딩) + docs 페이지
+- [x] T5. `tokens/core.json`·`semantic.json` 소스 정의 (현 CSS 값 그대로 이관)
+- [x] T6. `scripts/build-tokens.ts` — JSON → `core.css`·`semantic.css` 생성 + 기존 CSS diff 0 검증
+- [x] T7. 토큰 TS 타입 export(`tokens.ts`) + `pnpm tokens` 스크립트 + README 갱신
 
 **M2 태스크**
-- [ ] T8. 차트 엔진 선정 스파이크(recharts vs 자체 SVG, 번들·tree-shaking 측정)
-- [ ] T9. `LineChart` DS 토큰 통합(축·그리드·툴팁) — test + story
-- [ ] T10. `BarChart` — test + story
-- [ ] T11. `DonutChart` — test + story
-- [ ] T12. surface 토큰 계층(`subtle~strongest` + category) 채움 + 시각 회귀
-- [ ] T13. `DateRangePicker` — test + story
-- [ ] T14. `DateTimePicker` — test + story
+- [x] T8. 차트 엔진 선정 스파이크(recharts vs 자체 SVG, 번들·tree-shaking 측정)
+- [x] T9. `LineChart` DS 토큰 통합(축·그리드·툴팁) — test + story
+- [x] T10. `BarChart` — test + story
+- [x] T11. `DonutChart` — test + story
+- [x] T12. surface 토큰 계층(`subtle~strongest` + category) 채움 + 시각 회귀
+- [x] T13. `DateRangePicker` — test + story
+- [x] T14. `DateTimePicker` — test + story
 
 **M3 태스크**
-- [ ] T15. 다크모드 토큰 계층(`[data-theme=dark]`) + light 회귀 검증
-- [ ] T16. `MetricCard`·`sparkline`·`bar-list` — 각 5산출물
-- [ ] T17. 아이콘 semantic alias 레이어
-- [ ] T18. 미문서 컴포넌트 문서 채움(우선 P0/P1 신규분)
+- [x] T15. 다크모드 토큰 계층(`[data-theme=dark]`) + light 회귀 검증
+- [x] T16. `MetricCard`·`sparkline`·`bar-list` — 각 5산출물
+- [x] T17. 아이콘 semantic alias 레이어
+- [x] T18. 미문서 컴포넌트 문서 채움(우선 P0/P1 신규분)
 
 ---
 
