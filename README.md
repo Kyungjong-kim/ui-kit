@@ -15,7 +15,7 @@
 ## 설치
 
 ```bash
-pnpm add ui-kit
+pnpm add @kyungjong-kim/ui-kit
 # peer dependencies
 pnpm add react react-dom
 ```
@@ -28,25 +28,25 @@ pnpm add react react-dom
 
 ```css
 @import "tailwindcss";
-@import "ui-kit/styles";   /* 디자인 토큰 :root (--token-*, --color-*) */
-@import "ui-kit/theme";    /* @theme inline 매핑 — gap-group-xl·h-size-control-sm 등 커스텀 유틸 생성 */
-@source "../node_modules/ui-kit/dist";  /* 컴포넌트 클래스 스캔 */
+@import "@kyungjong-kim/ui-kit/styles";   /* 디자인 토큰 :root (--token-*, --color-*) */
+@import "@kyungjong-kim/ui-kit/theme";    /* @theme inline 매핑 — gap-group-xl·h-size-control-sm 등 커스텀 유틸 생성 */
+@source "../node_modules/@kyungjong-kim/ui-kit/dist";  /* 컴포넌트 클래스 스캔 */
 ```
 
 | import | 내용 | 필수 |
 |---|---|---|
-| `ui-kit/styles` | core+semantic 토큰 `:root` 값 (런타임 CSS 변수) | ✅ |
-| `ui-kit/theme` | Tailwind v4 `@theme inline` 매핑 (radius·spacing·size·shadow·color·typography 유틸 매핑) | ✅ Tailwind v4 |
+| `@kyungjong-kim/ui-kit/styles` | core+semantic 토큰 `:root` 값 (런타임 CSS 변수) | ✅ |
+| `@kyungjong-kim/ui-kit/theme` | Tailwind v4 `@theme inline` 매핑 (radius·spacing·size·shadow·color·typography 유틸 매핑) | ✅ Tailwind v4 |
 | `@source` | ui-kit dist 스캔 → 컴포넌트가 쓰는 유틸 생성 | ✅ |
 
-> `ui-kit/theme` 없이는 컴포넌트가 쓰는 `gap-group-xl`·`h-size-control-sm`·`w-size-icon-sm`·`rounded-md`·`shadow-default-sm`·`typography-*` 같은 커스텀 theme 유틸이 생성되지 않아 레이아웃이 깨진다. (`@import "tailwindcss"` 는 소비 앱이 직접 선언 — `ui-kit/theme` 에는 포함하지 않는다.)
+> `@kyungjong-kim/ui-kit/theme` 없이는 컴포넌트가 쓰는 `gap-group-xl`·`h-size-control-sm`·`w-size-icon-sm`·`rounded-md`·`shadow-default-sm`·`typography-*` 같은 커스텀 theme 유틸이 생성되지 않아 레이아웃이 깨진다. (`@import "tailwindcss"` 는 소비 앱이 직접 선언 — `@kyungjong-kim/ui-kit/theme` 에는 포함하지 않는다.)
 >
-> CSS `@import` 대신 JS 진입에서 토큰만 로드하려면 `import "ui-kit/styles";` 도 가능하나, `ui-kit/theme` 는 Tailwind 가 처리해야 하므로 반드시 CSS `@import` 로 둔다.
+> CSS `@import` 대신 JS 진입에서 토큰만 로드하려면 `import "@kyungjong-kim/ui-kit/styles";` 도 가능하나, `@kyungjong-kim/ui-kit/theme` 는 Tailwind 가 처리해야 하므로 반드시 CSS `@import` 로 둔다.
 
 ### 2. 컴포넌트 사용
 
 ```tsx
-import { Button, Badge, Toaster, toast } from "ui-kit";
+import { Button, Badge, Toaster, toast } from "@kyungjong-kim/ui-kit";
 
 export function App() {
   return (

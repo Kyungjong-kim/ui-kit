@@ -1,7 +1,22 @@
 {
-  "name": "ui-kit",
-  "version": "0.0.0",
+  "name": "@kyungjong-kim/ui-kit",
+  "version": "0.1.0",
   "description": "Personal design system — portfolio & reusable component library",
+  "keywords": [
+    "design-system",
+    "react",
+    "ui-kit",
+    "components"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kyungjong-kim/ui-kit.git"
+  },
+  "homepage": "https://kyungjong-kim.github.io/ui-kit/",
+  "bugs": "https://github.com/Kyungjong-kim/ui-kit/issues",
+  "publishConfig": {
+    "access": "public"
+  },
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -32,18 +47,13 @@
     "format": "biome format . --write",
     "changeset": "changeset",
     "version": "changeset version",
-    "release": "pnpm build && changeset publish"
+    "release": "pnpm build && pnpm check:masking && changeset publish",
+    "check:masking": "! grep -rliE 'genos|genon|gen-portal|admin-front|0161ed' dist"
   },
   "peerDependencies": {
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
-  "keywords": [
-    "design-system",
-    "react",
-    "ui-kit",
-    "components"
-  ],
   "author": "Kyungjong Kim",
   "license": "MIT",
   "dependencies": {
