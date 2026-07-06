@@ -1,8 +1,36 @@
 import * as Label from "@radix-ui/react-label";
-import { type InputHTMLAttributes, forwardRef, useId } from "react";
+import { cva, type VariantProps } from "class-variance-authority";
+import { forwardRef, type InputHTMLAttributes, useId } from "react";
 import { cn } from "../../../utils/cn";
 
-export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "size"> {
+const inputVariants = cva(
+  [
+    "w-size-field-md rounded-sm border bg-[var(--color-bg-primary)]",
+    "text-[var(--color-text-primary)] placeholder:text-[var(--color-text-tertiary)]",
+    "transition-[border-color,box-shadow] duration-150",
+    "hover:border-[var(--color-border-strong)]",
+    "focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--color-border-focus)] focus:border-[var(--color-border-focus)]",
+    "disabled:cursor-not-allowed disabled:bg-[var(--color-bg-disabled)] disabled:text-[var(--color-text-disabled)] disabled:hover:border-[var(--color-border-default)]",
+  ],
+  {
+    variants: {
+      size: {
+        sm: "h-size-control-sm px-inline-sm typography-label-sm-base",
+        md: "h-size-control-md px-inline-md typography-label-md-base",
+        lg: "h-size-control-lg px-inline-lg typography-label-lg-base",
+      },
+      error: {
+        true: "border-[var(--color-border-danger-default)]",
+        false: "border-[var(--color-border-default)]",
+      },
+    },
+    defaultVariants: { size: "md", error: false },
+  },
+);
+
+export interface InputProps
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, "size">,
+    Omit<VariantProps<typeof inputVariants>, "error"> {
   label?: string;
   error?: boolean;
   helperText?: string;
@@ -15,11 +43,11 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     const inputId = id ?? generatedId;
 
     return (
-      <div className="flex flex-col gap-1.5">
+      <div className="flex flex-col gap-group-xs">
         {label && (
           <Label.Root
             htmlFor={inputId}
-            className="text-sm font-medium text-[var(--color-text-primary)]"
+            className="typography-label-md-medium text-[var(--color-text-primary)]"
           >
             {label}
           </Label.Root>
@@ -27,26 +55,13 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         <input
           id={inputId}
           ref={ref}
-          className={cn(
-            "w-full rounded-md border bg-[var(--color-bg-primary)] text-[var(--color-text-primary)] placeholder:text-[var(--color-text-tertiary)] transition-colors",
-            "focus:outline-none focus:ring-2 focus:ring-[var(--color-border-focus)] focus:border-[var(--color-border-focus)]",
-            "disabled:cursor-not-allowed disabled:bg-[var(--color-bg-disabled)] disabled:text-[var(--color-text-disabled)]",
-            error
-              ? "border-[var(--color-border-danger-default)]"
-              : "border-[var(--color-border-default)]",
-            {
-              "h-8 px-2.5 text-xs": size === "sm",
-              "h-9 px-3 text-sm": size === "md",
-              "h-11 px-4 text-base": size === "lg",
-            },
-            className,
-          )}
+          className={cn(inputVariants({ size, error: !!error }), className)}
           {...props}
         />
         {helperText && (
           <p
             className={cn(
-              "text-xs",
+              "typography-caption",
               error
                 ? "text-[var(--color-text-danger-default)]"
                 : "text-[var(--color-text-tertiary)]",

@@ -10,6 +10,6 @@ describe("Avatar", () => {
 
   it("size 클래스가 적용된다", () => {
     const { container } = render(<Avatar fallback="KJ" size="lg" />);
-    expect(container.firstChild).toHaveClass("h-12");
+    expect(container.firstChild).toHaveClass("h-size-avatar-lg");
   });
 });

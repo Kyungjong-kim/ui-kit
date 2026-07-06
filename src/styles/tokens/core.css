@@ -66,7 +66,254 @@
   --color-orange-800: #9e4a0a;
   --color-orange-900: #783908;
 
+  /* Blue (Info) */
+  --color-blue-25: #f0f7ff;
+  --color-blue-50: #eff6ff;
+  --color-blue-100: #dbeafe;
+  --color-blue-200: #bfdbfe;
+  --color-blue-300: #93c5fd;
+  --color-blue-400: #60a5fa;
+  --color-blue-500: #3b82f6;
+  --color-blue-600: #2563eb;
+  --color-blue-700: #1d4ed8;
+  --color-blue-800: #1e40af;
+  --color-blue-900: #1e3a8a;
+
+  /* Purple (Category — 분류/태그 계열. 앰버·상태색과 구분되는 중립 강조색) */
+  --color-purple-25: #faf7ff;
+  --color-purple-50: #f4eeff;
+  --color-purple-100: #e9ddff;
+  --color-purple-200: #d3bbff;
+  --color-purple-300: #b794f6;
+  --color-purple-400: #9f7aea;
+  --color-purple-500: #8b5cf6;
+  --color-purple-600: #7c4ddb;
+  --color-purple-700: #6b3fc4;
+  --color-purple-800: #5a34a8;
+  --color-purple-900: #472a85;
+
   /* White / Black */
   --color-white: #ffffff;
   --color-black: #000000;
+
+  /* Radius */
+  --token-radius-xxs: 4px;
+  --token-radius-xs: 6px;
+  --token-radius-sm: 8px;
+  --token-radius-md: 12px;
+  --token-radius-lg: 16px;
+  --token-radius-xl: 24px;
+  --token-radius-full: 99999px;
+
+  /* Size · Icon */
+  --token-size-icon-xxs: 8px;
+  --token-size-icon-xs: 12px;
+  --token-size-icon-sm: 16px;
+  --token-size-icon-md: 20px;
+  --token-size-icon-lg: 24px;
+  --token-size-icon-xl: 32px;
+  --token-size-icon-xxl: 48px;
+  --token-size-icon-xxxl: 80px;
+
+  /* Size · Control */
+  --token-size-control-xxxs: 20px;
+  --token-size-control-xxs: 24px;
+  --token-size-control-xs: 28px;
+  --token-size-control-sm: 32px;
+  --token-size-control-md: 36px;
+  --token-size-control-lg: 44px;
+  --token-size-control-xl: 48px;
+  --token-size-control-xxl: 360px;
+
+  /* Field width — 폼 컨트롤(Input/Select/Combobox) 기본 너비. 내용 길이와 무관한 정적 레이아웃 보장 */
+  --token-size-field-sm: 200px;
+  --token-size-field-md: 280px;
+  --token-size-field-lg: 320px;
+
+  /* Size · Avatar */
+  --token-size-avatar-xs: 24px;
+  --token-size-avatar-sm: 32px;
+  --token-size-avatar-md: 40px;
+  --token-size-avatar-lg: 48px;
+  --token-size-avatar-xl: 64px;
+
+  /* Size · Image */
+  --token-size-image-xxs: 36px;
+  --token-size-image-xs: 56px;
+  --token-size-image-sm: 60px;
+  --token-size-image-md: 100px;
+  --token-size-image-lg: 104px;
+  --token-size-image-xl: 184px;
+  --token-size-image-xxl: 320px;
+
+  /* Spacing · Inline (가로 패딩) */
+  --token-spacing-inline-xs: 4px;
+  --token-spacing-inline-sm: 8px;
+  --token-spacing-inline-md: 12px;
+  --token-spacing-inline-lg: 16px;
+  --token-spacing-inline-xl: 20px;
+  --token-spacing-inline-xxl: 24px;
+  --token-spacing-inline-xxxl: 28px;
+
+  /* Spacing · Stack (세로 패딩) */
+  --token-spacing-stack-xxs: 2px;
+  --token-spacing-stack-xs: 4px;
+  --token-spacing-stack-sm: 8px;
+  --token-spacing-stack-md: 12px;
+  --token-spacing-stack-lg: 16px;
+  --token-spacing-stack-xl: 24px;
+  --token-spacing-stack-xxl: 32px;
+
+  /* Spacing · Group (flex/grid gap) */
+  --token-spacing-group-xxs: 2px;
+  --token-spacing-group-xs: 4px;
+  --token-spacing-group-sm: 8px;
+  --token-spacing-group-md: 12px;
+  --token-spacing-group-lg: 16px;
+  --token-spacing-group-xl: 24px;
+
+  /* Shadow · Default */
+  --token-shadow-default-sm: 0 1px 2px 0 rgba(20, 18, 16, 0.06), 0 1px 3px 0 rgba(20, 18, 16, 0.08);
+  --token-shadow-default-md:
+    0 1px 2px -1px rgba(20, 18, 16, 0.08), 0 4px 12px -2px rgba(20, 18, 16, 0.1);
+  --token-shadow-default-lg:
+    0 2px 4px -2px rgba(20, 18, 16, 0.08), 0 10px 28px -6px rgba(20, 18, 16, 0.16);
+  --token-shadow-default-xl:
+    0 4px 8px -3px rgba(20, 18, 16, 0.1), 0 20px 48px -10px rgba(20, 18, 16, 0.2);
+
+  /* Typography — size·weight·line-height·letter-spacing */
+  --token-typography-display-md-size: 32px;
+  --token-typography-display-md-weight: 700;
+  --token-typography-display-md-line-height: 40px;
+  --token-typography-display-md-letter-spacing: -0.5px;
+
+  --token-typography-display-sm-size: 28px;
+  --token-typography-display-sm-weight: 700;
+  --token-typography-display-sm-line-height: 36px;
+  --token-typography-display-sm-letter-spacing: -0.4px;
+
+  --token-typography-headline-xl-size: 24px;
+  --token-typography-headline-xl-weight: 700;
+  --token-typography-headline-xl-line-height: 32px;
+  --token-typography-headline-xl-letter-spacing: -0.3px;
+
+  --token-typography-headline-lg-size: 20px;
+  --token-typography-headline-lg-weight: 700;
+  --token-typography-headline-lg-line-height: 28px;
+  --token-typography-headline-lg-letter-spacing: -0.2px;
+
+  --token-typography-headline-md-size: 18px;
+  --token-typography-headline-md-weight: 700;
+  --token-typography-headline-md-line-height: 26px;
+  --token-typography-headline-md-letter-spacing: -0.1px;
+
+  --token-typography-headline-sm-size: 16px;
+  --token-typography-headline-sm-weight: 700;
+  --token-typography-headline-sm-line-height: 24px;
+  --token-typography-headline-sm-letter-spacing: 0px;
+
+  --token-typography-body-lg-bold-size: 16px;
+  --token-typography-body-lg-bold-weight: 700;
+  --token-typography-body-lg-bold-line-height: 24px;
+  --token-typography-body-lg-bold-letter-spacing: 0px;
+
+  --token-typography-body-lg-medium-size: 16px;
+  --token-typography-body-lg-medium-weight: 500;
+  --token-typography-body-lg-medium-line-height: 24px;
+  --token-typography-body-lg-medium-letter-spacing: 0px;
+
+  --token-typography-body-lg-base-size: 16px;
+  --token-typography-body-lg-base-weight: 400;
+  --token-typography-body-lg-base-line-height: 24px;
+  --token-typography-body-lg-base-letter-spacing: 0px;
+
+  --token-typography-body-md-bold-size: 14px;
+  --token-typography-body-md-bold-weight: 700;
+  --token-typography-body-md-bold-line-height: 20px;
+  --token-typography-body-md-bold-letter-spacing: 0px;
+
+  --token-typography-body-md-medium-size: 14px;
+  --token-typography-body-md-medium-weight: 500;
+  --token-typography-body-md-medium-line-height: 20px;
+  --token-typography-body-md-medium-letter-spacing: 0px;
+
+  --token-typography-body-md-base-size: 14px;
+  --token-typography-body-md-base-weight: 400;
+  --token-typography-body-md-base-line-height: 20px;
+  --token-typography-body-md-base-letter-spacing: 0px;
+
+  --token-typography-body-sm-bold-size: 12px;
+  --token-typography-body-sm-bold-weight: 700;
+  --token-typography-body-sm-bold-line-height: 18px;
+  --token-typography-body-sm-bold-letter-spacing: 0px;
+
+  --token-typography-body-sm-medium-size: 12px;
+  --token-typography-body-sm-medium-weight: 500;
+  --token-typography-body-sm-medium-line-height: 18px;
+  --token-typography-body-sm-medium-letter-spacing: 0px;
+
+  --token-typography-body-sm-base-size: 12px;
+  --token-typography-body-sm-base-weight: 400;
+  --token-typography-body-sm-base-line-height: 18px;
+  --token-typography-body-sm-base-letter-spacing: 0px;
+
+  --token-typography-label-lg-bold-size: 16px;
+  --token-typography-label-lg-bold-weight: 700;
+  --token-typography-label-lg-bold-line-height: 24px;
+  --token-typography-label-lg-bold-letter-spacing: 0px;
+
+  --token-typography-label-lg-medium-size: 16px;
+  --token-typography-label-lg-medium-weight: 500;
+  --token-typography-label-lg-medium-line-height: 24px;
+  --token-typography-label-lg-medium-letter-spacing: 0px;
+
+  --token-typography-label-lg-base-size: 16px;
+  --token-typography-label-lg-base-weight: 400;
+  --token-typography-label-lg-base-line-height: 24px;
+  --token-typography-label-lg-base-letter-spacing: 0px;
+
+  --token-typography-label-md-bold-size: 14px;
+  --token-typography-label-md-bold-weight: 700;
+  --token-typography-label-md-bold-line-height: 20px;
+  --token-typography-label-md-bold-letter-spacing: 0px;
+
+  --token-typography-label-md-medium-size: 14px;
+  --token-typography-label-md-medium-weight: 500;
+  --token-typography-label-md-medium-line-height: 20px;
+  --token-typography-label-md-medium-letter-spacing: 0px;
+
+  --token-typography-label-md-base-size: 14px;
+  --token-typography-label-md-base-weight: 400;
+  --token-typography-label-md-base-line-height: 20px;
+  --token-typography-label-md-base-letter-spacing: 0px;
+
+  --token-typography-label-sm-bold-size: 12px;
+  --token-typography-label-sm-bold-weight: 700;
+  --token-typography-label-sm-bold-line-height: 18px;
+  --token-typography-label-sm-bold-letter-spacing: 0px;
+
+  --token-typography-label-sm-medium-size: 12px;
+  --token-typography-label-sm-medium-weight: 500;
+  --token-typography-label-sm-medium-line-height: 18px;
+  --token-typography-label-sm-medium-letter-spacing: 0px;
+
+  --token-typography-label-sm-base-size: 12px;
+  --token-typography-label-sm-base-weight: 400;
+  --token-typography-label-sm-base-line-height: 18px;
+  --token-typography-label-sm-base-letter-spacing: 0px;
+
+  --token-typography-label-xs-size: 10px;
+  --token-typography-label-xs-weight: 400;
+  --token-typography-label-xs-line-height: 10px;
+  --token-typography-label-xs-letter-spacing: 0px;
+
+  --token-typography-caption-size: 12px;
+  --token-typography-caption-weight: 400;
+  --token-typography-caption-line-height: 18px;
+  --token-typography-caption-letter-spacing: 0px;
+
+  --token-typography-code-size: 14px;
+  --token-typography-code-weight: 400;
+  --token-typography-code-line-height: 28px;
+  --token-typography-code-letter-spacing: 0px;
 }

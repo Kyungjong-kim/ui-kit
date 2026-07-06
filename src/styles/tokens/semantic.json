@@ -1,0 +1,793 @@
+{
+  "header": "Semantic Design Tokens — 의미 계층 (core 참조)",
+  "groups": [
+    {
+      "comment": "/* Text */",
+      "tokens": [
+        {
+          "name": "--color-text-primary",
+          "value": "var(--color-neutral-900)",
+          "dark": "var(--color-neutral-25)"
+        },
+        {
+          "name": "--color-text-secondary",
+          "value": "var(--color-neutral-700)",
+          "dark": "var(--color-neutral-300)"
+        },
+        {
+          "name": "--color-text-tertiary",
+          "value": "var(--color-neutral-500)",
+          "dark": "var(--color-neutral-400)"
+        },
+        {
+          "name": "--color-text-disabled",
+          "value": "var(--color-neutral-400)",
+          "dark": "var(--color-neutral-600)"
+        },
+        {
+          "name": "--color-text-inverse",
+          "value": "var(--color-white)",
+          "dark": "var(--color-neutral-900)"
+        },
+        {
+          "name": "--color-text-brand-default",
+          "value": "var(--color-brand-700)",
+          "dark": "var(--color-brand-300)",
+          "commentBefore": "/* 브랜드 텍스트: 흰 배경 위에서 가독성을 위해 700(딥 앰버) 사용 */"
+        },
+        {
+          "name": "--color-text-brand-hover",
+          "value": "var(--color-brand-800)",
+          "dark": "var(--color-brand-200)"
+        },
+        {
+          "name": "--color-text-danger-default",
+          "value": "var(--color-red-500)",
+          "dark": "var(--color-red-400)"
+        },
+        {
+          "name": "--color-text-success-default",
+          "value": "var(--color-green-500)",
+          "dark": "var(--color-green-400)"
+        },
+        {
+          "name": "--color-text-warning-default",
+          "value": "var(--color-orange-600)",
+          "dark": "var(--color-orange-400)"
+        },
+        {
+          "name": "--color-text-info-default",
+          "value": "var(--color-blue-700)",
+          "dark": "var(--color-blue-400)"
+        },
+        {
+          "name": "--color-text-danger-hover",
+          "value": "var(--color-red-600)",
+          "dark": "var(--color-red-300)",
+          "commentBefore": "/* 상태 텍스트 hover — default보다 한 단계 진하게 */"
+        },
+        {
+          "name": "--color-text-success-hover",
+          "value": "var(--color-green-600)",
+          "dark": "var(--color-green-300)"
+        },
+        {
+          "name": "--color-text-warning-hover",
+          "value": "var(--color-orange-700)",
+          "dark": "var(--color-orange-300)"
+        },
+        {
+          "name": "--color-text-info-hover",
+          "value": "var(--color-blue-800)",
+          "dark": "var(--color-blue-300)"
+        },
+        {
+          "name": "--color-text-danger-strong",
+          "value": "var(--color-red-600)",
+          "dark": "var(--color-red-300)",
+          "commentBefore": "/* 상태 텍스트 strong — subtle 배경 위 대비 확보용(Badge 등) */"
+        },
+        {
+          "name": "--color-text-success-strong",
+          "value": "var(--color-green-700)",
+          "dark": "var(--color-green-300)"
+        },
+        {
+          "name": "--color-text-warning-strong",
+          "value": "var(--color-orange-700)",
+          "dark": "var(--color-orange-300)"
+        },
+        {
+          "name": "--color-text-category-default",
+          "value": "var(--color-purple-600)",
+          "dark": "var(--color-purple-300)",
+          "commentBefore": "/* category(purple) 텍스트 */"
+        },
+        {
+          "name": "--color-text-category-hover",
+          "value": "var(--color-purple-700)",
+          "dark": "var(--color-purple-200)"
+        }
+      ]
+    },
+    {
+      "comment": "/* Background */",
+      "tokens": [
+        {
+          "name": "--color-bg-primary",
+          "value": "var(--color-white)",
+          "dark": "var(--color-neutral-900)"
+        },
+        {
+          "name": "--color-bg-secondary",
+          "value": "var(--color-neutral-50)",
+          "dark": "var(--color-neutral-800)"
+        },
+        {
+          "name": "--color-bg-tertiary",
+          "value": "var(--color-neutral-100)",
+          "dark": "var(--color-neutral-700)"
+        },
+        {
+          "name": "--color-bg-inverse",
+          "value": "var(--color-neutral-900)",
+          "dark": "var(--color-neutral-25)"
+        },
+        {
+          "name": "--color-bg-brand-default",
+          "value": "var(--color-brand-500)"
+        },
+        {
+          "name": "--color-bg-brand-hover",
+          "value": "var(--color-brand-600)",
+          "dark": "var(--color-brand-400)"
+        },
+        {
+          "name": "--color-bg-brand-subtle",
+          "value": "var(--color-brand-50)",
+          "dark": "var(--color-brand-900)"
+        },
+        {
+          "name": "--color-bg-brand-subtle-hover",
+          "value": "var(--color-brand-100)",
+          "dark": "var(--color-brand-800)"
+        },
+        {
+          "name": "--color-bg-danger-default",
+          "value": "var(--color-red-500)"
+        },
+        {
+          "name": "--color-bg-danger-subtle",
+          "value": "var(--color-red-50)",
+          "dark": "var(--color-red-900)"
+        },
+        {
+          "name": "--color-bg-success-default",
+          "value": "var(--color-green-500)"
+        },
+        {
+          "name": "--color-bg-success-subtle",
+          "value": "var(--color-green-50)",
+          "dark": "var(--color-green-900)"
+        },
+        {
+          "name": "--color-bg-warning-default",
+          "value": "var(--color-orange-500)"
+        },
+        {
+          "name": "--color-bg-warning-subtle",
+          "value": "var(--color-orange-50)",
+          "dark": "var(--color-orange-900)"
+        },
+        {
+          "name": "--color-bg-info-default",
+          "value": "var(--color-blue-500)"
+        },
+        {
+          "name": "--color-bg-info-subtle",
+          "value": "var(--color-blue-50)",
+          "dark": "var(--color-blue-900)"
+        },
+        {
+          "name": "--color-bg-disabled",
+          "value": "var(--color-neutral-100)",
+          "dark": "var(--color-neutral-700)"
+        }
+      ]
+    },
+    {
+      "comment": "/* Border */",
+      "tokens": [
+        {
+          "name": "--color-border-default",
+          "value": "var(--color-neutral-200)",
+          "dark": "var(--color-neutral-700)"
+        },
+        {
+          "name": "--color-border-strong",
+          "value": "var(--color-neutral-300)",
+          "dark": "var(--color-neutral-600)"
+        },
+        {
+          "name": "--color-border-brand-default",
+          "value": "var(--color-brand-500)"
+        },
+        {
+          "name": "--color-border-danger-default",
+          "value": "var(--color-red-500)"
+        },
+        {
+          "name": "--color-border-info-default",
+          "value": "var(--color-blue-500)"
+        },
+        {
+          "name": "--color-border-disabled",
+          "value": "var(--color-neutral-200)",
+          "dark": "var(--color-neutral-700)"
+        },
+        {
+          "name": "--color-border-focus",
+          "value": "var(--color-brand-400)",
+          "commentBefore": "/* focus ring: 밝은 골든 앰버로 선명한 포커스 표시 (offset과 함께 사용) */"
+        },
+        {
+          "name": "--color-border-subtle",
+          "value": "var(--color-neutral-100)",
+          "dark": "var(--color-neutral-800)",
+          "commentBefore": "/* subtle: default(200)보다 옅은 구분선 — 카드·푸터 등 약한 경계용 */"
+        },
+        {
+          "name": "--color-border-hover",
+          "value": "var(--color-neutral-300)",
+          "dark": "var(--color-neutral-500)"
+        },
+        {
+          "name": "--color-border-inverse",
+          "value": "var(--color-neutral-700)",
+          "dark": "var(--color-neutral-300)"
+        },
+        {
+          "name": "--color-border-input-default",
+          "value": "var(--color-neutral-300)",
+          "dark": "var(--color-neutral-600)",
+          "commentBefore": "/* 입력 컨트롤 테두리 — default/focus */"
+        },
+        {
+          "name": "--color-border-input-focus",
+          "value": "var(--color-brand-500)",
+          "dark": "var(--color-brand-400)"
+        },
+        {
+          "name": "--color-border-brand-hover",
+          "value": "var(--color-brand-600)",
+          "dark": "var(--color-brand-400)",
+          "commentBefore": "/* 상태 border — 각 계열 default/hover/subtle */"
+        },
+        {
+          "name": "--color-border-brand-subtle",
+          "value": "var(--color-brand-200)",
+          "dark": "var(--color-brand-800)"
+        },
+        {
+          "name": "--color-border-danger-hover",
+          "value": "var(--color-red-600)",
+          "dark": "var(--color-red-400)"
+        },
+        {
+          "name": "--color-border-danger-subtle",
+          "value": "var(--color-red-200)",
+          "dark": "var(--color-red-800)"
+        },
+        {
+          "name": "--color-border-info-hover",
+          "value": "var(--color-blue-600)",
+          "dark": "var(--color-blue-400)"
+        },
+        {
+          "name": "--color-border-info-subtle",
+          "value": "var(--color-blue-200)",
+          "dark": "var(--color-blue-800)"
+        },
+        {
+          "name": "--color-border-success-default",
+          "value": "var(--color-green-500)"
+        },
+        {
+          "name": "--color-border-success-hover",
+          "value": "var(--color-green-600)",
+          "dark": "var(--color-green-400)"
+        },
+        {
+          "name": "--color-border-success-subtle",
+          "value": "var(--color-green-200)",
+          "dark": "var(--color-green-800)"
+        },
+        {
+          "name": "--color-border-warning-default",
+          "value": "var(--color-orange-500)"
+        },
+        {
+          "name": "--color-border-warning-hover",
+          "value": "var(--color-orange-600)",
+          "dark": "var(--color-orange-400)"
+        },
+        {
+          "name": "--color-border-warning-subtle",
+          "value": "var(--color-orange-200)",
+          "dark": "var(--color-orange-800)"
+        },
+        {
+          "name": "--color-border-tertiary-default",
+          "value": "var(--color-neutral-200)",
+          "dark": "var(--color-neutral-700)",
+          "commentBefore": "/* tertiary: 약한 중립 테두리 (secondary보다 옅음) */"
+        },
+        {
+          "name": "--color-border-tertiary-hover",
+          "value": "var(--color-neutral-300)",
+          "dark": "var(--color-neutral-600)"
+        },
+        {
+          "name": "--color-border-category-default",
+          "value": "var(--color-purple-500)",
+          "commentBefore": "/* category(purple): 분류/태그 계열 */"
+        },
+        {
+          "name": "--color-border-category-hover",
+          "value": "var(--color-purple-600)",
+          "dark": "var(--color-purple-400)"
+        },
+        {
+          "name": "--color-border-category-subtle",
+          "value": "var(--color-purple-200)",
+          "dark": "var(--color-purple-800)"
+        }
+      ]
+    },
+    {
+      "comment": "/* Interactive\n * ⚠️ primary 버튼 배경이 #FABC37(밝은 골든)이므로 텍스트는 반드시 다크(neutral-900) */",
+      "tokens": [
+        {
+          "name": "--color-interactive-primary-bg",
+          "value": "var(--color-brand-500)"
+        },
+        {
+          "name": "--color-interactive-primary-bg-hover",
+          "value": "var(--color-brand-600)",
+          "dark": "var(--color-brand-400)"
+        },
+        {
+          "name": "--color-interactive-primary-text",
+          "value": "var(--color-neutral-900)"
+        },
+        {
+          "name": "--color-interactive-secondary-bg",
+          "value": "var(--color-white)",
+          "dark": "var(--color-neutral-800)"
+        },
+        {
+          "name": "--color-interactive-secondary-border",
+          "value": "var(--color-neutral-300)",
+          "dark": "var(--color-neutral-600)"
+        },
+        {
+          "name": "--color-interactive-secondary-text",
+          "value": "var(--color-neutral-900)",
+          "dark": "var(--color-neutral-25)"
+        },
+        {
+          "name": "--color-interactive-ghost-text",
+          "value": "var(--color-neutral-700)",
+          "dark": "var(--color-neutral-300)"
+        },
+        {
+          "name": "--color-interactive-ghost-bg-hover",
+          "value": "var(--color-neutral-100)",
+          "dark": "var(--color-neutral-800)"
+        },
+        {
+          "name": "--color-interactive-destructive-bg",
+          "value": "var(--color-red-500)"
+        },
+        {
+          "name": "--color-interactive-destructive-bg-hover",
+          "value": "var(--color-red-600)",
+          "dark": "var(--color-red-400)"
+        },
+        {
+          "name": "--color-interactive-destructive-text",
+          "value": "var(--color-white)"
+        }
+      ]
+    },
+    {
+      "comment": "/* Icon — `Icon` 컴포넌트의 colorTokenMap 키와 매핑 */",
+      "tokens": [
+        {
+          "name": "--color-icon-primary",
+          "value": "var(--color-text-primary)"
+        },
+        {
+          "name": "--color-icon-secondary",
+          "value": "var(--color-text-secondary)"
+        },
+        {
+          "name": "--color-icon-tertiary",
+          "value": "var(--color-text-tertiary)"
+        },
+        {
+          "name": "--color-icon-subtle",
+          "value": "var(--color-text-tertiary)"
+        },
+        {
+          "name": "--color-icon-muted",
+          "value": "var(--color-text-tertiary)"
+        },
+        {
+          "name": "--color-icon-disabled",
+          "value": "var(--color-text-disabled)"
+        },
+        {
+          "name": "--color-icon-inverse",
+          "value": "var(--color-text-inverse)"
+        },
+        {
+          "name": "--color-icon-brand-default",
+          "value": "var(--color-bg-brand-default)"
+        },
+        {
+          "name": "--color-icon-brand-hover",
+          "value": "var(--color-bg-brand-hover)"
+        },
+        {
+          "name": "--color-icon-danger-default",
+          "value": "var(--color-bg-danger-default)"
+        },
+        {
+          "name": "--color-icon-danger-hover",
+          "value": "var(--color-interactive-destructive-bg-hover)"
+        },
+        {
+          "name": "--color-icon-success-default",
+          "value": "var(--color-bg-success-default)"
+        },
+        {
+          "name": "--color-icon-success-hover",
+          "value": "var(--color-green-600)",
+          "dark": "var(--color-green-400)"
+        },
+        {
+          "name": "--color-icon-danger-muted",
+          "value": "var(--color-red-300)",
+          "dark": "var(--color-red-700)"
+        },
+        {
+          "name": "--color-icon-warning-default",
+          "value": "var(--color-bg-warning-default)"
+        },
+        {
+          "name": "--color-icon-warning-hover",
+          "value": "var(--color-orange-600)",
+          "dark": "var(--color-orange-400)"
+        },
+        {
+          "name": "--color-icon-warning-muted",
+          "value": "var(--color-orange-300)",
+          "dark": "var(--color-orange-700)"
+        },
+        {
+          "name": "--color-icon-info-default",
+          "value": "var(--color-bg-info-default)"
+        },
+        {
+          "name": "--color-icon-info-hover",
+          "value": "var(--color-blue-600)",
+          "dark": "var(--color-blue-400)"
+        },
+        {
+          "name": "--color-icon-info-muted",
+          "value": "var(--color-blue-300)",
+          "dark": "var(--color-blue-700)"
+        },
+        {
+          "name": "--color-icon-category-default",
+          "value": "var(--color-purple-500)",
+          "commentBefore": "/* category(purple) 아이콘 */"
+        },
+        {
+          "name": "--color-icon-category-hover",
+          "value": "var(--color-purple-600)",
+          "dark": "var(--color-purple-400)"
+        },
+        {
+          "name": "--color-icon-category-muted",
+          "value": "var(--color-purple-300)",
+          "dark": "var(--color-purple-700)"
+        }
+      ]
+    },
+    {
+      "comment": "/* Surface · Action — Tailwind utility(`bg-surface-default` 등) 호환용 alias */",
+      "tokens": [
+        {
+          "name": "--token-color-surface-default",
+          "value": "var(--color-bg-primary)"
+        },
+        {
+          "name": "--token-color-surface-subtlest",
+          "value": "var(--color-neutral-25)",
+          "dark": "var(--color-neutral-900)",
+          "commentBefore": "/* neutral surface 계층 — subtlest(25) → strongest(400) 로 갈수록 진해짐 */"
+        },
+        {
+          "name": "--token-color-surface-subtle",
+          "value": "var(--color-bg-secondary)"
+        },
+        {
+          "name": "--token-color-surface-muted",
+          "value": "var(--color-bg-tertiary)"
+        },
+        {
+          "name": "--token-color-surface-strong",
+          "value": "var(--color-neutral-200)",
+          "dark": "var(--color-neutral-700)"
+        },
+        {
+          "name": "--token-color-surface-stronger",
+          "value": "var(--color-neutral-300)",
+          "dark": "var(--color-neutral-600)"
+        },
+        {
+          "name": "--token-color-surface-strongest",
+          "value": "var(--color-neutral-400)",
+          "dark": "var(--color-neutral-500)"
+        },
+        {
+          "name": "--token-color-surface-success-subtle",
+          "value": "var(--color-bg-success-subtle)",
+          "commentBefore": "/* 상태 surface — 기존 bg-*-subtle 재활용 */"
+        },
+        {
+          "name": "--token-color-surface-danger-subtle",
+          "value": "var(--color-bg-danger-subtle)"
+        },
+        {
+          "name": "--token-color-surface-warning-subtle",
+          "value": "var(--color-bg-warning-subtle)"
+        },
+        {
+          "name": "--token-color-surface-info-subtle",
+          "value": "var(--color-bg-info-subtle)"
+        },
+        {
+          "name": "--token-color-surface-brand-default",
+          "value": "var(--color-bg-brand-default)"
+        },
+        {
+          "name": "--token-color-surface-brand-subtle",
+          "value": "var(--color-bg-brand-subtle)"
+        },
+        {
+          "name": "--token-color-surface-brand-subtlest",
+          "value": "var(--color-bg-brand-subtle)"
+        },
+        {
+          "name": "--token-color-surface-brand-muted",
+          "value": "var(--color-bg-brand-subtle-hover)"
+        },
+        {
+          "name": "--token-color-surface-brand-strong",
+          "value": "var(--color-bg-brand-hover)"
+        },
+        {
+          "name": "--token-color-surface-brand-stronger",
+          "value": "var(--color-brand-700)",
+          "commentBefore": "/* brand surface 계층 보강 — stronger·strongest */"
+        },
+        {
+          "name": "--token-color-surface-brand-strongest",
+          "value": "var(--color-brand-900)"
+        },
+        {
+          "name": "--token-color-surface-success-subtlest",
+          "value": "var(--color-green-25)",
+          "commentBefore": "/* success surface 계층 — subtlest → strongest */"
+        },
+        {
+          "name": "--token-color-surface-success-muted",
+          "value": "var(--color-green-100)"
+        },
+        {
+          "name": "--token-color-surface-success-strong",
+          "value": "var(--color-green-500)"
+        },
+        {
+          "name": "--token-color-surface-success-stronger",
+          "value": "var(--color-green-700)"
+        },
+        {
+          "name": "--token-color-surface-success-strongest",
+          "value": "var(--color-green-900)"
+        },
+        {
+          "name": "--token-color-surface-danger-subtlest",
+          "value": "var(--color-red-25)",
+          "commentBefore": "/* danger surface 계층 — subtlest → strongest */"
+        },
+        {
+          "name": "--token-color-surface-danger-muted",
+          "value": "var(--color-red-100)"
+        },
+        {
+          "name": "--token-color-surface-danger-strong",
+          "value": "var(--color-red-500)"
+        },
+        {
+          "name": "--token-color-surface-danger-stronger",
+          "value": "var(--color-red-700)"
+        },
+        {
+          "name": "--token-color-surface-danger-strongest",
+          "value": "var(--color-red-900)"
+        },
+        {
+          "name": "--token-color-surface-warning-subtlest",
+          "value": "var(--color-orange-25)",
+          "commentBefore": "/* warning surface 계층 — subtlest → strongest */"
+        },
+        {
+          "name": "--token-color-surface-warning-muted",
+          "value": "var(--color-orange-100)"
+        },
+        {
+          "name": "--token-color-surface-warning-strong",
+          "value": "var(--color-orange-500)"
+        },
+        {
+          "name": "--token-color-surface-warning-stronger",
+          "value": "var(--color-orange-700)"
+        },
+        {
+          "name": "--token-color-surface-warning-strongest",
+          "value": "var(--color-orange-900)"
+        },
+        {
+          "name": "--token-color-surface-info-subtlest",
+          "value": "var(--color-blue-25)",
+          "commentBefore": "/* info surface 계층 — subtlest → strongest */"
+        },
+        {
+          "name": "--token-color-surface-info-muted",
+          "value": "var(--color-blue-100)"
+        },
+        {
+          "name": "--token-color-surface-info-strong",
+          "value": "var(--color-blue-500)"
+        },
+        {
+          "name": "--token-color-surface-info-stronger",
+          "value": "var(--color-blue-700)"
+        },
+        {
+          "name": "--token-color-surface-info-strongest",
+          "value": "var(--color-blue-900)"
+        },
+        {
+          "name": "--token-color-surface-category-subtlest",
+          "value": "var(--color-purple-25)",
+          "commentBefore": "/* category(purple) surface 계층 — subtlest → strongest */"
+        },
+        {
+          "name": "--token-color-surface-category-subtle",
+          "value": "var(--color-purple-50)"
+        },
+        {
+          "name": "--token-color-surface-category-muted",
+          "value": "var(--color-purple-100)"
+        },
+        {
+          "name": "--token-color-surface-category-default",
+          "value": "var(--color-purple-500)"
+        },
+        {
+          "name": "--token-color-surface-category-strong",
+          "value": "var(--color-purple-600)"
+        },
+        {
+          "name": "--token-color-surface-category-stronger",
+          "value": "var(--color-purple-700)"
+        },
+        {
+          "name": "--token-color-surface-category-strongest",
+          "value": "var(--color-purple-900)"
+        },
+        {
+          "name": "--token-color-text-primary",
+          "value": "var(--color-text-primary)"
+        },
+        {
+          "name": "--token-color-text-secondary",
+          "value": "var(--color-text-secondary)"
+        },
+        {
+          "name": "--token-color-text-tertiary",
+          "value": "var(--color-text-tertiary)"
+        },
+        {
+          "name": "--token-color-text-inverse",
+          "value": "var(--color-text-inverse)"
+        },
+        {
+          "name": "--token-color-action-primary-default",
+          "value": "var(--color-bg-brand-default)"
+        },
+        {
+          "name": "--token-color-action-primary-hover",
+          "value": "var(--color-bg-brand-hover)"
+        },
+        {
+          "name": "--token-color-action-tertiary-default",
+          "value": "var(--color-bg-secondary)"
+        },
+        {
+          "name": "--token-color-action-tertiary-hover",
+          "value": "var(--color-bg-tertiary)"
+        }
+      ]
+    },
+    {
+      "comment": "/* Chart — 시리즈 구분색(의미색 아님) + 축·그리드. 다크는 대비 위해 한 단계 밝게 */",
+      "tokens": [
+        {
+          "name": "--color-chart-1",
+          "value": "var(--color-brand-500)",
+          "dark": "var(--color-brand-400)"
+        },
+        {
+          "name": "--color-chart-2",
+          "value": "var(--color-blue-500)",
+          "dark": "var(--color-blue-400)"
+        },
+        {
+          "name": "--color-chart-3",
+          "value": "var(--color-green-500)",
+          "dark": "var(--color-green-400)"
+        },
+        {
+          "name": "--color-chart-4",
+          "value": "var(--color-orange-500)",
+          "dark": "var(--color-orange-400)"
+        },
+        {
+          "name": "--color-chart-5",
+          "value": "var(--color-red-500)",
+          "dark": "var(--color-red-400)"
+        },
+        {
+          "name": "--color-chart-6",
+          "value": "var(--color-brand-300)",
+          "dark": "var(--color-brand-300)"
+        },
+        {
+          "name": "--color-chart-7",
+          "value": "var(--color-blue-300)",
+          "dark": "var(--color-blue-300)"
+        },
+        {
+          "name": "--color-chart-8",
+          "value": "var(--color-green-300)",
+          "dark": "var(--color-green-300)"
+        },
+        {
+          "name": "--color-chart-grid",
+          "value": "var(--color-border-default)",
+          "commentBefore": "/* 그리드·축 — 기존 CHART_GRID_COLOR·AXIS 정합(참조 semantic 토큰이 다크값 보유) */"
+        },
+        {
+          "name": "--color-chart-axis",
+          "value": "var(--color-text-tertiary)"
+        }
+      ]
+    }
+  ]
+}

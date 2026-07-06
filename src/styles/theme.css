@@ -1,0 +1,425 @@
+/*
+ * ui-kit Tailwind v4 theme entry — 소비자용 @theme inline 매핑.
+ *
+ * 소비 앱에서 `@import "ui-kit/theme";` 로 로드하면 Tailwind v4가
+ * gap-group-xl · h-size-control-sm · w-size-icon-sm · rounded-md · shadow-default-sm 등
+ * 커스텀 theme 유틸을 생성한다.
+ *
+ * 전제: `@import "ui-kit/styles";` (core+semantic :root 토큰)가 함께 로드돼야
+ * 아래 var(--token-*) / var(--color-*) 참조가 해석된다.
+ * 이 파일 자체는 `@import "tailwindcss"` 를 포함하지 않는다 (소비자가 별도 import).
+ */
+
+@theme inline {
+  /* brand */
+  --color-brand-25: var(--color-brand-25);
+  --color-brand-50: var(--color-brand-50);
+  --color-brand-100: var(--color-brand-100);
+  --color-brand-200: var(--color-brand-200);
+  --color-brand-300: var(--color-brand-300);
+  --color-brand-400: var(--color-brand-400);
+  --color-brand-500: var(--color-brand-500);
+  --color-brand-600: var(--color-brand-600);
+  --color-brand-700: var(--color-brand-700);
+  --color-brand-800: var(--color-brand-800);
+  --color-brand-900: var(--color-brand-900);
+
+  /* neutral */
+  --color-neutral-25: var(--color-neutral-25);
+  --color-neutral-50: var(--color-neutral-50);
+  --color-neutral-100: var(--color-neutral-100);
+  --color-neutral-200: var(--color-neutral-200);
+  --color-neutral-300: var(--color-neutral-300);
+  --color-neutral-400: var(--color-neutral-400);
+  --color-neutral-500: var(--color-neutral-500);
+  --color-neutral-600: var(--color-neutral-600);
+  --color-neutral-700: var(--color-neutral-700);
+  --color-neutral-800: var(--color-neutral-800);
+  --color-neutral-900: var(--color-neutral-900);
+
+  /* red */
+  --color-red-25: var(--color-red-25);
+  --color-red-50: var(--color-red-50);
+  --color-red-500: var(--color-red-500);
+  --color-red-600: var(--color-red-600);
+
+  /* green */
+  --color-green-25: var(--color-green-25);
+  --color-green-50: var(--color-green-50);
+  --color-green-500: var(--color-green-500);
+  --color-green-600: var(--color-green-600);
+
+  /* blue */
+  --color-blue-25: var(--color-blue-25);
+  --color-blue-50: var(--color-blue-50);
+  --color-blue-500: var(--color-blue-500);
+  --color-blue-600: var(--color-blue-600);
+  --color-blue-700: var(--color-blue-700);
+
+  /* orange */
+  --color-orange-25: var(--color-orange-25);
+  --color-orange-50: var(--color-orange-50);
+  --color-orange-500: var(--color-orange-500);
+  --color-orange-600: var(--color-orange-600);
+
+  /* semantic — text */
+  --color-text-primary: var(--color-text-primary);
+  --color-text-secondary: var(--color-text-secondary);
+  --color-text-tertiary: var(--color-text-tertiary);
+  --color-text-disabled: var(--color-text-disabled);
+  --color-text-inverse: var(--color-text-inverse);
+  --color-text-brand-default: var(--color-text-brand-default);
+  --color-text-brand-hover: var(--color-text-brand-hover);
+  --color-text-danger-default: var(--color-text-danger-default);
+  --color-text-success-default: var(--color-text-success-default);
+  --color-text-warning-default: var(--color-text-warning-default);
+  --color-text-info-default: var(--color-text-info-default);
+
+  /* semantic — background */
+  --color-bg-primary: var(--color-bg-primary);
+  --color-bg-secondary: var(--color-bg-secondary);
+  --color-bg-tertiary: var(--color-bg-tertiary);
+  --color-bg-inverse: var(--color-bg-inverse);
+  --color-bg-brand-default: var(--color-bg-brand-default);
+  --color-bg-brand-hover: var(--color-bg-brand-hover);
+  --color-bg-brand-subtle: var(--color-bg-brand-subtle);
+  --color-bg-brand-subtle-hover: var(--color-bg-brand-subtle-hover);
+  --color-bg-danger-default: var(--color-bg-danger-default);
+  --color-bg-danger-subtle: var(--color-bg-danger-subtle);
+  --color-bg-success-default: var(--color-bg-success-default);
+  --color-bg-success-subtle: var(--color-bg-success-subtle);
+  --color-bg-warning-default: var(--color-bg-warning-default);
+  --color-bg-warning-subtle: var(--color-bg-warning-subtle);
+  --color-bg-info-default: var(--color-bg-info-default);
+  --color-bg-info-subtle: var(--color-bg-info-subtle);
+  --color-bg-disabled: var(--color-bg-disabled);
+
+  /* semantic — border */
+  --color-border-default: var(--color-border-default);
+  --color-border-strong: var(--color-border-strong);
+  --color-border-brand-default: var(--color-border-brand-default);
+  --color-border-danger-default: var(--color-border-danger-default);
+  --color-border-info-default: var(--color-border-info-default);
+  --color-border-disabled: var(--color-border-disabled);
+  --color-border-focus: var(--color-border-focus);
+
+  /* semantic — interactive */
+  --color-interactive-primary-bg: var(--color-interactive-primary-bg);
+  --color-interactive-primary-bg-hover: var(--color-interactive-primary-bg-hover);
+  --color-interactive-primary-text: var(--color-interactive-primary-text);
+  --color-interactive-secondary-bg: var(--color-interactive-secondary-bg);
+  --color-interactive-secondary-border: var(--color-interactive-secondary-border);
+  --color-interactive-secondary-text: var(--color-interactive-secondary-text);
+  --color-interactive-ghost-text: var(--color-interactive-ghost-text);
+  --color-interactive-ghost-bg-hover: var(--color-interactive-ghost-bg-hover);
+  --color-interactive-destructive-bg: var(--color-interactive-destructive-bg);
+  --color-interactive-destructive-bg-hover: var(--color-interactive-destructive-bg-hover);
+  --color-interactive-destructive-text: var(--color-interactive-destructive-text);
+
+  /* surface · action — bg-surface-default, bg-action-primary-default 등 */
+  --color-surface-default: var(--token-color-surface-default);
+  --color-surface-subtlest: var(--token-color-surface-subtlest);
+  --color-surface-subtle: var(--token-color-surface-subtle);
+  --color-surface-muted: var(--token-color-surface-muted);
+  --color-surface-strong: var(--token-color-surface-strong);
+  --color-surface-stronger: var(--token-color-surface-stronger);
+  --color-surface-strongest: var(--token-color-surface-strongest);
+  --color-surface-success-subtle: var(--token-color-surface-success-subtle);
+  --color-surface-danger-subtle: var(--token-color-surface-danger-subtle);
+  --color-surface-warning-subtle: var(--token-color-surface-warning-subtle);
+  --color-surface-info-subtle: var(--token-color-surface-info-subtle);
+  --color-surface-brand-default: var(--token-color-surface-brand-default);
+  --color-surface-brand-subtle: var(--token-color-surface-brand-subtle);
+  --color-surface-brand-subtlest: var(--token-color-surface-brand-subtlest);
+  --color-surface-brand-muted: var(--token-color-surface-brand-muted);
+  --color-surface-brand-strong: var(--token-color-surface-brand-strong);
+  --color-action-primary-default: var(--token-color-action-primary-default);
+  --color-action-primary-hover: var(--token-color-action-primary-hover);
+  --color-action-tertiary-default: var(--token-color-action-tertiary-default);
+  --color-action-tertiary-hover: var(--token-color-action-tertiary-hover);
+
+  /* radius — rounded-sm=8px, rounded-md=12px, rounded-lg=16px 등 */
+  --radius-xxs: var(--token-radius-xxs);
+  --radius-xs: var(--token-radius-xs);
+  --radius-sm: var(--token-radius-sm);
+  --radius-md: var(--token-radius-md);
+  --radius-lg: var(--token-radius-lg);
+  --radius-xl: var(--token-radius-xl);
+  --radius-full: var(--token-radius-full);
+
+  /* spacing (Tailwind v4: --spacing-X 가 w-/h-/p-/m-/gap- 등에 매핑) */
+  --spacing-inline-xs: var(--token-spacing-inline-xs);
+  --spacing-inline-sm: var(--token-spacing-inline-sm);
+  --spacing-inline-md: var(--token-spacing-inline-md);
+  --spacing-inline-lg: var(--token-spacing-inline-lg);
+  --spacing-inline-xl: var(--token-spacing-inline-xl);
+  --spacing-inline-xxl: var(--token-spacing-inline-xxl);
+  --spacing-inline-xxxl: var(--token-spacing-inline-xxxl);
+
+  /* spacing stack (세로 패딩) */
+  --spacing-stack-xxs: var(--token-spacing-stack-xxs);
+  --spacing-stack-xs: var(--token-spacing-stack-xs);
+  --spacing-stack-sm: var(--token-spacing-stack-sm);
+  --spacing-stack-md: var(--token-spacing-stack-md);
+  --spacing-stack-lg: var(--token-spacing-stack-lg);
+  --spacing-stack-xl: var(--token-spacing-stack-xl);
+  --spacing-stack-xxl: var(--token-spacing-stack-xxl);
+
+  /* spacing group (flex/grid gap) */
+  --spacing-group-xxs: var(--token-spacing-group-xxs);
+  --spacing-group-xs: var(--token-spacing-group-xs);
+  --spacing-group-sm: var(--token-spacing-group-sm);
+  --spacing-group-md: var(--token-spacing-group-md);
+  --spacing-group-lg: var(--token-spacing-group-lg);
+  --spacing-group-xl: var(--token-spacing-group-xl);
+
+  --spacing-size-control-xxxs: var(--token-size-control-xxxs);
+  --spacing-size-control-xxs: var(--token-size-control-xxs);
+  --spacing-size-control-xs: var(--token-size-control-xs);
+  --spacing-size-control-sm: var(--token-size-control-sm);
+  --spacing-size-control-md: var(--token-size-control-md);
+  --spacing-size-control-lg: var(--token-size-control-lg);
+  --spacing-size-control-xl: var(--token-size-control-xl);
+  --spacing-size-control-xxl: var(--token-size-control-xxl);
+
+  /* icon size — h-size-icon-{xxs..xxxl} (div·아이콘 래퍼 크기 지정용) */
+  --spacing-size-icon-xxs: var(--token-size-icon-xxs);
+  --spacing-size-icon-xs: var(--token-size-icon-xs);
+  --spacing-size-icon-sm: var(--token-size-icon-sm);
+  --spacing-size-icon-md: var(--token-size-icon-md);
+  --spacing-size-icon-lg: var(--token-size-icon-lg);
+  --spacing-size-icon-xl: var(--token-size-icon-xl);
+  --spacing-size-icon-xxl: var(--token-size-icon-xxl);
+  --spacing-size-icon-xxxl: var(--token-size-icon-xxxl);
+
+  /* field width — w-size-field-{sm,md,lg} */
+  --spacing-size-field-sm: var(--token-size-field-sm);
+  --spacing-size-field-md: var(--token-size-field-md);
+  --spacing-size-field-lg: var(--token-size-field-lg);
+
+  --spacing-size-avatar-xs: var(--token-size-avatar-xs);
+  --spacing-size-avatar-sm: var(--token-size-avatar-sm);
+  --spacing-size-avatar-md: var(--token-size-avatar-md);
+  --spacing-size-avatar-lg: var(--token-size-avatar-lg);
+  --spacing-size-avatar-xl: var(--token-size-avatar-xl);
+
+  --spacing-size-image-xxs: var(--token-size-image-xxs);
+  --spacing-size-image-xs: var(--token-size-image-xs);
+  --spacing-size-image-sm: var(--token-size-image-sm);
+  --spacing-size-image-md: var(--token-size-image-md);
+  --spacing-size-image-lg: var(--token-size-image-lg);
+  --spacing-size-image-xl: var(--token-size-image-xl);
+  --spacing-size-image-xxl: var(--token-size-image-xxl);
+
+  /* shadow — shadow-default-sm 등 */
+  --shadow-default-sm: var(--token-shadow-default-sm);
+  --shadow-default-md: var(--token-shadow-default-md);
+  --shadow-default-lg: var(--token-shadow-default-lg);
+  --shadow-default-xl: var(--token-shadow-default-xl);
+}
+
+/* ── Keyframes ─────────────────────────────────────────────────────────── */
+
+@keyframes accordion-down {
+  from {
+    height: 0;
+    overflow: hidden;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+    overflow: hidden;
+  }
+}
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+    overflow: hidden;
+  }
+  to {
+    height: 0;
+    overflow: hidden;
+  }
+}
+@keyframes progress-indeterminate {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(400%);
+  }
+}
+
+@utility animate-accordion-down {
+  animation: accordion-down 0.2s ease-out;
+}
+@utility animate-accordion-up {
+  animation: accordion-up 0.2s ease-out;
+}
+@utility animate-progress-indeterminate {
+  animation: progress-indeterminate 1.4s infinite ease-in-out;
+}
+
+/* Typography utility (Tailwind v4 @utility) — Text·Chip·SlideListBadge 등에서 사용 */
+@utility typography-display-md {
+  font-size: var(--token-typography-display-md-size);
+  line-height: var(--token-typography-display-md-line-height);
+  font-weight: var(--token-typography-display-md-weight);
+  letter-spacing: var(--token-typography-display-md-letter-spacing);
+}
+@utility typography-display-sm {
+  font-size: var(--token-typography-display-sm-size);
+  line-height: var(--token-typography-display-sm-line-height);
+  font-weight: var(--token-typography-display-sm-weight);
+  letter-spacing: var(--token-typography-display-sm-letter-spacing);
+}
+@utility typography-headline-xl {
+  font-size: var(--token-typography-headline-xl-size);
+  line-height: var(--token-typography-headline-xl-line-height);
+  font-weight: var(--token-typography-headline-xl-weight);
+  letter-spacing: var(--token-typography-headline-xl-letter-spacing);
+}
+@utility typography-headline-lg {
+  font-size: var(--token-typography-headline-lg-size);
+  line-height: var(--token-typography-headline-lg-line-height);
+  font-weight: var(--token-typography-headline-lg-weight);
+  letter-spacing: var(--token-typography-headline-lg-letter-spacing);
+}
+@utility typography-headline-md {
+  font-size: var(--token-typography-headline-md-size);
+  line-height: var(--token-typography-headline-md-line-height);
+  font-weight: var(--token-typography-headline-md-weight);
+  letter-spacing: var(--token-typography-headline-md-letter-spacing);
+}
+@utility typography-headline-sm {
+  font-size: var(--token-typography-headline-sm-size);
+  line-height: var(--token-typography-headline-sm-line-height);
+  font-weight: var(--token-typography-headline-sm-weight);
+  letter-spacing: var(--token-typography-headline-sm-letter-spacing);
+}
+@utility typography-body-lg-bold {
+  font-size: var(--token-typography-body-lg-bold-size);
+  line-height: var(--token-typography-body-lg-bold-line-height);
+  font-weight: var(--token-typography-body-lg-bold-weight);
+  letter-spacing: var(--token-typography-body-lg-bold-letter-spacing);
+}
+@utility typography-body-lg-medium {
+  font-size: var(--token-typography-body-lg-medium-size);
+  line-height: var(--token-typography-body-lg-medium-line-height);
+  font-weight: var(--token-typography-body-lg-medium-weight);
+  letter-spacing: var(--token-typography-body-lg-medium-letter-spacing);
+}
+@utility typography-body-lg-base {
+  font-size: var(--token-typography-body-lg-base-size);
+  line-height: var(--token-typography-body-lg-base-line-height);
+  font-weight: var(--token-typography-body-lg-base-weight);
+  letter-spacing: var(--token-typography-body-lg-base-letter-spacing);
+}
+@utility typography-body-md-bold {
+  font-size: var(--token-typography-body-md-bold-size);
+  line-height: var(--token-typography-body-md-bold-line-height);
+  font-weight: var(--token-typography-body-md-bold-weight);
+  letter-spacing: var(--token-typography-body-md-bold-letter-spacing);
+}
+@utility typography-body-md-medium {
+  font-size: var(--token-typography-body-md-medium-size);
+  line-height: var(--token-typography-body-md-medium-line-height);
+  font-weight: var(--token-typography-body-md-medium-weight);
+  letter-spacing: var(--token-typography-body-md-medium-letter-spacing);
+}
+@utility typography-body-md-base {
+  font-size: var(--token-typography-body-md-base-size);
+  line-height: var(--token-typography-body-md-base-line-height);
+  font-weight: var(--token-typography-body-md-base-weight);
+  letter-spacing: var(--token-typography-body-md-base-letter-spacing);
+}
+@utility typography-body-sm-bold {
+  font-size: var(--token-typography-body-sm-bold-size);
+  line-height: var(--token-typography-body-sm-bold-line-height);
+  font-weight: var(--token-typography-body-sm-bold-weight);
+  letter-spacing: var(--token-typography-body-sm-bold-letter-spacing);
+}
+@utility typography-body-sm-medium {
+  font-size: var(--token-typography-body-sm-medium-size);
+  line-height: var(--token-typography-body-sm-medium-line-height);
+  font-weight: var(--token-typography-body-sm-medium-weight);
+  letter-spacing: var(--token-typography-body-sm-medium-letter-spacing);
+}
+@utility typography-body-sm-base {
+  font-size: var(--token-typography-body-sm-base-size);
+  line-height: var(--token-typography-body-sm-base-line-height);
+  font-weight: var(--token-typography-body-sm-base-weight);
+  letter-spacing: var(--token-typography-body-sm-base-letter-spacing);
+}
+@utility typography-caption {
+  font-size: var(--token-typography-caption-size);
+  line-height: var(--token-typography-caption-line-height);
+  font-weight: var(--token-typography-caption-weight);
+  letter-spacing: var(--token-typography-caption-letter-spacing);
+}
+@utility typography-code {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: var(--token-typography-code-size);
+  line-height: var(--token-typography-code-line-height);
+  font-weight: var(--token-typography-code-weight);
+  letter-spacing: var(--token-typography-code-letter-spacing);
+}
+@utility typography-label-lg-bold {
+  font-size: var(--token-typography-label-lg-bold-size);
+  line-height: var(--token-typography-label-lg-bold-line-height);
+  font-weight: var(--token-typography-label-lg-bold-weight);
+  letter-spacing: var(--token-typography-label-lg-bold-letter-spacing);
+}
+@utility typography-label-lg-medium {
+  font-size: var(--token-typography-label-lg-medium-size);
+  line-height: var(--token-typography-label-lg-medium-line-height);
+  font-weight: var(--token-typography-label-lg-medium-weight);
+  letter-spacing: var(--token-typography-label-lg-medium-letter-spacing);
+}
+@utility typography-label-lg-base {
+  font-size: var(--token-typography-label-lg-base-size);
+  line-height: var(--token-typography-label-lg-base-line-height);
+  font-weight: var(--token-typography-label-lg-base-weight);
+  letter-spacing: var(--token-typography-label-lg-base-letter-spacing);
+}
+@utility typography-label-md-bold {
+  font-size: var(--token-typography-label-md-bold-size);
+  line-height: var(--token-typography-label-md-bold-line-height);
+  font-weight: var(--token-typography-label-md-bold-weight);
+  letter-spacing: var(--token-typography-label-md-bold-letter-spacing);
+}
+@utility typography-label-md-medium {
+  font-size: var(--token-typography-label-md-medium-size);
+  line-height: var(--token-typography-label-md-medium-line-height);
+  font-weight: var(--token-typography-label-md-medium-weight);
+  letter-spacing: var(--token-typography-label-md-medium-letter-spacing);
+}
+@utility typography-label-md-base {
+  font-size: var(--token-typography-label-md-base-size);
+  line-height: var(--token-typography-label-md-base-line-height);
+  font-weight: var(--token-typography-label-md-base-weight);
+  letter-spacing: var(--token-typography-label-md-base-letter-spacing);
+}
+@utility typography-label-sm-bold {
+  font-size: var(--token-typography-label-sm-bold-size);
+  line-height: var(--token-typography-label-sm-bold-line-height);
+  font-weight: var(--token-typography-label-sm-bold-weight);
+  letter-spacing: var(--token-typography-label-sm-bold-letter-spacing);
+}
+@utility typography-label-sm-medium {
+  font-size: var(--token-typography-label-sm-medium-size);
+  line-height: var(--token-typography-label-sm-medium-line-height);
+  font-weight: var(--token-typography-label-sm-medium-weight);
+  letter-spacing: var(--token-typography-label-sm-medium-letter-spacing);
+}
+@utility typography-label-sm-base {
+  font-size: var(--token-typography-label-sm-base-size);
+  line-height: var(--token-typography-label-sm-base-line-height);
+  font-weight: var(--token-typography-label-sm-base-weight);
+  letter-spacing: var(--token-typography-label-sm-base-letter-spacing);
+}
+@utility typography-label-xs {
+  font-size: var(--token-typography-label-xs-size);
+  line-height: var(--token-typography-label-xs-line-height);
+  font-weight: var(--token-typography-label-xs-weight);
+  letter-spacing: var(--token-typography-label-xs-letter-spacing);
+}

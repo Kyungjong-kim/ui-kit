@@ -10,7 +10,13 @@ export interface TooltipProps {
   delayDuration?: number;
 }
 
-export function Tooltip({ children, content, side = "top", align = "center", delayDuration = 300 }: TooltipProps) {
+export function Tooltip({
+  children,
+  content,
+  side = "top",
+  align = "center",
+  delayDuration = 300,
+}: TooltipProps) {
   return (
     <TooltipPrimitive.Provider delayDuration={delayDuration}>
       <TooltipPrimitive.Root>
@@ -21,7 +27,7 @@ export function Tooltip({ children, content, side = "top", align = "center", del
             align={align}
             sideOffset={6}
             className={cn(
-              "z-50 max-w-xs rounded-md bg-[var(--color-bg-inverse)] px-3 py-1.5 text-xs text-[var(--color-text-inverse)]",
+              "z-50 max-w-xs rounded-sm bg-[var(--color-bg-inverse)] px-inline-md py-stack-xs typography-label-xs text-[var(--color-text-inverse)] shadow-default-md",
               "animate-in fade-in-0 zoom-in-95",
               "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",
             )}

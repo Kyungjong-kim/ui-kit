@@ -1,0 +1,68 @@
+name: 버그 리포트
+description: 컴포넌트 또는 동작의 버그를 보고합니다.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        버그를 발견해 주셔서 감사합니다. 아래 항목을 최대한 상세하게 작성해 주세요.
+
+  - type: input
+    id: component
+    attributes:
+      label: 영향 컴포넌트
+      description: 버그가 발생한 컴포넌트 이름 (예: Button, Badge, Toast)
+      placeholder: "예: Button"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: 상세설명
+      description: 버그 증상과 영향 범위를 2~4문장으로 요약
+      placeholder: "어떤 동작이 일어나고 있나요?"
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Background (재현 방법)
+      description: 버그를 재현하기 위한 최소한의 단계와 발생 환경
+      placeholder: |
+        1. `<Button loading>클릭</Button>` 렌더링
+        2. loading prop이 변경될 때 ...
+        3. 예상: ... / 실제: ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: todo
+    attributes:
+      label: To Do
+      description: 원인 분석 → 수정 → 테스트 체크리스트
+      value: |
+        - [ ] 원인 분석
+        - [ ] 수정 구현
+        - [ ] 테스트 추가/수정
+        - [ ] `pnpm test` 통과 확인
+
+  - type: textarea
+    id: see_also
+    attributes:
+      label: See Also
+      description: 관련 코드 경로, PR, 에러 로그 등
+      placeholder: "예: src/components/primitives/button/button.tsx"
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: 심각도
+      options:
+        - 낮음 (시각적 오류)
+        - 보통 (기능 일부 영향)
+        - 높음 (기능 전체 불가)
+        - 긴급 (프로덕션 크리티컬)
+    validations:
+      required: true

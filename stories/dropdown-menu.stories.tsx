@@ -10,7 +10,7 @@ import {
 } from "../src/components/primitives/dropdown-menu";
 
 const meta: Meta = {
-  title: "Primitives/DropdownMenu",
+  title: "Molecules/Filter/DropdownMenu",
   parameters: { layout: "centered" },
   tags: ["autodocs"],
 };
@@ -30,7 +30,9 @@ export const Default: Story = {
         <DropdownMenuItem>프로필</DropdownMenuItem>
         <DropdownMenuItem>설정</DropdownMenuItem>
         <DropdownMenuSeparator className="my-1 h-px bg-[var(--color-border-default)]" />
-        <DropdownMenuItem className="text-[var(--color-text-danger-default)]">로그아웃</DropdownMenuItem>
+        <DropdownMenuItem className="text-[var(--color-text-danger-default)]">
+          로그아웃
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   ),

@@ -1,5 +1,10 @@
 node_modules/
 dist/
+showcase-dist/
 storybook-static/
 .DS_Store
 *.local
+
+# Claude Code 개인 설정
+.claude/settings.local.json
+.claude/worktrees/

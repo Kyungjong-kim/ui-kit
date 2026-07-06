@@ -9,20 +9,27 @@ export interface AvatarProps {
   className?: string;
 }
 
-export function Avatar({ src, alt, fallback, size = "md", shape = "circle", className }: AvatarProps) {
+export function Avatar({
+  src,
+  alt,
+  fallback,
+  size = "md",
+  shape = "circle",
+  className,
+}: AvatarProps) {
   const sizeClasses = {
-    xs: "h-6 w-6 text-xs",
-    sm: "h-8 w-8 text-xs",
-    md: "h-10 w-10 text-sm",
-    lg: "h-12 w-12 text-base",
-    xl: "h-16 w-16 text-lg",
+    xs: "h-size-avatar-xs w-size-avatar-xs typography-label-xs",
+    sm: "h-size-avatar-sm w-size-avatar-sm typography-label-xs",
+    md: "h-size-avatar-md w-size-avatar-md typography-label-sm-base",
+    lg: "h-size-avatar-lg w-size-avatar-lg typography-label-md-base",
+    xl: "h-size-avatar-xl w-size-avatar-xl typography-label-lg-base",
   };
 
   return (
     <div
       className={cn(
         "relative inline-flex shrink-0 items-center justify-center overflow-hidden bg-[var(--color-bg-brand-subtle)]",
-        shape === "circle" ? "rounded-full" : "rounded-md",
+        shape === "circle" ? "rounded-full" : "rounded-sm",
         sizeClasses[size],
         className,
       )}
@@ -37,7 +44,7 @@ export function Avatar({ src, alt, fallback, size = "md", shape = "circle", clas
           }}
         />
       ) : (
-        <span className="font-medium text-[var(--color-text-brand-default)] select-none">
+        <span className="typography-label-md-medium text-[var(--color-text-brand-default)] select-none">
           {fallback}
         </span>
       )}

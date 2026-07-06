@@ -1,0 +1,66 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Docs/Welcome" />
+
+# ui-kit
+
+Personal design system — portfolio & reusable React component library.
+
+## 개요
+
+- React 19 + TypeScript 6 + Tailwind v4 + Radix Primitives 기반
+- tsup 으로 ESM/CJS dual + `.d.ts` 출력
+- `dist/` 산출물을 외부 앱이 npm 패키지처럼 소비
+
+## 카테고리
+
+좌측 사이드바와 동일한 순서. 🆕 = 최근 추가 컴포넌트.
+
+| 그룹 | 컴포넌트 |
+|---|---|
+| **Foundation** | Icon · FileIcon |
+| **Actions** | Button · LinkButton · IconButton · MultilineButton · SelectButton · SelectIconButton · CheckMark |
+| **Inputs** | Input · Textarea · Select · Combobox · Checkbox · RadioGroup · Switch · Slider · DatePicker · FileUpload · MultiSelect 🆕 · TagInput 🆕 · SegmentedControl 🆕 |
+| **Data Display** | Text · Badge · Tag · Chip · Card · Avatar · Thumbnail · ImageCell · DocumentCell · SlideListBadge · Accordion · Separator · ScrollArea · Calendar · DndList · SectionTitle 🆕 · TruncateText 🆕 · MetaItem 🆕 · DescriptionList 🆕 · SettingRow 🆕 · StatCard 🆕 · SummaryGrid 🆕 · Timeline 🆕 |
+| **Feedback** | Toast · Spinner · Skeleton · TextSkeleton · Progress · EmptyState |
+| **Navigation** | Tabs · IconTabs · Pagination · Breadcrumb · Stepper |
+| **Overlay** | Dialog · AlertDialog · Sheet · Popover · DropdownMenu · Tooltip · Modal |
+| **Layout** | PageHeader · LogoOnlyHeader |
+
+## 설치
+
+```bash
+pnpm add ui-kit
+```
+
+`peerDependencies`: `react ^19`, `react-dom ^19`.
+
+## 사용
+
+```tsx
+import { Button } from "ui-kit";
+import "ui-kit/styles";
+
+export function Example() {
+  return <Button variant="primary">확인</Button>;
+}
+```
+
+`ui-kit/styles` 는 디자인 토큰만 포함 (`dist/styles.css`). Tailwind v4 사용 앱은 토큰 변수를 `@theme inline` 으로 노출해 utility class 로 활용 가능.
+
+## 다음 단계
+
+- 토큰 구조 → **Docs / Design Tokens**
+- 컴포넌트 작성 규칙 → **Docs / Conventions**
+- 컴포넌트별 카탈로그 → 좌측 사이드바 그룹 탐색 (각 컴포넌트 **Docs** 탭에 전 변형 + Props 표 + a11y)
+
+## 디자인 시스템 문서
+
+코드 레포(`docs/design-system/`)에 캐노니컬 문서가 있다 — 원칙·토큰·컴포넌트 사양·조합 패턴.
+
+| 영역 | 내용 |
+|---|---|
+| `foundation/` | 원칙 · 컬러 · 타이포 · 레이아웃 · 모션 · 접근성 |
+| `tokens/` | core → semantic 2계층 토큰 가이드 |
+| `components/` | 컴포넌트별 Props · 예제 · when-to-use |
+| `patterns/` | 폼 · 목록 · 상세 레이아웃 · 빈 상태 · 확인 모달 등 조합 규칙 |

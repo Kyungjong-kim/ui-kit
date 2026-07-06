@@ -4,7 +4,7 @@ import { Button } from "../src/components/primitives/button";
 import { Card, CardBody, CardFooter, CardHeader } from "../src/components/primitives/card";
 
 const meta: Meta = {
-  title: "Primitives/Card",
+  title: "Organisms/Card/Card",
   parameters: { layout: "centered" },
   tags: ["autodocs"],
 };
@@ -26,8 +26,12 @@ export const Default: Story = {
         <p className="text-sm text-[var(--color-text-tertiary)]">카드 본문 내용입니다.</p>
       </CardBody>
       <CardFooter className="gap-2">
-        <Button size="sm" variant="secondary" className="flex-1">취소</Button>
-        <Button size="sm" className="flex-1">확인</Button>
+        <Button size="sm" variant="secondary" className="flex-1">
+          취소
+        </Button>
+        <Button size="sm" className="flex-1">
+          확인
+        </Button>
       </CardFooter>
     </Card>
   ),

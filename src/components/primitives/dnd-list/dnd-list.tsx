@@ -1,11 +1,11 @@
 import {
-  DndContext,
   closestCenter,
+  DndContext,
+  type DragEndEvent,
   KeyboardSensor,
   PointerSensor,
   useSensor,
   useSensors,
-  type DragEndEvent,
 } from "@dnd-kit/core";
 import {
   arrayMove,
@@ -44,8 +44,8 @@ function SortableItem<T extends { id: string }>({
       ref={setNodeRef}
       style={{ transform: CSS.Transform.toString(transform), transition }}
       className={cn(
-        "flex items-center gap-2 rounded-md border border-[var(--color-border-default)] bg-[var(--color-bg-primary)] p-3 transition-shadow",
-        isDragging && "opacity-50 shadow-lg",
+        "flex items-center gap-group-sm rounded-sm border border-[var(--color-border-default)] bg-[var(--color-bg-primary)] px-inline-md py-stack-sm transition-shadow",
+        isDragging && "opacity-50 shadow-default-md",
       )}
     >
       <button
@@ -55,7 +55,7 @@ function SortableItem<T extends { id: string }>({
         className="cursor-grab touch-none text-[var(--color-text-tertiary)] hover:text-[var(--color-text-secondary)] active:cursor-grabbing"
         aria-label="드래그 핸들"
       >
-        <GripVerticalIcon className="h-4 w-4" />
+        <GripVerticalIcon className="h-size-icon-sm w-size-icon-sm" />
       </button>
       <div className="flex-1">{renderItem(item, index)}</div>
     </div>
@@ -85,7 +85,7 @@ export function DndList<T extends { id: string }>({
   return (
     <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
       <SortableContext items={items.map((i) => i.id)} strategy={verticalListSortingStrategy}>
-        <div className={cn("space-y-2", className)}>
+        <div className={cn("flex flex-col gap-group-sm", className)}>
           {items.map((item, index) => (
             <SortableItem key={item.id} item={item} index={index} renderItem={renderItem} />
           ))}

@@ -1,42 +1,73 @@
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
 import * as Label from "@radix-ui/react-label";
+import { cva } from "class-variance-authority";
 import { CheckIcon } from "lucide-react";
 import { type ComponentPropsWithoutRef, useId } from "react";
 import { cn } from "../../../utils/cn";
 
-export interface CheckboxProps
-  extends ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root> {
+const checkboxVariants = cva(
+  [
+    "h-size-control-xxxs w-size-control-xxxs shrink-0 rounded-xxs border bg-[var(--color-bg-primary)] transition-[background-color,border-color,transform] duration-150",
+    "hover:border-[var(--color-border-brand-default)] active:scale-90",
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-[var(--color-border-focus)]",
+    "data-[state=checked]:bg-[var(--color-bg-brand-default)] data-[state=checked]:border-[var(--color-bg-brand-default)] data-[state=checked]:text-white",
+    "disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:border-[var(--color-border-strong)]",
+  ],
+  {
+    variants: {
+      error: {
+        true: "border-[var(--color-border-danger-default)]",
+        false: "border-[var(--color-border-strong)]",
+      },
+    },
+    defaultVariants: { error: false },
+  },
+);
+
+export interface CheckboxProps extends ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root> {
   label?: string;
+  error?: boolean;
+  helperText?: string;
 }
 
-export function Checkbox({ className, label, id, ...props }: CheckboxProps) {
+export function Checkbox({ className, label, error, helperText, id, ...props }: CheckboxProps) {
   const generatedId = useId();
   const checkboxId = id ?? generatedId;
 
   return (
-    <div className="flex items-center gap-2">
+    <div className={cn("flex gap-group-sm", helperText ? "items-start" : "items-center")}>
       <CheckboxPrimitive.Root
         id={checkboxId}
-        className={cn(
-          "h-4 w-4 shrink-0 rounded border border-[var(--color-border-strong)] bg-[var(--color-bg-primary)]",
-          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-border-focus)]",
-          "data-[state=checked]:bg-[var(--color-bg-brand-default)] data-[state=checked]:border-[var(--color-bg-brand-default)] data-[state=checked]:text-white",
-          "disabled:cursor-not-allowed disabled:opacity-50",
-          className,
-        )}
+        className={cn(checkboxVariants({ error: !!error }), helperText && "mt-[2px]", className)}
         {...props}
       >
         <CheckboxPrimitive.Indicator className="flex items-center justify-center">
-          <CheckIcon className="h-3 w-3" />
+          <CheckIcon className="h-size-icon-xs w-size-icon-xs" />
         </CheckboxPrimitive.Indicator>
       </CheckboxPrimitive.Root>
-      {label && (
-        <Label.Root
-          htmlFor={checkboxId}
-          className="text-sm text-[var(--color-text-primary)] cursor-pointer"
-        >
-          {label}
-        </Label.Root>
+      {(label || helperText) && (
+        <div className="flex flex-col gap-group-xxs">
+          {label && (
+            <Label.Root
+              htmlFor={checkboxId}
+              className="typography-label-md-base text-[var(--color-text-primary)] cursor-pointer select-none"
+            >
+              {label}
+            </Label.Root>
+          )}
+          {helperText && (
+            <p
+              className={cn(
+                "typography-caption",
+                error
+                  ? "text-[var(--color-text-danger-default)]"
+                  : "text-[var(--color-text-tertiary)]",
+              )}
+            >
+              {helperText}
+            </p>
+          )}
+        </div>
       )}
     </div>
   );

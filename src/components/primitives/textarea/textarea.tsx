@@ -1,25 +1,57 @@
 import * as Label from "@radix-ui/react-label";
-import { type TextareaHTMLAttributes, forwardRef, useId } from "react";
+import { cva, type VariantProps } from "class-variance-authority";
+import { forwardRef, type TextareaHTMLAttributes, useId } from "react";
 import { cn } from "../../../utils/cn";
 
-export interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
+const textareaVariants = cva(
+  [
+    "w-size-field-lg rounded-sm border bg-[var(--color-bg-primary)]",
+    "text-[var(--color-text-primary)] placeholder:text-[var(--color-text-tertiary)]",
+    "transition-[border-color,box-shadow] duration-150",
+    "hover:border-[var(--color-border-strong)]",
+    "focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--color-border-focus)] focus:border-[var(--color-border-focus)]",
+    "disabled:cursor-not-allowed disabled:bg-[var(--color-bg-disabled)] disabled:text-[var(--color-text-disabled)]",
+  ],
+  {
+    variants: {
+      size: {
+        sm: "px-inline-sm py-stack-xs typography-label-sm-base",
+        md: "px-inline-md py-stack-sm typography-label-md-base",
+        lg: "px-inline-lg py-stack-md typography-label-lg-base",
+      },
+      error: {
+        true: "border-[var(--color-border-danger-default)]",
+        false: "border-[var(--color-border-default)]",
+      },
+    },
+    defaultVariants: { size: "md", error: false },
+  },
+);
+
+export interface TextareaProps
+  extends TextareaHTMLAttributes<HTMLTextAreaElement>,
+    Omit<VariantProps<typeof textareaVariants>, "error"> {
   label?: string;
   error?: boolean;
   helperText?: string;
+  size?: "sm" | "md" | "lg";
   resize?: "none" | "vertical" | "horizontal" | "both";
 }
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
-  ({ className, label, error, helperText, resize = "vertical", id, ...props }, ref) => {
+  (
+    { className, label, error, helperText, size = "md", resize = "vertical", id, ...props },
+    ref,
+  ) => {
     const generatedId = useId();
     const textareaId = id ?? generatedId;
 
     return (
-      <div className="flex flex-col gap-1.5">
+      <div className="flex flex-col gap-group-xs">
         {label && (
           <Label.Root
             htmlFor={textareaId}
-            className="text-sm font-medium text-[var(--color-text-primary)]"
+            className="typography-label-md-medium text-[var(--color-text-primary)]"
           >
             {label}
           </Label.Root>
@@ -29,12 +61,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           ref={ref}
           rows={props.rows ?? 4}
           className={cn(
-            "w-full rounded-md border bg-[var(--color-bg-primary)] px-3 py-2 text-sm text-[var(--color-text-primary)] placeholder:text-[var(--color-text-tertiary)] transition-colors",
-            "focus:outline-none focus:ring-2 focus:ring-[var(--color-border-focus)] focus:border-[var(--color-border-focus)]",
-            "disabled:cursor-not-allowed disabled:bg-[var(--color-bg-disabled)] disabled:text-[var(--color-text-disabled)]",
-            error
-              ? "border-[var(--color-border-danger-default)]"
-              : "border-[var(--color-border-default)]",
+            textareaVariants({ size, error: !!error }),
             {
               "resize-none": resize === "none",
               "resize-y": resize === "vertical",
@@ -48,8 +75,10 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         {helperText && (
           <p
             className={cn(
-              "text-xs",
-              error ? "text-[var(--color-text-danger-default)]" : "text-[var(--color-text-tertiary)]",
+              "typography-caption",
+              error
+                ? "text-[var(--color-text-danger-default)]"
+                : "text-[var(--color-text-tertiary)]",
             )}
           >
             {helperText}

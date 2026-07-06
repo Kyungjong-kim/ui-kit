@@ -1,0 +1,161 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Docs/Conventions" />
+
+# Conventions
+
+ui-kit 컴포넌트 작성·관리 규칙. 새 컴포넌트 추가 시 이 문서의 패턴을 우선 따른다.
+
+## 1. 디렉토리 구조
+
+```
+src/components/primitives|composed/<kebab-case>/
+├── <kebab-case>.tsx          # 컴포넌트 본체
+├── <kebab-case>.test.tsx     # vitest 단위 테스트
+└── index.ts                  # export 재노출
+
+stories/<kebab-case>.stories.tsx
+src/components/primitives|composed/index.ts  # ← export 추가 갱신 필수
+```
+
+**neighbor 패턴** — 컴포넌트·테스트·index 가 같은 디렉토리. 스토리는 `stories/` 로 분리.
+
+## 2. 5개 산출물 동시 작성
+
+신규 컴포넌트는 **반드시 5개 산출물 동시 작성**:
+
+| # | 파일 | 비고 |
+|---|---|---|
+| 1 | `<name>.tsx` | 본체 |
+| 2 | `<name>.test.tsx` | vitest + Testing Library |
+| 3 | `index.ts` | export |
+| 4 | `stories/<name>.stories.tsx` | autodocs |
+| 5 | `primitives/index.ts` 또는 `composed/index.ts` | 진입점 export 추가 |
+
+5번 누락 시 dist 에 미반영되어 외부 소비 불가.
+
+## 3. variant 패턴 — cva
+
+`class-variance-authority` 사용. variant·size 두 키 표준:
+
+```tsx
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "../../../utils/cn";
+
+const buttonVariants = cva("inline-flex items-center justify-center rounded-md font-medium", {
+  variants: {
+    variant: {
+      primary: "bg-[var(--color-interactive-primary-bg)] text-[var(--color-interactive-primary-text)]",
+      secondary: "bg-[var(--color-interactive-secondary-bg)] border",
+      ghost: "hover:bg-[var(--color-interactive-ghost-bg-hover)]",
+      destructive: "bg-[var(--color-interactive-destructive-bg)] text-[var(--color-interactive-destructive-text)]",
+    },
+    size: {
+      sm: "h-8 px-3 text-sm",
+      md: "h-10 px-4 text-base",
+      lg: "h-12 px-6 text-lg",
+    },
+  },
+  defaultVariants: { variant: "primary", size: "md" },
+});
+
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {}
+```
+
+## 4. forwardRef 사용 기준
+
+| 컴포넌트 유형 | forwardRef | 이유 |
+|---|---|---|
+| Radix wrapper (Dialog, Tooltip 등) | ✅ | Radix 가 ref 위임 요구 |
+| 폼 입력 (Input, Textarea) | ✅ | RHF·라벨 포커스 위임 |
+| 단순 표시 (Spinner, Skeleton, Badge) | ❌ | ref 사용처 없음 |
+
+## 5. displayName
+
+forwardRef 또는 다단 컴포넌트는 `displayName` 명시 — devtools 가독성.
+
+```tsx
+Button.displayName = "Button";
+```
+
+## 6. cn 유틸
+
+`clsx + tailwind-merge` 합성. 조건부 className 은 항상 cn 경유.
+
+```tsx
+import { cn } from "../../../utils/cn";
+
+<div className={cn("base", isActive && "active", className)} />
+```
+
+## 7. 스토리 작성
+
+### 최소 형태
+
+```tsx
+import type { Meta, StoryObj } from "@storybook/react";
+import { Button } from "../src/components/primitives/button";
+
+const meta: Meta<typeof Button> = {
+  title: "Actions/Button",
+  component: Button,
+  parameters: { layout: "centered" },
+  tags: ["autodocs"],
+};
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  args: { children: "버튼" },
+};
+```
+
+### 카테고리 (title prefix) — 8종 고정
+
+`title` 의 `/` 앞 그룹은 아래 8종 중 하나만 사용한다. 사이드바 순서는 `.storybook/preview.ts` 의 `storySort` 가 결정.
+
+`Foundation` · `Actions` · `Inputs` · `Data Display` · `Feedback` · `Navigation` · `Overlay` · `Layout`
+
+> 신규 그룹 임의 추가 금지(`Form`·`Display`·`System` 등 구 명칭 사용 금지). 분류 애매 시 가장 가까운 그룹 + 컴포넌트 문서(`docs/design-system/components/`)에 사양 기재.
+
+### 권장 4종
+
+- `Default` — 가장 흔한 사용
+- `AllVariants` — variant 매트릭스
+- `AllSizes` — size 매트릭스
+- `States` — disabled / loading / error 등
+
+## 8. 테스트
+
+vitest + Testing Library. 행동 기반 (`getByRole`·`getByText`) 우선, snapshot 지양.
+
+```tsx
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+
+it("클릭 시 onClick 호출", async () => {
+  const onClick = vi.fn();
+  render(<Button onClick={onClick}>버튼</Button>);
+  await userEvent.click(screen.getByRole("button", { name: "버튼" }));
+  expect(onClick).toHaveBeenCalledOnce();
+});
+```
+
+## 9. 빌드·릴리스
+
+| 명령 | 용도 |
+|---|---|
+| `pnpm dev` | tsup watch (dist 실시간 갱신) |
+| `pnpm build` | tsup ESM+CJS dual |
+| `pnpm storybook` | localhost:6006 시각 확인 |
+| `pnpm test` | vitest |
+| `pnpm lint` / `pnpm format` | biome |
+| `pnpm changeset` → `pnpm version` → `pnpm release` | 버전 + 배포 |
+
+## 10. 설계 원칙·패턴 문서
+
+코드 컨벤션 외 **디자인 원칙·접근성·조합 패턴**은 레포 `docs/design-system/` 참조:
+`foundation/`(원칙·컬러·타이포·a11y) · `tokens/`(토큰 가이드) · `patterns/`(폼·목록·상세·빈 상태·확인 모달). 새 컴포넌트 추가 시 사양은 `docs/design-system/components/` 에 기재.

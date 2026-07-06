@@ -30,7 +30,7 @@ export function Dialog({
         <DialogPrimitive.Overlay className="fixed inset-0 z-50 bg-black/40 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
         <DialogPrimitive.Content
           className={cn(
-            "fixed left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2 rounded-lg bg-[var(--color-bg-primary)] p-6 shadow-lg",
+            "fixed left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2 rounded-lg bg-[var(--color-bg-primary)] p-inline-xxl shadow-default-lg",
             "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
             "w-full",
             {
@@ -42,26 +42,29 @@ export function Dialog({
           )}
         >
           {(title || showClose) && (
-            <div className="flex items-center justify-between mb-4">
+            <div className="mb-group-xs flex items-start justify-between gap-group-md">
               {title && (
-                <DialogPrimitive.Title className="text-base font-semibold text-[var(--color-text-primary)]">
+                <DialogPrimitive.Title className="typography-headline-md text-[var(--color-text-primary)]">
                   {title}
                 </DialogPrimitive.Title>
               )}
               {showClose && (
-                <DialogPrimitive.Close className="ml-auto rounded-sm p-1 text-[var(--color-text-tertiary)] hover:text-[var(--color-text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-border-focus)]">
+                <DialogPrimitive.Close
+                  aria-label="닫기"
+                  className="-mr-stack-xxs -mt-stack-xxs ml-auto rounded-xs p-stack-xxs text-[var(--color-text-tertiary)] transition-colors hover:bg-[var(--color-bg-tertiary)] hover:text-[var(--color-text-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-border-focus)]"
+                >
                   <XIcon className="h-4 w-4" />
                 </DialogPrimitive.Close>
               )}
             </div>
           )}
           {description && (
-            <DialogPrimitive.Description className="mb-4 text-sm text-[var(--color-text-secondary)]">
+            <DialogPrimitive.Description className="mb-group-sm typography-body-md-base text-[var(--color-text-secondary)]">
               {description}
             </DialogPrimitive.Description>
           )}
           <div>{children}</div>
-          {footer && <div className="mt-4 flex justify-end gap-2">{footer}</div>}
+          {footer && <div className="mt-group-xl flex justify-end gap-group-sm">{footer}</div>}
         </DialogPrimitive.Content>
       </DialogPrimitive.Portal>
     </DialogPrimitive.Root>

@@ -1,0 +1,683 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { useState } from "react";
+
+<Meta title="Foundations/Design Tokens" />
+
+# Design Tokens
+
+ui-kit 는 **2계층 토큰** 구조를 따른다. 컴포넌트는 **semantic 토큰만** 참조한다.
+
+```
+src/styles/tokens/
+├── core.css       # raw 값 (#fabc37 등) — 직접 참조 금지
+└── semantic.css   # core 참조 의미 토큰 — 컴포넌트가 사용
+```
+
+> 아래 카탈로그의 색 값은 `core.css` · `semantic.css` 소스와 동일하다. 각 스와치는 실제 CSS 변수를 렌더하므로 다크모드 토글(맨 아래) 시 semantic 계열이 함께 반응한다.
+
+export const Section = ({ title, children }) => (
+  <div style={{ margin: "1.5rem 0" }}>
+    {title && (
+      <h4 style={{ margin: "0 0 0.5rem", fontFamily: "system-ui, sans-serif", fontSize: "0.95rem", fontWeight: 700 }}>
+        {title}
+      </h4>
+    )}
+    {children}
+  </div>
+);
+
+{/* ─────────────────────────── 1. core 팔레트 ─────────────────────────── */}
+
+## 1. core.css — raw 색 팔레트
+
+각 팔레트는 `25`(가장 옅음) → `900`(가장 짙음) 11단계. 토큰명 `--color-<팔레트>-<단계>`. **컴포넌트에서 직접 참조 금지** — 항상 semantic 경유.
+
+export const SCALE = [25, 50, 100, 200, 300, 400, 500, 600, 700, 800, 900];
+
+export const PALETTES = {
+  brand: {
+    label: "brand — Golden Amber",
+    note: "브랜드·기본 액션. 500(#fabc37)은 밝은 색이라 위 텍스트는 다크(neutral-900).",
+    hex: {
+      25: "#fffdf0", 50: "#fff8d9", 100: "#fff1b3", 200: "#ffe480", 300: "#ffd44d",
+      400: "#fcc83c", 500: "#fabc37", 600: "#e6a828", 700: "#c48e1a", 800: "#a07318", 900: "#7a5812",
+    },
+  },
+  neutral: {
+    label: "neutral — Warm Gray",
+    note: "텍스트·배경·테두리. 앰버와 어울리는 따뜻한 그레이.",
+    hex: {
+      25: "#fdfcfb", 50: "#faf8f5", 100: "#f2efe9", 200: "#e5e1da", 300: "#d2cdc4",
+      400: "#b5afa5", 500: "#908880", 600: "#635e58", 700: "#403c38", 800: "#272420", 900: "#141210",
+    },
+  },
+  red: {
+    label: "red — Error / Danger",
+    note: "위험·삭제·에러.",
+    hex: {
+      25: "#fff5f5", 50: "#ffebea", 100: "#ffdbdc", 200: "#ffb7b9", 300: "#ff9497",
+      400: "#ff7074", 500: "#ff4c51", 600: "#e64449", 700: "#d94145", 800: "#cc3d41", 900: "#bf383d",
+    },
+  },
+  green: {
+    label: "green — Success",
+    note: "성공.",
+    hex: {
+      25: "#f2fbf7", 50: "#e6f8ef", 100: "#d4f4e2", 200: "#a9e9c5", 300: "#7edda9",
+      400: "#53d28c", 500: "#28c76f", 600: "#24b364", 700: "#22a95e", 800: "#209f59", 900: "#1e9553",
+    },
+  },
+  orange: {
+    label: "orange — Warning",
+    note: "경고. 브랜드가 골든이라 노랑 대신 오렌지로 구분.",
+    hex: {
+      25: "#fff8f0", 50: "#fff1e0", 100: "#ffe2bf", 200: "#ffc480", 300: "#ffa640",
+      400: "#ff8f1a", 500: "#f97316", 600: "#ea6c0e", 700: "#c45c0c", 800: "#9e4a0a", 900: "#783908",
+    },
+  },
+  blue: {
+    label: "blue — Info",
+    note: "정보.",
+    hex: {
+      25: "#f0f7ff", 50: "#eff6ff", 100: "#dbeafe", 200: "#bfdbfe", 300: "#93c5fd",
+      400: "#60a5fa", 500: "#3b82f6", 600: "#2563eb", 700: "#1d4ed8", 800: "#1e40af", 900: "#1e3a8a",
+    },
+  },
+  purple: {
+    label: "purple — Category (신규)",
+    note: "분류/태그 계열. 앰버·상태색과 구분되는 중립 강조색.",
+    hex: {
+      25: "#faf7ff", 50: "#f4eeff", 100: "#e9ddff", 200: "#d3bbff", 300: "#b794f6",
+      400: "#9f7aea", 500: "#8b5cf6", 600: "#7c4ddb", 700: "#6b3fc4", 800: "#5a34a8", 900: "#472a85",
+    },
+  },
+};
+
+export const PaletteRow = ({ name }) => {
+  const p = PALETTES[name];
+  return (
+    <div style={{ margin: "0 0 1.25rem" }}>
+      <div style={{ fontFamily: "system-ui, sans-serif", fontSize: "0.85rem", fontWeight: 700 }}>{p.label}</div>
+      <div style={{ fontFamily: "system-ui, sans-serif", fontSize: "0.75rem", color: "#635e58", margin: "0.1rem 0 0.4rem" }}>{p.note}</div>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
+        {SCALE.map((step) => {
+          const hex = p.hex[step];
+          const dark = step >= 400;
+          return (
+            <div key={step} style={{ width: "5.25rem" }}>
+              <div
+                title={`--color-${name}-${step}`}
+                style={{
+                  height: "3rem",
+                  background: hex,
+                  borderRadius: "0.375rem",
+                  border: "1px solid rgba(0,0,0,0.08)",
+                  display: "flex",
+                  alignItems: "flex-end",
+                  padding: "0.25rem",
+                  color: dark ? "#fff" : "#141210",
+                  fontFamily: "system-ui, sans-serif",
+                  fontSize: "0.7rem",
+                  fontWeight: 600,
+                }}
+              >
+                {step}
+              </div>
+              <div style={{ fontFamily: "monospace", fontSize: "0.65rem", color: "#635e58", marginTop: "0.2rem" }}>{hex}</div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
+<PaletteRow name="brand" />
+<PaletteRow name="neutral" />
+<PaletteRow name="red" />
+<PaletteRow name="green" />
+<PaletteRow name="orange" />
+<PaletteRow name="blue" />
+<PaletteRow name="purple" />
+
+| 카테고리 | 변수 prefix | 단계 |
+|---|---|---|
+| brand · neutral · red · green · orange · blue · **purple** | `--color-{name}-*` | 25, 50, 100~900 |
+| white / black | `--color-white`, `--color-black` | — |
+
+{/* ─────────────────────────── 2. semantic 색 ─────────────────────────── */}
+
+## 2. semantic.css — 의미 토큰 (실사용)
+
+컴포넌트가 참조하는 유일한 계층. 각 토큰은 core 값을 `var()`로 가리킨다. 아래 스와치는 실제 CSS 변수를 렌더한다.
+
+### Text (`--color-text-*`)
+
+export const TextSwatch = ({ name, label, use }) => (
+  <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", padding: "0.35rem 0" }}>
+    <span style={{ color: `var(${name})`, fontSize: "1rem", fontWeight: 600, minWidth: "9rem" }}>{label}</span>
+    <span style={{ fontFamily: "monospace", fontSize: "0.72rem", color: "var(--color-text-tertiary)" }}>{name}</span>
+    {use && <span style={{ fontFamily: "system-ui, sans-serif", fontSize: "0.72rem", color: "var(--color-text-tertiary)" }}>· {use}</span>}
+  </div>
+);
+
+<TextSwatch name="--color-text-primary" label="Primary" use="본문·제목" />
+<TextSwatch name="--color-text-secondary" label="Secondary" use="보조 텍스트" />
+<TextSwatch name="--color-text-tertiary" label="Tertiary" use="캡션·약한 보조" />
+<TextSwatch name="--color-text-disabled" label="Disabled" use="비활성" />
+<TextSwatch name="--color-text-brand-default" label="Brand" use="링크·브랜드 강조" />
+<TextSwatch name="--color-text-brand-hover" label="Brand hover" use="브랜드 hover" />
+<TextSwatch name="--color-text-danger-default" label="Danger" use="에러·위험" />
+<TextSwatch name="--color-text-success-default" label="Success" use="성공" />
+<TextSwatch name="--color-text-warning-default" label="Warning" use="경고" />
+<TextSwatch name="--color-text-info-default" label="Info" use="정보" />
+<TextSwatch name="--color-text-category-default" label="Category" use="분류/태그 (purple)" />
+
+### Background (`--color-bg-*`)
+
+export const SwatchGrid = ({ children }) => (
+  <div style={{ display: "flex", flexWrap: "wrap", gap: "0.6rem", margin: "0.4rem 0" }}>{children}</div>
+);
+
+export const BgSwatch = ({ name, use }) => (
+  <div style={{ width: "9.5rem" }}>
+    <div
+      title={use}
+      style={{
+        height: "2.75rem",
+        background: `var(${name})`,
+        border: "1px solid var(--color-border-default)",
+        borderRadius: "0.375rem",
+      }}
+    />
+    <div style={{ fontFamily: "monospace", fontSize: "0.65rem", color: "var(--color-text-tertiary)", marginTop: "0.2rem", wordBreak: "break-all" }}>
+      {name.replace("--color-bg-", "")}
+    </div>
+  </div>
+);
+
+<SwatchGrid>
+  <BgSwatch name="--color-bg-primary" use="카드·기본 표면" />
+  <BgSwatch name="--color-bg-secondary" use="낮은 표면" />
+  <BgSwatch name="--color-bg-tertiary" use="더 낮은 표면" />
+  <BgSwatch name="--color-bg-inverse" use="반전 표면" />
+  <BgSwatch name="--color-bg-brand-default" use="브랜드 배경" />
+  <BgSwatch name="--color-bg-brand-subtle" use="약한 브랜드" />
+  <BgSwatch name="--color-bg-danger-default" use="위험" />
+  <BgSwatch name="--color-bg-danger-subtle" use="약한 위험" />
+  <BgSwatch name="--color-bg-success-default" use="성공" />
+  <BgSwatch name="--color-bg-success-subtle" use="약한 성공" />
+  <BgSwatch name="--color-bg-warning-default" use="경고" />
+  <BgSwatch name="--color-bg-warning-subtle" use="약한 경고" />
+  <BgSwatch name="--color-bg-info-default" use="정보" />
+  <BgSwatch name="--color-bg-info-subtle" use="약한 정보" />
+  <BgSwatch name="--color-bg-disabled" use="비활성" />
+</SwatchGrid>
+
+### Surface 계열 (`--token-color-surface-*`)
+
+neutral surface 는 `subtlest`(25) → `strongest`(400) 로 갈수록 진해진다. 상태·brand·category 계열도 `subtlest → strongest` 5~7단계.
+
+export const SurfaceSwatch = ({ name }) => (
+  <div style={{ width: "8rem" }}>
+    <div
+      style={{
+        height: "2.5rem",
+        background: `var(${name})`,
+        border: "1px solid var(--color-border-default)",
+        borderRadius: "0.375rem",
+      }}
+    />
+    <div style={{ fontFamily: "monospace", fontSize: "0.62rem", color: "var(--color-text-tertiary)", marginTop: "0.2rem" }}>
+      {name.replace("--token-color-surface-", "")}
+    </div>
+  </div>
+);
+
+<Section title="neutral">
+  <SwatchGrid>
+    <SurfaceSwatch name="--token-color-surface-subtlest" />
+    <SurfaceSwatch name="--token-color-surface-subtle" />
+    <SurfaceSwatch name="--token-color-surface-muted" />
+    <SurfaceSwatch name="--token-color-surface-default" />
+    <SurfaceSwatch name="--token-color-surface-strong" />
+    <SurfaceSwatch name="--token-color-surface-stronger" />
+    <SurfaceSwatch name="--token-color-surface-strongest" />
+  </SwatchGrid>
+</Section>
+
+<Section title="brand · success · danger · warning · info · category — subtlest→strongest">
+  <SwatchGrid>
+    <SurfaceSwatch name="--token-color-surface-brand-subtlest" />
+    <SurfaceSwatch name="--token-color-surface-brand-subtle" />
+    <SurfaceSwatch name="--token-color-surface-brand-muted" />
+    <SurfaceSwatch name="--token-color-surface-brand-default" />
+    <SurfaceSwatch name="--token-color-surface-brand-strong" />
+    <SurfaceSwatch name="--token-color-surface-brand-stronger" />
+    <SurfaceSwatch name="--token-color-surface-brand-strongest" />
+  </SwatchGrid>
+  <SwatchGrid>
+    <SurfaceSwatch name="--token-color-surface-success-subtlest" />
+    <SurfaceSwatch name="--token-color-surface-success-subtle" />
+    <SurfaceSwatch name="--token-color-surface-success-muted" />
+    <SurfaceSwatch name="--token-color-surface-success-strong" />
+    <SurfaceSwatch name="--token-color-surface-success-stronger" />
+    <SurfaceSwatch name="--token-color-surface-success-strongest" />
+  </SwatchGrid>
+  <SwatchGrid>
+    <SurfaceSwatch name="--token-color-surface-danger-subtlest" />
+    <SurfaceSwatch name="--token-color-surface-danger-subtle" />
+    <SurfaceSwatch name="--token-color-surface-danger-muted" />
+    <SurfaceSwatch name="--token-color-surface-danger-strong" />
+    <SurfaceSwatch name="--token-color-surface-danger-stronger" />
+    <SurfaceSwatch name="--token-color-surface-danger-strongest" />
+  </SwatchGrid>
+  <SwatchGrid>
+    <SurfaceSwatch name="--token-color-surface-warning-subtlest" />
+    <SurfaceSwatch name="--token-color-surface-warning-subtle" />
+    <SurfaceSwatch name="--token-color-surface-warning-muted" />
+    <SurfaceSwatch name="--token-color-surface-warning-strong" />
+    <SurfaceSwatch name="--token-color-surface-warning-stronger" />
+    <SurfaceSwatch name="--token-color-surface-warning-strongest" />
+  </SwatchGrid>
+  <SwatchGrid>
+    <SurfaceSwatch name="--token-color-surface-info-subtlest" />
+    <SurfaceSwatch name="--token-color-surface-info-subtle" />
+    <SurfaceSwatch name="--token-color-surface-info-muted" />
+    <SurfaceSwatch name="--token-color-surface-info-strong" />
+    <SurfaceSwatch name="--token-color-surface-info-stronger" />
+    <SurfaceSwatch name="--token-color-surface-info-strongest" />
+  </SwatchGrid>
+  <SwatchGrid>
+    <SurfaceSwatch name="--token-color-surface-category-subtlest" />
+    <SurfaceSwatch name="--token-color-surface-category-subtle" />
+    <SurfaceSwatch name="--token-color-surface-category-muted" />
+    <SurfaceSwatch name="--token-color-surface-category-default" />
+    <SurfaceSwatch name="--token-color-surface-category-strong" />
+    <SurfaceSwatch name="--token-color-surface-category-stronger" />
+    <SurfaceSwatch name="--token-color-surface-category-strongest" />
+  </SwatchGrid>
+</Section>
+
+### Border (`--color-border-*`)
+
+export const BorderSwatch = ({ name }) => (
+  <div style={{ width: "9rem" }}>
+    <div
+      style={{
+        height: "2.5rem",
+        background: "var(--color-bg-primary)",
+        border: `2px solid var(${name})`,
+        borderRadius: "0.375rem",
+      }}
+    />
+    <div style={{ fontFamily: "monospace", fontSize: "0.62rem", color: "var(--color-text-tertiary)", marginTop: "0.2rem", wordBreak: "break-all" }}>
+      {name.replace("--color-border-", "")}
+    </div>
+  </div>
+);
+
+<SwatchGrid>
+  <BorderSwatch name="--color-border-default" />
+  <BorderSwatch name="--color-border-strong" />
+  <BorderSwatch name="--color-border-subtle" />
+  <BorderSwatch name="--color-border-hover" />
+  <BorderSwatch name="--color-border-inverse" />
+  <BorderSwatch name="--color-border-focus" />
+  <BorderSwatch name="--color-border-input-default" />
+  <BorderSwatch name="--color-border-input-focus" />
+  <BorderSwatch name="--color-border-brand-default" />
+  <BorderSwatch name="--color-border-danger-default" />
+  <BorderSwatch name="--color-border-info-default" />
+  <BorderSwatch name="--color-border-success-default" />
+  <BorderSwatch name="--color-border-warning-default" />
+  <BorderSwatch name="--color-border-category-default" />
+</SwatchGrid>
+
+### Icon (`--color-icon-*`)
+
+`Icon` 컴포넌트 colorTokenMap 키와 매핑. 다수가 text/bg 토큰을 다시 가리킨다.
+
+export const IconSwatch = ({ name }) => (
+  <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "6rem" }}>
+    <div style={{
+      width: "1.5rem", height: "1.5rem", borderRadius: "9999px",
+      background: `var(${name})`, border: "1px solid rgba(0,0,0,0.08)",
+    }} />
+    <div style={{ fontFamily: "monospace", fontSize: "0.6rem", color: "var(--color-text-tertiary)", marginTop: "0.2rem", textAlign: "center" }}>
+      {name.replace("--color-icon-", "")}
+    </div>
+  </div>
+);
+
+<SwatchGrid>
+  <IconSwatch name="--color-icon-primary" />
+  <IconSwatch name="--color-icon-secondary" />
+  <IconSwatch name="--color-icon-tertiary" />
+  <IconSwatch name="--color-icon-disabled" />
+  <IconSwatch name="--color-icon-brand-default" />
+  <IconSwatch name="--color-icon-danger-default" />
+  <IconSwatch name="--color-icon-success-default" />
+  <IconSwatch name="--color-icon-warning-default" />
+  <IconSwatch name="--color-icon-info-default" />
+  <IconSwatch name="--color-icon-category-default" />
+</SwatchGrid>
+
+### Interactive (`--color-interactive-*`)
+
+버튼 등 상호작용 컴포넌트가 `bg`·`bg-hover`·`text`·`border` 를 묶어서 참조.
+
+export const InteractiveChip = ({ bg, text, border, label }) => (
+  <span style={{
+    display: "inline-flex", alignItems: "center", padding: "0.4rem 0.9rem",
+    background: `var(${bg})`, color: `var(${text})`,
+    border: border ? `1px solid var(${border})` : "none",
+    borderRadius: "0.375rem", fontFamily: "system-ui, sans-serif", fontSize: "0.8rem", fontWeight: 600,
+  }}>
+    {label}
+  </span>
+);
+
+<SwatchGrid>
+  <InteractiveChip bg="--color-interactive-primary-bg" text="--color-interactive-primary-text" label="Primary" />
+  <InteractiveChip bg="--color-interactive-secondary-bg" text="--color-interactive-secondary-text" border="--color-interactive-secondary-border" label="Secondary" />
+  <InteractiveChip bg="--color-bg-primary" text="--color-interactive-ghost-text" label="Ghost" />
+  <InteractiveChip bg="--color-interactive-destructive-bg" text="--color-interactive-destructive-text" label="Destructive" />
+</SwatchGrid>
+
+| 프리셋 | 사용처 |
+|---|---|
+| `--color-interactive-primary-*` | Primary Button (브랜드 강조) |
+| `--color-interactive-secondary-*` | Secondary Button (외곽선) |
+| `--color-interactive-ghost-*` | Ghost Button (배경 호버만) |
+| `--color-interactive-destructive-*` | Destructive Button (삭제·경고) |
+
+{/* ─────────────────────────── 3. 타이포그래피 ─────────────────────────── */}
+
+## 3. 타이포그래피
+
+`--token-typography-<family>-<scale>[-<weight>]-*` (size·weight·line-height·letter-spacing 묶음). 아래는 실제 토큰 값으로 렌더한 샘플.
+
+export const TypeSample = ({ token, label, size, lh, weight }) => (
+  <div style={{ display: "flex", alignItems: "baseline", gap: "1rem", padding: "0.45rem 0", borderBottom: "1px solid var(--color-border-subtle)" }}>
+    <span
+      style={{
+        fontSize: `var(--token-typography-${token}-size)`,
+        lineHeight: `var(--token-typography-${token}-line-height)`,
+        fontWeight: `var(--token-typography-${token}-weight)`,
+        letterSpacing: `var(--token-typography-${token}-letter-spacing)`,
+        color: "var(--color-text-primary)",
+        flex: "1 1 auto",
+        minWidth: 0,
+      }}
+    >
+      {label}
+    </span>
+    <span style={{ fontFamily: "monospace", fontSize: "0.68rem", color: "var(--color-text-tertiary)", whiteSpace: "nowrap" }}>
+      {token} · {size}/{lh} · {weight}
+    </span>
+  </div>
+);
+
+<Section title="display">
+  <TypeSample token="display-md" label="Display MD" size={32} lh={40} weight={700} />
+  <TypeSample token="display-sm" label="Display SM" size={28} lh={36} weight={700} />
+</Section>
+
+<Section title="headline">
+  <TypeSample token="headline-xl" label="Headline XL" size={24} lh={32} weight={700} />
+  <TypeSample token="headline-lg" label="Headline LG" size={20} lh={28} weight={700} />
+  <TypeSample token="headline-md" label="Headline MD" size={18} lh={26} weight={700} />
+  <TypeSample token="headline-sm" label="Headline SM" size={16} lh={24} weight={700} />
+</Section>
+
+<Section title="body (base / medium / bold)">
+  <TypeSample token="body-lg-base" label="Body LG base — 본문 큰 크기" size={16} lh={24} weight={400} />
+  <TypeSample token="body-lg-medium" label="Body LG medium" size={16} lh={24} weight={500} />
+  <TypeSample token="body-lg-bold" label="Body LG bold" size={16} lh={24} weight={700} />
+  <TypeSample token="body-md-base" label="Body MD base — 기본 본문" size={14} lh={20} weight={400} />
+  <TypeSample token="body-md-medium" label="Body MD medium" size={14} lh={20} weight={500} />
+  <TypeSample token="body-md-bold" label="Body MD bold" size={14} lh={20} weight={700} />
+  <TypeSample token="body-sm-base" label="Body SM base" size={12} lh={18} weight={400} />
+  <TypeSample token="body-sm-medium" label="Body SM medium" size={12} lh={18} weight={500} />
+  <TypeSample token="body-sm-bold" label="Body SM bold" size={12} lh={18} weight={700} />
+</Section>
+
+<Section title="label (base / medium / bold + xs)">
+  <TypeSample token="label-lg-medium" label="Label LG medium" size={16} lh={24} weight={500} />
+  <TypeSample token="label-md-medium" label="Label MD medium" size={14} lh={20} weight={500} />
+  <TypeSample token="label-md-bold" label="Label MD bold" size={14} lh={20} weight={700} />
+  <TypeSample token="label-sm-medium" label="Label SM medium" size={12} lh={18} weight={500} />
+  <TypeSample token="label-xs" label="Label XS (무접미, 400)" size={10} lh={10} weight={400} />
+</Section>
+
+<Section title="caption / code">
+  <TypeSample token="caption" label="Caption — 보조 설명·캡션" size={12} lh={18} weight={400} />
+  <TypeSample token="code" label="const code = 'monospace';" size={14} lh={28} weight={400} />
+</Section>
+
+{/* ─────────────────────────── 4. spacing ─────────────────────────── */}
+
+## 4. Spacing
+
+`inline`(가로 패딩) · `stack`(세로 패딩) · `group`(gap). 임의 px 금지 — 토큰 유틸만.
+
+export const SPACING = {
+  inline: { xs: 4, sm: 8, md: 12, lg: 16, xl: 20, xxl: 24, xxxl: 28 },
+  stack: { xxs: 2, xs: 4, sm: 8, md: 12, lg: 16, xl: 24, xxl: 32 },
+  group: { xxs: 2, xs: 4, sm: 8, md: 12, lg: 16, xl: 24 },
+};
+
+export const SpacingBar = ({ family, step }) => {
+  const px = SPACING[family][step];
+  return (
+    <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", padding: "0.2rem 0" }}>
+      <span style={{ fontFamily: "monospace", fontSize: "0.72rem", width: "13rem", color: "var(--color-text-secondary)" }}>
+        --token-spacing-{family}-{step}
+      </span>
+      <div style={{ width: `${px}px`, height: "1rem", background: "var(--color-bg-brand-default)", borderRadius: "0.15rem" }} />
+      <span style={{ fontFamily: "monospace", fontSize: "0.7rem", color: "var(--color-text-tertiary)" }}>{px}px</span>
+    </div>
+  );
+};
+
+export const SizeFamily = ({ family }) => (
+  <Section title={family}>
+    {Object.keys(SPACING[family]).map((step) => (
+      <SpacingBar key={step} family={family} step={step} />
+    ))}
+  </Section>
+);
+
+<SizeFamily family="inline" />
+<SizeFamily family="stack" />
+<SizeFamily family="group" />
+
+### size 계열
+
+`--token-size-{icon,control,field,avatar,image}-*`. 컨트롤·아이콘 규격. 상세 값은 `docs/design-system/tokens/core.md` 참조.
+
+export const SIZE_ICON = { xxs: 8, xs: 12, sm: 16, md: 20, lg: 24, xl: 32, xxl: 48, xxxl: 80 };
+
+export const IconSizeBox = ({ step }) => {
+  const px = SIZE_ICON[step];
+  return (
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "5.5rem" }}>
+      <div style={{ height: "5rem", display: "flex", alignItems: "flex-end" }}>
+        <div style={{ width: `${px}px`, height: `${px}px`, background: "var(--color-bg-info-default)", borderRadius: "0.2rem" }} />
+      </div>
+      <div style={{ fontFamily: "monospace", fontSize: "0.62rem", color: "var(--color-text-tertiary)", marginTop: "0.3rem" }}>icon-{step}</div>
+      <div style={{ fontFamily: "monospace", fontSize: "0.6rem", color: "var(--color-text-tertiary)" }}>{px}px</div>
+    </div>
+  );
+};
+
+<Section title="size · icon">
+  <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", alignItems: "flex-end" }}>
+    {Object.keys(SIZE_ICON).map((step) => <IconSizeBox key={step} step={step} />)}
+  </div>
+</Section>
+
+{/* ─────────────────────────── 5. radius ─────────────────────────── */}
+
+## 5. Radius
+
+export const RADIUS = { xxs: 4, xs: 6, sm: 8, md: 12, lg: 16, xl: 24, full: 99999 };
+
+export const RadiusBox = ({ step }) => {
+  const px = RADIUS[step];
+  return (
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "6rem" }}>
+      <div style={{
+        width: "3.5rem", height: "3.5rem",
+        background: "var(--color-bg-brand-subtle)",
+        border: "2px solid var(--color-border-brand-default)",
+        borderRadius: `var(--token-radius-${step})`,
+      }} />
+      <div style={{ fontFamily: "monospace", fontSize: "0.65rem", color: "var(--color-text-tertiary)", marginTop: "0.3rem" }}>radius-{step}</div>
+      <div style={{ fontFamily: "monospace", fontSize: "0.6rem", color: "var(--color-text-tertiary)" }}>{step === "full" ? "99999px" : `${px}px`}</div>
+    </div>
+  );
+};
+
+<SwatchGrid>
+  {Object.keys(RADIUS).map((step) => <RadiusBox key={step} step={step} />)}
+</SwatchGrid>
+
+{/* ─────────────────────────── 6. shadow ─────────────────────────── */}
+
+## 6. Shadow
+
+export const ShadowBox = ({ step }) => (
+  <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "8rem" }}>
+    <div style={{
+      width: "5rem", height: "3.25rem", margin: "0.75rem 0",
+      background: "var(--color-bg-primary)",
+      borderRadius: "var(--token-radius-md)",
+      boxShadow: `var(--token-shadow-default-${step})`,
+    }} />
+    <div style={{ fontFamily: "monospace", fontSize: "0.65rem", color: "var(--color-text-tertiary)" }}>shadow-default-{step}</div>
+  </div>
+);
+
+<SwatchGrid>
+  <ShadowBox step="sm" />
+  <ShadowBox step="md" />
+  <ShadowBox step="lg" />
+  <ShadowBox step="xl" />
+</SwatchGrid>
+
+{/* ─────────────────────────── 7. 다크모드 ─────────────────────────── */}
+
+## 7. 다크모드 (`[data-theme="dark"]`)
+
+`semantic.css` 는 `[data-theme="dark"]` 셀렉터로 text·bg·surface·border·icon 계열을 재정의한다. 아래 패널은 자체 스코프에 `data-theme` 를 적용해 라이트/다크를 비교한다.
+
+export const DEMO_TOKENS = [
+  { name: "--color-text-primary", kind: "text", label: "Primary text" },
+  { name: "--color-text-secondary", kind: "text", label: "Secondary text" },
+  { name: "--color-text-brand-default", kind: "text", label: "Brand text" },
+  { name: "--color-bg-primary", kind: "bg", label: "bg-primary" },
+  { name: "--color-bg-secondary", kind: "bg", label: "bg-secondary" },
+  { name: "--color-bg-brand-subtle", kind: "bg", label: "bg-brand-subtle" },
+  { name: "--color-border-default", kind: "border", label: "border-default" },
+  { name: "--token-color-surface-strong", kind: "bg", label: "surface-strong" },
+];
+
+export const ThemePanel = ({ theme }) => (
+  <div
+    data-theme={theme}
+    style={{
+      flex: "1 1 18rem",
+      background: "var(--color-bg-primary)",
+      border: "1px solid var(--color-border-default)",
+      borderRadius: "var(--token-radius-md)",
+      padding: "1rem",
+      boxShadow: "var(--token-shadow-default-sm)",
+    }}
+  >
+    <div style={{ fontFamily: "system-ui, sans-serif", fontSize: "0.8rem", fontWeight: 700, color: "var(--color-text-primary)", marginBottom: "0.6rem" }}>
+      {theme === "dark" ? "다크 (data-theme=dark)" : "라이트 (:root)"}
+    </div>
+    {DEMO_TOKENS.map((t) => (
+      <div key={t.name} style={{ display: "flex", alignItems: "center", gap: "0.6rem", padding: "0.2rem 0" }}>
+        {t.kind === "text" ? (
+          <span style={{ color: `var(${t.name})`, fontSize: "0.85rem", fontWeight: 600, minWidth: "8rem" }}>{t.label}</span>
+        ) : (
+          <>
+            <div style={{
+              width: "2rem", height: "1.4rem",
+              background: t.kind === "bg" ? `var(${t.name})` : "var(--color-bg-primary)",
+              border: t.kind === "border" ? `2px solid var(${t.name})` : "1px solid var(--color-border-default)",
+              borderRadius: "0.25rem",
+            }} />
+            <span style={{ fontSize: "0.85rem", color: "var(--color-text-secondary)", minWidth: "8rem" }}>{t.label}</span>
+          </>
+        )}
+        <span style={{ fontFamily: "monospace", fontSize: "0.62rem", color: "var(--color-text-tertiary)" }}>{t.name.replace("--color-", "").replace("--token-color-", "")}</span>
+      </div>
+    ))}
+  </div>
+);
+
+export const DarkModeCompare = () => {
+  const [theme, setTheme] = useState("side-by-side");
+  return (
+    <div>
+      <div style={{ display: "flex", gap: "0.5rem", marginBottom: "0.75rem" }}>
+        {["side-by-side", "light", "dark"].map((mode) => (
+          <button
+            key={mode}
+            onClick={() => setTheme(mode)}
+            style={{
+              padding: "0.35rem 0.8rem",
+              fontFamily: "system-ui, sans-serif",
+              fontSize: "0.75rem",
+              fontWeight: 600,
+              cursor: "pointer",
+              borderRadius: "var(--token-radius-sm)",
+              border: "1px solid var(--color-border-default)",
+              background: theme === mode ? "var(--color-bg-brand-default)" : "var(--color-bg-primary)",
+              color: theme === mode ? "var(--color-interactive-primary-text)" : "var(--color-text-secondary)",
+            }}
+          >
+            {mode === "side-by-side" ? "나란히 비교" : mode === "light" ? "라이트" : "다크"}
+          </button>
+        ))}
+      </div>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
+        {(theme === "side-by-side" || theme === "light") && <ThemePanel theme="light" />}
+        {(theme === "side-by-side" || theme === "dark") && <ThemePanel theme="dark" />}
+      </div>
+    </div>
+  );
+};
+
+<DarkModeCompare />
+
+> 다크모드는 소비 앱이 최상위 요소에 `data-theme="dark"` 를 지정하면 활성화된다. core 팔레트(raw hex)는 불변이고, semantic 토큰만 다크 값으로 재매핑된다.
+
+{/* ─────────────────────────── 원칙 ─────────────────────────── */}
+
+## 8. 사용 원칙
+
+| 규칙 | 위반 예 | 올바른 예 |
+|---|---|---|
+| 하드코딩 색상 금지 | `bg-[#fabc37]` | `bg-[var(--color-bg-brand-default)]` |
+| core 토큰 직접 사용 금지 | `bg-brand-500` | `bg-[var(--color-bg-brand-default)]` |
+| 임의 px 금지 | `p-[7px]` · `text-[14px]` | `px-inline-md` · `typography-body-md-base` |
+| 새 색상은 토큰 먼저 추가 | 컴포넌트에 직접 색상 정의 | `tokens/semantic.css` 에 토큰 추가 후 참조 |
+
+> 전체 토큰 카탈로그·추가 절차: 레포 `docs/design-system/tokens/`(`_convention` · `core` · `semantic`) 및 `docs/design-system/foundation/`(`color` · `typography`).
+
+## 9. Tailwind v4 연동
+
+라이브러리 내부 컴포넌트는 항상 `[var(--...)]` 형태(CSS 임의값)를 사용한다.
+소비 앱이 `@theme inline` 으로 토큰을 노출하면 `bg-bg-brand-default` 형태 utility 도 동작.
+
+```css
+/* 소비 앱 example: app.css */
+@import "tailwindcss";
+@import "ui-kit/styles";
+@import "ui-kit/theme";   /* @theme inline 매핑 — 커스텀 유틸 생성 */
+```

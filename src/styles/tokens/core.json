@@ -1,0 +1,1122 @@
+{
+  "header": "Core Design Tokens — Brand Palette (Golden Amber #FABC37)",
+  "groups": [
+    {
+      "comment": "/* Brand — Golden Amber (#FABC37 = 500)\n * 밝은 색이므로 이 색 위에 올라오는 텍스트는 반드시 다크(neutral-900)를 사용한다. */",
+      "tokens": [
+        {
+          "name": "--color-brand-25",
+          "value": "#fffdf0"
+        },
+        {
+          "name": "--color-brand-50",
+          "value": "#fff8d9"
+        },
+        {
+          "name": "--color-brand-100",
+          "value": "#fff1b3"
+        },
+        {
+          "name": "--color-brand-200",
+          "value": "#ffe480"
+        },
+        {
+          "name": "--color-brand-300",
+          "value": "#ffd44d"
+        },
+        {
+          "name": "--color-brand-400",
+          "value": "#fcc83c"
+        },
+        {
+          "name": "--color-brand-500",
+          "value": "#fabc37"
+        },
+        {
+          "name": "--color-brand-600",
+          "value": "#e6a828"
+        },
+        {
+          "name": "--color-brand-700",
+          "value": "#c48e1a"
+        },
+        {
+          "name": "--color-brand-800",
+          "value": "#a07318"
+        },
+        {
+          "name": "--color-brand-900",
+          "value": "#7a5812"
+        }
+      ]
+    },
+    {
+      "comment": "/* Neutral — Warm Gray (앰버와 어울리는 따뜻한 그레이) */",
+      "tokens": [
+        {
+          "name": "--color-neutral-25",
+          "value": "#fdfcfb"
+        },
+        {
+          "name": "--color-neutral-50",
+          "value": "#faf8f5"
+        },
+        {
+          "name": "--color-neutral-100",
+          "value": "#f2efe9"
+        },
+        {
+          "name": "--color-neutral-200",
+          "value": "#e5e1da"
+        },
+        {
+          "name": "--color-neutral-300",
+          "value": "#d2cdc4"
+        },
+        {
+          "name": "--color-neutral-400",
+          "value": "#b5afa5"
+        },
+        {
+          "name": "--color-neutral-500",
+          "value": "#908880"
+        },
+        {
+          "name": "--color-neutral-600",
+          "value": "#635e58"
+        },
+        {
+          "name": "--color-neutral-700",
+          "value": "#403c38"
+        },
+        {
+          "name": "--color-neutral-800",
+          "value": "#272420"
+        },
+        {
+          "name": "--color-neutral-900",
+          "value": "#141210"
+        }
+      ]
+    },
+    {
+      "comment": "/* Red (Error / Danger) */",
+      "tokens": [
+        {
+          "name": "--color-red-25",
+          "value": "#fff5f5"
+        },
+        {
+          "name": "--color-red-50",
+          "value": "#ffebea"
+        },
+        {
+          "name": "--color-red-100",
+          "value": "#ffdbdc"
+        },
+        {
+          "name": "--color-red-200",
+          "value": "#ffb7b9"
+        },
+        {
+          "name": "--color-red-300",
+          "value": "#ff9497"
+        },
+        {
+          "name": "--color-red-400",
+          "value": "#ff7074"
+        },
+        {
+          "name": "--color-red-500",
+          "value": "#ff4c51"
+        },
+        {
+          "name": "--color-red-600",
+          "value": "#e64449"
+        },
+        {
+          "name": "--color-red-700",
+          "value": "#d94145"
+        },
+        {
+          "name": "--color-red-800",
+          "value": "#cc3d41"
+        },
+        {
+          "name": "--color-red-900",
+          "value": "#bf383d"
+        }
+      ]
+    },
+    {
+      "comment": "/* Green (Success) */",
+      "tokens": [
+        {
+          "name": "--color-green-25",
+          "value": "#f2fbf7"
+        },
+        {
+          "name": "--color-green-50",
+          "value": "#e6f8ef"
+        },
+        {
+          "name": "--color-green-100",
+          "value": "#d4f4e2"
+        },
+        {
+          "name": "--color-green-200",
+          "value": "#a9e9c5"
+        },
+        {
+          "name": "--color-green-300",
+          "value": "#7edda9"
+        },
+        {
+          "name": "--color-green-400",
+          "value": "#53d28c"
+        },
+        {
+          "name": "--color-green-500",
+          "value": "#28c76f"
+        },
+        {
+          "name": "--color-green-600",
+          "value": "#24b364"
+        },
+        {
+          "name": "--color-green-700",
+          "value": "#22a95e"
+        },
+        {
+          "name": "--color-green-800",
+          "value": "#209f59"
+        },
+        {
+          "name": "--color-green-900",
+          "value": "#1e9553"
+        }
+      ]
+    },
+    {
+      "comment": "/* Orange (Warning — 브랜드가 골든/앰버라 노란색 대신 오렌지로 구분) */",
+      "tokens": [
+        {
+          "name": "--color-orange-25",
+          "value": "#fff8f0"
+        },
+        {
+          "name": "--color-orange-50",
+          "value": "#fff1e0"
+        },
+        {
+          "name": "--color-orange-100",
+          "value": "#ffe2bf"
+        },
+        {
+          "name": "--color-orange-200",
+          "value": "#ffc480"
+        },
+        {
+          "name": "--color-orange-300",
+          "value": "#ffa640"
+        },
+        {
+          "name": "--color-orange-400",
+          "value": "#ff8f1a"
+        },
+        {
+          "name": "--color-orange-500",
+          "value": "#f97316"
+        },
+        {
+          "name": "--color-orange-600",
+          "value": "#ea6c0e"
+        },
+        {
+          "name": "--color-orange-700",
+          "value": "#c45c0c"
+        },
+        {
+          "name": "--color-orange-800",
+          "value": "#9e4a0a"
+        },
+        {
+          "name": "--color-orange-900",
+          "value": "#783908"
+        }
+      ]
+    },
+    {
+      "comment": "/* Blue (Info) */",
+      "tokens": [
+        {
+          "name": "--color-blue-25",
+          "value": "#f0f7ff"
+        },
+        {
+          "name": "--color-blue-50",
+          "value": "#eff6ff"
+        },
+        {
+          "name": "--color-blue-100",
+          "value": "#dbeafe"
+        },
+        {
+          "name": "--color-blue-200",
+          "value": "#bfdbfe"
+        },
+        {
+          "name": "--color-blue-300",
+          "value": "#93c5fd"
+        },
+        {
+          "name": "--color-blue-400",
+          "value": "#60a5fa"
+        },
+        {
+          "name": "--color-blue-500",
+          "value": "#3b82f6"
+        },
+        {
+          "name": "--color-blue-600",
+          "value": "#2563eb"
+        },
+        {
+          "name": "--color-blue-700",
+          "value": "#1d4ed8"
+        },
+        {
+          "name": "--color-blue-800",
+          "value": "#1e40af"
+        },
+        {
+          "name": "--color-blue-900",
+          "value": "#1e3a8a"
+        }
+      ]
+    },
+    {
+      "comment": "/* Purple (Category — 분류/태그 계열. 앰버·상태색과 구분되는 중립 강조색) */",
+      "tokens": [
+        {
+          "name": "--color-purple-25",
+          "value": "#faf7ff"
+        },
+        {
+          "name": "--color-purple-50",
+          "value": "#f4eeff"
+        },
+        {
+          "name": "--color-purple-100",
+          "value": "#e9ddff"
+        },
+        {
+          "name": "--color-purple-200",
+          "value": "#d3bbff"
+        },
+        {
+          "name": "--color-purple-300",
+          "value": "#b794f6"
+        },
+        {
+          "name": "--color-purple-400",
+          "value": "#9f7aea"
+        },
+        {
+          "name": "--color-purple-500",
+          "value": "#8b5cf6"
+        },
+        {
+          "name": "--color-purple-600",
+          "value": "#7c4ddb"
+        },
+        {
+          "name": "--color-purple-700",
+          "value": "#6b3fc4"
+        },
+        {
+          "name": "--color-purple-800",
+          "value": "#5a34a8"
+        },
+        {
+          "name": "--color-purple-900",
+          "value": "#472a85"
+        }
+      ]
+    },
+    {
+      "comment": "/* White / Black */",
+      "tokens": [
+        {
+          "name": "--color-white",
+          "value": "#ffffff"
+        },
+        {
+          "name": "--color-black",
+          "value": "#000000"
+        }
+      ]
+    },
+    {
+      "comment": "/* Radius */",
+      "tokens": [
+        {
+          "name": "--token-radius-xxs",
+          "value": "4px"
+        },
+        {
+          "name": "--token-radius-xs",
+          "value": "6px"
+        },
+        {
+          "name": "--token-radius-sm",
+          "value": "8px"
+        },
+        {
+          "name": "--token-radius-md",
+          "value": "12px"
+        },
+        {
+          "name": "--token-radius-lg",
+          "value": "16px"
+        },
+        {
+          "name": "--token-radius-xl",
+          "value": "24px"
+        },
+        {
+          "name": "--token-radius-full",
+          "value": "99999px"
+        }
+      ]
+    },
+    {
+      "comment": "/* Size · Icon */",
+      "tokens": [
+        {
+          "name": "--token-size-icon-xxs",
+          "value": "8px"
+        },
+        {
+          "name": "--token-size-icon-xs",
+          "value": "12px"
+        },
+        {
+          "name": "--token-size-icon-sm",
+          "value": "16px"
+        },
+        {
+          "name": "--token-size-icon-md",
+          "value": "20px"
+        },
+        {
+          "name": "--token-size-icon-lg",
+          "value": "24px"
+        },
+        {
+          "name": "--token-size-icon-xl",
+          "value": "32px"
+        },
+        {
+          "name": "--token-size-icon-xxl",
+          "value": "48px"
+        },
+        {
+          "name": "--token-size-icon-xxxl",
+          "value": "80px"
+        }
+      ]
+    },
+    {
+      "comment": "/* Size · Control */",
+      "tokens": [
+        {
+          "name": "--token-size-control-xxxs",
+          "value": "20px"
+        },
+        {
+          "name": "--token-size-control-xxs",
+          "value": "24px"
+        },
+        {
+          "name": "--token-size-control-xs",
+          "value": "28px"
+        },
+        {
+          "name": "--token-size-control-sm",
+          "value": "32px"
+        },
+        {
+          "name": "--token-size-control-md",
+          "value": "36px"
+        },
+        {
+          "name": "--token-size-control-lg",
+          "value": "44px"
+        },
+        {
+          "name": "--token-size-control-xl",
+          "value": "48px"
+        },
+        {
+          "name": "--token-size-control-xxl",
+          "value": "360px"
+        }
+      ]
+    },
+    {
+      "comment": "/* Field width — 폼 컨트롤(Input/Select/Combobox) 기본 너비. 내용 길이와 무관한 정적 레이아웃 보장 */",
+      "tokens": [
+        {
+          "name": "--token-size-field-sm",
+          "value": "200px"
+        },
+        {
+          "name": "--token-size-field-md",
+          "value": "280px"
+        },
+        {
+          "name": "--token-size-field-lg",
+          "value": "320px"
+        }
+      ]
+    },
+    {
+      "comment": "/* Size · Avatar */",
+      "tokens": [
+        {
+          "name": "--token-size-avatar-xs",
+          "value": "24px"
+        },
+        {
+          "name": "--token-size-avatar-sm",
+          "value": "32px"
+        },
+        {
+          "name": "--token-size-avatar-md",
+          "value": "40px"
+        },
+        {
+          "name": "--token-size-avatar-lg",
+          "value": "48px"
+        },
+        {
+          "name": "--token-size-avatar-xl",
+          "value": "64px"
+        }
+      ]
+    },
+    {
+      "comment": "/* Size · Image */",
+      "tokens": [
+        {
+          "name": "--token-size-image-xxs",
+          "value": "36px"
+        },
+        {
+          "name": "--token-size-image-xs",
+          "value": "56px"
+        },
+        {
+          "name": "--token-size-image-sm",
+          "value": "60px"
+        },
+        {
+          "name": "--token-size-image-md",
+          "value": "100px"
+        },
+        {
+          "name": "--token-size-image-lg",
+          "value": "104px"
+        },
+        {
+          "name": "--token-size-image-xl",
+          "value": "184px"
+        },
+        {
+          "name": "--token-size-image-xxl",
+          "value": "320px"
+        }
+      ]
+    },
+    {
+      "comment": "/* Spacing · Inline (가로 패딩) */",
+      "tokens": [
+        {
+          "name": "--token-spacing-inline-xs",
+          "value": "4px"
+        },
+        {
+          "name": "--token-spacing-inline-sm",
+          "value": "8px"
+        },
+        {
+          "name": "--token-spacing-inline-md",
+          "value": "12px"
+        },
+        {
+          "name": "--token-spacing-inline-lg",
+          "value": "16px"
+        },
+        {
+          "name": "--token-spacing-inline-xl",
+          "value": "20px"
+        },
+        {
+          "name": "--token-spacing-inline-xxl",
+          "value": "24px"
+        },
+        {
+          "name": "--token-spacing-inline-xxxl",
+          "value": "28px"
+        }
+      ]
+    },
+    {
+      "comment": "/* Spacing · Stack (세로 패딩) */",
+      "tokens": [
+        {
+          "name": "--token-spacing-stack-xxs",
+          "value": "2px"
+        },
+        {
+          "name": "--token-spacing-stack-xs",
+          "value": "4px"
+        },
+        {
+          "name": "--token-spacing-stack-sm",
+          "value": "8px"
+        },
+        {
+          "name": "--token-spacing-stack-md",
+          "value": "12px"
+        },
+        {
+          "name": "--token-spacing-stack-lg",
+          "value": "16px"
+        },
+        {
+          "name": "--token-spacing-stack-xl",
+          "value": "24px"
+        },
+        {
+          "name": "--token-spacing-stack-xxl",
+          "value": "32px"
+        }
+      ]
+    },
+    {
+      "comment": "/* Spacing · Group (flex/grid gap) */",
+      "tokens": [
+        {
+          "name": "--token-spacing-group-xxs",
+          "value": "2px"
+        },
+        {
+          "name": "--token-spacing-group-xs",
+          "value": "4px"
+        },
+        {
+          "name": "--token-spacing-group-sm",
+          "value": "8px"
+        },
+        {
+          "name": "--token-spacing-group-md",
+          "value": "12px"
+        },
+        {
+          "name": "--token-spacing-group-lg",
+          "value": "16px"
+        },
+        {
+          "name": "--token-spacing-group-xl",
+          "value": "24px"
+        }
+      ]
+    },
+    {
+      "comment": "/* Shadow · Default */",
+      "tokens": [
+        {
+          "name": "--token-shadow-default-sm",
+          "value": "0 1px 2px 0 rgba(20, 18, 16, 0.06), 0 1px 3px 0 rgba(20, 18, 16, 0.08)"
+        },
+        {
+          "name": "--token-shadow-default-md",
+          "value": "\n    0 1px 2px -1px rgba(20, 18, 16, 0.08), 0 4px 12px -2px rgba(20, 18, 16, 0.1)"
+        },
+        {
+          "name": "--token-shadow-default-lg",
+          "value": "\n    0 2px 4px -2px rgba(20, 18, 16, 0.08), 0 10px 28px -6px rgba(20, 18, 16, 0.16)"
+        },
+        {
+          "name": "--token-shadow-default-xl",
+          "value": "\n    0 4px 8px -3px rgba(20, 18, 16, 0.1), 0 20px 48px -10px rgba(20, 18, 16, 0.2)"
+        }
+      ]
+    },
+    {
+      "comment": "/* Typography — size·weight·line-height·letter-spacing */",
+      "tokens": [
+        {
+          "name": "--token-typography-display-md-size",
+          "value": "32px"
+        },
+        {
+          "name": "--token-typography-display-md-weight",
+          "value": "700"
+        },
+        {
+          "name": "--token-typography-display-md-line-height",
+          "value": "40px"
+        },
+        {
+          "name": "--token-typography-display-md-letter-spacing",
+          "value": "-0.5px"
+        },
+        {
+          "name": "--token-typography-display-sm-size",
+          "value": "28px",
+          "blankBefore": true
+        },
+        {
+          "name": "--token-typography-display-sm-weight",
+          "value": "700"
+        },
+        {
+          "name": "--token-typography-display-sm-line-height",
+          "value": "36px"
+        },
+        {
+          "name": "--token-typography-display-sm-letter-spacing",
+          "value": "-0.4px"
+        },
+        {
+          "name": "--token-typography-headline-xl-size",
+          "value": "24px",
+          "blankBefore": true
+        },
+        {
+          "name": "--token-typography-headline-xl-weight",
+          "value": "700"
+        },
+        {
+          "name": "--token-typography-headline-xl-line-height",
+          "value": "32px"
+        },
+        {
+          "name": "--token-typography-headline-xl-letter-spacing",
+          "value": "-0.3px"
+        },
+        {
+          "name": "--token-typography-headline-lg-size",
+          "value": "20px",
+          "blankBefore": true
+        },
+        {
+          "name": "--token-typography-headline-lg-weight",
+          "value": "700"
+        },
+        {
+          "name": "--token-typography-headline-lg-line-height",
+          "value": "28px"
+        },
+        {
+          "name": "--token-typography-headline-lg-letter-spacing",
+          "value": "-0.2px"
+        },
+        {
+          "name": "--token-typography-headline-md-size",
+          "value": "18px",
+          "blankBefore": true
+        },
+        {
+          "name": "--token-typography-headline-md-weight",
+          "value": "700"
+        },
+        {
+          "name": "--token-typography-headline-md-line-height",
+          "value": "26px"
+        },
+        {
+          "name": "--token-typography-headline-md-letter-spacing",
+          "value": "-0.1px"
+        },
+        {
+          "name": "--token-typography-headline-sm-size",
+          "value": "16px",
+          "blankBefore": true
+        },
+        {
+          "name": "--token-typography-headline-sm-weight",
+          "value": "700"
+        },
+        {
+          "name": "--token-typography-headline-sm-line-height",
+          "value": "24px"
+        },
+        {
+          "name": "--token-typography-headline-sm-letter-spacing",
+          "value": "0px"
+        },
+        {
+          "name": "--token-typography-body-lg-bold-size",
+          "value": "16px",
+          "blankBefore": true
+        },
+        {
+          "name": "--token-typography-body-lg-bold-weight",
+          "value": "700"
+        },
+        {
+          "name": "--token-typography-body-lg-bold-line-height",
+          "value": "24px"
+        },
+        {
+          "name": "--token-typography-body-lg-bold-letter-spacing",
+          "value": "0px"
+        },
+        {
+          "name": "--token-typography-body-lg-medium-size",
+          "value": "16px",
+          "blankBefore": true
+        },
+        {
+          "name": "--token-typography-body-lg-medium-weight",
+          "value": "500"
+        },
+        {
+          "name": "--token-typography-body-lg-medium-line-height",
+          "value": "24px"
+        },
+        {
+          "name": "--token-typography-body-lg-medium-letter-spacing",
+          "value": "0px"
+        },
+        {
+          "name": "--token-typography-body-lg-base-size",
+          "value": "16px",
+          "blankBefore": true
+        },
+        {
+          "name": "--token-typography-body-lg-base-weight",
+          "value": "400"
+        },
+        {
+          "name": "--token-typography-body-lg-base-line-height",
+          "value": "24px"
+        },
+        {
+          "name": "--token-typography-body-lg-base-letter-spacing",
+          "value": "0px"
+        },
+        {
+          "name": "--token-typography-body-md-bold-size",
+          "value": "14px",
+          "blankBefore": true
+        },
+        {
+          "name": "--token-typography-body-md-bold-weight",
+          "value": "700"
+        },
+        {
+          "name": "--token-typography-body-md-bold-line-height",
+          "value": "20px"
+        },
+        {
+          "name": "--token-typography-body-md-bold-letter-spacing",
+          "value": "0px"
+        },
+        {
+          "name": "--token-typography-body-md-medium-size",
+          "value": "14px",
+          "blankBefore": true
+        },
+        {
+          "name": "--token-typography-body-md-medium-weight",
+          "value": "500"
+        },
+        {
+          "name": "--token-typography-body-md-medium-line-height",
+          "value": "20px"
+        },
+        {
+          "name": "--token-typography-body-md-medium-letter-spacing",
+          "value": "0px"
+        },
+        {
+          "name": "--token-typography-body-md-base-size",
+          "value": "14px",
+          "blankBefore": true
+        },
+        {
+          "name": "--token-typography-body-md-base-weight",
+          "value": "400"
+        },
+        {
+          "name": "--token-typography-body-md-base-line-height",
+          "value": "20px"
+        },
+        {
+          "name": "--token-typography-body-md-base-letter-spacing",
+          "value": "0px"
+        },
+        {
+          "name": "--token-typography-body-sm-bold-size",
+          "value": "12px",
+          "blankBefore": true
+        },
+        {
+          "name": "--token-typography-body-sm-bold-weight",
+          "value": "700"
+        },
+        {
+          "name": "--token-typography-body-sm-bold-line-height",
+          "value": "18px"
+        },
+        {
+          "name": "--token-typography-body-sm-bold-letter-spacing",
+          "value": "0px"
+        },
+        {
+          "name": "--token-typography-body-sm-medium-size",
+          "value": "12px",
+          "blankBefore": true
+        },
+        {
+          "name": "--token-typography-body-sm-medium-weight",
+          "value": "500"
+        },
+        {
+          "name": "--token-typography-body-sm-medium-line-height",
+          "value": "18px"
+        },
+        {
+          "name": "--token-typography-body-sm-medium-letter-spacing",
+          "value": "0px"
+        },
+        {
+          "name": "--token-typography-body-sm-base-size",
+          "value": "12px",
+          "blankBefore": true
+        },
+        {
+          "name": "--token-typography-body-sm-base-weight",
+          "value": "400"
+        },
+        {
+          "name": "--token-typography-body-sm-base-line-height",
+          "value": "18px"
+        },
+        {
+          "name": "--token-typography-body-sm-base-letter-spacing",
+          "value": "0px"
+        },
+        {
+          "name": "--token-typography-label-lg-bold-size",
+          "value": "16px",
+          "blankBefore": true
+        },
+        {
+          "name": "--token-typography-label-lg-bold-weight",
+          "value": "700"
+        },
+        {
+          "name": "--token-typography-label-lg-bold-line-height",
+          "value": "24px"
+        },
+        {
+          "name": "--token-typography-label-lg-bold-letter-spacing",
+          "value": "0px"
+        },
+        {
+          "name": "--token-typography-label-lg-medium-size",
+          "value": "16px",
+          "blankBefore": true
+        },
+        {
+          "name": "--token-typography-label-lg-medium-weight",
+          "value": "500"
+        },
+        {
+          "name": "--token-typography-label-lg-medium-line-height",
+          "value": "24px"
+        },
+        {
+          "name": "--token-typography-label-lg-medium-letter-spacing",
+          "value": "0px"
+        },
+        {
+          "name": "--token-typography-label-lg-base-size",
+          "value": "16px",
+          "blankBefore": true
+        },
+        {
+          "name": "--token-typography-label-lg-base-weight",
+          "value": "400"
+        },
+        {
+          "name": "--token-typography-label-lg-base-line-height",
+          "value": "24px"
+        },
+        {
+          "name": "--token-typography-label-lg-base-letter-spacing",
+          "value": "0px"
+        },
+        {
+          "name": "--token-typography-label-md-bold-size",
+          "value": "14px",
+          "blankBefore": true
+        },
+        {
+          "name": "--token-typography-label-md-bold-weight",
+          "value": "700"
+        },
+        {
+          "name": "--token-typography-label-md-bold-line-height",
+          "value": "20px"
+        },
+        {
+          "name": "--token-typography-label-md-bold-letter-spacing",
+          "value": "0px"
+        },
+        {
+          "name": "--token-typography-label-md-medium-size",
+          "value": "14px",
+          "blankBefore": true
+        },
+        {
+          "name": "--token-typography-label-md-medium-weight",
+          "value": "500"
+        },
+        {
+          "name": "--token-typography-label-md-medium-line-height",
+          "value": "20px"
+        },
+        {
+          "name": "--token-typography-label-md-medium-letter-spacing",
+          "value": "0px"
+        },
+        {
+          "name": "--token-typography-label-md-base-size",
+          "value": "14px",
+          "blankBefore": true
+        },
+        {
+          "name": "--token-typography-label-md-base-weight",
+          "value": "400"
+        },
+        {
+          "name": "--token-typography-label-md-base-line-height",
+          "value": "20px"
+        },
+        {
+          "name": "--token-typography-label-md-base-letter-spacing",
+          "value": "0px"
+        },
+        {
+          "name": "--token-typography-label-sm-bold-size",
+          "value": "12px",
+          "blankBefore": true
+        },
+        {
+          "name": "--token-typography-label-sm-bold-weight",
+          "value": "700"
+        },
+        {
+          "name": "--token-typography-label-sm-bold-line-height",
+          "value": "18px"
+        },
+        {
+          "name": "--token-typography-label-sm-bold-letter-spacing",
+          "value": "0px"
+        },
+        {
+          "name": "--token-typography-label-sm-medium-size",
+          "value": "12px",
+          "blankBefore": true
+        },
+        {
+          "name": "--token-typography-label-sm-medium-weight",
+          "value": "500"
+        },
+        {
+          "name": "--token-typography-label-sm-medium-line-height",
+          "value": "18px"
+        },
+        {
+          "name": "--token-typography-label-sm-medium-letter-spacing",
+          "value": "0px"
+        },
+        {
+          "name": "--token-typography-label-sm-base-size",
+          "value": "12px",
+          "blankBefore": true
+        },
+        {
+          "name": "--token-typography-label-sm-base-weight",
+          "value": "400"
+        },
+        {
+          "name": "--token-typography-label-sm-base-line-height",
+          "value": "18px"
+        },
+        {
+          "name": "--token-typography-label-sm-base-letter-spacing",
+          "value": "0px"
+        },
+        {
+          "name": "--token-typography-label-xs-size",
+          "value": "10px",
+          "blankBefore": true
+        },
+        {
+          "name": "--token-typography-label-xs-weight",
+          "value": "400"
+        },
+        {
+          "name": "--token-typography-label-xs-line-height",
+          "value": "10px"
+        },
+        {
+          "name": "--token-typography-label-xs-letter-spacing",
+          "value": "0px"
+        },
+        {
+          "name": "--token-typography-caption-size",
+          "value": "12px",
+          "blankBefore": true
+        },
+        {
+          "name": "--token-typography-caption-weight",
+          "value": "400"
+        },
+        {
+          "name": "--token-typography-caption-line-height",
+          "value": "18px"
+        },
+        {
+          "name": "--token-typography-caption-letter-spacing",
+          "value": "0px"
+        },
+        {
+          "name": "--token-typography-code-size",
+          "value": "14px",
+          "blankBefore": true
+        },
+        {
+          "name": "--token-typography-code-weight",
+          "value": "400"
+        },
+        {
+          "name": "--token-typography-code-line-height",
+          "value": "28px"
+        },
+        {
+          "name": "--token-typography-code-letter-spacing",
+          "value": "0px"
+        }
+      ]
+    }
+  ]
+}

@@ -3,7 +3,7 @@ import { Button } from "../src/components/primitives/button";
 import { Tooltip } from "../src/components/primitives/tooltip";
 
 const meta: Meta = {
-  title: "Primitives/Tooltip",
+  title: "Atoms/Display/Tooltip",
   parameters: { layout: "centered" },
   tags: ["autodocs"],
 };

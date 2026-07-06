@@ -6,13 +6,17 @@ export const DropdownMenu = DropdownMenuPrimitive.Root;
 export const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger;
 export const DropdownMenuSeparator = DropdownMenuPrimitive.Separator;
 
-export function DropdownMenuContent({ className, sideOffset = 6, ...props }: ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Content>) {
+export function DropdownMenuContent({
+  className,
+  sideOffset = 6,
+  ...props
+}: ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Content>) {
   return (
     <DropdownMenuPrimitive.Portal>
       <DropdownMenuPrimitive.Content
         sideOffset={sideOffset}
         className={cn(
-          "z-50 min-w-40 rounded-lg border border-[var(--color-border-default)] bg-[var(--color-bg-primary)] p-1 shadow-md",
+          "z-50 min-w-40 rounded-md border border-[var(--color-border-default)] bg-[var(--color-bg-primary)] p-stack-xxs shadow-default-md",
           "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
           className,
         )}
@@ -22,12 +26,15 @@ export function DropdownMenuContent({ className, sideOffset = 6, ...props }: Com
   );
 }
 
-export function DropdownMenuItem({ className, ...props }: ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Item>) {
+export function DropdownMenuItem({
+  className,
+  ...props
+}: ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Item>) {
   return (
     <DropdownMenuPrimitive.Item
       className={cn(
-        "relative flex cursor-pointer select-none items-center rounded-md px-2 py-1.5 text-sm text-[var(--color-text-primary)] outline-none transition-colors",
-        "hover:bg-[var(--color-bg-tertiary)] focus:bg-[var(--color-bg-tertiary)]",
+        "relative flex cursor-pointer select-none items-center rounded-xs px-inline-sm py-stack-xs typography-label-md-base text-[var(--color-text-primary)] outline-none transition-colors",
+        "hover:bg-[var(--color-bg-secondary)] focus:bg-[var(--color-bg-secondary)]",
         "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
         className,
       )}
@@ -36,10 +43,16 @@ export function DropdownMenuItem({ className, ...props }: ComponentPropsWithoutR
   );
 }
 
-export function DropdownMenuLabel({ className, ...props }: ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Label>) {
+export function DropdownMenuLabel({
+  className,
+  ...props
+}: ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Label>) {
   return (
     <DropdownMenuPrimitive.Label
-      className={cn("px-2 py-1.5 text-xs font-semibold text-[var(--color-text-tertiary)]", className)}
+      className={cn(
+        "px-inline-sm py-stack-xs typography-label-xs text-[var(--color-text-tertiary)]",
+        className,
+      )}
       {...props}
     />
   );

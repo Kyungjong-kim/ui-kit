@@ -27,28 +27,42 @@ export function Stepper({
   const isLast = activeStep === steps.length - 1;
 
   return (
-    <div className={cn("space-y-6", className)}>
-      <div className="flex items-center">
+    <div className={cn("flex flex-col gap-group-xl", className)}>
+      <ol aria-label="단계 진행" className="flex items-center">
         {steps.map((step, index) => {
           const isDone = index < activeStep;
           const isCurrent = index === activeStep;
+          const stepState = isDone ? "완료" : isCurrent ? "현재" : "미완";
+
           return (
-            <div key={step} className="flex flex-1 items-center">
+            <li
+              key={step}
+              aria-label={`${index + 1}단계: ${step} (${stepState})`}
+              aria-current={isCurrent ? "step" : undefined}
+              className="flex flex-1 items-center"
+            >
               <div className="flex flex-col items-center">
                 <div
                   className={cn(
-                    "flex h-8 w-8 items-center justify-center rounded-full text-sm font-medium transition-colors",
-                    isDone && "bg-[var(--color-bg-brand-default)] text-[var(--color-neutral-900)]",
-                    isCurrent && "border-2 border-[var(--color-border-brand-default)] text-[var(--color-text-brand-default)]",
-                    !isDone && !isCurrent && "border-2 border-[var(--color-border-default)] text-[var(--color-text-tertiary)]",
+                    "flex h-size-control-sm w-size-control-sm items-center justify-center rounded-full typography-label-sm-medium transition-colors",
+                    isDone &&
+                      "bg-[var(--color-bg-brand-default)] text-[var(--color-interactive-primary-text)]",
+                    isCurrent &&
+                      "border-2 border-[var(--color-border-brand-default)] text-[var(--color-text-brand-default)]",
+                    !isDone &&
+                      !isCurrent &&
+                      "border-2 border-[var(--color-border-default)] text-[var(--color-text-tertiary)]",
                   )}
+                  aria-hidden="true"
                 >
-                  {isDone ? <CheckIcon className="h-4 w-4" /> : index + 1}
+                  {isDone ? <CheckIcon className="h-size-icon-sm w-size-icon-sm" /> : index + 1}
                 </div>
                 <span
                   className={cn(
-                    "mt-1 text-xs whitespace-nowrap",
-                    isCurrent ? "text-[var(--color-text-brand-default)] font-medium" : "text-[var(--color-text-tertiary)]",
+                    "mt-stack-xxs typography-caption whitespace-nowrap",
+                    isCurrent
+                      ? "text-[var(--color-text-brand-default)]"
+                      : "text-[var(--color-text-tertiary)]",
                   )}
                 >
                   {step}
@@ -57,15 +71,18 @@ export function Stepper({
               {index < steps.length - 1 && (
                 <div
                   className={cn(
-                    "mx-2 h-px flex-1 transition-colors",
-                    index < activeStep ? "bg-[var(--color-bg-brand-default)]" : "bg-[var(--color-border-default)]",
+                    "mx-inline-sm h-px flex-1 transition-colors",
+                    index < activeStep
+                      ? "bg-[var(--color-bg-brand-default)]"
+                      : "bg-[var(--color-border-default)]",
                   )}
+                  aria-hidden="true"
                 />
               )}
-            </div>
+            </li>
           );
         })}
-      </div>
+      </ol>
       <div className="flex justify-between">
         <Button variant="secondary" onClick={onPrev} disabled={isFirst}>
           이전
