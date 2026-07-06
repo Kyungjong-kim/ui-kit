@@ -62,7 +62,7 @@ const STATUSES: Member["status"][] = ["활성", "대기", "정지"];
 const data: Member[] = Array.from({ length: 23 }, (_, i) => ({
   id: String(i + 1),
   name: `구성원 ${i + 1}`,
-  email: `member${i + 1}@genon.ai`,
+  email: `member${i + 1}@example.com`,
   team: TEAMS[i % TEAMS.length],
   role: ROLES[i % ROLES.length],
   status: STATUSES[i % STATUSES.length],

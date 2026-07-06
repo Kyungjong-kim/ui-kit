@@ -2,7 +2,7 @@
 
 > **For Claude:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task.
 
-**Goal:** gen-portal 컴포넌트 포팅 + 누락 컴포넌트 추가로 ui-kit을 완전한 개인 디자인 시스템으로 확장한다.
+**Goal:** 사내 포털 DS 컴포넌트 포팅 + 누락 컴포넌트 추가로 ui-kit을 완전한 개인 디자인 시스템으로 확장한다.
 
 **Architecture:** 기존 Button/Badge/Input/Checkbox와 동일한 패턴(TDD → CVA + Radix UI → Storybook story → commit)을 18개 컴포넌트에 반복 적용한다. 그룹 A(기반) → B(오버레이) → C(레이아웃) → D(복합 폼) → E(고급) 순으로 의존성이 낮은 것부터 구현한다.
 
@@ -2694,7 +2694,7 @@ export const Default: Story = {
 
 ```bash
 git add .
-git commit -m "feat: add Stepper component (gen-portal StepButton 포팅)"
+git commit -m "feat: add Stepper component (사내 포털 DS StepButton 포팅)"
 ```
 
 ---
@@ -2857,7 +2857,7 @@ export const NotFound: Story = {
 
 ```bash
 git add .
-git commit -m "feat: add EmptyState component (gen-portal ErrorDisplay 포팅)"
+git commit -m "feat: add EmptyState component (사내 포털 DS ErrorDisplay 포팅)"
 ```
 
 ---
