@@ -71,6 +71,16 @@ jobs:
       - name: Build Storybook
         run: pnpm build-storybook
 
+      # 공개 배포물 식별자 게이트 — 소스가 아닌 빌드 산출물을 검사해야
+      # 스토리 더미 데이터에 박힌 식별자까지 잡힌다(#153 재발 방지).
+      - name: Masking gate (배포물 식별자 0건 검증)
+        run: |
+          if grep -rliE 'genos|genon|gen-portal|admin-front|0161ed' storybook-static; then
+            echo "::error::공개 배포물에서 마스킹 대상 식별자 검출 — 위 파일 확인"
+            exit 1
+          fi
+          echo "masking gate pass"
+
       - name: Upload Storybook artifact
         uses: actions/upload-artifact@v4
         with:
