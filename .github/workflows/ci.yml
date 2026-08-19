@@ -39,10 +39,26 @@ jobs:
       - name: Lint
         run: pnpm lint
 
-      # Tailwind v4 drops undefined utilities silently — lint and build both pass
-      # while the font never applies. This is the only gate that catches it.
-      - name: Check typography utilities
-        run: pnpm check:typography
+      # Blocking DS gates. Each catches a class of drift that lint and build let through:
+      #  - typography: Tailwind v4 drops undefined utilities silently (font never applies)
+      #  - tokens:     raw hex/rgb bypasses the token layer, so theming skips the element
+      #  - catalog:    ds-catalog.json and the README inventory fall behind the source
+      - name: Check design system
+        run: pnpm check:ds
+
+      # Advisory. Every finding needs a human decision, so it reports into the job
+      # summary instead of failing — a gate that fires on judgement calls gets muted.
+      - name: Report documentation drift
+        if: always()
+        continue-on-error: true
+        run: |
+          REPORT=$(pnpm check:docs || true)
+          echo "$REPORT"
+          {
+            echo '```'
+            echo "$REPORT"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Test
         run: pnpm test
