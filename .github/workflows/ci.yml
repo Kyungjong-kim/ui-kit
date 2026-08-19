@@ -39,6 +39,11 @@ jobs:
       - name: Lint
         run: pnpm lint
 
+      # Tailwind v4 drops undefined utilities silently — lint and build both pass
+      # while the font never applies. This is the only gate that catches it.
+      - name: Check typography utilities
+        run: pnpm check:typography
+
       - name: Test
         run: pnpm test
 

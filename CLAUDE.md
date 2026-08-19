@@ -130,6 +130,7 @@
 - [ ] pnpm test 통과
 - [ ] pnpm build 통과 (dist 갱신)
 - [ ] pnpm lint 통과 (biome)
+- [ ] pnpm check:typography 통과 — `typography-*` 는 정의된 유틸만 사용
 ```
 
 **체크 실패 시:** 위반 항목을 사용자에게 보고한 뒤 수정 방향을 확인받는다. 스스로 판단해 수정 후 완료 처리 금지.
@@ -218,6 +219,9 @@
 - 개발: `pnpm dev` (tsup --watch) / `pnpm storybook` (시각 확인)
 - 테스트: `pnpm test` (vitest)
 - 린트·포맷: `pnpm lint` / `pnpm format` (biome)
+- DS 가드: `pnpm check:typography` (차단) — Tailwind v4 는 미정의 유틸을 조용히 무시하므로
+  `typography-label-xs-medium` 같은 없는 클래스가 빌드·린트를 모두 통과한 채 폰트만 안 먹는다.
+  `src/styles/theme.css` 의 `@utility typography-*` 정의가 진실원. CI·릴리스 양쪽에서 차단.
 - 릴리스: `pnpm changeset` → `pnpm version` → `pnpm release`
 
 ---
