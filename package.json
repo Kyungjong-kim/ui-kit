@@ -38,7 +38,7 @@
     "build": "tsup",
     "showcase": "vite showcase",
     "showcase:build": "vite build showcase",
-    "tokens": "node scripts/build-tokens.ts",
+    "tokens": "node --experimental-strip-types scripts/build-tokens.ts",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test": "vitest run",
