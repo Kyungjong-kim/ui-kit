@@ -38,7 +38,7 @@
     "build": "tsup",
     "showcase": "vite showcase",
     "showcase:build": "vite build showcase",
-    "tokens": "node scripts/build-tokens.ts",
+    "tokens": "node --experimental-strip-types scripts/build-tokens.ts",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test": "vitest run",
@@ -47,8 +47,9 @@
     "format": "biome format . --write",
     "changeset": "changeset",
     "version": "changeset version",
-    "release": "pnpm build && pnpm check:masking && changeset publish",
-    "check:masking": "! grep -rliE 'genos|genon|gen-portal|admin-front|0161ed' dist"
+    "release": "pnpm build && pnpm check:masking && pnpm check:typography && changeset publish",
+    "check:masking": "! grep -rliE 'genos|genon|gen-portal|admin-front|0161ed' dist",
+    "check:typography": "node --experimental-strip-types scripts/check-typography.ts"
   },
   "peerDependencies": {
     "react": "^19.0.0",
