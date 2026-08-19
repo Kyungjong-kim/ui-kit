@@ -38,13 +38,12 @@
 
 | 문서 | 경로 |
 |---|---|
-| **HANDOFF_NOW** (현재 상태·다음 작업) | `docs/ui-kit/status/HANDOFF_NOW.md` |
 | **agent/architecture.md** (라이브러리 구조) | `docs/ui-kit/agent/architecture.md` |
 | **agent/conventions.md** (코딩 규칙) | `docs/ui-kit/agent/conventions.md` |
 | **agent/design-system.md** (토큰·variant 패턴 quickref) | `docs/ui-kit/agent/design-system.md` |
 | **design-system/** (캐노니컬 DS 문서: 원칙·토큰·컴포넌트 사양·패턴) | `docs/design-system/README.md` |
 
-읽은 후 §1(현재 상태)·§2(다음 작업)를 사용자에게 요약 출력한다.
+읽은 후 작업 범위와 관련 규칙을 사용자에게 요약 출력한다.
 
 > UI/컴포넌트 작업 시: `agent/design-system.md`(빠른 규칙) → 상세 사양·원칙·조합 패턴은 `docs/design-system/`(foundation·tokens·components·patterns). 새 컴포넌트 추가 시 `docs/design-system/components/`에 사양 기재.
 
@@ -158,16 +157,13 @@
 
 ---
 
-## 🔴 STEP 3 — 세션 종료 강제 절차
+## 🔴 STEP 3 — 세션 종료 절차
 
 코드·문서 변경이 있었던 세션은 사용자 지시 없이도 자동 수행한다.
 
-**갱신 순서 (순서 바꾸지 말 것):**
-1. `docs/ui-kit/status/HANDOFF_NOW.md` — §1 현재 상태·§2 다음 작업 갱신 (60줄 이하 유지)
-2. `docs/ui-kit/history/세션_노트.md` — 최상단 prepend (`> Session note YYYY-MM-DD: [요약]`)
-3. `docs/ui-kit/plans/HANDOFF.md` — `## Session Update YYYY-MM-DD` 섹션 최상단 추가
+**진행상황 기록은 문서가 아니라 GitHub 이슈·커밋에 남긴다.** 세션 인계용 상태 문서(HANDOFF 계열)를 만들지 않는다 — 갱신이 밀리는 순간 규칙과 실행이 어긋나고, 그 불일치가 나머지 규칙의 구속력까지 떨어뜨린다. 이력이 필요하면 커밋 메시지와 이슈 코멘트를 쓴다.
 
-**갱신 후 일관성 검증:** HANDOFF_NOW.md §2 첫 항목이 최신 다음 작업인지 / 60줄 이하인지 확인.
+**기술 문서 갱신** — 변경이 발생한 영역의 `docs/ui-kit/agent/*.md` 또는 `docs/design-system/` 해당 문서만 갱신한다. 없으면 만들지 않는다.
 
 **변경 결과 요약 출력 (필수):**
 ```
@@ -195,7 +191,7 @@
 |---|---|
 | 컴포넌트 추가·수정·variant·prop | `ui-kit-dev` |
 | 디자인 토큰 변경·확장 | `ui-kit-dev` (design-system.md 자동 갱신 트리거) |
-| 문서·HANDOFF 갱신 | `ui-kit-doc-writer` |
+| 문서 갱신 (agent·design-system) | `ui-kit-doc-writer` |
 | 코드 리뷰 | `code-reviewer` |
 | 버그 원인 추적 | `debugger` |
 | 리팩토링 | `refactor` |
@@ -230,7 +226,7 @@
 
 | 스킬 | 용도 |
 |------|------|
-| `/session-close` | 세션 종료 — HANDOFF 3종 갱신 |
+| `/session-close` | 세션 종료 — 변경 요약 출력 (이 repo는 HANDOFF 미사용) |
 | `/project-fix` | QA·버그 이슈 → 서브이슈 생성 + 브랜치 준비 |
 | `/project-pr` | PR 생성 — 이슈 연결·Co-Authored-By 포함 |
 | `/project-issue` | GitHub 이슈 인터랙티브 생성 |
