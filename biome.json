@@ -7,7 +7,8 @@
       "!node_modules",
       "!storybook-static",
       "!src/stories",
-      "!src/components/primitives/icon/generated"
+      "!src/components/primitives/icon/generated",
+      "!docs/design-system/ds-catalog.json"
     ]
   },
   "assist": { "actions": { "source": { "organizeImports": "on" } } },

@@ -130,7 +130,8 @@
 - [ ] pnpm test 통과
 - [ ] pnpm build 통과 (dist 갱신)
 - [ ] pnpm lint 통과 (biome)
-- [ ] pnpm check:typography 통과 — `typography-*` 는 정의된 유틸만 사용
+- [ ] pnpm check:ds 통과 — typography · tokens · catalog 3종 가드
+- [ ] 컴포넌트 추가·제거·export 변경 시 `pnpm catalog` 재생성 + README 수치·목록 갱신
 ```
 
 **체크 실패 시:** 위반 항목을 사용자에게 보고한 뒤 수정 방향을 확인받는다. 스스로 판단해 수정 후 완료 처리 금지.
@@ -219,9 +220,17 @@
 - 개발: `pnpm dev` (tsup --watch) / `pnpm storybook` (시각 확인)
 - 테스트: `pnpm test` (vitest)
 - 린트·포맷: `pnpm lint` / `pnpm format` (biome)
-- DS 가드: `pnpm check:typography` (차단) — Tailwind v4 는 미정의 유틸을 조용히 무시하므로
-  `typography-label-xs-medium` 같은 없는 클래스가 빌드·린트를 모두 통과한 채 폰트만 안 먹는다.
-  `src/styles/theme.css` 의 `@utility typography-*` 정의가 진실원. CI·릴리스 양쪽에서 차단.
+- 카탈로그: `pnpm catalog` — 소스에서 `docs/design-system/ds-catalog.json` 생성 (수정 금지)
+- DS 가드: `pnpm check:ds` = typography + tokens + catalog. **CI·릴리스 양쪽에서 차단.**
+
+| 가드 | 잡는 것 | 왜 빌드로는 못 잡나 |
+|---|---|---|
+| `check:typography` | 미정의 `typography-*` 클래스 | Tailwind v4 가 미정의 유틸을 **에러 없이 무시** — 폰트만 조용히 안 먹는다 |
+| `check:tokens` | raw hex·`rgb()` (차단) / core 팔레트 직접참조 (리포트) | 값이 유효한 CSS 라 아무도 실패하지 않는다. 테마 전환 시 그 요소만 안 바뀐다 |
+| `check:catalog` | 카탈로그·README 수치·컴포넌트 목록 드리프트 | 아무도 읽지 않는 수기 문서라 틀려도 신호가 없다 |
+
+- 문서 리포트: `pnpm check:docs` — **비차단.** 끊긴 링크·고아 스펙·스토리 누락·문서 미갱신을
+  알린다. 판단이 필요한 항목이라 차단하지 않는다 (차단하면 무시하게 된다).
 - 릴리스: `pnpm changeset` → `pnpm version` → `pnpm release`
 
 ---
