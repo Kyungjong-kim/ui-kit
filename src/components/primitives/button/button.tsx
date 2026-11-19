@@ -64,16 +64,31 @@ export interface ButtonProps
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
-    { className, variant, size, asChild = false, loading = false, disabled, children, ...props },
+    {
+      className,
+      variant,
+      size,
+      asChild = false,
+      loading = false,
+      disabled,
+      onClick,
+      children,
+      ...props
+    },
     ref,
   ) => {
     const Comp = asChild ? Slot : "button";
+    const isInactive = Boolean(disabled || loading);
+    // 링크 등 자식 요소에는 disabled 가 통하지 않는다 — aria-disabled 로 알리고 클릭을 막는다
+    const blocksChild = asChild && isInactive;
     return (
       <Comp
         ref={ref}
         className={cn(buttonVariants({ variant, size }), className)}
-        disabled={disabled || loading}
+        disabled={asChild ? undefined : isInactive}
+        aria-disabled={blocksChild || undefined}
         aria-busy={loading}
+        onClick={blocksChild ? (event) => event.preventDefault() : onClick}
         {...props}
       >
         {loading && <Spinner size="sm" className="border-current border-t-current opacity-70" />}
