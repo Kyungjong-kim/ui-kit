@@ -36,11 +36,17 @@ function getPageRange(
 }
 
 const itemBase = cn(
-  "inline-flex h-size-control-md min-w-size-control-md items-center justify-center rounded-sm px-inline-xs typography-label-md-medium",
+  "inline-flex h-size-control-sm min-w-size-control-sm items-center justify-center rounded-xs px-inline-xs typography-label-md-medium tabular-nums",
   "text-[var(--color-text-secondary)] transition-colors",
   "hover:bg-[var(--color-bg-secondary)] hover:text-[var(--color-text-primary)]",
   "focus-ring",
   "disabled:pointer-events-none disabled:opacity-50",
+);
+
+// 이전·다음은 테두리 버튼으로 번호와 구분한다
+const navItem = cn(
+  itemBase,
+  "border border-[var(--color-border-input-default)] hover:border-[var(--color-border-input-hover)]",
 );
 
 export function Pagination({
@@ -71,7 +77,7 @@ export function Pagination({
         onClick={() => onPageChange(safeCurrent - 1)}
         disabled={isFirst}
         aria-label={previousLabel}
-        className={itemBase}
+        className={navItem}
       >
         <ChevronLeftIcon className="h-size-icon-sm w-size-icon-sm" />
       </button>
@@ -84,7 +90,7 @@ export function Pagination({
             <span
               key={`ellipsis-${prev ?? "start"}-${next ?? "end"}`}
               aria-hidden="true"
-              className="inline-flex h-size-control-md min-w-size-control-md items-center justify-center text-[var(--color-text-tertiary)]"
+              className="inline-flex h-size-control-sm min-w-size-control-sm items-center justify-center text-[var(--color-text-tertiary)]"
             >
               <MoreHorizontalIcon className="h-size-icon-sm w-size-icon-sm" />
             </span>
@@ -114,7 +120,7 @@ export function Pagination({
         onClick={() => onPageChange(safeCurrent + 1)}
         disabled={isLast}
         aria-label={nextLabel}
-        className={itemBase}
+        className={navItem}
       >
         <ChevronRightIcon className="h-size-icon-sm w-size-icon-sm" />
       </button>
