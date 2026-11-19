@@ -43,6 +43,10 @@ export function Dialog({
             },
           )}
         >
+          {!title && (
+            // Radix 는 Title 이 없으면 접근성 경고를 내고, 스크린리더에는 이름이 없다
+            <DialogPrimitive.Title className="sr-only">{t.navigation.dialog}</DialogPrimitive.Title>
+          )}
           {(title || showClose) && (
             <div className="mb-group-xs flex items-start justify-between gap-group-md">
               {title && (
