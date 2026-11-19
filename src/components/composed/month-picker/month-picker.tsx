@@ -90,7 +90,7 @@ export function MonthPicker({
           type="button"
           disabled={disabled}
           className={cn(
-            "inline-flex items-center gap-group-xs typography-label-md-base text-[var(--color-text-primary)] disabled:cursor-not-allowed disabled:text-[var(--color-text-disabled)]",
+            "focus-ring inline-flex items-center gap-group-xs typography-label-md-base text-[var(--color-text-primary)] disabled:cursor-not-allowed disabled:text-[var(--color-text-disabled)]",
             triggerClassName,
           )}
         >
@@ -114,7 +114,7 @@ export function MonthPicker({
             type="button"
             aria-label="이전 연도"
             onClick={() => setViewYear((prev) => prev - 1)}
-            className="inline-flex h-8 w-8 items-center justify-center rounded-xs hover:bg-[var(--color-bg-tertiary)]"
+            className="focus-ring inline-flex h-8 w-8 items-center justify-center rounded-xs hover:bg-[var(--color-bg-tertiary)]"
           >
             <Icon name="chevronLeftThickFalse" size="sm" color="primary" />
           </button>
@@ -125,7 +125,7 @@ export function MonthPicker({
             type="button"
             aria-label="다음 연도"
             onClick={() => setViewYear((prev) => prev + 1)}
-            className="inline-flex h-8 w-8 items-center justify-center rounded-xs hover:bg-[var(--color-bg-tertiary)]"
+            className="focus-ring inline-flex h-8 w-8 items-center justify-center rounded-xs hover:bg-[var(--color-bg-tertiary)]"
           >
             <Icon name="chevronRightThickFalse" size="sm" color="primary" />
           </button>
@@ -140,7 +140,7 @@ export function MonthPicker({
                 onClick={() => handleSelectMonth(index)}
                 aria-pressed={isSelected}
                 className={cn(
-                  "inline-flex h-9 w-16 items-center justify-center rounded-xs typography-label-md-base transition-colors",
+                  "focus-ring inline-flex h-9 w-16 items-center justify-center rounded-xs typography-label-md-base transition-colors",
                   isSelected
                     ? "bg-[var(--color-bg-brand-default)] text-[var(--color-text-inverse)]"
                     : "text-[var(--color-text-primary)] hover:bg-[var(--color-bg-tertiary)]",

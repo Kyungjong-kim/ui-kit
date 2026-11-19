@@ -108,7 +108,7 @@ export function DateTimePicker({
           type="button"
           disabled={disabled}
           className={cn(
-            "inline-flex items-center gap-group-xs typography-label-md-base text-[var(--color-text-primary)] disabled:cursor-not-allowed disabled:text-[var(--color-text-disabled)]",
+            "focus-ring inline-flex items-center gap-group-xs typography-label-md-base text-[var(--color-text-primary)] disabled:cursor-not-allowed disabled:text-[var(--color-text-disabled)]",
             triggerClassName,
           )}
         >

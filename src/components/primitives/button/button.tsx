@@ -10,7 +10,7 @@ const buttonVariants = cva(
     "rounded-sm",
     "typography-label-md-medium",
     "transition-[background-color,border-color,box-shadow,transform,opacity] duration-150 ease-out",
-    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--color-border-focus)]",
+    "focus-ring",
     "active:scale-[0.98]",
     "disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none",
   ],

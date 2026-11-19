@@ -51,7 +51,7 @@ export function Dialog({
               {showClose && (
                 <DialogPrimitive.Close
                   aria-label="닫기"
-                  className="-mr-stack-xxs -mt-stack-xxs ml-auto rounded-xs p-stack-xxs text-[var(--color-text-tertiary)] transition-colors hover:bg-[var(--color-bg-tertiary)] hover:text-[var(--color-text-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-border-focus)]"
+                  className="-mr-stack-xxs -mt-stack-xxs ml-auto rounded-xs p-stack-xxs text-[var(--color-text-tertiary)] transition-colors hover:bg-[var(--color-bg-tertiary)] hover:text-[var(--color-text-primary)] focus-ring"
                 >
                   <XIcon className="h-4 w-4" />
                 </DialogPrimitive.Close>

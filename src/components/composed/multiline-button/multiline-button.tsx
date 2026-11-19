@@ -15,7 +15,7 @@ export function MultilineButton({ className, children, disabled, ...rest }: Mult
         "inline-flex items-start justify-center rounded-sm transition-colors",
         "bg-[var(--color-interactive-secondary-bg)] border border-[var(--color-interactive-secondary-border)]",
         "hover:bg-[var(--color-bg-secondary)] disabled:pointer-events-none disabled:opacity-50",
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--color-border-focus)]",
+        "focus-ring",
         "h-auto max-h-[56px] min-h-size-control-md max-w-full min-w-0 px-inline-md py-stack-xs",
         className,
       )}

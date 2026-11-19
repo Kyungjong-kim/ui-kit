@@ -106,7 +106,7 @@ export function Slider({
             className={cn(
               "block shrink-0 cursor-grab rounded-full border-2 border-[var(--color-bg-brand-default)] bg-[var(--color-bg-primary)] shadow-default-md transition-transform",
               "hover:scale-110 active:scale-105 active:cursor-grabbing",
-              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--color-border-focus)]",
+              "focus-ring",
               "disabled:pointer-events-none",
               size === "sm" ? "size-4" : "size-5",
             )}

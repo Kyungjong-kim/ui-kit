@@ -89,7 +89,7 @@ export function FilterDropdown({
             "typography-label-md-medium transition-colors outline-none",
             "border-[var(--color-border-default)] bg-[var(--color-bg-primary)] text-[var(--color-text-primary)]",
             "hover:bg-[var(--color-bg-secondary)]",
-            "focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--color-border-focus)]",
+            "focus-ring",
             "data-[state=open]:border-[var(--color-border-focus)]",
             "disabled:cursor-not-allowed disabled:opacity-50",
             count > 0 && "border-[var(--color-border-brand-default)]",

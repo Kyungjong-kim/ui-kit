@@ -208,7 +208,7 @@ export function TagInput({
                 <button
                   type="button"
                   onClick={clearAll}
-                  className="ml-auto shrink-0 cursor-pointer typography-label-sm-medium text-[var(--color-text-secondary)] transition-colors hover:text-[var(--color-text-primary)]"
+                  className="focus-ring ml-auto shrink-0 cursor-pointer typography-label-sm-medium text-[var(--color-text-secondary)] transition-colors hover:text-[var(--color-text-primary)]"
                 >
                   {clearAllLabel(tags.length)}
                 </button>
