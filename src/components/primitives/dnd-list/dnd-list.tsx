@@ -52,7 +52,7 @@ function SortableItem<T extends { id: string }>({
         type="button"
         {...attributes}
         {...listeners}
-        className="cursor-grab touch-none text-[var(--color-text-tertiary)] hover:text-[var(--color-text-secondary)] active:cursor-grabbing"
+        className="focus-ring cursor-grab touch-none text-[var(--color-text-tertiary)] hover:text-[var(--color-text-secondary)] active:cursor-grabbing"
         aria-label="드래그 핸들"
       >
         <GripVerticalIcon className="h-size-icon-sm w-size-icon-sm" />

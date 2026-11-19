@@ -72,7 +72,7 @@ export function TreeTable<T extends TreeTableNode>({
                       onClick={() => toggle(node.id)}
                       aria-label={isExpanded ? "접기" : "펼치기"}
                       aria-expanded={isExpanded}
-                      className="flex h-5 w-5 items-center justify-center rounded text-[var(--color-text-tertiary)] hover:bg-[var(--color-bg-tertiary)]"
+                      className="focus-ring flex h-5 w-5 items-center justify-center rounded text-[var(--color-text-tertiary)] hover:bg-[var(--color-bg-tertiary)]"
                     >
                       <ChevronRightIcon
                         className={cn("h-4 w-4 transition-transform", isExpanded && "rotate-90")}

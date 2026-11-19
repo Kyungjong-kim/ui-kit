@@ -117,7 +117,7 @@ export function Alert({
           type="button"
           onClick={onDismiss}
           aria-label="닫기"
-          className="-mr-1 -mt-1 shrink-0 rounded p-1 text-[var(--color-text-tertiary)] transition-colors hover:bg-[var(--color-bg-tertiary)] hover:text-[var(--color-text-secondary)]"
+          className="focus-ring -mr-1 -mt-1 shrink-0 rounded p-1 text-[var(--color-text-tertiary)] transition-colors hover:bg-[var(--color-bg-tertiary)] hover:text-[var(--color-text-secondary)]"
         >
           <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" className="h-4 w-4">
             <path

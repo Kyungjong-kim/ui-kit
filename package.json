@@ -49,10 +49,11 @@
     "changeset": "changeset",
     "version": "changeset version",
     "release": "pnpm build && pnpm check:masking && pnpm check:ds && changeset publish",
-    "check:ds": "pnpm check:typography && pnpm check:tokens && pnpm check:catalog",
+    "check:ds": "pnpm check:typography && pnpm check:tokens && pnpm check:focus && pnpm check:catalog",
     "check:masking": "! grep -rliE 'genos|genon|gen-portal|admin-front|0161ed' dist",
     "check:typography": "node --experimental-strip-types scripts/check-typography.ts",
     "check:tokens": "node --experimental-strip-types scripts/check-tokens.ts",
+    "check:focus": "node --experimental-strip-types scripts/check-focus.ts",
     "check:catalog": "node --experimental-strip-types scripts/catalog.ts",
     "check:docs": "node --experimental-strip-types scripts/check-docs.ts"
   },

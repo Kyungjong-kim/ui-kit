@@ -14,7 +14,7 @@ const linkButtonVariants = cva(
     "hover:bg-transparent",
     "active:bg-transparent",
     "disabled:bg-transparent",
-    "rounded-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-border-focus)]",
+    "rounded-xs focus-ring",
   ],
   {
     variants: {

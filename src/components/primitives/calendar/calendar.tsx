@@ -55,6 +55,7 @@ function CalendarMonthCaption({
     >
       <button
         type="button"
+        className="focus-ring"
         onClick={() => previousMonth && goToMonth(previousMonth)}
         disabled={!previousMonth}
         style={{
@@ -77,6 +78,7 @@ function CalendarMonthCaption({
       </span>
       <button
         type="button"
+        className="focus-ring"
         onClick={() => nextMonth && goToMonth(nextMonth)}
         disabled={!nextMonth}
         style={{
@@ -248,6 +250,7 @@ function CalendarDayButton({
     <button
       ref={ref}
       type="button"
+      className="focus-ring"
       data-day={day.date.toLocaleDateString(locale?.code)}
       data-selected-single={isSelectedSingle}
       data-range-start={modifiers.range_start}
@@ -272,7 +275,6 @@ function CalendarDayButton({
         fontWeight: isActive ? "bold" : "normal",
         cursor: modifiers.disabled ? "not-allowed" : "pointer",
         opacity: modifiers.disabled ? 0.5 : 1,
-        outline: "none",
         transition: "background-color 0.15s",
       }}
       {...props}

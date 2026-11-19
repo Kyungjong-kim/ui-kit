@@ -154,7 +154,7 @@ export function SegmentedControlItem({
       className={cn(
         "inline-flex h-7 min-w-[20px] items-center justify-center gap-1 rounded-sm px-3 py-1",
         "cursor-pointer transition-colors",
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-border-focus)]",
+        "focus-ring",
         "disabled:cursor-not-allowed disabled:opacity-40",
         isSelected && [
           "bg-[var(--color-bg-primary)] shadow-sm",

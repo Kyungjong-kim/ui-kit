@@ -48,7 +48,7 @@ export const BreadcrumbLink = forwardRef<HTMLAnchorElement, BreadcrumbLinkProps>
         ref={ref}
         className={cn(
           "transition-colors hover:text-[var(--color-text-primary)]",
-          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-border-focus)] rounded-sm",
+          "focus-ring rounded-sm",
           className,
         )}
         {...props}

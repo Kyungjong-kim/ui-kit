@@ -38,7 +38,7 @@ const itemBase = cn(
   "inline-flex h-size-control-md min-w-size-control-md items-center justify-center rounded-sm px-inline-xs typography-label-md-medium",
   "text-[var(--color-text-secondary)] transition-colors",
   "hover:bg-[var(--color-bg-secondary)] hover:text-[var(--color-text-primary)]",
-  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-[var(--color-border-focus)]",
+  "focus-ring",
   "disabled:pointer-events-none disabled:opacity-50",
 );
 

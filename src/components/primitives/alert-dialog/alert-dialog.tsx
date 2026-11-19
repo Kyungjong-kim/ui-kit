@@ -60,14 +60,14 @@ export function AlertDialog({
           <div className="mt-group-xl flex justify-end gap-group-sm">
             <AlertDialogPrimitive.Cancel
               onClick={onCancel}
-              className="inline-flex h-size-control-md items-center justify-center rounded-xs border border-[var(--color-interactive-secondary-border)] bg-[var(--color-interactive-secondary-bg)] px-inline-lg typography-label-md-medium text-[var(--color-interactive-secondary-text)] hover:bg-[var(--color-bg-secondary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--color-border-focus)]"
+              className="inline-flex h-size-control-md items-center justify-center rounded-xs border border-[var(--color-interactive-secondary-border)] bg-[var(--color-interactive-secondary-bg)] px-inline-lg typography-label-md-medium text-[var(--color-interactive-secondary-text)] hover:bg-[var(--color-bg-secondary)] focus-ring"
             >
               {cancelText}
             </AlertDialogPrimitive.Cancel>
             <AlertDialogPrimitive.Action
               onClick={onAction}
               className={cn(
-                "inline-flex h-size-control-md items-center justify-center rounded-xs px-inline-lg typography-label-md-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--color-border-focus)]",
+                "inline-flex h-size-control-md items-center justify-center rounded-xs px-inline-lg typography-label-md-medium focus-ring",
                 destructive
                   ? "bg-[var(--color-interactive-destructive-bg)] text-[var(--color-interactive-destructive-text)] hover:bg-[var(--color-interactive-destructive-bg-hover)]"
                   : "bg-[var(--color-interactive-primary-bg)] text-[var(--color-interactive-primary-text)] hover:bg-[var(--color-interactive-primary-bg-hover)]",

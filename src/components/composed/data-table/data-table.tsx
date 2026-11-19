@@ -152,7 +152,7 @@ export function DataTable<TData>({
                         <button
                           type="button"
                           onClick={header.column.getToggleSortingHandler()}
-                          className="inline-flex items-center gap-group-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-[var(--color-border-focus)]"
+                          className="inline-flex items-center gap-group-xs focus-ring"
                         >
                           {flexRender(header.column.columnDef.header, header.getContext())}
                           {sortDir === "asc" ? (

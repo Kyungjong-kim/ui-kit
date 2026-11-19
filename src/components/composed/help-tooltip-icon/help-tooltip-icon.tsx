@@ -37,7 +37,7 @@ export function HelpTooltipIcon({
           "border border-[var(--color-border-default)] bg-[var(--color-bg-secondary)]",
           "typography-label-xs text-[var(--color-text-tertiary)]",
           "transition-colors hover:border-[var(--color-border-strong)] hover:text-[var(--color-text-secondary)]",
-          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-border-focus)]",
+          "focus-ring",
           className,
         )}
       >

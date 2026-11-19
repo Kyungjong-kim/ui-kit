@@ -42,6 +42,7 @@ jobs:
       # Blocking DS gates. Each catches a class of drift that lint and build let through:
       #  - typography: Tailwind v4 drops undefined utilities silently (font never applies)
       #  - tokens:     raw hex/rgb bypasses the token layer, so theming skips the element
+      #  - focus:      a button without a focus style works by mouse but is invisible by keyboard
       #  - catalog:    ds-catalog.json and the README inventory fall behind the source
       - name: Check design system
         run: pnpm check:ds

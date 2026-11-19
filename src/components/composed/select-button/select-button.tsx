@@ -62,7 +62,7 @@ export function SelectButton({
       disabled={disabled}
       className={cn(
         "inline-flex items-center justify-center gap-group-xs rounded-sm h-size-control-sm px-inline-md typography-label-sm-medium transition-colors",
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-border-focus)]",
+        "focus-ring",
         "disabled:pointer-events-none disabled:opacity-50",
         appearance === "ghost" ? ghostClassName : outlineClassName,
         className,

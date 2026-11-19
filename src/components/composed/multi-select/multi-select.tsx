@@ -206,7 +206,7 @@ export function MultiSelect({
         disabled={optDisabled}
         onClick={() => toggle(opt.value)}
         className={cn(
-          "flex min-h-size-control-sm w-full items-center justify-between gap-group-sm",
+          "focus-ring-inset flex min-h-size-control-sm w-full items-center justify-between gap-group-sm",
           "rounded-xs px-inline-md py-stack-xs transition-colors",
           optDisabled ? "cursor-not-allowed" : "cursor-pointer hover:bg-[var(--color-bg-tertiary)]",
         )}
@@ -388,7 +388,7 @@ export function MultiSelect({
                         role="checkbox"
                         aria-checked={allSelected ? "true" : someSelected ? "mixed" : "false"}
                         onClick={handleSelectAll}
-                        className="flex min-h-size-control-sm w-full cursor-pointer items-center justify-between gap-group-sm rounded-xs px-inline-md py-stack-xs transition-colors hover:bg-[var(--color-bg-tertiary)]"
+                        className="focus-ring-inset flex min-h-size-control-sm w-full cursor-pointer items-center justify-between gap-group-sm rounded-xs px-inline-md py-stack-xs transition-colors hover:bg-[var(--color-bg-tertiary)]"
                       >
                         <span className="flex min-w-0 items-center gap-group-sm">
                           <CheckVisual checked={allSelected} indeterminate={someSelected} />
