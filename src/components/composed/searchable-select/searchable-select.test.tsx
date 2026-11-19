@@ -78,4 +78,15 @@ describe("SearchableSelect", () => {
     expect(onValueChange).not.toHaveBeenCalled();
     expect(input).toBeInTheDocument();
   });
+
+  it("키보드로 옮긴 활성 옵션을 스크롤 영역 안으로 가져온다", () => {
+    const scrollIntoView = vi.fn();
+    Element.prototype.scrollIntoView = scrollIntoView;
+    render(<SearchableSelect options={options} searchPlaceholder="검색" />);
+    fireEvent.click(screen.getByRole("combobox"));
+    scrollIntoView.mockClear();
+    fireEvent.keyDown(screen.getByPlaceholderText("검색"), { key: "ArrowDown" });
+    expect(scrollIntoView).toHaveBeenCalledWith({ block: "nearest" });
+    expect(scrollIntoView.mock.contexts.at(-1)).toHaveAttribute("aria-selected");
+  });
 });
