@@ -3,7 +3,7 @@ import * as PopoverPrimitive from "@radix-ui/react-popover";
 import { cva, type VariantProps } from "class-variance-authority";
 import { CheckIcon, ChevronDownIcon, SearchIcon } from "lucide-react";
 import type * as React from "react";
-import { useId, useMemo, useRef, useState } from "react";
+import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { cn } from "../../../utils/cn";
 
 const triggerVariants = cva(
@@ -120,6 +120,12 @@ export function SearchableSelect({
     onValueChange?.(option.value);
     setOpen(false);
   }
+
+  // 키보드로 옮긴 활성 옵션이 max-h 목록 밖에 있으면 따라 스크롤한다
+  useEffect(() => {
+    if (!open) return;
+    document.getElementById(`${listId}-${activeIndex}`)?.scrollIntoView?.({ block: "nearest" });
+  }, [open, activeIndex, listId]);
 
   function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
     if (event.key === "ArrowDown") {
