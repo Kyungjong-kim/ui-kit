@@ -58,4 +58,17 @@ describe("SearchableSelect", () => {
     fireEvent.keyDown(input, { key: "Enter" });
     expect(onValueChange).toHaveBeenCalledWith("incheon");
   });
+
+  it("한글 조합 중 Enter 는 옵션을 선택하지 않는다", () => {
+    const onValueChange = vi.fn();
+    render(
+      <SearchableSelect options={options} onValueChange={onValueChange} searchPlaceholder="검색" />,
+    );
+    fireEvent.click(screen.getByRole("combobox"));
+    const input = screen.getByPlaceholderText("검색");
+    fireEvent.keyDown(input, { key: "Enter", isComposing: true });
+    fireEvent.keyDown(input, { key: "Enter", keyCode: 229 });
+    expect(onValueChange).not.toHaveBeenCalled();
+    expect(input).toBeInTheDocument();
+  });
 });
