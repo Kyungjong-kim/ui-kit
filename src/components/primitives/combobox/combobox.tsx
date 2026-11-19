@@ -112,6 +112,8 @@ export function Combobox({
       event.preventDefault();
       setActiveIndex((prev) => Math.max(prev - 1, 0));
     } else if (event.key === "Enter") {
+      // IME 조합 중 Enter 는 조합 확정용 — 옵션 선택으로 처리하지 않는다 (TagInput 과 같은 기준)
+      if (event.nativeEvent.isComposing || event.keyCode === 229) return;
       event.preventDefault();
       const option = filteredOptions[activeIndex];
       if (option) selectOption(option);
