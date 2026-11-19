@@ -11,7 +11,7 @@ export function TabsList({
   return (
     <TabsPrimitive.List
       className={cn(
-        "inline-flex items-center rounded-sm bg-[var(--color-bg-tertiary)] p-stack-xxs gap-group-xxs",
+        "inline-flex items-center gap-group-lg border-b border-[var(--color-border-default)]",
         className,
       )}
       {...props}
@@ -26,11 +26,11 @@ export function TabsTrigger({
   return (
     <TabsPrimitive.Trigger
       className={cn(
-        "inline-flex items-center justify-center whitespace-nowrap rounded-sm px-inline-md py-stack-xs typography-label-md-medium transition-all duration-150",
+        "-mb-px inline-flex items-center justify-center whitespace-nowrap border-b-2 border-transparent px-inline-xs py-stack-sm typography-label-md-medium transition-colors duration-150",
         "text-[var(--color-text-tertiary)] hover:text-[var(--color-text-secondary)]",
         "focus-ring",
         "disabled:pointer-events-none disabled:opacity-50",
-        "data-[state=active]:bg-[var(--color-bg-primary)] data-[state=active]:text-[var(--color-text-primary)] data-[state=active]:shadow-default-sm",
+        "data-[state=active]:border-[var(--color-border-brand-default)] data-[state=active]:text-[var(--color-text-primary)]",
         className,
       )}
       {...props}
