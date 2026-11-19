@@ -57,4 +57,10 @@ describe("Slider", () => {
     expect(screen.getByRole("slider")).toHaveAttribute("aria-valuenow", "50");
     expect(screen.getByText("50")).toBeInTheDocument();
   });
+
+  it("범위 슬라이더의 두 thumb 에 서로 다른 이름을 준다", () => {
+    render(<Slider label="가격" defaultValue={[20, 80]} />);
+    expect(screen.getByRole("slider", { name: "가격 최솟값" })).toBeInTheDocument();
+    expect(screen.getByRole("slider", { name: "가격 최댓값" })).toBeInTheDocument();
+  });
 });

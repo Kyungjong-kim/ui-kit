@@ -1,7 +1,7 @@
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
 import * as Label from "@radix-ui/react-label";
 import { cva } from "class-variance-authority";
-import { CheckIcon } from "lucide-react";
+import { CheckIcon, MinusIcon } from "lucide-react";
 import { type ComponentPropsWithoutRef, useId } from "react";
 import { cn } from "../../../utils/cn";
 import { joinIds } from "../../../utils/join-ids";
@@ -12,6 +12,7 @@ const checkboxVariants = cva(
     "hover:border-[var(--color-border-brand-default)] active:scale-90",
     "focus-ring",
     "data-[state=checked]:bg-[var(--color-bg-brand-default)] data-[state=checked]:border-[var(--color-bg-brand-default)] data-[state=checked]:text-white",
+    "data-[state=indeterminate]:bg-[var(--color-bg-brand-default)] data-[state=indeterminate]:border-[var(--color-bg-brand-default)] data-[state=indeterminate]:text-white",
     "disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:border-[var(--color-border-strong)]",
   ],
   {
@@ -54,8 +55,10 @@ export function Checkbox({
         aria-invalid={ariaInvalid ?? (error || undefined)}
         {...props}
       >
-        <CheckboxPrimitive.Indicator className="flex items-center justify-center">
-          <CheckIcon className="h-size-icon-xs w-size-icon-xs" />
+        <CheckboxPrimitive.Indicator className="group flex items-center justify-center">
+          {/* checked="indeterminate" 이면 체크 대신 가로줄 — Indicator 의 data-state 로 고른다 */}
+          <CheckIcon className="h-size-icon-xs w-size-icon-xs group-data-[state=indeterminate]:hidden" />
+          <MinusIcon className="hidden h-size-icon-xs w-size-icon-xs group-data-[state=indeterminate]:block" />
         </CheckboxPrimitive.Indicator>
       </CheckboxPrimitive.Root>
       {(label || helperText) && (

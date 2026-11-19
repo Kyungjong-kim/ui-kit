@@ -1,6 +1,7 @@
 import * as Label from "@radix-ui/react-label";
 import * as SliderPrimitive from "@radix-ui/react-slider";
 import { useId, useState } from "react";
+import { useUiKitMessages } from "../../../locale";
 import { cn } from "../../../utils/cn";
 import { joinIds } from "../../../utils/join-ids";
 
@@ -51,6 +52,9 @@ export function Slider({
   // 비제어일 때 표시 값이 첫 값에 고정되지 않도록 Radix 의 변경을 따라간다
   const [internalArray, setInternalArray] = useState<number[]>(defaultArray ?? [min]);
   const displayValue = (valueArray ?? internalArray).join(" – ");
+  const thumbValues = valueArray ?? defaultArray ?? [min];
+  const thumbCount = thumbValues.length;
+  const t = useUiKitMessages();
 
   function handleValueChange(next: number[]) {
     if (!valueArray) setInternalArray(next);
@@ -99,7 +103,7 @@ export function Slider({
         >
           <SliderPrimitive.Range className="absolute h-full bg-[var(--color-bg-brand-default)]" />
         </SliderPrimitive.Track>
-        {(valueArray ?? defaultArray ?? [min]).map((_, index) => (
+        {thumbValues.map((_, index) => (
           <SliderPrimitive.Thumb
             // biome-ignore lint/suspicious/noArrayIndexKey: thumb 개수는 value 길이로 고정
             key={index}
@@ -110,7 +114,11 @@ export function Slider({
               "disabled:pointer-events-none",
               size === "sm" ? "size-4" : "size-5",
             )}
-            aria-label={label ?? ariaLabel}
+            aria-label={
+              thumbCount > 1
+                ? t.slider.thumb(label ?? ariaLabel ?? "", index, thumbCount)
+                : (label ?? ariaLabel)
+            }
             aria-describedby={joinIds(describedBy, helperText && helperId)}
           />
         ))}

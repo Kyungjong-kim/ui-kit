@@ -1,5 +1,5 @@
-import { render, screen } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { fireEvent, render, screen } from "@testing-library/react";
+import { describe, expect, it, vi } from "vitest";
 import { LinkButton } from "./link-button";
 
 describe("LinkButton", () => {
@@ -36,5 +36,27 @@ describe("LinkButton", () => {
       </LinkButton>,
     );
     expect(screen.getByRole("link")).toHaveAttribute("rel", "noopener noreferrer");
+  });
+
+  it("disabled 여도 id·data-*·aria-* 는 유지하고 onClick 은 붙이지 않는다", () => {
+    const onClick = vi.fn();
+    render(
+      <LinkButton
+        href="/x"
+        disabled
+        id="lb"
+        data-testid="lb"
+        aria-describedby="hint"
+        onClick={onClick}
+      >
+        이동
+      </LinkButton>,
+    );
+    const el = screen.getByTestId("lb");
+    expect(el).toHaveAttribute("id", "lb");
+    expect(el).toHaveAttribute("aria-describedby", "hint");
+    expect(el).toHaveAttribute("aria-disabled", "true");
+    fireEvent.click(el);
+    expect(onClick).not.toHaveBeenCalled();
   });
 });
