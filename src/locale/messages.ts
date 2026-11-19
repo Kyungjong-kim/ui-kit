@@ -28,6 +28,8 @@ export interface UiKitMessages {
     nav: string;
     breadcrumb: string;
     fullScreenDialog: string;
+    /** 제목 없이 연 Dialog·Sheet 의 숨김 제목 */
+    dialog: string;
   };
   multiSelect: {
     selectedList: string;
@@ -145,6 +147,7 @@ export const ko: UiKitMessages = {
     nav: "네비게이션",
     breadcrumb: "이동 경로",
     fullScreenDialog: "전체화면 다이얼로그",
+    dialog: "대화상자",
   },
   multiSelect: {
     selectedList: "선택 항목 목록",
@@ -257,6 +260,7 @@ export const en: UiKitMessages = {
     nav: "Navigation",
     breadcrumb: "Breadcrumb",
     fullScreenDialog: "Full screen dialog",
+    dialog: "Dialog",
   },
   multiSelect: {
     selectedList: "Selected items",
