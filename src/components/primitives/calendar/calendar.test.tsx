@@ -25,4 +25,14 @@ describe("Calendar", () => {
     expect(dayButton).toHaveClass("focus-ring");
     expect((dayButton as HTMLElement).style.outline).toBe("");
   });
+
+  it("부모가 다시 렌더해도 날짜 버튼 DOM 을 재마운트하지 않는다", () => {
+    const month = new Date(2026, 0, 1);
+    const { container, rerender } = render(<Calendar mode="single" month={month} className="a" />);
+    const before = container.querySelector("button[data-day]");
+    const captionBefore = container.querySelector('[data-slot="calendar"]');
+    rerender(<Calendar mode="single" month={month} className="b" />);
+    expect(container.querySelector("button[data-day]")).toBe(before);
+    expect(container.querySelector('[data-slot="calendar"]')).toBe(captionBefore);
+  });
 });
