@@ -3,6 +3,7 @@ import { cva } from "class-variance-authority";
 import { type ReactNode, useState } from "react";
 import type { PageHeaderProps } from "../../components";
 import { DataTable, ListControl, PageHeader, Text } from "../../components";
+import { useUiKitMessages } from "../../locale";
 import { cn } from "../../utils/cn";
 
 const bulkActionBar = cva(
@@ -45,7 +46,7 @@ export interface BulkActionListPageTemplateProps<TData> {
    * 1개 이상 선택 시 표시된다.
    */
   bulkActions: (selectedRows: TData[]) => ReactNode;
-  /** 선택 개수 라벨 접미사 (기본값: "개 선택됨") */
+  /** 선택 개수 라벨 접미사 (기본값: 사전 `table.selectedSuffix`) */
   selectionUnit?: string;
   className?: string;
 }
@@ -74,9 +75,11 @@ export function BulkActionListPageTemplate<TData>({
   loading,
   emptyContent,
   bulkActions,
-  selectionUnit = "개 선택됨",
+  selectionUnit: selectionUnitProp,
   className,
 }: BulkActionListPageTemplateProps<TData>) {
+  const t = useUiKitMessages();
+  const selectionUnit = selectionUnitProp ?? t.table.selectedSuffix;
   const [selectedRows, setSelectedRows] = useState<TData[]>([]);
   const hasControl = count != null || search != null || sort != null || filter != null;
   const hasSelection = selectedRows.length > 0;

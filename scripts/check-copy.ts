@@ -7,7 +7,7 @@
  *   dictionary (src/locale/messages.ts) through `useUiKitMessages()`. A new literal
  *   reintroduces the problem silently: it renders fine and every test still passes.
  *
- * The guard scans src/components for Hangul outside comments — in string literals and in
+ * The guard scans src/components and src/templates for Hangul outside comments — in string literals and in
  * JSX text — and exits 1 on any hit. English copy cannot be told apart from identifiers
  * and keys by a scan, so English literals stay a review item.
  *
@@ -20,7 +20,7 @@ import { dirname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
-const SCAN_DIR = join(ROOT, "src/components");
+const SCAN_DIRS = [join(ROOT, "src/components"), join(ROOT, "src/templates")];
 const SKIP_DIRS = new Set(["generated"]);
 const HANGUL_RE = /[가-힣]/;
 const LINE_COMMENT_RE = /(?<![:"'`\w])\/\/.*$/;
@@ -44,7 +44,7 @@ function stripBlockComments(source: string): string {
 }
 
 const hits: Array<{ file: string; line: number; text: string }> = [];
-const files = collectFiles(SCAN_DIR);
+const files = SCAN_DIRS.flatMap((dir) => collectFiles(dir));
 for (const file of files) {
   const raw = readFileSync(file, "utf8").split("\n");
   stripBlockComments(raw.join("\n"))
