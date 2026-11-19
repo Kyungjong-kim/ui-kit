@@ -42,7 +42,8 @@ export function FileUpload({
       const deduped = accepted.filter(
         (f) => !files.some((existing) => existing.name === f.name && existing.size === f.size),
       );
-      const next = [...files, ...deduped].slice(0, maxFiles);
+      const combined = [...files, ...deduped];
+      const next = combined.slice(0, maxFiles);
       setFiles(next);
       onFilesChange(next);
 
@@ -57,6 +58,10 @@ export function FileUpload({
             newErrors.push(msg);
           }
         }
+      }
+      // dropzone 의 maxFiles 는 한 번 드롭한 개수만 본다 — 누적 한도 초과도 알린다
+      if (combined.length > maxFiles && !seen.has(t.fileUpload.tooMany)) {
+        newErrors.push(t.fileUpload.tooMany);
       }
       setErrors(newErrors);
     },
