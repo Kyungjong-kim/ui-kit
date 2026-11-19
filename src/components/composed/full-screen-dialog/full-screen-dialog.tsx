@@ -62,7 +62,7 @@ export function FullScreenDialog({
               {showClose && (
                 <DialogPrimitive.Close
                   aria-label="닫기"
-                  className="rounded-xs p-stack-xxs text-[var(--color-text-tertiary)] transition-colors hover:bg-[var(--color-bg-tertiary)] hover:text-[var(--color-text-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-border-focus)]"
+                  className="rounded-xs p-stack-xxs text-[var(--color-text-tertiary)] transition-colors hover:bg-[var(--color-bg-tertiary)] hover:text-[var(--color-text-primary)] focus-ring"
                 >
                   <XIcon className="h-size-icon-sm w-size-icon-sm" />
                 </DialogPrimitive.Close>

@@ -46,13 +46,15 @@
 
 ## 규칙
 
-- **`prefers-reduced-motion` 존중** — 감소 모드에서 큰 모션은 약화·제거한다.
+- **`prefers-reduced-motion` 존중** — 감소 모드에서 큰 모션은 약화·제거한다. 아래 규칙은 `theme.css` 에 들어 있어 ui-kit theme 을 가져온 앱에 그대로 적용된다(앱 전체 범위). 무한 반복(스피너·indeterminate 진행바)도 멈추도록 반복 횟수를 1로 둔다.
 
 ```css
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 ```

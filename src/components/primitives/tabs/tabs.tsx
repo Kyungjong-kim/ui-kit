@@ -28,7 +28,7 @@ export function TabsTrigger({
       className={cn(
         "inline-flex items-center justify-center whitespace-nowrap rounded-sm px-inline-md py-stack-xs typography-label-md-medium transition-all duration-150",
         "text-[var(--color-text-tertiary)] hover:text-[var(--color-text-secondary)]",
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-border-focus)]",
+        "focus-ring",
         "disabled:pointer-events-none disabled:opacity-50",
         "data-[state=active]:bg-[var(--color-bg-primary)] data-[state=active]:text-[var(--color-text-primary)] data-[state=active]:shadow-default-sm",
         className,
@@ -42,13 +42,5 @@ export function TabsContent({
   className,
   ...props
 }: ComponentPropsWithoutRef<typeof TabsPrimitive.Content>) {
-  return (
-    <TabsPrimitive.Content
-      className={cn(
-        "mt-group-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-border-focus)]",
-        className,
-      )}
-      {...props}
-    />
-  );
+  return <TabsPrimitive.Content className={cn("mt-group-sm focus-ring", className)} {...props} />;
 }

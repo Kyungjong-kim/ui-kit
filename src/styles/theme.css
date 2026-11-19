@@ -259,6 +259,39 @@
   animation: progress-indeterminate 1.4s infinite ease-in-out;
 }
 
+/* Focus ring — 키보드 초점 표시 규칙 하나 (foundation/a11y.md).
+   초점 색 2px 선 + 2px 띄움. outline 이라 강제 색상 모드(Windows 고대비)에서도 보인다.
+   스크롤 목록·메뉴 항목처럼 바깥 선이 잘리는 곳은 focus-ring-inset(안쪽 -2px). */
+@utility focus-ring {
+  &:focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+  }
+}
+@utility focus-ring-inset {
+  &:focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: -2px;
+  }
+}
+
+/* prefers-reduced-motion — 감소 모드에서는 전환·애니메이션을 사실상 끈다 (foundation/motion.md).
+   무한 반복(스피너·indeterminate 진행바)도 한 번에 멈추도록 반복 횟수를 1로 둔다. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    /* biome-ignore lint/complexity/noImportantStyles: 사용자 감소 모드 설정이 컴포넌트 유틸(duration-150 등)보다 우선해야 한다 */
+    animation-duration: 0.01ms !important;
+    /* biome-ignore lint/complexity/noImportantStyles: 사용자 감소 모드 설정이 컴포넌트 유틸(duration-150 등)보다 우선해야 한다 */
+    animation-iteration-count: 1 !important;
+    /* biome-ignore lint/complexity/noImportantStyles: 사용자 감소 모드 설정이 컴포넌트 유틸(duration-150 등)보다 우선해야 한다 */
+    transition-duration: 0.01ms !important;
+    /* biome-ignore lint/complexity/noImportantStyles: 사용자 감소 모드 설정이 컴포넌트 유틸(duration-150 등)보다 우선해야 한다 */
+    scroll-behavior: auto !important;
+  }
+}
+
 /* Typography utility (Tailwind v4 @utility) — Text·Chip·SlideListBadge 등에서 사용 */
 @utility typography-display-md {
   font-size: var(--token-typography-display-md-size);

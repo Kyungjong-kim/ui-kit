@@ -72,7 +72,7 @@ export function ImageCell({
       <button
         type="button"
         className={cn(
-          "relative flex h-full w-full items-center justify-center overflow-hidden",
+          "focus-ring-inset relative flex h-full w-full items-center justify-center overflow-hidden",
           roundedClassMap[size],
           className,
         )}

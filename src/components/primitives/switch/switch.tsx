@@ -45,7 +45,7 @@ export function Switch({
         className={cn(
           "relative inline-flex shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200",
           helperText && "mt-[1px]",
-          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-border-focus)] focus-visible:ring-offset-2",
+          "focus-ring",
           "disabled:cursor-not-allowed disabled:opacity-50",
           error
             ? "data-[state=unchecked]:bg-[var(--color-border-danger-default)]"
