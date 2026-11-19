@@ -56,4 +56,9 @@ import type { TextareaProps } from "ui-kit";
 
 - `label`은 `htmlFor` ↔ `id`로 자동 연결된다.
 - 가로 리사이즈는 좁은 뷰포트에서 레이아웃을 깨뜨릴 수 있어 기본값을 `vertical`로 둔다.
-- 포커스 시 `var(--color-border-focus)` 링이 적용된다.
+- 포커스 시 `border-input-focus` 테두리 + 3px `focus-halo` 링이 적용된다.
+
+## 스타일 노트
+
+- Input 과 같은 필드 규격: 6px(`rounded-xs`), `border-input-default` → hover `border-input-hover` → 초점 `border-input-focus` + `focus-halo`.
+- 오류 문구는 내부 `FieldHelperText` — `error` 일 때만 경고 아이콘(`aria-hidden`), `disabled` 가 오류보다 우선.

@@ -105,7 +105,7 @@ ui-kit은 **골든 앰버(Golden Amber, `#fabc37`) 브랜드**를 축으로 한 
 - **Brand / Action** — `brand #fabc37`(기본), hover `brand-600 #e6a828`. 주요 버튼·활성 상태 등 "누를 수 있는 것"에만 쓴다. ⚠️ 브랜드 500은 **밝은 색**이므로 그 위 텍스트는 반드시 다크(`--color-interactive-primary-text` = neutral-900). 흰 배경 위 브랜드 텍스트는 가독성을 위해 `--color-text-brand-default`(brand-700 `#8f6309`).
 - **Surface** — `bg-primary #ffffff`(카드·패널), `bg-secondary`(neutral-50)·`bg-tertiary`(neutral-100)로 한 단계씩 낮춘다. 면은 색이 아니라 **명도 단계**로 위계를 만든다. Tailwind 유틸 호환 표면 계층은 `surface-{subtlest…strongest}`.
 - **Text (3단계)** — `text-primary`(neutral-900, 본문·제목), `text-secondary`(neutral-700, 보조·라벨), `text-tertiary`(neutral-500, 캡션·약한 보조). 그 외 `text-disabled`(neutral-400, 본문 금지), `text-inverse`(white, 어두운 면 위).
-- **Border** — `border-default`(neutral-200, 기본 구분선), `border-subtle`(neutral-100, 옅은 경계), `border-strong`(neutral-300, 강조). 입력은 `border-input-default`(neutral-300) / focus `border-input-focus`(라이트 brand-700, 다크 brand-400). 포커스 링 `border-focus`도 같다.
+- **Border** — `border-default`(neutral-200, 기본 구분선), `border-subtle`(neutral-100, 옅은 경계), `border-strong`(neutral-300, 강조). 필드는 `border-input-default`(neutral-300) / hover `border-input-hover`(neutral-400) / focus `border-input-focus`(라이트 brand-700, 다크 brand-400) + 3px `focus-halo` 링. 키보드 초점 링 `border-focus`는 brand-700 과 같다.
 - **Status** — `success #28c76f`(green) · `warning #f97316`(orange) · `danger #ff4c51`(red) · `info #3b82f6`(blue). 의미 전달(상태·결과)에만 쓰고 장식으로 쓰지 않는다. 위 hex 는 기준(500)이며 흰 배경 위 텍스트는 700 단계(`text-*-default`, AA 4.5:1 이상), 채움·아이콘은 600(`bg-*-default`, 3:1 이상)을 쓴다. 흰 글자를 올리는 채움(solid Badge·Tag)은 `bg-*-strong` + `text-on-strong`. 색만으로 의미를 전달하지 말고 아이콘·텍스트를 병기한다.
 - **Category** — `category #8b5cf6`(purple). 분류·태그 계열. 상태색·브랜드와 구분되는 중립 강조색.
 
@@ -113,7 +113,7 @@ ui-kit은 **골든 앰버(Golden Amber, `#fabc37`) 브랜드**를 축으로 한 
 
 ## Typography
 
-ui-kit은 특정 웹폰트를 강제하지 않는다(호스트 앱이 패밀리 지정). 위계는 크기·굵기·자간으로 구분한다.
+본문 글꼴은 `--token-font-family-sans`(Pretendard Variable → 시스템 한글 글꼴 폴백, `theme.css` 의 `--font-sans`). 라이브러리는 글꼴 파일을 싣지 않는다 — 소비 앱이 Pretendard 를 로드하면 쓰고 없으면 시스템 글꼴로 표시된다([`foundation/typography.md`](./foundation/typography.md)). 위계는 크기·굵기·자간으로 구분한다.
 
 | 스케일 | size / weight / line-height | 용도 |
 |---|---|---|
@@ -167,8 +167,9 @@ ui-kit은 라이브러리이므로 페이지 셸을 강제하지 않는다 — �
 
 | 토큰 | px | 용도 |
 |---|---|---|
-| `--token-radius-xxs` / `-xs` | 4 / 6 | 마이크로 요소·배지 |
-| `--token-radius-sm` | 8 | **버튼 · 인풋 · 작은 컨트롤** |
+| `--token-radius-xxs` | 4 | 마이크로 요소·배지 · **떠 있는 패널 안 옵션** |
+| `--token-radius-xs` | 6 | **필드 트리거(Input·Textarea·Select 등) · Pagination 칸 · SegmentedControl 선택 칸** |
+| `--token-radius-sm` | 8 | **버튼 · 떠 있는 패널(DropdownMenu·Popover·Select 목록) · SegmentedControl 트랙** |
 | `--token-radius-md` | 12 | 중간 컨테이너 |
 | `--token-radius-lg` | 16 | **카드 · 패널 · 모달** |
 | `--token-radius-xl` | 24 | 큰 컨테이너 |
@@ -182,7 +183,9 @@ ui-kit은 라이브러리이므로 페이지 셸을 강제하지 않는다 — �
 
 - **Button**(primary) — `bg-[var(--color-interactive-primary-bg)]` / `text-[var(--color-interactive-primary-text)]`(다크) / `rounded-[var(--token-radius-sm)]`, hover `bg-[var(--color-interactive-primary-bg-hover)]`.
 - **Card** — `bg-[var(--color-bg-primary)]` / `rounded-[var(--token-radius-lg)]`(16) / 패딩 `inline-xxl`(24)·`stack-xl`(24).
-- **Input / Select** — control 높이 `md`(36) 기본·`lg`(44) 큰 입력, `rounded-sm`(8), 정적 폭이 필요하면 `field-{sm,md,lg}`(200/280/320).
+- **Input / Select** — control 높이 `md`(36) 기본·`lg`(44) 큰 입력, `rounded-xs`(6), 테두리 `input-default` → hover `input-hover` → 초점·열림 `input-focus` + 3px `focus-halo`. 정적 폭이 필요하면 `field-{sm,md,lg}`(200/280/320). 오류 문구는 내부 `FieldHelperText`(오류일 때만 경고 아이콘).
+- **떠 있는 패널**(DropdownMenu·Popover·Select 계열 목록) — `rounded-sm`(8), 안쪽 여백 `stack-xs`(4), 옵션 `rounded-xxs`(4). hover·키보드 활성 `bg-tertiary`, 선택 `bg-brand-subtle` + medium + 브랜드 체크.
+- **Tabs** — 밑줄형(목록 하단 hairline, 활성 2px `border-brand-default`). 알약형 전환은 **SegmentedControl**.
 - **Badge / Tag** — 상태색 텍스트 + 옅은 틴트 면(`bg-*-subtle`).
 - **EmptyState** — 0건 / 검색 없음 / 로드 실패. (패턴: [`patterns/empty-state.md`](./patterns/empty-state.md))
 - **Modal / Sheet(SidePanel)** — 폭에 따라 선택: 360/480 → Modal, 640/800 → SidePanel, 그 이상 → 풀스크린.

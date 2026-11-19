@@ -6,10 +6,20 @@
 
 | 용도 | 권장 패밀리 |
 |---|---|
-| 본문 | 시스템 산세리프 스택(`system-ui, -apple-system, sans-serif`) — 호스트 앱 폰트에 맞춰 재정의 가능 |
+| 본문 | `--token-font-family-sans` = `"Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif` → `theme.css` 의 `--font-sans` |
 | 모노(코드) | `ui-monospace, SFMono-Regular, Menlo, Consolas, monospace` |
 
-ui-kit은 특정 웹폰트를 강제하지 않는다. 호스트 앱이 폰트 패밀리를 지정하고, 토큰은 size·weight·line-height·letter-spacing을 정의한다.
+본문 스택은 Pretendard 를 우선하고, 없으면 시스템 한글 글꼴로 떨어진다. **라이브러리는 글꼴 파일을 싣지 않는다** — 소비 앱이 Pretendard 를 로드하면 쓰고, 로드하지 않으면 시스템 글꼴로 표시된다. 토큰은 패밀리와 size·weight·line-height·letter-spacing을 정의한다. 다른 글꼴이 필요하면 `--token-font-family-sans` 를 재정의한다.
+
+### Pretendard 로드 (소비 앱)
+
+| 방법 | 예 |
+|---|---|
+| npm 패키지 | `pretendard` 패키지의 variable dynamic-subset CSS 를 앱 진입점에서 import |
+| CDN | jsDelivr 의 Pretendard variable dynamic-subset CSS 를 `<link rel="stylesheet">` 로 로드 |
+
+- family 이름은 `Pretendard Variable`(variable 빌드) — 스택 첫 항목과 일치해야 적용된다.
+- Storybook 은 `.storybook/preview-head.html` 에서 CDN 으로 로드한다.
 
 ## 스케일
 
