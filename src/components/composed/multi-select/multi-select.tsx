@@ -2,6 +2,7 @@ import * as PopoverPrimitive from "@radix-ui/react-popover";
 import * as React from "react";
 import { useUiKitMessages } from "../../../locale";
 import { cn } from "../../../utils/cn";
+import { FieldHelperText } from "../../_internal/field-helper-text";
 import { Icon } from "../../primitives/icon";
 import { Input } from "../../primitives/input";
 import { Spinner } from "../../primitives/spinner";
@@ -215,7 +216,7 @@ export function MultiSelect({
         onClick={() => toggle(opt.value)}
         className={cn(
           "focus-ring-inset flex min-h-size-control-sm w-full items-center justify-between gap-group-sm",
-          "rounded-xs px-inline-md py-stack-xs transition-colors",
+          "rounded-xxs px-inline-md py-stack-xs transition-colors",
           optDisabled ? "cursor-not-allowed" : "cursor-pointer hover:bg-[var(--color-bg-tertiary)]",
         )}
       >
@@ -306,14 +307,14 @@ export function MultiSelect({
                 }
               }}
               className={cn(
-                "group flex w-full items-center justify-between gap-group-sm rounded-sm",
+                "group flex w-full items-center justify-between gap-group-sm rounded-xs",
                 "border bg-[var(--color-bg-primary)] transition-[border-color,box-shadow] outline-none",
                 currentState === "disabled" ? "cursor-not-allowed" : "cursor-pointer",
                 "data-[size=md]:min-h-size-control-md data-[size=md]:px-inline-md data-[size=md]:py-stack-xs",
                 "data-[size=lg]:min-h-size-control-lg data-[size=lg]:px-inline-lg data-[size=lg]:py-stack-sm",
-                "border-[var(--color-border-default)]",
-                "focus-within:border-[var(--color-border-focus)] focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-[var(--color-border-focus)]",
-                "data-[state=open]:border-[var(--color-border-focus)]",
+                "border-[var(--color-border-input-default)] hover:border-[var(--color-border-input-hover)]",
+                "focus-within:border-[var(--color-border-input-focus)] focus-within:shadow-[0_0_0_3px_var(--color-focus-halo)]",
+                "data-[state=open]:border-[var(--color-border-input-focus)]",
                 currentState === "error" &&
                   "border-[var(--color-border-danger-default)] focus-within:border-[var(--color-border-danger-default)]",
                 currentState === "disabled" &&
@@ -397,7 +398,7 @@ export function MultiSelect({
                         role="checkbox"
                         aria-checked={allSelected ? "true" : someSelected ? "mixed" : "false"}
                         onClick={handleSelectAll}
-                        className="focus-ring-inset flex min-h-size-control-sm w-full cursor-pointer items-center justify-between gap-group-sm rounded-xs px-inline-md py-stack-xs transition-colors hover:bg-[var(--color-bg-tertiary)]"
+                        className="focus-ring-inset flex min-h-size-control-sm w-full cursor-pointer items-center justify-between gap-group-sm rounded-xxs px-inline-md py-stack-xs transition-colors hover:bg-[var(--color-bg-tertiary)]"
                       >
                         <span className="flex min-w-0 items-center gap-group-sm">
                           <CheckVisual checked={allSelected} indeterminate={someSelected} />
@@ -445,17 +446,13 @@ export function MultiSelect({
       </div>
 
       {helperText && (
-        <p
+        <FieldHelperText
           id={helperId}
-          className={cn("typography-caption", {
-            "text-[var(--color-text-tertiary)]":
-              currentState !== "error" && currentState !== "disabled",
-            "text-[var(--color-text-disabled)]": currentState === "disabled",
-            "text-[var(--color-text-danger-default)]": currentState === "error",
-          })}
+          error={currentState === "error"}
+          disabled={currentState === "disabled"}
         >
           {helperText}
-        </p>
+        </FieldHelperText>
       )}
     </div>
   );

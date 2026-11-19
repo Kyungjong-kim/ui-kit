@@ -50,4 +50,21 @@ describe("Select", () => {
     render(<Select options={options} value="" placeholder="고르세요" />);
     expect(screen.getByRole("combobox")).toHaveTextContent("고르세요");
   });
+
+  it("필드 상자는 입력 테두리 토큰·6px·초점 halo 를 쓴다 (Warm Precision)", () => {
+    render(<Select options={options} label="과일" />);
+    const cls = screen.getByRole("combobox").className;
+    expect(cls).toMatch(/rounded-xs/);
+    expect(cls).toMatch(/color-border-input-default/);
+    expect(cls).toMatch(/hover:border-\[var\(--color-border-input-hover\)\]/);
+    expect(cls).toMatch(/color-border-input-focus/);
+    expect(cls).toMatch(/color-focus-halo/);
+    expect(cls).not.toMatch(/ring-offset/);
+  });
+
+  it("오류 helperText 앞에 장식용 경고 아이콘이 붙는다", () => {
+    render(<Select options={options} error helperText="필수 항목입니다." />);
+    const helper = screen.getByText("필수 항목입니다.");
+    expect(helper.querySelector("svg[aria-hidden='true']")).not.toBeNull();
+  });
 });

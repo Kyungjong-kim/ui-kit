@@ -97,12 +97,12 @@ export function PeriodFilterDropdown({
           type="button"
           disabled={disabled}
           className={cn(
-            "inline-flex h-size-control-md items-center gap-group-xs rounded-sm border px-inline-md",
+            "inline-flex h-size-control-md items-center gap-group-xs rounded-xs border px-inline-md",
             "typography-label-md-medium transition-colors outline-none",
-            "border-[var(--color-border-default)] bg-[var(--color-bg-primary)] text-[var(--color-text-primary)]",
+            "border-[var(--color-border-input-default)] bg-[var(--color-bg-primary)] text-[var(--color-text-primary)] hover:border-[var(--color-border-input-hover)]",
             "hover:bg-[var(--color-bg-secondary)]",
             "focus-ring",
-            "data-[state=open]:border-[var(--color-border-focus)]",
+            "data-[state=open]:border-[var(--color-border-input-focus)]",
             "disabled:cursor-not-allowed disabled:opacity-50",
             className,
           )}
@@ -130,7 +130,7 @@ export function PeriodFilterDropdown({
                 type="button"
                 onClick={() => handlePreset(preset)}
                 className={cn(
-                  "focus-ring-inset flex w-full items-center justify-between rounded-xs px-inline-md py-stack-xs text-left",
+                  "focus-ring-inset flex w-full items-center justify-between rounded-xxs px-inline-md py-stack-xs text-left",
                   "typography-label-md-base transition-colors",
                   active
                     ? "bg-[var(--color-bg-brand-subtle)] typography-label-md-medium text-[var(--color-text-brand-default)]"
