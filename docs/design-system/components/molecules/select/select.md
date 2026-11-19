@@ -30,7 +30,7 @@ import type { SelectProps, SelectOption } from "ui-kit";
 
 | 필드 | 타입 | 설명 |
 |---|---|---|
-| `value` | `string` | 옵션 값 |
+| `value` | `string` | 옵션 값. `""`(「전체」 등)도 쓸 수 있다 — 선택하면 `onValueChange("")`. 빈 값 옵션이 없을 때 `value=""` 는 「선택 없음(placeholder)」이다 |
 | `label` | `string` | 표시 텍스트 |
 | `disabled` | `boolean` | 개별 옵션 비활성(선택) |
 
