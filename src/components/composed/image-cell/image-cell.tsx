@@ -1,5 +1,6 @@
 import type { MouseEvent } from "react";
 import { useState } from "react";
+import { useUiKitMessages } from "../../../locale";
 import { cn } from "../../../utils/cn";
 import { Skeleton } from "../../primitives/skeleton";
 import { Spinner } from "../../primitives/spinner";
@@ -47,6 +48,7 @@ export function ImageCell({
   onRemove,
   className,
 }: ImageCellProps) {
+  const t = useUiKitMessages();
   const [isHovered, setIsHovered] = useState(false);
   const [internalSelected, setInternalSelected] = useState(false);
 
@@ -108,7 +110,7 @@ export function ImageCell({
           size={size === "sm" ? "xs" : "sm"}
           variant="secondary"
           shape="circle"
-          aria-label="파일 삭제"
+          aria-label={t.common.deleteFile}
           color="inverse"
           className="z-10"
           style={{ position: "absolute", top: "-5px", right: "-5px" }}

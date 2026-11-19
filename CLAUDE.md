@@ -130,7 +130,7 @@
 - [ ] pnpm test 통과
 - [ ] pnpm build 통과 (dist 갱신)
 - [ ] pnpm lint 통과 (biome)
-- [ ] pnpm check:ds 통과 — typography · tokens · vars · focus · catalog 5종 가드
+- [ ] pnpm check:ds 통과 — typography · tokens · vars · focus · copy · catalog 6종 가드
 - [ ] 컴포넌트 추가·제거·export 변경 시 `pnpm catalog` 재생성 + README 수치·목록 갱신
 ```
 
@@ -221,7 +221,7 @@
 - 테스트: `pnpm test` (vitest)
 - 린트·포맷: `pnpm lint` / `pnpm format` (biome)
 - 카탈로그: `pnpm catalog` — 소스에서 `docs/design-system/ds-catalog.json` 생성 (수정 금지)
-- DS 가드: `pnpm check:ds` = typography + tokens + vars + focus + catalog. **CI·릴리스 양쪽에서 차단.**
+- DS 가드: `pnpm check:ds` = typography + tokens + vars + focus + copy + catalog. **CI·릴리스 양쪽에서 차단.**
 
 | 가드 | 잡는 것 | 왜 빌드로는 못 잡나 |
 |---|---|---|
@@ -229,6 +229,7 @@
 | `check:tokens` | raw hex·`rgb()` (차단) / core 팔레트 직접참조 (리포트) | 값이 유효한 CSS 라 아무도 실패하지 않는다. 테마 전환 시 그 요소만 안 바뀐다 |
 | `check:vars` | 아무 데도 선언되지 않은 `var(--…)` 참조 (토큰 이름 오타) | 오타 난 변수도 유효한 CSS 라 런타임에 초기값으로 빠질 뿐, 빌드·린트·테스트 모두 통과한다 |
 | `check:focus` | 초점 스타일 없는 `<button>`·`<a>`·`*.Trigger`, 인라인 `outline: none` | 마우스로는 정상 동작하고 테스트도 통과한다. 키보드로 이동할 때만 초점이 안 보인다 |
+| `check:copy` | 컴포넌트 소스에 박힌 한글 UI 문구 (사전 `src/locale/messages.ts` 경유 강제) | 박힌 문구도 렌더·테스트는 정상이다. 앱이 언어를 바꿀 때만 그 자리만 안 바뀐다 |
 | `check:catalog` | 카탈로그·README 수치·컴포넌트 목록 드리프트 | 아무도 읽지 않는 수기 문서라 틀려도 신호가 없다 |
 
 - 문서 리포트: `pnpm check:docs` — **비차단.** 끊긴 링크·고아 스펙·스토리 누락·문서 미갱신을

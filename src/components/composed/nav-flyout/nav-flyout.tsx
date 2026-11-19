@@ -1,4 +1,5 @@
 import { type ReactNode, useState } from "react";
+import { useUiKitMessages } from "../../../locale";
 import { cn } from "../../../utils/cn";
 import type { IconName } from "../../primitives/icon";
 import { Icon } from "../../primitives/icon";
@@ -51,6 +52,7 @@ export function NavFlyout({
   side = "bottom",
   contentClassName,
 }: NavFlyoutProps) {
+  const t = useUiKitMessages();
   const [internalOpen, setInternalOpen] = useState(false);
   const isControlled = open !== undefined;
   const isOpen = isControlled ? open : internalOpen;
@@ -74,7 +76,7 @@ export function NavFlyout({
         side={side}
         className={cn("w-56 p-stack-xxs shadow-default-md", contentClassName)}
       >
-        <nav className="flex flex-col gap-stack-xxs" aria-label="네비게이션">
+        <nav className="flex flex-col gap-stack-xxs" aria-label={t.navigation.nav}>
           {items.map((item) => (
             <button
               key={item.id}

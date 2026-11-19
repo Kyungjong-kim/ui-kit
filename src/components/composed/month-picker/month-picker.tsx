@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useUiKitMessages } from "../../../locale";
 import { cn } from "../../../utils/cn";
 import { Icon } from "../../primitives/icon";
 import { Popover, PopoverContent, PopoverTrigger } from "../../primitives/popover";
@@ -26,21 +27,6 @@ export interface MonthPickerProps {
   placeholder?: string;
 }
 
-const MONTH_LABELS = [
-  "1월",
-  "2월",
-  "3월",
-  "4월",
-  "5월",
-  "6월",
-  "7월",
-  "8월",
-  "9월",
-  "10월",
-  "11월",
-  "12월",
-];
-
 /**
  * 연도와 월을 선택하는 컴포넌트.
  * 12개월 그리드와 연도 이동 네비게이션으로 구성된다.
@@ -54,8 +40,10 @@ export function MonthPicker({
   disabled,
   className,
   triggerClassName,
-  placeholder = "년/월 선택",
+  placeholder: placeholderProp,
 }: MonthPickerProps) {
+  const t = useUiKitMessages();
+  const placeholder = placeholderProp ?? t.date.monthPlaceholder;
   const [internalOpen, setInternalOpen] = useState(false);
   const [internalValue, setInternalValue] = useState<MonthValue | undefined>(defaultValue);
   const [viewYear, setViewYear] = useState(
@@ -112,18 +100,18 @@ export function MonthPicker({
         <div className="flex items-center justify-between px-inline-xs py-stack-xxs">
           <button
             type="button"
-            aria-label="이전 연도"
+            aria-label={t.date.previousYear}
             onClick={() => setViewYear((prev) => prev - 1)}
             className="focus-ring inline-flex h-8 w-8 items-center justify-center rounded-xs hover:bg-[var(--color-bg-tertiary)]"
           >
             <Icon name="chevronLeftThickFalse" size="sm" color="primary" />
           </button>
           <span className="typography-label-md-bold text-[var(--color-text-primary)]">
-            {viewYear}년
+            {t.date.year(viewYear)}
           </span>
           <button
             type="button"
-            aria-label="다음 연도"
+            aria-label={t.date.nextYear}
             onClick={() => setViewYear((prev) => prev + 1)}
             className="focus-ring inline-flex h-8 w-8 items-center justify-center rounded-xs hover:bg-[var(--color-bg-tertiary)]"
           >
@@ -131,7 +119,7 @@ export function MonthPicker({
           </button>
         </div>
         <div className="grid grid-cols-3 gap-stack-xxs pt-stack-xxs">
-          {MONTH_LABELS.map((monthLabel, index) => {
+          {t.date.months.map((monthLabel, index) => {
             const isSelected = currentValue?.year === viewYear && currentValue?.month === index;
             return (
               <button

@@ -1,6 +1,7 @@
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { XIcon } from "lucide-react";
 import type { ReactNode } from "react";
+import { useUiKitMessages } from "../../../locale";
 import { cn } from "../../../utils/cn";
 
 export interface DialogProps {
@@ -24,6 +25,7 @@ export function Dialog({
   maxWidth = "md",
   showClose = true,
 }: DialogProps) {
+  const t = useUiKitMessages();
   return (
     <DialogPrimitive.Root open={open} onOpenChange={onOpenChange}>
       <DialogPrimitive.Portal>
@@ -50,7 +52,7 @@ export function Dialog({
               )}
               {showClose && (
                 <DialogPrimitive.Close
-                  aria-label="닫기"
+                  aria-label={t.common.close}
                   className="-mr-stack-xxs -mt-stack-xxs ml-auto rounded-xs p-stack-xxs text-[var(--color-text-tertiary)] transition-colors hover:bg-[var(--color-bg-tertiary)] hover:text-[var(--color-text-primary)] focus-ring"
                 >
                   <XIcon className="h-4 w-4" />

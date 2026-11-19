@@ -1,3 +1,4 @@
+import { useUiKitMessages } from "../../../locale";
 import { cn } from "../../../utils/cn";
 
 export interface SpinnerProps {
@@ -6,10 +7,11 @@ export interface SpinnerProps {
 }
 
 export function Spinner({ size = "md", className }: SpinnerProps) {
+  const t = useUiKitMessages();
   return (
     <div
       role="status"
-      aria-label="로딩 중"
+      aria-label={t.common.loading}
       className={cn(
         "animate-spin rounded-full border-2 border-[var(--color-border-default)] border-t-[var(--color-bg-brand-default)]",
         {

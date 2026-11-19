@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { useUiKitMessages } from "../../../locale";
 import { Button, type ButtonProps } from "../../primitives/button";
 import { Icon } from "../../primitives/icon";
 
@@ -14,12 +15,14 @@ export interface ResetButtonProps extends Omit<ButtonProps, "children"> {
  * 폼·필터 값을 기본 상태로 되돌릴 때 사용하며, 기본 variant 는 ghost 다.
  */
 export function ResetButton({
-  label = "초기화",
+  label: labelProp,
   variant = "ghost",
   size = "md",
   loading = false,
   ...rest
 }: ResetButtonProps) {
+  const t = useUiKitMessages();
+  const label = labelProp ?? t.common.reset;
   const iconSize = size === "sm" ? 16 : size === "lg" ? 20 : 18;
 
   return (

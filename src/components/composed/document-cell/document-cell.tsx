@@ -1,4 +1,5 @@
 import type { MouseEvent } from "react";
+import { useUiKitMessages } from "../../../locale";
 import { cn } from "../../../utils/cn";
 import { Spinner } from "../../primitives/spinner";
 import { Text } from "../../primitives/text";
@@ -26,6 +27,7 @@ export function DocumentCell({
   iconButton,
   disabled,
 }: DocumentCellProps) {
+  const t = useUiKitMessages();
   const getFileExtension = (filename: string) => filename.split(".").pop()?.toUpperCase() ?? "";
 
   return (
@@ -90,7 +92,7 @@ export function DocumentCell({
           size="xs"
           variant="secondary"
           shape="circle"
-          aria-label="파일 삭제"
+          aria-label={t.common.deleteFile}
           color="inverse"
           disabled={disabled}
           className="absolute right-[2px] top-[2px]"

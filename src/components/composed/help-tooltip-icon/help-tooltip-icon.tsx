@@ -1,4 +1,5 @@
 import type { ComponentProps, ReactNode } from "react";
+import { useUiKitMessages } from "../../../locale";
 import { cn } from "../../../utils/cn";
 import { Tooltip } from "../../primitives/tooltip";
 
@@ -25,8 +26,10 @@ export function HelpTooltipIcon({
   align = "center",
   delayDuration,
   className,
-  "aria-label": ariaLabel = "도움말",
+  "aria-label": ariaLabelProp,
 }: HelpTooltipIconProps) {
+  const t = useUiKitMessages();
+  const ariaLabel = ariaLabelProp ?? t.common.help;
   return (
     <Tooltip content={content} side={side} align={align} delayDuration={delayDuration}>
       <button

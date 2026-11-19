@@ -1,5 +1,6 @@
 import * as PopoverPrimitive from "@radix-ui/react-popover";
 import * as React from "react";
+import { useUiKitMessages } from "../../../locale";
 import { cn } from "../../../utils/cn";
 import { Icon } from "../../primitives/icon";
 import { Input } from "../../primitives/input";
@@ -120,24 +121,31 @@ export function MultiSelect({
   onValueChange,
   label,
   helperText,
-  placeholder = "Select",
+  placeholder: placeholderProp,
   state = "default",
   disabled,
   size = "md",
   showClearAll = true,
   searchable = true,
   isLoading = false,
-  searchPlaceholder = "Search",
+  searchPlaceholder: searchPlaceholderProp,
   countUnit,
-  emptyText = "No results found.",
-  emptySubText = "Try a different keyword.",
+  emptyText: emptyTextProp,
+  emptySubText: emptySubTextProp,
   showSelectAll = false,
-  selectAllLabel = "Select all",
+  selectAllLabel: selectAllLabelProp,
   selectAllMeta,
-  clearAllLabel = "Clear all",
+  clearAllLabel: clearAllLabelProp,
   className,
   id,
 }: MultiSelectProps) {
+  const t = useUiKitMessages();
+  const placeholder = placeholderProp ?? t.common.select;
+  const searchPlaceholder = searchPlaceholderProp ?? t.common.search;
+  const emptyText = emptyTextProp ?? t.common.noResults;
+  const emptySubText = emptySubTextProp ?? t.multiSelect.emptySubText;
+  const selectAllLabel = selectAllLabelProp ?? t.multiSelect.selectAll;
+  const clearAllLabel = clearAllLabelProp ?? t.multiSelect.clearAll;
   const [open, setOpen] = React.useState(false);
   const [query, setQuery] = React.useState("");
   const generatedId = React.useId();
@@ -411,7 +419,7 @@ export function MultiSelect({
                     role="listbox"
                     aria-multiselectable="true"
                     aria-labelledby={label ? `${triggerId}-label` : undefined}
-                    aria-label={label ? undefined : "선택 항목 목록"}
+                    aria-label={label ? undefined : t.multiSelect.selectedList}
                     className="flex max-h-[280px] flex-col gap-group-xs overflow-y-auto"
                   >
                     {filtered.map(renderOption)}

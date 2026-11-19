@@ -1,3 +1,4 @@
+import { useUiKitMessages } from "../../../locale";
 import { cn } from "../../../utils/cn";
 import { IconButton, type IconButtonProps } from "../icon-button";
 
@@ -16,9 +17,11 @@ export function RefreshButton({
   loading = false,
   disabled,
   className,
-  "aria-label": ariaLabel = "새로고침",
+  "aria-label": ariaLabelProp,
   ...rest
 }: RefreshButtonProps) {
+  const t = useUiKitMessages();
+  const ariaLabel = ariaLabelProp ?? t.common.refresh;
   return (
     <IconButton
       icon="arrowsClockWise"

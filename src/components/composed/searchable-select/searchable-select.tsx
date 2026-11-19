@@ -4,6 +4,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { CheckIcon, ChevronDownIcon, SearchIcon } from "lucide-react";
 import type * as React from "react";
 import { useId, useMemo, useRef, useState } from "react";
+import { useUiKitMessages } from "../../../locale";
 import { cn } from "../../../utils/cn";
 import { joinIds } from "../../../utils/join-ids";
 
@@ -67,9 +68,9 @@ export function SearchableSelect({
   value,
   defaultValue,
   onValueChange,
-  placeholder = "선택",
-  searchPlaceholder = "검색",
-  emptyText = "결과 없음",
+  placeholder: placeholderProp,
+  searchPlaceholder: searchPlaceholderProp,
+  emptyText: emptyTextProp,
   label,
   error,
   helperText,
@@ -77,6 +78,10 @@ export function SearchableSelect({
   size = "md",
   className,
 }: SearchableSelectProps) {
+  const t = useUiKitMessages();
+  const placeholder = placeholderProp ?? t.common.select;
+  const searchPlaceholder = searchPlaceholderProp ?? t.common.search;
+  const emptyText = emptyTextProp ?? t.common.noResults;
   const generatedId = useId();
   const listId = `${generatedId}-list`;
   const helperId = `${generatedId}-helper`;

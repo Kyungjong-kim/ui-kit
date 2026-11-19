@@ -1,4 +1,5 @@
 import { cva, type VariantProps } from "class-variance-authority";
+import { useUiKitMessages } from "../../../locale";
 import { cn } from "../../../utils/cn";
 import type { IconName } from "../../primitives/icon";
 import { Icon } from "../../primitives/icon";
@@ -90,10 +91,12 @@ export function StatCard({
   value,
   unit,
   delta,
-  deltaCaption = "직전 기간 대비",
+  deltaCaption: deltaCaptionProp,
   progress,
   className,
 }: StatCardProps) {
+  const t = useUiKitMessages();
+  const deltaCaption = deltaCaptionProp ?? t.statCard.deltaCaption;
   return (
     <section
       aria-label={label}

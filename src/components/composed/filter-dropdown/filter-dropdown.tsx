@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useUiKitMessages } from "../../../locale";
 import { cn } from "../../../utils/cn";
 import { Button } from "../../primitives/button";
 import { Checkbox } from "../../primitives/checkbox";
@@ -41,12 +42,16 @@ export function FilterDropdown({
   value,
   defaultValue,
   onChange,
-  label = "필터",
-  applyLabel = "적용",
-  resetLabel = "초기화",
+  label: labelProp,
+  applyLabel: applyLabelProp,
+  resetLabel: resetLabelProp,
   disabled,
   className,
 }: FilterDropdownProps) {
+  const t = useUiKitMessages();
+  const label = labelProp ?? t.common.filter;
+  const applyLabel = applyLabelProp ?? t.common.apply;
+  const resetLabel = resetLabelProp ?? t.common.reset;
   const isControlled = value !== undefined;
   const [internal, setInternal] = React.useState<string[]>(defaultValue ?? []);
   const applied = isControlled ? value : internal;
