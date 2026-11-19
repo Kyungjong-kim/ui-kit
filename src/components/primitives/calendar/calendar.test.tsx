@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { Calendar } from "./calendar";
 
@@ -34,5 +34,24 @@ describe("Calendar", () => {
     rerender(<Calendar mode="single" month={month} className="b" />);
     expect(container.querySelector("button[data-day]")).toBe(before);
     expect(container.querySelector('[data-slot="calendar"]')).toBe(captionBefore);
+  });
+
+  it("이전·다음 달 버튼에 접근 가능한 이름이 있다", () => {
+    render(<Calendar mode="single" month={new Date(2026, 0, 1)} />);
+    expect(screen.getByRole("button", { name: "이전 달" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "다음 달" })).toBeInTheDocument();
+  });
+
+  it("captionLayout=dropdown 이면 연·월 드롭다운을 보여 준다", () => {
+    render(
+      <Calendar
+        mode="single"
+        captionLayout="dropdown"
+        month={new Date(2026, 0, 1)}
+        startMonth={new Date(2025, 0)}
+        endMonth={new Date(2027, 11)}
+      />,
+    );
+    expect(screen.getAllByRole("combobox").length).toBeGreaterThanOrEqual(2);
   });
 });
