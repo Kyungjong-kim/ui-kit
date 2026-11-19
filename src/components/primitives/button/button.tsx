@@ -1,4 +1,4 @@
-import { Slot } from "@radix-ui/react-slot";
+import { Slot, Slottable } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 import { type ButtonHTMLAttributes, forwardRef } from "react";
 import { cn } from "../../../utils/cn";
@@ -77,7 +77,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         {loading && <Spinner size="sm" className="border-current border-t-current opacity-70" />}
-        {children}
+        {/* asChild 일 때 Slot 이 이 자리의 자식 요소를 버튼으로 삼고, Spinner 는 그 안으로 넣는다 */}
+        <Slottable>{children}</Slottable>
       </Comp>
     );
   },
