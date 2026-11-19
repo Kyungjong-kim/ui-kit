@@ -130,7 +130,7 @@ export function MonthPicker({
                 className={cn(
                   "focus-ring inline-flex h-9 w-16 items-center justify-center rounded-xs typography-label-md-base transition-colors",
                   isSelected
-                    ? "bg-[var(--color-bg-brand-default)] text-[var(--color-text-inverse)]"
+                    ? "bg-[var(--color-bg-brand-default)] text-[var(--color-interactive-primary-text)]"
                     : "text-[var(--color-text-primary)] hover:bg-[var(--color-bg-tertiary)]",
                 )}
               >

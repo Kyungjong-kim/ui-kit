@@ -14,7 +14,7 @@ const badgeVariants = cva("inline-flex items-center rounded-full transition-colo
     },
     appearance: {
       subtle: "",
-      solid: "text-[var(--color-text-inverse)]",
+      solid: "text-[var(--color-text-on-strong)]",
     },
     size: {
       sm: "px-inline-xs py-stack-xxs typography-label-xs",
@@ -22,11 +22,15 @@ const badgeVariants = cva("inline-flex items-center rounded-full transition-colo
     },
   },
   compoundVariants: [
-    { variant: "default", appearance: "solid", className: "bg-[var(--color-bg-brand-default)]" },
-    { variant: "success", appearance: "solid", className: "bg-[var(--color-bg-success-default)]" },
-    { variant: "warning", appearance: "solid", className: "bg-[var(--color-bg-warning-default)]" },
-    { variant: "danger", appearance: "solid", className: "bg-[var(--color-bg-danger-default)]" },
-    { variant: "info", appearance: "solid", className: "bg-[var(--color-bg-info-default)]" },
+    {
+      variant: "default",
+      appearance: "solid",
+      className: "bg-[var(--color-bg-brand-default)] text-[var(--color-interactive-primary-text)]",
+    },
+    { variant: "success", appearance: "solid", className: "bg-[var(--color-bg-success-strong)]" },
+    { variant: "warning", appearance: "solid", className: "bg-[var(--color-bg-warning-strong)]" },
+    { variant: "danger", appearance: "solid", className: "bg-[var(--color-bg-danger-strong)]" },
+    { variant: "info", appearance: "solid", className: "bg-[var(--color-bg-info-strong)]" },
     // outline은 톤 배경이 없어 solid가 성립하지 않음 — subtle 스타일 유지
     { variant: "outline", appearance: "solid", className: "text-[var(--color-text-secondary)]" },
   ],
