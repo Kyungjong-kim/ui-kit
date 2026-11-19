@@ -14,8 +14,10 @@
  *   - arbitrary-property declarations in class strings (`[--icon-tab-color:…]`)
  *   - style-object keys (`{ "--progress": … }`)
  *
- * and exits 1 on any `var(--…)` reference outside that set. Variables set at runtime by
- * dependencies (Radix `--radix-*`, Tailwind `--tw-*`) are allowed by prefix.
+ * plus Tailwind's own theme variables, and exits 1 on any `var(--…)` or `bg-(--…)` reference
+ * outside that set. A reference in src/ only counts declarations in src/ — showcase and
+ * story CSS does not ship. Variables set at runtime by dependencies (Radix `--radix-*`,
+ * Tailwind `--tw-*`) are allowed by prefix.
  *
  * Run with:  pnpm check:vars
  *
@@ -37,9 +39,12 @@ const EXTERNAL_PREFIXES = ["--radix-", "--tw-"];
 const NAME = "--[A-Za-z0-9_-]*[A-Za-z0-9_]";
 /** `--name:` in CSS, `[--name:` in class strings. */
 const DECL_RE = new RegExp(`(?:^|[\\s{;[])(${NAME})\\s*:`, "gm");
-/** `"--name":` / `'--name':` style-object keys. */
-const STYLE_KEY_RE = new RegExp(`["'](${NAME})["']\\s*:`, "g");
-const REF_RE = new RegExp(`var\\(\\s*(${NAME})`, "g");
+/** `"--name":` / `'--name':` style-object keys, including computed `["--name" as string]:`. */
+const STYLE_KEY_RE = new RegExp(`["'\`](${NAME})["'\`](?:\\s+as\\s+\\w+)?\\]?\\s*:`, "g");
+/** `var(--name)` and the Tailwind v4 shorthand `bg-(--name)` / `origin-(--name)`. */
+const REF_RE = new RegExp(`(?:var\\(|[\\w\\]]-\\()\\s*(${NAME})`, "g");
+/** Tailwind's own theme variables exist at runtime because src/styles/index.css imports tailwindcss. */
+const TAILWIND_THEME_CSS = join(ROOT, "node_modules/tailwindcss/theme.css");
 /** Comments carry prose like `var(--token-*)`; they are not references. */
 const COMMENT_RE = /\/\*[\s\S]*?\*\/|(?<![:"'`\w])\/\/.*$/gm;
 
@@ -71,15 +76,28 @@ function stripComments(source: string): string {
 const files = SCAN_ROOTS.flatMap((root) => collectFiles(join(ROOT, root)));
 const sources = files.map((file) => ({ file, text: stripComments(readFileSync(file, "utf8")) }));
 
-const declared = new Set<string>();
-for (const { text } of sources) {
-  for (const match of text.matchAll(DECL_RE)) declared.add(match[1]);
-  for (const match of text.matchAll(STYLE_KEY_RE)) declared.add(match[1]);
+/** Names declared by shipped source (src/) vs demo-only source (showcase, stories). */
+const declaredInSrc = new Set<string>();
+const declaredAnywhere = new Set<string>();
+const SRC_DIR = join(ROOT, "src");
+for (const { file, text } of sources) {
+  for (const re of [DECL_RE, STYLE_KEY_RE]) {
+    for (const match of text.matchAll(re)) {
+      declaredAnywhere.add(match[1]);
+      if (file.startsWith(SRC_DIR)) declaredInSrc.add(match[1]);
+    }
+  }
+}
+for (const match of stripComments(readFileSync(TAILWIND_THEME_CSS, "utf8")).matchAll(DECL_RE)) {
+  declaredInSrc.add(match[1]);
+  declaredAnywhere.add(match[1]);
 }
 
 const unknown: Hit[] = [];
 let referenceCount = 0;
 for (const { file, text } of sources) {
+  // A demo-only declaration must not vouch for a reference that ships in dist.
+  const declared = file.startsWith(SRC_DIR) ? declaredInSrc : declaredAnywhere;
   text.split("\n").forEach((line, index) => {
     for (const match of line.matchAll(REF_RE)) {
       referenceCount++;
@@ -112,5 +130,5 @@ if (unknown.length > 0) {
 }
 
 console.log(
-  `check-css-vars: ok — ${files.length} files, ${referenceCount} var() references, ${declared.size} declared names.`,
+  `check-css-vars: ok — ${files.length} files, ${referenceCount} references, ${declaredAnywhere.size} declared names.`,
 );
