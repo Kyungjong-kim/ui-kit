@@ -62,7 +62,12 @@ const [value, setValue] = useState<string>();
 | `md` | `h-size-control-md` (기본) |
 | `lg` | `h-size-control-lg` |
 
-선택된 항목은 드롭다운에서 체크 아이콘 + 브랜드 텍스트 토큰으로 강조된다.
+## 스타일 노트
+
+- 트리거: 6px(`rounded-xs`), `border-input-default` → hover `border-input-hover`. 초점·열림 상태는 `border-input-focus` + 3px `focus-halo` 로 같은 표시.
+- 목록 패널: 8px(`rounded-sm`), 안쪽 여백 `stack-xs`(4), 옵션 4px(`rounded-xxs`).
+- 옵션 상태: hover·키보드 활성 `bg-tertiary` / 선택 `bg-brand-subtle` + medium + 브랜드 체크 아이콘 / 선택+활성 `bg-brand-subtle-hover`.
+- Combobox·SearchableSelect 도 같은 트리거·옵션 규격을 따른다.
 
 ## When to use
 

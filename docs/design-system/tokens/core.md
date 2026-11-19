@@ -204,6 +204,16 @@
 
 ## 타이포그래피
 
+### font family
+
+| 토큰 | 값 |
+|---|---|
+| `--token-font-family-sans` | `"Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif` |
+
+`theme.css` 의 `--font-sans` 가 이 토큰을 가리킨다. 글꼴 파일은 싣지 않는다 — 소비 앱이 Pretendard 를 로드하지 않으면 시스템 한글 글꼴로 떨어진다(로드 방법: [typography.md](../foundation/typography.md)).
+
+### 역할 토큰
+
 각 타입 역할은 `size`·`weight`·`line-height`·`letter-spacing` 4개 토큰 묶음으로 정의된다.
 토큰명: `--token-typography-<역할>-<스케일>[-<굵기>]-<속성>`.
 

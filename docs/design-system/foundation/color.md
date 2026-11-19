@@ -75,7 +75,8 @@ raw 팔레트(`core.css`) → **의미 토큰(`semantic.css`)** → 컴포넌트
 | `--color-border-strong` | neutral-300 | 강한 구분 |
 | `--color-border-hover` | neutral-300 | hover 테두리 |
 | `--color-border-inverse` | neutral-700 | 반전 테두리 |
-| `--color-border-input-default` / `-input-focus` | neutral-300 / brand-700 | 입력 컨트롤 테두리 (다크: focus brand-400) |
+| `--color-border-input-default` / `-input-hover` / `-input-focus` | neutral-300 / neutral-400 / brand-700 | 필드 테두리·hover·초점 (다크: neutral-600 / neutral-500 / brand-400) |
+| `--color-focus-halo` | brand-500 30% 투명 (다크 brand-400 35%) | 필드 초점·열림 시 3px 둘레 링. 단독 표시 금지 — `border-input-focus` 와 함께 |
 | `--color-border-focus` | brand-700 (다크 brand-400) | 포커스 링 (offset과 함께 사용, 흰 배경 4.7:1 이상) |
 | `--color-border-disabled` | neutral-200 | 비활성 테두리 |
 | `--color-border-{brand,danger,info,success,warning}-default` | 각 계열 500 | 상태 강조 테두리 |

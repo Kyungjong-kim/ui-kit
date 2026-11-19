@@ -56,4 +56,9 @@ import type { InputProps } from "ui-kit";
 
 - `label` 제공 시 `<label htmlFor>` ↔ `<input id>`가 자동 연결되므로 라벨 클릭으로 포커스 이동이 가능하다.
 - `helperText` 는 입력의 `aria-describedby` 로 자동 연결되고, `error` 면 `aria-invalid="true"` 가 붙는다. 직접 넘긴 `aria-describedby` 는 helperText id 앞에 합쳐지고, 직접 넘긴 `aria-invalid` 가 있으면 그 값이 우선한다.
-- 포커스 시 `var(--color-border-focus)` 링과 테두리 강조가 적용된다.
+- 포커스 시 `border-input-focus` 테두리 + 3px `focus-halo` 링이 적용된다(ring-offset 방식 아님).
+
+## 스타일 노트
+
+- 모서리 6px(`rounded-xs`), 테두리 `border-input-default`, hover `border-input-hover`, 초점 `border-input-focus` + `focus-halo`.
+- 오류 문구는 내부 전용 `FieldHelperText`(공개 export 없음)가 그린다. `error` 일 때만 장식용 경고 아이콘(`aria-hidden`)이 앞에 붙고, `disabled` 면 오류 표시보다 비활성 색이 우선한다.

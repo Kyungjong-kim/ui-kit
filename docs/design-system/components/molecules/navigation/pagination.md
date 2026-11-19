@@ -48,6 +48,12 @@ const [page, setPage] = useState(1);
 - 첫/끝 페이지에서는 이전/다음 버튼이 자동 비활성화된다.
 - `currentPage`가 유효 범위를 벗어나면 내부에서 1~`totalPages`로 클램프한다.
 
+## 스타일 노트
+
+- 칸은 32px(`size-control-sm`)·6px(`rounded-xs`)이고 숫자는 `tabular-nums` 로 폭을 맞춘다.
+- 현재 페이지는 브랜드 채움, 나머지는 hover 시 `bg-secondary`.
+- 이전/다음은 `border-input-default`(hover `border-input-hover`) 테두리 버튼으로 번호와 구분한다.
+
 ## When to use
 
 - 결과 수가 많고 정확한 위치 이동(특정 페이지로 점프)이 필요한 목록에 사용.
