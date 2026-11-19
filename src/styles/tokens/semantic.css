@@ -68,6 +68,10 @@
   /* 입력 컨트롤 테두리 — default/focus */
   --color-border-input-default: var(--color-neutral-300);
   --color-border-input-focus: var(--color-brand-700);
+  /* 입력 컨트롤 hover — default(300)보다 한 단계 진하게 */
+  --color-border-input-hover: var(--color-neutral-400);
+  /* 필드 초점 둘레 링 — 초점 표시는 border-input-focus 가 맡고 이 링은 보조 */
+  --color-focus-halo: color-mix(in oklab, var(--color-brand-500) 30%, transparent);
   /* 상태 border — 각 계열 default/hover/subtle */
   --color-border-brand-hover: var(--color-brand-600);
   --color-border-brand-subtle: var(--color-brand-200);
@@ -269,6 +273,8 @@
   --color-border-inverse: var(--color-neutral-300);
   --color-border-input-default: var(--color-neutral-600);
   --color-border-input-focus: var(--color-brand-400);
+  --color-border-input-hover: var(--color-neutral-500);
+  --color-focus-halo: color-mix(in oklab, var(--color-brand-400) 35%, transparent);
   --color-border-brand-hover: var(--color-brand-400);
   --color-border-brand-subtle: color-mix(
     in oklab,
