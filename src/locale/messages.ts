@@ -57,6 +57,8 @@ export interface UiKitMessages {
     minute: string;
     previousYear: string;
     nextYear: string;
+    previousMonth: string;
+    nextMonth: string;
     startDate: string;
     endDate: string;
     startLabel: string;
@@ -173,6 +175,8 @@ export const ko: UiKitMessages = {
     minute: "분",
     previousYear: "이전 연도",
     nextYear: "다음 연도",
+    previousMonth: "이전 달",
+    nextMonth: "다음 달",
     startDate: "시작일 선택",
     endDate: "종료일 선택",
     startLabel: "시작일",
@@ -286,6 +290,8 @@ export const en: UiKitMessages = {
     minute: "Minute",
     previousYear: "Previous year",
     nextYear: "Next year",
+    previousMonth: "Previous month",
+    nextMonth: "Next month",
     startDate: "Select start date",
     endDate: "Select end date",
     startLabel: "Start date",

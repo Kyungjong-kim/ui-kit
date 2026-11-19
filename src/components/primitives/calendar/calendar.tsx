@@ -11,6 +11,7 @@ import {
   useDayPicker,
 } from "react-day-picker";
 import { ko } from "react-day-picker/locale";
+import { useUiKitMessages } from "../../../locale";
 import { cn } from "../../../utils/cn";
 
 const CELL_SIZE = 32;
@@ -33,6 +34,7 @@ const NAV_BTN_STYLE: React.CSSProperties = {
 function CalendarMonthCaption({ calendarMonth }: { calendarMonth: { date: Date } }) {
   const locale = React.useContext(CalendarLocaleContext);
   const { goToMonth, previousMonth, nextMonth } = useDayPicker();
+  const t = useUiKitMessages();
 
   const label = calendarMonth.date.toLocaleString(locale?.code ?? "ko", {
     year: "numeric",
@@ -52,6 +54,7 @@ function CalendarMonthCaption({ calendarMonth }: { calendarMonth: { date: Date }
       <button
         type="button"
         className="focus-ring"
+        aria-label={t.date.previousMonth}
         onClick={() => previousMonth && goToMonth(previousMonth)}
         disabled={!previousMonth}
         style={{
@@ -75,6 +78,7 @@ function CalendarMonthCaption({ calendarMonth }: { calendarMonth: { date: Date }
       <button
         type="button"
         className="focus-ring"
+        aria-label={t.date.nextMonth}
         onClick={() => nextMonth && goToMonth(nextMonth)}
         disabled={!nextMonth}
         style={{
@@ -148,6 +152,13 @@ const CALENDAR_COMPONENTS: Partial<CustomComponents> = {
   ),
 };
 
+const {
+  MonthCaption: _monthCaption,
+  Nav: _nav,
+  CaptionLabel: _captionLabel,
+  ...CALENDAR_COMPONENTS_FOR_DROPDOWN
+} = CALENDAR_COMPONENTS;
+
 function Calendar({
   className,
   classNames,
@@ -199,7 +210,11 @@ function Calendar({
           hidden: cn("invisible", defaultClassNames.hidden),
           ...classNames,
         }}
-        components={{ ...CALENDAR_COMPONENTS, ...components }}
+        components={{
+          // 커스텀 캡션은 label 레이아웃용 — dropdown 이면 react-day-picker 기본 캡션·드롭다운을 쓴다
+          ...(captionLayout === "label" ? CALENDAR_COMPONENTS : CALENDAR_COMPONENTS_FOR_DROPDOWN),
+          ...components,
+        }}
         {...props}
       />
     </CalendarLocaleContext.Provider>
