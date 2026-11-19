@@ -6,12 +6,15 @@ import { useId } from "react";
 import { useUiKitMessages } from "../../../locale";
 import { cn } from "../../../utils/cn";
 import { joinIds } from "../../../utils/join-ids";
+import { FieldHelperText } from "../../_internal/field-helper-text";
 
 const triggerVariants = cva(
   [
-    "flex w-size-field-md items-center justify-between rounded-sm border bg-[var(--color-bg-primary)]",
+    "flex w-size-field-md items-center justify-between rounded-xs border bg-[var(--color-bg-primary)]",
     "text-[var(--color-text-primary)] transition-[border-color,box-shadow]",
-    "focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--color-border-focus)] focus:border-[var(--color-border-focus)]",
+    "hover:border-[var(--color-border-input-hover)]",
+    "focus:outline-none focus:border-[var(--color-border-input-focus)] focus:shadow-[0_0_0_3px_var(--color-focus-halo)]",
+    "data-[state=open]:border-[var(--color-border-input-focus)] data-[state=open]:shadow-[0_0_0_3px_var(--color-focus-halo)]",
     "disabled:cursor-not-allowed disabled:bg-[var(--color-bg-disabled)] disabled:opacity-50",
     "data-[placeholder]:text-[var(--color-text-tertiary)]",
   ],
@@ -24,7 +27,7 @@ const triggerVariants = cva(
       },
       error: {
         true: "border-[var(--color-border-danger-default)]",
-        false: "border-[var(--color-border-default)]",
+        false: "border-[var(--color-border-input-default)]",
       },
     },
     defaultVariants: { size: "md", error: false },
@@ -107,22 +110,26 @@ export function Select({
             sideOffset={4}
             className="z-50 min-w-[var(--radix-select-trigger-width)] overflow-hidden rounded-sm border border-[var(--color-border-default)] bg-[var(--color-bg-primary)] shadow-default-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95"
           >
-            <SelectPrimitive.Viewport className="p-stack-xxs">
+            <SelectPrimitive.Viewport className="p-stack-xs">
               {options.map((opt) => (
                 <SelectPrimitive.Item
                   key={opt.value}
                   value={opt.value === "" ? EMPTY_OPTION_VALUE : opt.value}
                   disabled={opt.disabled}
                   className={cn(
-                    "flex cursor-pointer select-none items-center justify-between gap-inline-sm rounded-xs px-inline-md py-stack-xs typography-label-md-base text-[var(--color-text-primary)] outline-none transition-colors",
+                    "flex cursor-pointer select-none items-center justify-between gap-inline-sm rounded-xxs px-inline-md py-stack-xs typography-label-md-base text-[var(--color-text-primary)] outline-none transition-colors",
                     "hover:bg-[var(--color-bg-tertiary)] focus:bg-[var(--color-bg-tertiary)]",
-                    "data-[state=checked]:font-medium data-[state=checked]:text-[var(--color-text-brand-default)]",
+                    "data-[state=checked]:bg-[var(--color-bg-brand-subtle)] data-[state=checked]:font-medium",
+                    "data-[state=checked]:hover:bg-[var(--color-bg-brand-subtle-hover)] data-[state=checked]:focus:bg-[var(--color-bg-brand-subtle-hover)]",
                     "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
                   )}
                 >
                   <SelectPrimitive.ItemText>{opt.label}</SelectPrimitive.ItemText>
                   <SelectPrimitive.ItemIndicator className="flex h-size-icon-sm w-size-icon-sm shrink-0 items-center justify-center">
-                    <CheckIcon className="h-size-icon-sm w-size-icon-sm" aria-hidden="true" />
+                    <CheckIcon
+                      className="h-size-icon-sm w-size-icon-sm text-[var(--color-text-brand-default)]"
+                      aria-hidden="true"
+                    />
                   </SelectPrimitive.ItemIndicator>
                 </SelectPrimitive.Item>
               ))}
@@ -131,15 +138,9 @@ export function Select({
         </SelectPrimitive.Portal>
       </SelectPrimitive.Root>
       {helperText && (
-        <p
-          id={helperId}
-          className={cn(
-            "typography-caption",
-            error ? "text-[var(--color-text-danger-default)]" : "text-[var(--color-text-tertiary)]",
-          )}
-        >
+        <FieldHelperText id={helperId} error={error}>
           {helperText}
-        </p>
+        </FieldHelperText>
       )}
     </div>
   );
