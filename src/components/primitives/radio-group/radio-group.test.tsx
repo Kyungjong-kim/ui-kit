@@ -56,4 +56,25 @@ describe("RadioGroup", () => {
     await userEvent.click(screen.getByText("옵션 B"));
     expect(onValueChange).toHaveBeenCalledWith("b");
   });
+
+  it("그룹 label 을 이름으로, helperText 를 설명으로 연결한다", () => {
+    render(
+      <RadioGroup label="배송 방법" error helperText="하나를 고르세요.">
+        <RadioGroupItem value="a" label="택배" />
+        <RadioGroupItem value="b" label="퀵" />
+      </RadioGroup>,
+    );
+    const group = screen.getByRole("radiogroup", { name: "배송 방법" });
+    expect(group).toHaveAccessibleDescription("하나를 고르세요.");
+    expect(group).toHaveAttribute("aria-invalid", "true");
+  });
+
+  it("항목 helperText 를 해당 라디오의 설명으로 연결한다", () => {
+    render(
+      <RadioGroup>
+        <RadioGroupItem value="a" label="택배" helperText="2~3일 소요" />
+      </RadioGroup>,
+    );
+    expect(screen.getByRole("radio", { name: "택배" })).toHaveAccessibleDescription("2~3일 소요");
+  });
 });

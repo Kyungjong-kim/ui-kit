@@ -23,4 +23,11 @@ describe("Select", () => {
     render(<Select options={options} disabled />);
     expect(screen.getByRole("combobox")).toBeDisabled();
   });
+
+  it("helperText 를 트리거 설명으로 연결하고 error 면 aria-invalid 를 붙인다", () => {
+    render(<Select options={options} label="과일" error helperText="과일을 고르세요." />);
+    const trigger = screen.getByRole("combobox");
+    expect(trigger).toHaveAccessibleDescription("과일을 고르세요.");
+    expect(trigger).toHaveAttribute("aria-invalid", "true");
+  });
 });

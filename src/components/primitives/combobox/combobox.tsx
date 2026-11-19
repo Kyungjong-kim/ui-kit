@@ -5,6 +5,7 @@ import { CheckIcon, ChevronDownIcon, SearchIcon } from "lucide-react";
 import type * as React from "react";
 import { useId, useMemo, useRef, useState } from "react";
 import { cn } from "../../../utils/cn";
+import { joinIds } from "../../../utils/join-ids";
 
 const triggerVariants = cva(
   [
@@ -66,6 +67,7 @@ export function Combobox({
 }: ComboboxProps) {
   const generatedId = useId();
   const listId = `${generatedId}-list`;
+  const helperId = `${generatedId}-helper`;
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [activeIndex, setActiveIndex] = useState(0);
@@ -128,6 +130,8 @@ export function Combobox({
           role="combobox"
           aria-expanded={open}
           aria-controls={listId}
+          aria-describedby={joinIds(helperText && helperId)}
+          aria-invalid={error || undefined}
           className={cn(triggerVariants({ size, error: !!error }), className)}
         >
           <span className={cn(!selectedOption && "text-[var(--color-text-tertiary)]")}>
@@ -214,6 +218,7 @@ export function Combobox({
       </PopoverPrimitive.Root>
       {helperText && (
         <p
+          id={helperId}
           className={cn(
             "typography-caption",
             error ? "text-[var(--color-text-danger-default)]" : "text-[var(--color-text-tertiary)]",

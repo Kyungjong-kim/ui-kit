@@ -281,6 +281,7 @@ export function MultiSelect({
               id={triggerId}
               role="combobox"
               aria-describedby={helperId}
+              aria-invalid={state === "error" || undefined}
               aria-labelledby={label ? `${triggerId}-label` : undefined}
               aria-controls={open ? listboxId : undefined}
               aria-expanded={open}

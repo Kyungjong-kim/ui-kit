@@ -2,6 +2,7 @@ import * as Label from "@radix-ui/react-label";
 import { cva, type VariantProps } from "class-variance-authority";
 import { forwardRef, type InputHTMLAttributes, useId } from "react";
 import { cn } from "../../../utils/cn";
+import { joinIds } from "../../../utils/join-ids";
 
 const inputVariants = cva(
   [
@@ -38,9 +39,23 @@ export interface InputProps
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ className, label, error, helperText, size = "md", id, ...props }, ref) => {
+  (
+    {
+      className,
+      label,
+      error,
+      helperText,
+      size = "md",
+      id,
+      "aria-describedby": describedBy,
+      "aria-invalid": ariaInvalid,
+      ...props
+    },
+    ref,
+  ) => {
     const generatedId = useId();
     const inputId = id ?? generatedId;
+    const helperId = `${inputId}-helper`;
 
     return (
       <div className="flex flex-col gap-group-xs">
@@ -56,10 +71,13 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           id={inputId}
           ref={ref}
           className={cn(inputVariants({ size, error: !!error }), className)}
+          aria-describedby={joinIds(describedBy, helperText && helperId)}
+          aria-invalid={ariaInvalid ?? (error || undefined)}
           {...props}
         />
         {helperText && (
           <p
+            id={helperId}
             className={cn(
               "typography-caption",
               error

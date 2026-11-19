@@ -22,7 +22,7 @@
 
 ## 1. 필드 단위 검증 오류 (인라인)
 
-`Input`·`Textarea`·`Select`는 `error`(bool) + `helperText`를 받는다. `error=true`면 컨트롤 테두리가 danger 색으로, `helperText`가 오류 문구로 표시된다.
+`Input`·`Textarea`·`Select`는 `error`(bool) + `helperText`를 받는다. `error=true`면 컨트롤 테두리가 danger 색으로, `helperText`가 오류 문구로 표시된다. `helperText` 는 컨트롤의 `aria-describedby` 로, `error` 는 `aria-invalid` 로 자동 연결돼 스크린리더가 오류 문구를 읽는다(Checkbox·Switch·RadioGroup·Combobox·SearchableSelect·MultiSelect·Slider 도 같다).
 
 ```tsx
 <Input

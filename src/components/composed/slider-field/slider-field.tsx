@@ -54,6 +54,7 @@ export function SliderField({
   showBounds,
   className,
 }: SliderFieldProps) {
+  const helperId = `${React.useId()}-helper`;
   const isControlled = value !== undefined;
   const [internal, setInternal] = React.useState<number[]>(toArray(defaultValue) ?? [min]);
   const current = isControlled ? (toArray(value) ?? [min]) : internal;
@@ -105,6 +106,7 @@ export function SliderField({
         size={size}
         disabled={disabled}
         aria-label={label}
+        aria-describedby={helperText ? helperId : undefined}
       />
 
       {showBounds && (
@@ -116,6 +118,7 @@ export function SliderField({
 
       {helperText && (
         <p
+          id={helperId}
           className={cn(
             "typography-caption",
             disabled ? "text-[var(--color-text-disabled)]" : "text-[var(--color-text-tertiary)]",

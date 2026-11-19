@@ -4,6 +4,7 @@ import { cva } from "class-variance-authority";
 import { CheckIcon } from "lucide-react";
 import { type ComponentPropsWithoutRef, useId } from "react";
 import { cn } from "../../../utils/cn";
+import { joinIds } from "../../../utils/join-ids";
 
 const checkboxVariants = cva(
   [
@@ -30,15 +31,27 @@ export interface CheckboxProps extends ComponentPropsWithoutRef<typeof CheckboxP
   helperText?: string;
 }
 
-export function Checkbox({ className, label, error, helperText, id, ...props }: CheckboxProps) {
+export function Checkbox({
+  className,
+  label,
+  error,
+  helperText,
+  id,
+  "aria-describedby": describedBy,
+  "aria-invalid": ariaInvalid,
+  ...props
+}: CheckboxProps) {
   const generatedId = useId();
   const checkboxId = id ?? generatedId;
+  const helperId = `${checkboxId}-helper`;
 
   return (
     <div className={cn("flex gap-group-sm", helperText ? "items-start" : "items-center")}>
       <CheckboxPrimitive.Root
         id={checkboxId}
         className={cn(checkboxVariants({ error: !!error }), helperText && "mt-[2px]", className)}
+        aria-describedby={joinIds(describedBy, helperText && helperId)}
+        aria-invalid={ariaInvalid ?? (error || undefined)}
         {...props}
       >
         <CheckboxPrimitive.Indicator className="flex items-center justify-center">
@@ -57,6 +70,7 @@ export function Checkbox({ className, label, error, helperText, id, ...props }: 
           )}
           {helperText && (
             <p
+              id={helperId}
               className={cn(
                 "typography-caption",
                 error

@@ -110,4 +110,11 @@ describe("MultiSelect", () => {
     await userEvent.click(screen.getByRole("combobox"));
     expect(screen.queryByRole("listbox")).not.toBeInTheDocument();
   });
+
+  it("error 상태면 트리거에 aria-invalid 를 붙이고 helperText 를 설명으로 연결한다", () => {
+    render(<Controlled state="error" helperText="하나 이상 고르세요." />);
+    const trigger = screen.getByRole("combobox");
+    expect(trigger).toHaveAttribute("aria-invalid", "true");
+    expect(trigger).toHaveAccessibleDescription("하나 이상 고르세요.");
+  });
 });
