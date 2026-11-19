@@ -3,8 +3,10 @@ import * as PopoverPrimitive from "@radix-ui/react-popover";
 import { cva, type VariantProps } from "class-variance-authority";
 import { CheckIcon, ChevronDownIcon, SearchIcon } from "lucide-react";
 import type * as React from "react";
-import { useId, useMemo, useRef, useState } from "react";
+import { useEffect, useId, useMemo, useRef, useState } from "react";
+import { useUiKitMessages } from "../../../locale";
 import { cn } from "../../../utils/cn";
+import { joinIds } from "../../../utils/join-ids";
 
 const triggerVariants = cva(
   [
@@ -54,9 +56,9 @@ export function Combobox({
   options,
   value,
   onValueChange,
-  placeholder = "선택",
-  searchPlaceholder = "검색",
-  emptyText = "결과 없음",
+  placeholder: placeholderProp,
+  searchPlaceholder: searchPlaceholderProp,
+  emptyText: emptyTextProp,
   label,
   error,
   helperText,
@@ -64,8 +66,13 @@ export function Combobox({
   size = "md",
   className,
 }: ComboboxProps) {
+  const t = useUiKitMessages();
+  const placeholder = placeholderProp ?? t.common.select;
+  const searchPlaceholder = searchPlaceholderProp ?? t.common.search;
+  const emptyText = emptyTextProp ?? t.common.noResults;
   const generatedId = useId();
   const listId = `${generatedId}-list`;
+  const helperId = `${generatedId}-helper`;
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [activeIndex, setActiveIndex] = useState(0);
@@ -97,6 +104,12 @@ export function Combobox({
     setOpen(false);
   }
 
+  // 키보드로 옮긴 활성 옵션이 max-h 목록 밖에 있으면 따라 스크롤한다
+  useEffect(() => {
+    if (!open) return;
+    document.getElementById(`${listId}-${activeIndex}`)?.scrollIntoView?.({ block: "nearest" });
+  }, [open, activeIndex, listId]);
+
   function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
     if (event.key === "ArrowDown") {
       event.preventDefault();
@@ -105,6 +118,8 @@ export function Combobox({
       event.preventDefault();
       setActiveIndex((prev) => Math.max(prev - 1, 0));
     } else if (event.key === "Enter") {
+      // IME 조합 중 Enter 는 조합 확정용 — 옵션 선택으로 처리하지 않는다 (TagInput 과 같은 기준)
+      if (event.nativeEvent.isComposing || event.keyCode === 229) return;
       event.preventDefault();
       const option = filteredOptions[activeIndex];
       if (option) selectOption(option);
@@ -128,6 +143,8 @@ export function Combobox({
           role="combobox"
           aria-expanded={open}
           aria-controls={listId}
+          aria-describedby={joinIds(helperText && helperId)}
+          aria-invalid={error || undefined}
           className={cn(triggerVariants({ size, error: !!error }), className)}
         >
           <span className={cn(!selectedOption && "text-[var(--color-text-tertiary)]")}>
@@ -214,6 +231,7 @@ export function Combobox({
       </PopoverPrimitive.Root>
       {helperText && (
         <p
+          id={helperId}
           className={cn(
             "typography-caption",
             error ? "text-[var(--color-text-danger-default)]" : "text-[var(--color-text-tertiary)]",

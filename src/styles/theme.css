@@ -259,6 +259,22 @@
   animation: progress-indeterminate 1.4s infinite ease-in-out;
 }
 
+/* Focus ring — 키보드 초점 표시 규칙 하나 (foundation/a11y.md).
+   초점 색 2px 선 + 2px 띄움. outline 이라 강제 색상 모드(Windows 고대비)에서도 보인다.
+   스크롤 목록·메뉴 항목처럼 바깥 선이 잘리는 곳은 focus-ring-inset(안쪽 -2px). */
+@utility focus-ring {
+  &:focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+  }
+}
+@utility focus-ring-inset {
+  &:focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: -2px;
+  }
+}
+
 /* Typography utility (Tailwind v4 @utility) — Text·Chip·SlideListBadge 등에서 사용 */
 @utility typography-display-md {
   font-size: var(--token-typography-display-md-size);

@@ -38,13 +38,12 @@
 
 | 문서 | 경로 |
 |---|---|
-| **HANDOFF_NOW** (현재 상태·다음 작업) | `docs/ui-kit/status/HANDOFF_NOW.md` |
 | **agent/architecture.md** (라이브러리 구조) | `docs/ui-kit/agent/architecture.md` |
 | **agent/conventions.md** (코딩 규칙) | `docs/ui-kit/agent/conventions.md` |
 | **agent/design-system.md** (토큰·variant 패턴 quickref) | `docs/ui-kit/agent/design-system.md` |
 | **design-system/** (캐노니컬 DS 문서: 원칙·토큰·컴포넌트 사양·패턴) | `docs/design-system/README.md` |
 
-읽은 후 §1(현재 상태)·§2(다음 작업)를 사용자에게 요약 출력한다.
+읽은 후 작업 범위와 관련 규칙을 사용자에게 요약 출력한다.
 
 > UI/컴포넌트 작업 시: `agent/design-system.md`(빠른 규칙) → 상세 사양·원칙·조합 패턴은 `docs/design-system/`(foundation·tokens·components·patterns). 새 컴포넌트 추가 시 `docs/design-system/components/`에 사양 기재.
 
@@ -131,6 +130,8 @@
 - [ ] pnpm test 통과
 - [ ] pnpm build 통과 (dist 갱신)
 - [ ] pnpm lint 통과 (biome)
+- [ ] pnpm check:ds 통과 — typography · tokens · vars · focus · copy · catalog 6종 가드
+- [ ] 컴포넌트 추가·제거·export 변경 시 `pnpm catalog` 재생성 + README 수치·목록 갱신
 ```
 
 **체크 실패 시:** 위반 항목을 사용자에게 보고한 뒤 수정 방향을 확인받는다. 스스로 판단해 수정 후 완료 처리 금지.
@@ -158,16 +159,13 @@
 
 ---
 
-## 🔴 STEP 3 — 세션 종료 강제 절차
+## 🔴 STEP 3 — 세션 종료 절차
 
 코드·문서 변경이 있었던 세션은 사용자 지시 없이도 자동 수행한다.
 
-**갱신 순서 (순서 바꾸지 말 것):**
-1. `docs/ui-kit/status/HANDOFF_NOW.md` — §1 현재 상태·§2 다음 작업 갱신 (60줄 이하 유지)
-2. `docs/ui-kit/history/세션_노트.md` — 최상단 prepend (`> Session note YYYY-MM-DD: [요약]`)
-3. `docs/ui-kit/plans/HANDOFF.md` — `## Session Update YYYY-MM-DD` 섹션 최상단 추가
+**진행상황 기록은 문서가 아니라 GitHub 이슈·커밋에 남긴다.** 세션 인계용 상태 문서(HANDOFF 계열)를 만들지 않는다 — 갱신이 밀리는 순간 규칙과 실행이 어긋나고, 그 불일치가 나머지 규칙의 구속력까지 떨어뜨린다. 이력이 필요하면 커밋 메시지와 이슈 코멘트를 쓴다.
 
-**갱신 후 일관성 검증:** HANDOFF_NOW.md §2 첫 항목이 최신 다음 작업인지 / 60줄 이하인지 확인.
+**기술 문서 갱신** — 변경이 발생한 영역의 `docs/ui-kit/agent/*.md` 또는 `docs/design-system/` 해당 문서만 갱신한다. 없으면 만들지 않는다.
 
 **변경 결과 요약 출력 (필수):**
 ```
@@ -195,7 +193,7 @@
 |---|---|
 | 컴포넌트 추가·수정·variant·prop | `ui-kit-dev` |
 | 디자인 토큰 변경·확장 | `ui-kit-dev` (design-system.md 자동 갱신 트리거) |
-| 문서·HANDOFF 갱신 | `ui-kit-doc-writer` |
+| 문서 갱신 (agent·design-system) | `ui-kit-doc-writer` |
 | 코드 리뷰 | `code-reviewer` |
 | 버그 원인 추적 | `debugger` |
 | 리팩토링 | `refactor` |
@@ -222,6 +220,20 @@
 - 개발: `pnpm dev` (tsup --watch) / `pnpm storybook` (시각 확인)
 - 테스트: `pnpm test` (vitest)
 - 린트·포맷: `pnpm lint` / `pnpm format` (biome)
+- 카탈로그: `pnpm catalog` — 소스에서 `docs/design-system/ds-catalog.json` 생성 (수정 금지)
+- DS 가드: `pnpm check:ds` = typography + tokens + vars + focus + copy + catalog. **CI·릴리스 양쪽에서 차단.**
+
+| 가드 | 잡는 것 | 왜 빌드로는 못 잡나 |
+|---|---|---|
+| `check:typography` | 미정의 `typography-*` 클래스 | Tailwind v4 가 미정의 유틸을 **에러 없이 무시** — 폰트만 조용히 안 먹는다 |
+| `check:tokens` | raw hex·`rgb()` (차단) / core 팔레트 직접참조 (리포트) | 값이 유효한 CSS 라 아무도 실패하지 않는다. 테마 전환 시 그 요소만 안 바뀐다 |
+| `check:vars` | 아무 데도 선언되지 않은 `var(--…)` 참조 (토큰 이름 오타) | 오타 난 변수도 유효한 CSS 라 런타임에 초기값으로 빠질 뿐, 빌드·린트·테스트 모두 통과한다 |
+| `check:focus` | 초점 스타일 없는 `<button>`·`<a>`·`*.Trigger`, 인라인 `outline: none` | 마우스로는 정상 동작하고 테스트도 통과한다. 키보드로 이동할 때만 초점이 안 보인다 |
+| `check:copy` | 컴포넌트·템플릿 소스에 박힌 한글 UI 문구 (사전 `src/locale/messages.ts` 경유 강제) | 박힌 문구도 렌더·테스트는 정상이다. 앱이 언어를 바꿀 때만 그 자리만 안 바뀐다 |
+| `check:catalog` | 카탈로그·README 수치·컴포넌트 목록 드리프트 | 아무도 읽지 않는 수기 문서라 틀려도 신호가 없다 |
+
+- 문서 리포트: `pnpm check:docs` — **비차단.** 끊긴 링크·고아 스펙·스토리 누락·문서 미갱신을
+  알린다. 판단이 필요한 항목이라 차단하지 않는다 (차단하면 무시하게 된다).
 - 릴리스: `pnpm changeset` → `pnpm version` → `pnpm release`
 
 ---
@@ -230,7 +242,7 @@
 
 | 스킬 | 용도 |
 |------|------|
-| `/session-close` | 세션 종료 — HANDOFF 3종 갱신 |
+| `/session-close` | 세션 종료 — 변경 요약 출력 (이 repo는 HANDOFF 미사용) |
 | `/project-fix` | QA·버그 이슈 → 서브이슈 생성 + 브랜치 준비 |
 | `/project-pr` | PR 생성 — 이슈 연결·Co-Authored-By 포함 |
 | `/project-issue` | GitHub 이슈 인터랙티브 생성 |

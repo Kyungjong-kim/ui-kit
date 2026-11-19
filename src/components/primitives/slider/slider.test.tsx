@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { Slider } from "./slider";
 
@@ -38,5 +38,29 @@ describe("Slider", () => {
   it("helperText를 렌더한다", () => {
     render(<Slider defaultValue={50} helperText="0~100 범위" />);
     expect(screen.getByText("0~100 범위")).toBeInTheDocument();
+  });
+
+  it("helperText 를 thumb 설명으로 연결한다", () => {
+    render(<Slider label="볼륨" helperText="0~100 사이" />);
+    expect(screen.getByRole("slider")).toHaveAccessibleDescription("0~100 사이");
+  });
+
+  it("label 이 없으면 aria-label 을 thumb 이름으로 쓴다", () => {
+    render(<Slider aria-label="밝기" />);
+    expect(screen.getByRole("slider", { name: "밝기" })).toBeInTheDocument();
+  });
+
+  it("비제어 모드에서도 showValue 가 움직인 값을 따라간다", () => {
+    render(<Slider defaultValue={40} step={10} showValue aria-label="볼륨" />);
+    expect(screen.getByText("40")).toBeInTheDocument();
+    fireEvent.keyDown(screen.getByRole("slider"), { key: "ArrowRight" });
+    expect(screen.getByRole("slider")).toHaveAttribute("aria-valuenow", "50");
+    expect(screen.getByText("50")).toBeInTheDocument();
+  });
+
+  it("범위 슬라이더의 두 thumb 에 서로 다른 이름을 준다", () => {
+    render(<Slider label="가격" defaultValue={[20, 80]} />);
+    expect(screen.getByRole("slider", { name: "가격 최솟값" })).toBeInTheDocument();
+    expect(screen.getByRole("slider", { name: "가격 최댓값" })).toBeInTheDocument();
   });
 });

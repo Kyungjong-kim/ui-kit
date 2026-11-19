@@ -1,5 +1,5 @@
-import { render, screen } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { fireEvent, render, screen } from "@testing-library/react";
+import { describe, expect, it, vi } from "vitest";
 import { Dialog } from "./dialog";
 
 describe("Dialog", () => {
@@ -28,5 +28,28 @@ describe("Dialog", () => {
       </Dialog>,
     );
     expect(screen.getByText("dialog content")).toBeInTheDocument();
+  });
+
+  it("title 이 없어도 숨김 제목으로 대화상자 이름을 주고 Radix 경고를 내지 않는다", () => {
+    const errorSpy = vi.spyOn(console, "error").mockImplementation(() => {});
+    render(
+      <Dialog open onOpenChange={() => {}} showClose={false}>
+        <p>본문</p>
+      </Dialog>,
+    );
+    expect(screen.getByRole("dialog", { name: "대화상자" })).toBeInTheDocument();
+    expect(errorSpy).not.toHaveBeenCalledWith(expect.stringContaining("DialogTitle"));
+    errorSpy.mockRestore();
+  });
+
+  it("trigger 를 누르면 open 제어 없이도 열린다", () => {
+    render(
+      <Dialog title="설정" trigger={<button type="button">열기</button>}>
+        <p>본문</p>
+      </Dialog>,
+    );
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: "열기" }));
+    expect(screen.getByRole("dialog")).toBeInTheDocument();
   });
 });

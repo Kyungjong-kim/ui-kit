@@ -3,6 +3,7 @@
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import * as React from "react";
 import {
+  type CustomComponents,
   type DayButton,
   DayPicker,
   getDefaultClassNames,
@@ -10,6 +11,7 @@ import {
   useDayPicker,
 } from "react-day-picker";
 import { ko } from "react-day-picker/locale";
+import { useUiKitMessages } from "../../../locale";
 import { cn } from "../../../utils/cn";
 
 const CELL_SIZE = 32;
@@ -29,14 +31,10 @@ const NAV_BTN_STYLE: React.CSSProperties = {
   cursor: "pointer",
 };
 
-function CalendarMonthCaption({
-  calendarMonth,
-  locale,
-}: {
-  calendarMonth: { date: Date };
-  locale?: Partial<Locale>;
-}) {
+function CalendarMonthCaption({ calendarMonth }: { calendarMonth: { date: Date } }) {
+  const locale = React.useContext(CalendarLocaleContext);
   const { goToMonth, previousMonth, nextMonth } = useDayPicker();
+  const t = useUiKitMessages();
 
   const label = calendarMonth.date.toLocaleString(locale?.code ?? "ko", {
     year: "numeric",
@@ -55,6 +53,8 @@ function CalendarMonthCaption({
     >
       <button
         type="button"
+        className="focus-ring"
+        aria-label={t.date.previousMonth}
         onClick={() => previousMonth && goToMonth(previousMonth)}
         disabled={!previousMonth}
         style={{
@@ -77,6 +77,8 @@ function CalendarMonthCaption({
       </span>
       <button
         type="button"
+        className="focus-ring"
+        aria-label={t.date.nextMonth}
         onClick={() => nextMonth && goToMonth(nextMonth)}
         disabled={!nextMonth}
         style={{
@@ -90,6 +92,72 @@ function CalendarMonthCaption({
     </div>
   );
 }
+
+/**
+ * DayPicker 의 components 는 모듈 스코프에 둔다. 렌더마다 새 함수를 넘기면 react-day-picker 가
+ * 컴포넌트 타입이 바뀐 것으로 보고 트리 전체를 재마운트한다(hover·포커스 초기화). locale 은 context 로 전달.
+ */
+const CalendarLocaleContext = React.createContext<Partial<Locale>>(ko);
+
+const CALENDAR_COMPONENTS: Partial<CustomComponents> = {
+  Root: ({ className: rootClassName, rootRef, ...rootProps }) => (
+    <div data-slot="calendar" ref={rootRef} className={cn(rootClassName)} {...rootProps} />
+  ),
+  Nav: () => <></>,
+  CaptionLabel: () => <></>,
+  MonthCaption: ({ calendarMonth }) => <CalendarMonthCaption calendarMonth={calendarMonth} />,
+  Weekday: ({ children, ...weekdayProps }) => (
+    <th
+      {...weekdayProps}
+      style={{
+        width: CELL_SIZE,
+        height: CELL_SIZE,
+        padding: 0,
+        flexShrink: 0,
+      }}
+    >
+      <div
+        style={{
+          width: CELL_SIZE,
+          height: CELL_SIZE,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          fontSize: "12px",
+          color: "var(--token-color-text-tertiary)",
+          fontWeight: "normal",
+        }}
+      >
+        {children}
+      </div>
+    </th>
+  ),
+  DayButton: (dayButtonProps) => <CalendarDayButton {...dayButtonProps} />,
+  WeekNumber: ({ children, ...weekNumberProps }) => (
+    <td {...weekNumberProps}>
+      <div
+        style={{
+          width: CELL_SIZE,
+          height: CELL_SIZE,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          fontSize: "12px",
+          color: "var(--token-color-text-tertiary)",
+        }}
+      >
+        {children}
+      </div>
+    </td>
+  ),
+};
+
+const {
+  MonthCaption: _monthCaption,
+  Nav: _nav,
+  CaptionLabel: _captionLabel,
+  ...CALENDAR_COMPONENTS_FOR_DROPDOWN
+} = CALENDAR_COMPONENTS;
 
 function Calendar({
   className,
@@ -105,111 +173,62 @@ function Calendar({
   const defaultClassNames = getDefaultClassNames();
 
   return (
-    <DayPicker
-      showOutsideDays={showOutsideDays}
-      className={cn("group/calendar", className)}
-      style={{
-        padding: "8px 4px",
-        backgroundColor: "var(--token-color-surface-default)",
-      }}
-      captionLayout={captionLayout}
-      locale={locale}
-      formatters={{
-        formatMonthDropdown: (date) => date.toLocaleString(locale?.code, { month: "short" }),
-        ...formatters,
-      }}
-      classNames={{
-        root: cn("w-fit", defaultClassNames.root),
-        months: cn("flex flex-col gap-4 md:flex-row", defaultClassNames.months),
-        month: cn("flex w-full flex-col gap-2", defaultClassNames.month),
-        nav: defaultClassNames.nav,
-        month_caption: cn("flex w-full", defaultClassNames.month_caption),
-        caption_label: defaultClassNames.caption_label,
-        table: "w-full border-collapse",
-        weekdays: cn("flex", defaultClassNames.weekdays),
-        weekday: cn("select-none", defaultClassNames.weekday),
-        week: cn("flex mt-1", defaultClassNames.week),
-        week_number_header: cn("select-none", defaultClassNames.week_number_header),
-        week_number: cn("text-xs select-none", defaultClassNames.week_number),
-        day: cn("group/day relative p-0 text-center select-none", defaultClassNames.day),
-        range_start: cn(defaultClassNames.range_start),
-        range_middle: cn(defaultClassNames.range_middle),
-        range_end: cn(defaultClassNames.range_end),
-        today: cn(defaultClassNames.today),
-        outside: cn(defaultClassNames.outside),
-        disabled: cn(defaultClassNames.disabled),
-        hidden: cn("invisible", defaultClassNames.hidden),
-        ...classNames,
-      }}
-      components={{
-        Root: ({ className: rootClassName, rootRef, ...rootProps }) => (
-          <div data-slot="calendar" ref={rootRef} className={cn(rootClassName)} {...rootProps} />
-        ),
-        Nav: () => <></>,
-        CaptionLabel: () => <></>,
-        MonthCaption: ({ calendarMonth }) => (
-          <CalendarMonthCaption calendarMonth={calendarMonth} locale={locale} />
-        ),
-        Weekday: ({ children, ...weekdayProps }) => (
-          <th
-            {...weekdayProps}
-            style={{
-              width: CELL_SIZE,
-              height: CELL_SIZE,
-              padding: 0,
-              flexShrink: 0,
-            }}
-          >
-            <div
-              style={{
-                width: CELL_SIZE,
-                height: CELL_SIZE,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: "12px",
-                color: "var(--token-color-text-tertiary)",
-                fontWeight: "normal",
-              }}
-            >
-              {children}
-            </div>
-          </th>
-        ),
-        DayButton: ({ ...dayButtonProps }) => (
-          <CalendarDayButton locale={locale} {...dayButtonProps} />
-        ),
-        WeekNumber: ({ children, ...weekNumberProps }) => (
-          <td {...weekNumberProps}>
-            <div
-              style={{
-                width: CELL_SIZE,
-                height: CELL_SIZE,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: "12px",
-                color: "var(--token-color-text-tertiary)",
-              }}
-            >
-              {children}
-            </div>
-          </td>
-        ),
-        ...components,
-      }}
-      {...props}
-    />
+    <CalendarLocaleContext.Provider value={locale}>
+      <DayPicker
+        showOutsideDays={showOutsideDays}
+        className={cn("group/calendar", className)}
+        style={{
+          padding: "8px 4px",
+          backgroundColor: "var(--token-color-surface-default)",
+        }}
+        captionLayout={captionLayout}
+        locale={locale}
+        formatters={{
+          formatMonthDropdown: (date) => date.toLocaleString(locale?.code, { month: "short" }),
+          ...formatters,
+        }}
+        classNames={{
+          root: cn("w-fit", defaultClassNames.root),
+          months: cn("flex flex-col gap-4 md:flex-row", defaultClassNames.months),
+          month: cn("flex w-full flex-col gap-2", defaultClassNames.month),
+          nav: defaultClassNames.nav,
+          month_caption: cn("flex w-full", defaultClassNames.month_caption),
+          caption_label: defaultClassNames.caption_label,
+          table: "w-full border-collapse",
+          weekdays: cn("flex", defaultClassNames.weekdays),
+          weekday: cn("select-none", defaultClassNames.weekday),
+          week: cn("flex mt-1", defaultClassNames.week),
+          week_number_header: cn("select-none", defaultClassNames.week_number_header),
+          week_number: cn("text-xs select-none", defaultClassNames.week_number),
+          day: cn("group/day relative p-0 text-center select-none", defaultClassNames.day),
+          range_start: cn(defaultClassNames.range_start),
+          range_middle: cn(defaultClassNames.range_middle),
+          range_end: cn(defaultClassNames.range_end),
+          today: cn(defaultClassNames.today),
+          outside: cn(defaultClassNames.outside),
+          disabled: cn(defaultClassNames.disabled),
+          hidden: cn("invisible", defaultClassNames.hidden),
+          ...classNames,
+        }}
+        components={{
+          // 커스텀 캡션은 label 레이아웃용 — dropdown 이면 react-day-picker 기본 캡션·드롭다운을 쓴다
+          ...(captionLayout === "label" ? CALENDAR_COMPONENTS : CALENDAR_COMPONENTS_FOR_DROPDOWN),
+          ...components,
+        }}
+        {...props}
+      />
+    </CalendarLocaleContext.Provider>
   );
 }
 
 function CalendarDayButton({
   day,
   modifiers,
-  locale,
   style: _propsStyle,
+  className,
   ...props
-}: React.ComponentProps<typeof DayButton> & { locale?: Partial<Locale> }) {
+}: React.ComponentProps<typeof DayButton>) {
+  const locale = React.useContext(CalendarLocaleContext);
   const ref = React.useRef<HTMLButtonElement>(null);
   React.useEffect(() => {
     if (modifiers.focused) ref.current?.focus();
@@ -272,10 +291,11 @@ function CalendarDayButton({
         fontWeight: isActive ? "bold" : "normal",
         cursor: modifiers.disabled ? "not-allowed" : "pointer",
         opacity: modifiers.disabled ? 0.5 : 1,
-        outline: "none",
         transition: "background-color 0.15s",
       }}
       {...props}
+      // react-day-picker 가 넘기는 className(rdp-day_button)에 덮이지 않도록 spread 뒤에서 합친다
+      className={cn("focus-ring", className)}
     />
   );
 }

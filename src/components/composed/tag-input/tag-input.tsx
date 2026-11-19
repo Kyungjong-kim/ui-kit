@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useUiKitMessages } from "../../../locale";
 import { cn } from "../../../utils/cn";
 import { Input } from "../../primitives/input";
 import { Tag } from "../../primitives/tag";
@@ -71,23 +72,29 @@ export function TagInput({
   onChange,
   label,
   labelPosition = "inline",
-  placeholder = "Type and press Enter or +",
+  placeholder: placeholderProp,
   disabledPlaceholder,
   maxTags,
   maxLength,
   pattern,
   helperText,
   maxLengthError,
-  patternError = "Contains an unsupported character.",
-  duplicateError = "Already added.",
+  patternError: patternErrorProp,
+  duplicateError: duplicateErrorProp,
   disabled = false,
   showClearAll = true,
   showAddButton = true,
-  addButtonLabel = "추가",
-  clearAllLabel = (count) => `전체 삭제 (${count})`,
+  addButtonLabel: addButtonLabelProp,
+  clearAllLabel: clearAllLabelProp,
   className,
   id,
 }: TagInputProps) {
+  const t = useUiKitMessages();
+  const placeholder = placeholderProp ?? t.tagInput.placeholder;
+  const patternError = patternErrorProp ?? t.tagInput.patternError;
+  const duplicateError = duplicateErrorProp ?? t.tagInput.duplicateError;
+  const addButtonLabel = addButtonLabelProp ?? t.common.add;
+  const clearAllLabel = clearAllLabelProp ?? t.tagInput.clearAll;
   const [input, setInput] = React.useState("");
   const [error, setError] = React.useState("");
   const generatedId = React.useId();
@@ -100,7 +107,7 @@ export function TagInput({
 
   const resolvedMaxLengthError =
     maxLengthError ??
-    (maxLength !== undefined ? `Up to ${maxLength} characters.` : "Input length exceeded.");
+    (maxLength !== undefined ? t.tagInput.maxLengthError(maxLength) : t.tagInput.lengthExceeded);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const next = e.target.value;
@@ -208,7 +215,7 @@ export function TagInput({
                 <button
                   type="button"
                   onClick={clearAll}
-                  className="ml-auto shrink-0 cursor-pointer typography-label-sm-medium text-[var(--color-text-secondary)] transition-colors hover:text-[var(--color-text-primary)]"
+                  className="focus-ring ml-auto shrink-0 cursor-pointer typography-label-sm-medium text-[var(--color-text-secondary)] transition-colors hover:text-[var(--color-text-primary)]"
                 >
                   {clearAllLabel(tags.length)}
                 </button>

@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 import { Button } from "./button";
@@ -37,5 +37,41 @@ describe("Button", () => {
   it("loading=true일 때 children도 함께 렌더된다", () => {
     render(<Button loading>저장 중</Button>);
     expect(screen.getByText("저장 중")).toBeInTheDocument();
+  });
+
+  it("asChild 면 자식 요소를 버튼처럼 렌더한다", () => {
+    render(
+      <Button asChild variant="primary">
+        <a href="/docs">문서</a>
+      </Button>,
+    );
+    const link = screen.getByRole("link", { name: "문서" });
+    expect(link).toHaveAttribute("href", "/docs");
+    expect(link.className).toContain("inline-flex");
+  });
+
+  it("asChild + loading 이면 Spinner 를 자식 요소 안에 넣는다", () => {
+    render(
+      <Button asChild loading>
+        <a href="/docs">문서</a>
+      </Button>,
+    );
+    const link = screen.getByRole("link", { name: /문서/ });
+    expect(link).toContainElement(screen.getByRole("status"));
+    expect(link).toHaveAttribute("aria-busy", "true");
+  });
+
+  it("asChild + disabled 면 aria-disabled 를 붙이고 클릭 이동을 막는다", () => {
+    const onClick = vi.fn();
+    render(
+      <Button asChild disabled onClick={onClick}>
+        <a href="/docs">문서</a>
+      </Button>,
+    );
+    const link = screen.getByRole("link", { name: "문서" });
+    expect(link).toHaveAttribute("aria-disabled", "true");
+    const notPrevented = fireEvent.click(link);
+    expect(notPrevented).toBe(false);
+    expect(onClick).not.toHaveBeenCalled();
   });
 });

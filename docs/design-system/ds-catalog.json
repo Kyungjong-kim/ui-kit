@@ -1,0 +1,906 @@
+{
+  "$generated": "scripts/catalog.ts — run `pnpm catalog` to regenerate. Do not edit by hand.",
+  "counts": {
+    "primitives": 38,
+    "composed": 60,
+    "templates": 8,
+    "total": 106
+  },
+  "components": [
+    {
+      "name": "accordion",
+      "layer": "primitives",
+      "exports": [
+        "Accordion",
+        "AccordionContent",
+        "AccordionItem",
+        "AccordionTrigger"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "alert-dialog",
+      "layer": "primitives",
+      "exports": [
+        "AlertDialog",
+        "AlertDialogTrigger"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "avatar",
+      "layer": "primitives",
+      "exports": [
+        "Avatar"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "badge",
+      "layer": "primitives",
+      "exports": [
+        "Badge"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "breadcrumb",
+      "layer": "primitives",
+      "exports": [
+        "Breadcrumb",
+        "BreadcrumbEllipsis",
+        "BreadcrumbItem",
+        "BreadcrumbLink",
+        "BreadcrumbList",
+        "BreadcrumbPage",
+        "BreadcrumbSeparator"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "button",
+      "layer": "primitives",
+      "exports": [
+        "Button"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "calendar",
+      "layer": "primitives",
+      "exports": [
+        "Calendar",
+        "CalendarDayButton"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "card",
+      "layer": "primitives",
+      "exports": [
+        "Card",
+        "CardBody",
+        "CardFooter",
+        "CardHeader"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "checkbox",
+      "layer": "primitives",
+      "exports": [
+        "Checkbox"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "combobox",
+      "layer": "primitives",
+      "exports": [
+        "Combobox"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "dialog",
+      "layer": "primitives",
+      "exports": [
+        "Dialog",
+        "DialogTrigger"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "dnd-list",
+      "layer": "primitives",
+      "exports": [
+        "DndList"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "dropdown-menu",
+      "layer": "primitives",
+      "exports": [
+        "DropdownMenu",
+        "DropdownMenuContent",
+        "DropdownMenuItem",
+        "DropdownMenuLabel",
+        "DropdownMenuSeparator",
+        "DropdownMenuTrigger"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "file-upload",
+      "layer": "primitives",
+      "exports": [
+        "FileUpload"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "icon",
+      "layer": "primitives",
+      "exports": [
+        "Icon",
+        "iconAliasMap"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "input",
+      "layer": "primitives",
+      "exports": [
+        "Input"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "link-button",
+      "layer": "primitives",
+      "exports": [
+        "LinkButton"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "pagination",
+      "layer": "primitives",
+      "exports": [
+        "Pagination"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "popover",
+      "layer": "primitives",
+      "exports": [
+        "Popover",
+        "PopoverAnchor",
+        "PopoverContent",
+        "PopoverTrigger"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "progress",
+      "layer": "primitives",
+      "exports": [
+        "Progress"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "radio-group",
+      "layer": "primitives",
+      "exports": [
+        "RadioGroup",
+        "RadioGroupItem"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "scroll-area",
+      "layer": "primitives",
+      "exports": [
+        "ScrollArea",
+        "ScrollBar"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "select",
+      "layer": "primitives",
+      "exports": [
+        "Select"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "separator",
+      "layer": "primitives",
+      "exports": [
+        "Separator"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "sheet",
+      "layer": "primitives",
+      "exports": [
+        "Sheet",
+        "SheetTrigger"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "skeleton",
+      "layer": "primitives",
+      "exports": [
+        "Skeleton"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "slide-list-badge",
+      "layer": "primitives",
+      "exports": [
+        "SlideListBadge"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "slider",
+      "layer": "primitives",
+      "exports": [
+        "Slider"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "spinner",
+      "layer": "primitives",
+      "exports": [
+        "Spinner"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "stepper",
+      "layer": "primitives",
+      "exports": [
+        "Stepper"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "switch",
+      "layer": "primitives",
+      "exports": [
+        "Switch"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "tabs",
+      "layer": "primitives",
+      "exports": [
+        "Tabs",
+        "TabsContent",
+        "TabsList",
+        "TabsTrigger"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "tag",
+      "layer": "primitives",
+      "exports": [
+        "Tag"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "text",
+      "layer": "primitives",
+      "exports": [
+        "Text",
+        "textVariants"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "textarea",
+      "layer": "primitives",
+      "exports": [
+        "Textarea"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "thumbnail",
+      "layer": "primitives",
+      "exports": [
+        "Thumbnail"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "toast",
+      "layer": "primitives",
+      "exports": [
+        "Toaster",
+        "toast"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "tooltip",
+      "layer": "primitives",
+      "exports": [
+        "Tooltip"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "alert",
+      "layer": "composed",
+      "exports": [
+        "Alert"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "bar-list",
+      "layer": "composed",
+      "exports": [
+        "BarList"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "cascading-select",
+      "layer": "composed",
+      "exports": [
+        "CascadingSelect"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "chart",
+      "layer": "composed",
+      "exports": [
+        "AreaChart",
+        "BarChart",
+        "CHART_SERIES_COLORS",
+        "DonutChart",
+        "GaugeChart",
+        "Heatmap",
+        "LineChart",
+        "PieChart",
+        "RadarChart",
+        "SemiCircleChart",
+        "Sparkline",
+        "seriesColor"
+      ],
+      "hasTest": false
+    },
+    {
+      "name": "check-mark",
+      "layer": "composed",
+      "exports": [
+        "CheckMark"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "chip",
+      "layer": "composed",
+      "exports": [
+        "Chip"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "cluster-resource-bar",
+      "layer": "composed",
+      "exports": [
+        "ClusterResourceBar"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "code-editor",
+      "layer": "composed",
+      "exports": [
+        "CodeEditor"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "comparison-bar",
+      "layer": "composed",
+      "exports": [
+        "ComparisonBar"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "data-items-table",
+      "layer": "composed",
+      "exports": [
+        "DataItemsTable"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "data-table",
+      "layer": "composed",
+      "exports": [
+        "DataTable"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "date-picker",
+      "layer": "composed",
+      "exports": [
+        "DatePicker"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "date-range-picker",
+      "layer": "composed",
+      "exports": [
+        "DateRangePicker"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "date-time-cell",
+      "layer": "composed",
+      "exports": [
+        "DateTimeCell"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "date-time-picker",
+      "layer": "composed",
+      "exports": [
+        "DateTimePicker"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "description-list",
+      "layer": "composed",
+      "exports": [
+        "DescriptionList"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "document-cell",
+      "layer": "composed",
+      "exports": [
+        "DocumentCell"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "dot-badge",
+      "layer": "composed",
+      "exports": [
+        "DotBadge"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "empty-state",
+      "layer": "composed",
+      "exports": [
+        "EmptyState"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "favorite-button",
+      "layer": "composed",
+      "exports": [
+        "FavoriteButton"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "file-icon",
+      "layer": "composed",
+      "exports": [
+        "FileIcon",
+        "getFileIcon"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "filter-dropdown",
+      "layer": "composed",
+      "exports": [
+        "FilterDropdown"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "full-screen-dialog",
+      "layer": "composed",
+      "exports": [
+        "FullScreenDialog"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "guide-block",
+      "layer": "composed",
+      "exports": [
+        "GuideBlock"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "help-tooltip-icon",
+      "layer": "composed",
+      "exports": [
+        "HelpTooltipIcon"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "icon-button",
+      "layer": "composed",
+      "exports": [
+        "IconButton"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "icon-tabs",
+      "layer": "composed",
+      "exports": [
+        "IconTab",
+        "IconTabs"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "image-cell",
+      "layer": "composed",
+      "exports": [
+        "ImageCell"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "list-control",
+      "layer": "composed",
+      "exports": [
+        "ListControl"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "logo-only-header",
+      "layer": "composed",
+      "exports": [
+        "LogoOnlyHeader"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "meta-item",
+      "layer": "composed",
+      "exports": [
+        "MetaInfo",
+        "MetaItem"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "metric-card",
+      "layer": "composed",
+      "exports": [
+        "MetricCard"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "modal",
+      "layer": "composed",
+      "exports": [
+        "Modal"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "month-picker",
+      "layer": "composed",
+      "exports": [
+        "MonthPicker"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "multi-select",
+      "layer": "composed",
+      "exports": [
+        "MultiSelect"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "multiline-button",
+      "layer": "composed",
+      "exports": [
+        "MultilineButton"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "nav-flyout",
+      "layer": "composed",
+      "exports": [
+        "NavFlyout"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "page-header",
+      "layer": "composed",
+      "exports": [
+        "PageHeader"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "period-filter-dropdown",
+      "layer": "composed",
+      "exports": [
+        "PeriodFilterDropdown"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "refresh-button",
+      "layer": "composed",
+      "exports": [
+        "RefreshButton"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "reset-button",
+      "layer": "composed",
+      "exports": [
+        "ResetButton"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "resource-usage",
+      "layer": "composed",
+      "exports": [
+        "ResourceUsage"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "searchable-select",
+      "layer": "composed",
+      "exports": [
+        "SearchableSelect"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "section-title",
+      "layer": "composed",
+      "exports": [
+        "SectionTitle"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "segmented-control",
+      "layer": "composed",
+      "exports": [
+        "SegmentedControl",
+        "SegmentedControlItem"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "select-button",
+      "layer": "composed",
+      "exports": [
+        "SelectButton"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "select-icon-button",
+      "layer": "composed",
+      "exports": [
+        "SelectIconButton"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "setting-row",
+      "layer": "composed",
+      "exports": [
+        "SettingRow"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "side-panel",
+      "layer": "composed",
+      "exports": [
+        "SidePanel"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "slider-field",
+      "layer": "composed",
+      "exports": [
+        "SliderField"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "stat-card",
+      "layer": "composed",
+      "exports": [
+        "StatCard"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "summary-grid",
+      "layer": "composed",
+      "exports": [
+        "SummaryGrid"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "table",
+      "layer": "composed",
+      "exports": [
+        "Table"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "tag-input",
+      "layer": "composed",
+      "exports": [
+        "TagInput"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "text-skeleton",
+      "layer": "composed",
+      "exports": [
+        "TextSkeleton"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "timeline",
+      "layer": "composed",
+      "exports": [
+        "Timeline"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "tree-table",
+      "layer": "composed",
+      "exports": [
+        "TreeTable"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "truncate-text",
+      "layer": "composed",
+      "exports": [
+        "TruncateText"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "user-cell",
+      "layer": "composed",
+      "exports": [
+        "UserCell"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "version-info-card",
+      "layer": "composed",
+      "exports": [
+        "VersionInfoCard"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "bulk-action-list-page-template",
+      "layer": "templates",
+      "exports": [
+        "BulkActionListPageTemplate"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "data-items-layout",
+      "layer": "templates",
+      "exports": [
+        "DataItemsLayout"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "detail-tabs-page-template",
+      "layer": "templates",
+      "exports": [
+        "DetailTabsPageTemplate"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "form-page-template",
+      "layer": "templates",
+      "exports": [
+        "FormPageTemplate"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "full-screen-dialog-page-template",
+      "layer": "templates",
+      "exports": [
+        "FullScreenDialogPageTemplate"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "list-page-template",
+      "layer": "templates",
+      "exports": [
+        "ListPageTemplate"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "modal-page-template",
+      "layer": "templates",
+      "exports": [
+        "ModalPageTemplate"
+      ],
+      "hasTest": true
+    },
+    {
+      "name": "side-panel-page-template",
+      "layer": "templates",
+      "exports": [
+        "SidePanelPageTemplate"
+      ],
+      "hasTest": true
+    }
+  ]
+}

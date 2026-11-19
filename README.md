@@ -38,6 +38,7 @@ pnpm add react react-dom
 | `@kyungjong-kim/ui-kit/styles` | core+semantic 토큰 `:root` 값 (런타임 CSS 변수) | ✅ |
 | `@kyungjong-kim/ui-kit/theme` | Tailwind v4 `@theme inline` 매핑 (radius·spacing·size·shadow·color·typography 유틸 매핑) | ✅ Tailwind v4 |
 | `@source` | ui-kit dist 스캔 → 컴포넌트가 쓰는 유틸 생성 | ✅ |
+| `@kyungjong-kim/ui-kit/reduced-motion` | `prefers-reduced-motion: reduce` 일 때 전환·애니메이션을 끄는 전역 규칙 (앱 전체에 걸림) | 선택 |
 
 > `@kyungjong-kim/ui-kit/theme` 없이는 컴포넌트가 쓰는 `gap-group-xl`·`h-size-control-sm`·`w-size-icon-sm`·`rounded-md`·`shadow-default-sm`·`typography-*` 같은 커스텀 theme 유틸이 생성되지 않아 레이아웃이 깨진다. (`@import "tailwindcss"` 는 소비 앱이 직접 선언 — `@kyungjong-kim/ui-kit/theme` 에는 포함하지 않는다.)
 >
@@ -59,6 +60,22 @@ export function App() {
 }
 ```
 
+### 3. 기본 문구 언어 (선택)
+
+컴포넌트 안 기본 문구(닫기·검색·결과 없음·페이지 이동 등)는 사전에서 온다. Provider 가 없으면 한국어(`ko`)다.
+
+```tsx
+import { UiKitLocaleProvider } from "@kyungjong-kim/ui-kit";
+
+<UiKitLocaleProvider locale="en" messages={{ common: { close: "Dismiss" } }}>
+  <App />
+</UiKitLocaleProvider>
+```
+
+- `locale`: `"ko"`(기본) · `"en"`. `messages` 로 사전 일부만 덮어쓸 수 있다.
+- 컴포넌트에 직접 넘긴 prop(`placeholder`·`emptyText` 등)이 사전보다 항상 우선한다.
+- 사전 전체는 `ko`·`en` export 와 `UiKitMessages` 타입으로 확인한다.
+
 ---
 
 ## 컴포넌트
@@ -69,7 +86,7 @@ Storybook 사이드바와 동일한 **Atomic Design 계층 + 서브그룹** 구�
 |---|---|
 | **Foundations** | Design Tokens · `Text` · `Icon` · `FileIcon` |
 | **Atoms** | **Buttons** `Button` `IconButton` `LinkButton` `MultilineButton` `SelectButton` `SelectIconButton` `FavoriteButton` `RefreshButton` `ResetButton` / **Status** `Badge` `Tag` `Chip` `DotBadge` `SlideListBadge` / **Form Controls** `Checkbox` `RadioGroup` `Switch` / **Loading** `Skeleton` `TextSkeleton` `Spinner` `Progress` / **Display** `Avatar` `Thumbnail` `Tooltip` `HelpTooltipIcon` `Separator` `CheckMark` |
-| **Molecules** | **Form** `Input` `Textarea` `TagInput` `CodeEditor` `SegmentedControl` `FileUpload` / **Select** `Select` `MultiSelect` `Combobox` `SearchableSelect` `CascadingSelect` / **Date** `Calendar` `DatePicker` `DateRangePicker` `DateTimePicker` `MonthPicker` `PeriodFilterDropdown` / **Navigation** `Tabs` `IconTabs` `Breadcrumb` `Pagination` `Stepper` `Accordion` / **Feedback** `Toast` `Alert` `GuideBlock` `EmptyState` / **Filter** `DropdownMenu` `FilterDropdown` `ListControl` / **Heading** `PageHeader` `SectionTitle` / **Progress** `Slider` `SliderField` |
+| **Molecules** | **Form** `Input` `Textarea` `TagInput` `CodeEditor` `SegmentedControl` `FileUpload` / **Select** `Select` `MultiSelect` `Combobox` `SearchableSelect` `CascadingSelect` / **Date** `Calendar` `DatePicker` `DateRangePicker` `DateTimePicker` `MonthPicker` `PeriodFilterDropdown` / **Navigation** `Tabs` `IconTabs` `Breadcrumb` `Pagination` `Stepper` `Accordion` / **Feedback** `Toaster` `Alert` `GuideBlock` `EmptyState` / **Filter** `DropdownMenu` `FilterDropdown` `ListControl` / **Heading** `PageHeader` `SectionTitle` / **Progress** `Slider` `SliderField` |
 | **Organisms** | **Charts** `LineChart` `BarChart` `AreaChart` `PieChart` `DonutChart` `RadarChart` `GaugeChart` `SemiCircleChart` `Sparkline` `Heatmap` `BarList` `ComparisonBar` / **Tables** `Table` `DataTable` `TreeTable` `DataItemsTable` / **Metric** `StatCard` `MetricCard` `ResourceUsage` `ClusterResourceBar` `SummaryGrid` / **Cells** `UserCell` `DateTimeCell` `ImageCell` `DocumentCell` / **Overlay** `Dialog` `AlertDialog` `Modal` `Sheet` `Popover` `SidePanel` `FullScreenDialog` `NavFlyout` / **Card** `Card` `VersionInfoCard` / **Misc** `Timeline` `SettingRow` `DescriptionList` `MetaItem` `DndList` `ScrollArea` `TruncateText` `LogoOnlyHeader` |
 | **Templates** | `ListPageTemplate` `FormPageTemplate` `DetailTabsPageTemplate` `BulkActionListPageTemplate` `ModalPageTemplate` `SidePanelPageTemplate` `FullScreenDialogPageTemplate` `DataItemsLayout` — 실사용 조합 화면 목업 |
 
@@ -162,6 +179,14 @@ develop               ← 개발 통합 (모든 feature PR 머지 대상)
 ## 변경 이력
 
 주요 변경을 여기 누적한다(세부 버전 릴리스는 changesets → `CHANGELOG.md`).
+
+### 2026-11-19 — 0.2.0: 접근성·로케일·가드
+
+- **기본 문구 로케일** — `UiKitLocaleProvider`(`ko`·`en`)·`useUiKitMessages`. MultiSelect·TagInput 영어 기본값이 한국어 사전으로 바뀜(동작 변경)
+- **접근성** — 입력 안내·오류 `aria-describedby`·`aria-invalid` 연결, 키보드 초점 `focus-ring` 통일, 옵트인 `reduced-motion` CSS, Dialog·Sheet 숨김 제목, Calendar 이동 버튼 이름
+- **새 prop** — Dialog·AlertDialog·Sheet `trigger`, Select 빈 문자열 옵션
+- **DS 가드 3종 추가** — `check:vars`(CSS 변수 오타)·`check:focus`(초점 누락)·`check:copy`(박힌 문구)
+- 버그 — Button `asChild` 크래시, Avatar 실패 fallback, 한글 조합 Enter, Calendar 재마운트, Slider·Progress·Stepper·FileUpload·DndList(SSR id) 등. 전체는 `CHANGELOG.md`
 
 ### 2026-07-06 — Storybook 공개 배포·마감 품질
 

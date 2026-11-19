@@ -10,6 +10,7 @@ import {
 } from "@tanstack/react-table";
 import { ChevronDownIcon, ChevronsUpDownIcon, ChevronUpIcon } from "lucide-react";
 import { type ReactNode, useEffect, useMemo, useState } from "react";
+import { useUiKitMessages } from "../../../locale";
 import { cn } from "../../../utils/cn";
 import { Checkbox } from "../../primitives/checkbox";
 import { Pagination } from "../../primitives/pagination";
@@ -61,6 +62,7 @@ export function DataTable<TData>({
   emptyContent,
   className,
 }: DataTableProps<TData>) {
+  const t = useUiKitMessages();
   const [sorting, setSorting] = useState<SortingState>([]);
   const [pageIndex, setPageIndex] = useState(0);
   const [rowSelection, setRowSelection] = useState<RowSelectionState>({});
@@ -74,7 +76,7 @@ export function DataTable<TData>({
       enableSorting: false,
       header: ({ table }) => (
         <Checkbox
-          aria-label="전체 선택"
+          aria-label={t.table.selectAll}
           checked={
             table.getIsAllRowsSelected()
               ? true
@@ -87,7 +89,7 @@ export function DataTable<TData>({
       ),
       cell: ({ row }) => (
         <Checkbox
-          aria-label="행 선택"
+          aria-label={t.table.selectRow}
           checked={row.getIsSelected()}
           disabled={!row.getCanSelect()}
           onCheckedChange={(value) => row.toggleSelected(!!value)}
@@ -95,7 +97,7 @@ export function DataTable<TData>({
       ),
     };
     return [selectionColumn, ...columns];
-  }, [columns, enableRowSelection]);
+  }, [columns, enableRowSelection, t.table.selectAll, t.table.selectRow]);
 
   const table = useReactTable({
     data,
@@ -152,7 +154,7 @@ export function DataTable<TData>({
                         <button
                           type="button"
                           onClick={header.column.getToggleSortingHandler()}
-                          className="inline-flex items-center gap-group-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-[var(--color-border-focus)]"
+                          className="inline-flex items-center gap-group-xs focus-ring"
                         >
                           {flexRender(header.column.columnDef.header, header.getContext())}
                           {sortDir === "asc" ? (
@@ -191,7 +193,7 @@ export function DataTable<TData>({
             ) : isEmpty ? (
               <tr>
                 <td colSpan={leafColumnCount} className="px-inline-lg py-stack-md">
-                  {emptyContent ?? <EmptyState title="데이터가 없습니다" />}
+                  {emptyContent ?? <EmptyState title={t.common.noData} />}
                 </td>
               </tr>
             ) : (

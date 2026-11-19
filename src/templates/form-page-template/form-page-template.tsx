@@ -1,6 +1,7 @@
 import { cva } from "class-variance-authority";
 import type { FormEvent, ReactNode } from "react";
 import { Button, PageHeader, Text } from "../../components";
+import { useUiKitMessages } from "../../locale";
 import { cn } from "../../utils/cn";
 
 const formPageContainer = cva(["flex flex-col w-full min-h-0", "bg-[var(--color-bg-secondary)]"]);
@@ -40,10 +41,13 @@ export function FormPageTemplate({
   onSubmit,
   onCancel,
   isSubmitting = false,
-  submitLabel = "저장",
-  cancelLabel = "취소",
+  submitLabel: submitLabelProp,
+  cancelLabel: cancelLabelProp,
   className,
 }: FormPageTemplateProps) {
+  const t = useUiKitMessages();
+  const submitLabel = submitLabelProp ?? t.common.save;
+  const cancelLabel = cancelLabelProp ?? t.common.cancel;
   return (
     <form onSubmit={onSubmit} className={cn(formPageContainer(), className)}>
       <PageHeader

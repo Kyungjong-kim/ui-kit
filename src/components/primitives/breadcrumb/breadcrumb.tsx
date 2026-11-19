@@ -6,12 +6,14 @@ import {
   forwardRef,
   type HTMLAttributes,
 } from "react";
+import { useUiKitMessages } from "../../../locale";
 import { cn } from "../../../utils/cn";
 
 export const Breadcrumb = forwardRef<HTMLElement, ComponentPropsWithoutRef<"nav">>(
-  ({ "aria-label": ariaLabel = "이동 경로", ...props }, ref) => (
-    <nav ref={ref} aria-label={ariaLabel} {...props} />
-  ),
+  ({ "aria-label": ariaLabel, ...props }, ref) => {
+    const t = useUiKitMessages();
+    return <nav ref={ref} aria-label={ariaLabel ?? t.navigation.breadcrumb} {...props} />;
+  },
 );
 Breadcrumb.displayName = "Breadcrumb";
 
@@ -48,7 +50,7 @@ export const BreadcrumbLink = forwardRef<HTMLAnchorElement, BreadcrumbLinkProps>
         ref={ref}
         className={cn(
           "transition-colors hover:text-[var(--color-text-primary)]",
-          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-border-focus)] rounded-sm",
+          "focus-ring rounded-sm",
           className,
         )}
         {...props}
@@ -91,6 +93,7 @@ export function BreadcrumbSeparator({
 }
 
 export function BreadcrumbEllipsis({ className, ...props }: HTMLAttributes<HTMLSpanElement>) {
+  const t = useUiKitMessages();
   return (
     <span
       role="presentation"
@@ -102,7 +105,7 @@ export function BreadcrumbEllipsis({ className, ...props }: HTMLAttributes<HTMLS
       {...props}
     >
       <MoreHorizontalIcon className="h-size-icon-xs w-size-icon-xs" />
-      <span className="sr-only">더보기</span>
+      <span className="sr-only">{t.common.more}</span>
     </span>
   );
 }

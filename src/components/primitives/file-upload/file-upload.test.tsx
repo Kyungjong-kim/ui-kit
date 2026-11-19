@@ -47,4 +47,20 @@ describe("FileUpload", () => {
     await userEvent.click(screen.getByRole("button"));
     expect(screen.queryByText("remove-me.txt")).not.toBeInTheDocument();
   });
+
+  it("누적 파일이 maxFiles 를 넘으면 잘라 내고 개수 초과를 알린다", async () => {
+    const onFilesChange = vi.fn();
+    render(<FileUpload onFilesChange={onFilesChange} maxFiles={2} />);
+    const input = document.querySelector('input[type="file"]') as HTMLInputElement;
+    const make = (name: string) => new File([name], name, { type: "text/plain" });
+    await userEvent.upload(input, make("a.txt"));
+    await userEvent.upload(input, make("b.txt"));
+    expect(screen.queryByText("파일 개수 초과")).not.toBeInTheDocument();
+    await userEvent.upload(input, make("c.txt"));
+    expect(screen.getByText("파일 개수 초과")).toBeInTheDocument();
+    expect(onFilesChange).toHaveBeenLastCalledWith([
+      expect.objectContaining({ name: "a.txt" }),
+      expect.objectContaining({ name: "b.txt" }),
+    ]);
+  });
 });

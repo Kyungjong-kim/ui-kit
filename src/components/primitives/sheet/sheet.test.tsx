@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { Sheet } from "./sheet";
 
@@ -44,5 +44,25 @@ describe("Sheet", () => {
   it.each(["top", "right", "bottom", "left"] as const)("side=%s 가 정상 렌더된다", (side) => {
     render(<Sheet open side={side} title={`${side} 패널`} onOpenChange={() => {}} />);
     expect(screen.getByText(`${side} 패널`)).toBeInTheDocument();
+  });
+
+  it("title·닫기 버튼이 모두 없어도 숨김 제목으로 이름을 준다", () => {
+    render(
+      <Sheet open onOpenChange={() => {}} showClose={false}>
+        <p>본문</p>
+      </Sheet>,
+    );
+    expect(screen.getByRole("dialog", { name: "대화상자" })).toBeInTheDocument();
+  });
+
+  it("trigger 를 누르면 open 제어 없이도 열린다", () => {
+    render(
+      <Sheet title="설정" trigger={<button type="button">열기</button>}>
+        <p>본문</p>
+      </Sheet>,
+    );
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: "열기" }));
+    expect(screen.getByRole("dialog")).toBeInTheDocument();
   });
 });

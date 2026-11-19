@@ -14,7 +14,7 @@ const linkButtonVariants = cva(
     "hover:bg-transparent",
     "active:bg-transparent",
     "disabled:bg-transparent",
-    "rounded-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-border-focus)]",
+    "rounded-xs focus-ring",
   ],
   {
     variants: {
@@ -71,6 +71,7 @@ export function LinkButton({
   children,
   target,
   rel,
+  onClick,
   ...rest
 }: LinkButtonProps) {
   const cls = cn(linkButtonVariants({ variant, size, disabled: !!disabled, className }));
@@ -80,7 +81,8 @@ export function LinkButton({
 
   if (disabled) {
     return (
-      <span aria-disabled="true" className={cls}>
+      // 비활성이어도 id·data-*·aria-* 등은 남긴다(클릭 핸들러만 뺀다)
+      <span {...rest} aria-disabled="true" className={cls}>
         {icon && <Icon name={icon} size={size as IconSize} color={iconColor} />}
         <span>{content}</span>
       </span>
@@ -88,7 +90,7 @@ export function LinkButton({
   }
 
   return (
-    <a href={href} className={cls} target={target} rel={safeRel} {...rest}>
+    <a href={href} className={cls} target={target} rel={safeRel} onClick={onClick} {...rest}>
       {icon && <Icon name={icon} size={size as IconSize} color={iconColor} />}
       <span>{content}</span>
     </a>

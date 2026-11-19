@@ -72,4 +72,34 @@ describe("Combobox", () => {
     fireEvent.keyDown(input, { key: "Enter" });
     expect(onValueChange).toHaveBeenCalledWith("banana");
   });
+
+  it("helperText 를 트리거 설명으로 연결하고 error 면 aria-invalid 를 붙인다", () => {
+    render(<Combobox options={options} label="과일" error helperText="과일을 고르세요." />);
+    const trigger = screen.getByRole("combobox");
+    expect(trigger).toHaveAccessibleDescription("과일을 고르세요.");
+    expect(trigger).toHaveAttribute("aria-invalid", "true");
+  });
+
+  it("한글 조합 중 Enter 는 옵션을 선택하지 않는다", () => {
+    const onValueChange = vi.fn();
+    render(<Combobox options={options} onValueChange={onValueChange} searchPlaceholder="검색" />);
+    fireEvent.click(screen.getByRole("combobox"));
+    const input = screen.getByPlaceholderText("검색");
+    fireEvent.keyDown(input, { key: "Enter", isComposing: true });
+    fireEvent.keyDown(input, { key: "Enter", keyCode: 229 });
+    expect(onValueChange).not.toHaveBeenCalled();
+    expect(input).toBeInTheDocument();
+  });
+
+  it("키보드로 옮긴 활성 옵션을 스크롤 영역 안으로 가져온다", () => {
+    const scrollIntoView = vi.fn();
+    Element.prototype.scrollIntoView = scrollIntoView;
+    render(<Combobox options={options} searchPlaceholder="검색" />);
+    fireEvent.click(screen.getByRole("combobox"));
+    scrollIntoView.mockClear();
+    fireEvent.keyDown(screen.getByPlaceholderText("검색"), { key: "ArrowDown" });
+    expect(scrollIntoView).toHaveBeenCalledWith({ block: "nearest" });
+    const contexts = scrollIntoView.mock.contexts;
+    expect(contexts[contexts.length - 1]).toHaveAttribute("aria-selected");
+  });
 });

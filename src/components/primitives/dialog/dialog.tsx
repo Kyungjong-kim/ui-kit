@@ -1,11 +1,14 @@
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { XIcon } from "lucide-react";
 import type { ReactNode } from "react";
+import { useUiKitMessages } from "../../../locale";
 import { cn } from "../../../utils/cn";
 
 export interface DialogProps {
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
+  /** 이 요소를 누르면 열린다(`asChild` 로 감싸므로 버튼 등 단일 요소). 넘기면 `open` 없이도 쓸 수 있다 */
+  trigger?: ReactNode;
   title?: string;
   description?: string;
   children?: ReactNode;
@@ -16,6 +19,7 @@ export interface DialogProps {
 
 export function Dialog({
   open,
+  trigger,
   onOpenChange,
   title,
   description,
@@ -24,8 +28,10 @@ export function Dialog({
   maxWidth = "md",
   showClose = true,
 }: DialogProps) {
+  const t = useUiKitMessages();
   return (
     <DialogPrimitive.Root open={open} onOpenChange={onOpenChange}>
+      {trigger && <DialogPrimitive.Trigger asChild>{trigger}</DialogPrimitive.Trigger>}
       <DialogPrimitive.Portal>
         <DialogPrimitive.Overlay className="fixed inset-0 z-50 bg-black/40 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
         <DialogPrimitive.Content
@@ -41,6 +47,10 @@ export function Dialog({
             },
           )}
         >
+          {!title && (
+            // Radix 는 Title 이 없으면 접근성 경고를 내고, 스크린리더에는 이름이 없다
+            <DialogPrimitive.Title className="sr-only">{t.navigation.dialog}</DialogPrimitive.Title>
+          )}
           {(title || showClose) && (
             <div className="mb-group-xs flex items-start justify-between gap-group-md">
               {title && (
@@ -50,8 +60,8 @@ export function Dialog({
               )}
               {showClose && (
                 <DialogPrimitive.Close
-                  aria-label="닫기"
-                  className="-mr-stack-xxs -mt-stack-xxs ml-auto rounded-xs p-stack-xxs text-[var(--color-text-tertiary)] transition-colors hover:bg-[var(--color-bg-tertiary)] hover:text-[var(--color-text-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-border-focus)]"
+                  aria-label={t.common.close}
+                  className="-mr-stack-xxs -mt-stack-xxs ml-auto rounded-xs p-stack-xxs text-[var(--color-text-tertiary)] transition-colors hover:bg-[var(--color-bg-tertiary)] hover:text-[var(--color-text-primary)] focus-ring"
                 >
                   <XIcon className="h-4 w-4" />
                 </DialogPrimitive.Close>

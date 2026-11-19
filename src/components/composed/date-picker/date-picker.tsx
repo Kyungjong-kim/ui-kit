@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useUiKitMessages } from "../../../locale";
 import { cn } from "../../../utils/cn";
 import { Calendar } from "../../primitives/calendar";
 import { Icon } from "../../primitives/icon";
@@ -34,8 +35,10 @@ export function DatePicker({
   className,
   triggerClassName,
   formatDate = defaultFormatDate,
-  placeholder = "날짜 선택",
+  placeholder: placeholderProp,
 }: DatePickerProps) {
+  const t = useUiKitMessages();
+  const placeholder = placeholderProp ?? t.date.datePlaceholder;
   const [internalOpen, setInternalOpen] = useState(false);
   const isControlled = open !== undefined;
   const isOpen = isControlled ? Boolean(open) : internalOpen;
@@ -55,7 +58,7 @@ export function DatePicker({
           type="button"
           disabled={disabled}
           className={cn(
-            "inline-flex items-center gap-group-xs typography-label-md-base text-[var(--color-text-primary)] disabled:cursor-not-allowed disabled:text-[var(--color-text-disabled)]",
+            "focus-ring inline-flex items-center gap-group-xs typography-label-md-base text-[var(--color-text-primary)] disabled:cursor-not-allowed disabled:text-[var(--color-text-disabled)]",
             triggerClassName,
           )}
         >

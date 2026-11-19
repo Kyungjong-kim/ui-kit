@@ -1,4 +1,4 @@
-import { Slot } from "@radix-ui/react-slot";
+import { Slot, Slottable } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 import { type ButtonHTMLAttributes, forwardRef } from "react";
 import { cn } from "../../../utils/cn";
@@ -10,7 +10,7 @@ const buttonVariants = cva(
     "rounded-sm",
     "typography-label-md-medium",
     "transition-[background-color,border-color,box-shadow,transform,opacity] duration-150 ease-out",
-    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--color-border-focus)]",
+    "focus-ring",
     "active:scale-[0.98]",
     "disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none",
   ],
@@ -64,20 +64,36 @@ export interface ButtonProps
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
-    { className, variant, size, asChild = false, loading = false, disabled, children, ...props },
+    {
+      className,
+      variant,
+      size,
+      asChild = false,
+      loading = false,
+      disabled,
+      onClick,
+      children,
+      ...props
+    },
     ref,
   ) => {
     const Comp = asChild ? Slot : "button";
+    const isInactive = Boolean(disabled || loading);
+    // 링크 등 자식 요소에는 disabled 가 통하지 않는다 — aria-disabled 로 알리고 클릭을 막는다
+    const blocksChild = asChild && isInactive;
     return (
       <Comp
         ref={ref}
         className={cn(buttonVariants({ variant, size }), className)}
-        disabled={disabled || loading}
+        disabled={asChild ? undefined : isInactive}
+        aria-disabled={blocksChild || undefined}
         aria-busy={loading}
+        onClick={blocksChild ? (event) => event.preventDefault() : onClick}
         {...props}
       >
         {loading && <Spinner size="sm" className="border-current border-t-current opacity-70" />}
-        {children}
+        {/* asChild 일 때 Slot 이 이 자리의 자식 요소를 버튼으로 삼고, Spinner 는 그 안으로 넣는다 */}
+        <Slottable>{children}</Slottable>
       </Comp>
     );
   },

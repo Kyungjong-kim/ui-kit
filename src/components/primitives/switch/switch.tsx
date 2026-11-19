@@ -2,6 +2,7 @@ import * as Label from "@radix-ui/react-label";
 import * as SwitchPrimitive from "@radix-ui/react-switch";
 import { type ComponentPropsWithoutRef, useId } from "react";
 import { cn } from "../../../utils/cn";
+import { joinIds } from "../../../utils/join-ids";
 
 export interface SwitchProps extends ComponentPropsWithoutRef<typeof SwitchPrimitive.Root> {
   label?: string;
@@ -29,10 +30,13 @@ export function Switch({
   size = "md",
   error,
   helperText,
+  "aria-describedby": describedBy,
+  "aria-invalid": ariaInvalid,
   ...props
 }: SwitchProps) {
   const generatedId = useId();
   const switchId = id ?? generatedId;
+  const helperId = `${switchId}-helper`;
 
   return (
     <div className={cn("flex gap-group-sm", helperText ? "items-start" : "items-center")}>
@@ -41,7 +45,7 @@ export function Switch({
         className={cn(
           "relative inline-flex shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200",
           helperText && "mt-[1px]",
-          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-border-focus)] focus-visible:ring-offset-2",
+          "focus-ring",
           "disabled:cursor-not-allowed disabled:opacity-50",
           error
             ? "data-[state=unchecked]:bg-[var(--color-border-danger-default)]"
@@ -50,6 +54,8 @@ export function Switch({
           trackSize[size],
           className,
         )}
+        aria-describedby={joinIds(describedBy, helperText && helperId)}
+        aria-invalid={ariaInvalid ?? (error || undefined)}
         {...props}
       >
         <SwitchPrimitive.Thumb
@@ -71,6 +77,7 @@ export function Switch({
           )}
           {helperText && (
             <p
+              id={helperId}
               className={cn(
                 "typography-caption",
                 error

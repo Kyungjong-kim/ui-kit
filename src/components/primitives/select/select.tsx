@@ -3,7 +3,9 @@ import * as SelectPrimitive from "@radix-ui/react-select";
 import { cva, type VariantProps } from "class-variance-authority";
 import { CheckIcon, ChevronDownIcon } from "lucide-react";
 import { useId } from "react";
+import { useUiKitMessages } from "../../../locale";
 import { cn } from "../../../utils/cn";
+import { joinIds } from "../../../utils/join-ids";
 
 const triggerVariants = cva(
   [
@@ -48,11 +50,17 @@ export interface SelectProps extends Omit<VariantProps<typeof triggerVariants>, 
   className?: string;
 }
 
+/**
+ * Radix Select 는 Item value 로 빈 문자열을 받지 않는다(빈 값 = 선택 해제 신호).
+ * 「전체」처럼 value 가 "" 인 옵션은 내부에서만 이 값으로 바꿔 넘기고, 밖으로는 "" 를 돌려준다.
+ */
+const EMPTY_OPTION_VALUE = "__ui-kit-select-empty__";
+
 export function Select({
   options,
   value,
   onValueChange,
-  placeholder = "선택",
+  placeholder: placeholderProp,
   label,
   error,
   helperText,
@@ -60,7 +68,12 @@ export function Select({
   size = "md",
   className,
 }: SelectProps) {
+  const t = useUiKitMessages();
+  const placeholder = placeholderProp ?? t.common.select;
   const generatedId = useId();
+  // 빈 값 옵션이 없으면 value="" 는 지금처럼 「선택 없음(placeholder)」 이다
+  const hasEmptyOption = options.some((opt) => opt.value === "");
+  const helperId = `${generatedId}-helper`;
 
   return (
     <div className="flex flex-col gap-group-xs">
@@ -72,10 +85,16 @@ export function Select({
           {label}
         </Label.Root>
       )}
-      <SelectPrimitive.Root value={value} onValueChange={onValueChange} disabled={disabled}>
+      <SelectPrimitive.Root
+        value={hasEmptyOption && value === "" ? EMPTY_OPTION_VALUE : value}
+        onValueChange={(next) => onValueChange?.(next === EMPTY_OPTION_VALUE ? "" : next)}
+        disabled={disabled}
+      >
         <SelectPrimitive.Trigger
           id={generatedId}
           className={cn(triggerVariants({ size, error: !!error }), className)}
+          aria-describedby={joinIds(helperText && helperId)}
+          aria-invalid={error || undefined}
         >
           <SelectPrimitive.Value placeholder={placeholder} />
           <SelectPrimitive.Icon aria-hidden="true">
@@ -92,7 +111,7 @@ export function Select({
               {options.map((opt) => (
                 <SelectPrimitive.Item
                   key={opt.value}
-                  value={opt.value}
+                  value={opt.value === "" ? EMPTY_OPTION_VALUE : opt.value}
                   disabled={opt.disabled}
                   className={cn(
                     "flex cursor-pointer select-none items-center justify-between gap-inline-sm rounded-xs px-inline-md py-stack-xs typography-label-md-base text-[var(--color-text-primary)] outline-none transition-colors",
@@ -113,6 +132,7 @@ export function Select({
       </SelectPrimitive.Root>
       {helperText && (
         <p
+          id={helperId}
           className={cn(
             "typography-caption",
             error ? "text-[var(--color-text-danger-default)]" : "text-[var(--color-text-tertiary)]",

@@ -1,10 +1,13 @@
 import * as AlertDialogPrimitive from "@radix-ui/react-alert-dialog";
 import type { ReactNode } from "react";
+import { useUiKitMessages } from "../../../locale";
 import { cn } from "../../../utils/cn";
 
 export interface AlertDialogProps {
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
+  /** 이 요소를 누르면 열린다(`asChild` 로 감싸므로 버튼 등 단일 요소). 넘기면 `open` 없이도 쓸 수 있다 */
+  trigger?: ReactNode;
   title: string;
   description?: string;
   children?: ReactNode;
@@ -18,19 +21,24 @@ export interface AlertDialogProps {
 
 export function AlertDialog({
   open,
+  trigger,
   onOpenChange,
   title,
   description,
   children,
-  cancelText = "취소",
-  actionText = "확인",
+  cancelText: cancelTextProp,
+  actionText: actionTextProp,
   destructive = false,
   onCancel,
   onAction,
   maxWidth = "md",
 }: AlertDialogProps) {
+  const t = useUiKitMessages();
+  const cancelText = cancelTextProp ?? t.common.cancel;
+  const actionText = actionTextProp ?? t.common.confirm;
   return (
     <AlertDialogPrimitive.Root open={open} onOpenChange={onOpenChange}>
+      {trigger && <AlertDialogPrimitive.Trigger asChild>{trigger}</AlertDialogPrimitive.Trigger>}
       <AlertDialogPrimitive.Portal>
         <AlertDialogPrimitive.Overlay className="fixed inset-0 z-50 bg-black/40 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
         <AlertDialogPrimitive.Content
@@ -60,14 +68,14 @@ export function AlertDialog({
           <div className="mt-group-xl flex justify-end gap-group-sm">
             <AlertDialogPrimitive.Cancel
               onClick={onCancel}
-              className="inline-flex h-size-control-md items-center justify-center rounded-xs border border-[var(--color-interactive-secondary-border)] bg-[var(--color-interactive-secondary-bg)] px-inline-lg typography-label-md-medium text-[var(--color-interactive-secondary-text)] hover:bg-[var(--color-bg-secondary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--color-border-focus)]"
+              className="inline-flex h-size-control-md items-center justify-center rounded-xs border border-[var(--color-interactive-secondary-border)] bg-[var(--color-interactive-secondary-bg)] px-inline-lg typography-label-md-medium text-[var(--color-interactive-secondary-text)] hover:bg-[var(--color-bg-secondary)] focus-ring"
             >
               {cancelText}
             </AlertDialogPrimitive.Cancel>
             <AlertDialogPrimitive.Action
               onClick={onAction}
               className={cn(
-                "inline-flex h-size-control-md items-center justify-center rounded-xs px-inline-lg typography-label-md-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--color-border-focus)]",
+                "inline-flex h-size-control-md items-center justify-center rounded-xs px-inline-lg typography-label-md-medium focus-ring",
                 destructive
                   ? "bg-[var(--color-interactive-destructive-bg)] text-[var(--color-interactive-destructive-text)] hover:bg-[var(--color-interactive-destructive-bg-hover)]"
                   : "bg-[var(--color-interactive-primary-bg)] text-[var(--color-interactive-primary-text)] hover:bg-[var(--color-interactive-primary-bg-hover)]",

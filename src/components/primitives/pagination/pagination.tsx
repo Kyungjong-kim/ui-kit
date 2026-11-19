@@ -1,4 +1,5 @@
 import { ChevronLeftIcon, ChevronRightIcon, MoreHorizontalIcon } from "lucide-react";
+import { useUiKitMessages } from "../../../locale";
 import { cn } from "../../../utils/cn";
 
 export interface PaginationProps {
@@ -38,7 +39,7 @@ const itemBase = cn(
   "inline-flex h-size-control-md min-w-size-control-md items-center justify-center rounded-sm px-inline-xs typography-label-md-medium",
   "text-[var(--color-text-secondary)] transition-colors",
   "hover:bg-[var(--color-bg-secondary)] hover:text-[var(--color-text-primary)]",
-  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-[var(--color-border-focus)]",
+  "focus-ring",
   "disabled:pointer-events-none disabled:opacity-50",
 );
 
@@ -48,10 +49,14 @@ export function Pagination({
   onPageChange,
   siblingCount = 1,
   className,
-  previousLabel = "이전",
-  nextLabel = "다음",
-  ariaLabel = "페이지 네비게이션",
+  previousLabel: previousLabelProp,
+  nextLabel: nextLabelProp,
+  ariaLabel: ariaLabelProp,
 }: PaginationProps) {
+  const t = useUiKitMessages();
+  const previousLabel = previousLabelProp ?? t.pagination.previous;
+  const nextLabel = nextLabelProp ?? t.pagination.next;
+  const ariaLabel = ariaLabelProp ?? t.pagination.label;
   if (totalPages <= 0) return null;
 
   const safeCurrent = Math.min(Math.max(1, currentPage), totalPages);
@@ -92,7 +97,7 @@ export function Pagination({
             type="button"
             onClick={() => onPageChange(page)}
             aria-current={isCurrent ? "page" : undefined}
-            aria-label={`${page} 페이지`}
+            aria-label={t.pagination.page(page)}
             className={cn(
               itemBase,
               isCurrent &&

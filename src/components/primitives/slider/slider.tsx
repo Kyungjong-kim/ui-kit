@@ -1,7 +1,9 @@
 import * as Label from "@radix-ui/react-label";
 import * as SliderPrimitive from "@radix-ui/react-slider";
-import { useId } from "react";
+import { useId, useState } from "react";
+import { useUiKitMessages } from "../../../locale";
 import { cn } from "../../../utils/cn";
+import { joinIds } from "../../../utils/join-ids";
 
 export interface SliderProps {
   value?: number | number[];
@@ -16,6 +18,10 @@ export interface SliderProps {
   helperText?: string;
   showValue?: boolean;
   className?: string;
+  /** 보이는 label 없이 쓸 때 thumb 의 접근 가능한 이름 (label 이 있으면 label 우선) */
+  "aria-label"?: string;
+  /** thumb 에 추가로 연결할 설명 요소 id */
+  "aria-describedby"?: string;
 }
 
 function toArray(value?: number | number[]): number[] | undefined {
@@ -36,11 +42,24 @@ export function Slider({
   helperText,
   showValue,
   className,
+  "aria-label": ariaLabel,
+  "aria-describedby": describedBy,
 }: SliderProps) {
   const generatedId = useId();
+  const helperId = `${generatedId}-helper`;
   const valueArray = toArray(value);
   const defaultArray = toArray(defaultValue);
-  const displayValue = (valueArray ?? defaultArray ?? [min]).join(" – ");
+  // 비제어일 때 표시 값이 첫 값에 고정되지 않도록 Radix 의 변경을 따라간다
+  const [internalArray, setInternalArray] = useState<number[]>(defaultArray ?? [min]);
+  const displayValue = (valueArray ?? internalArray).join(" – ");
+  const thumbValues = valueArray ?? defaultArray ?? [min];
+  const thumbCount = thumbValues.length;
+  const t = useUiKitMessages();
+
+  function handleValueChange(next: number[]) {
+    if (!valueArray) setInternalArray(next);
+    onValueChange?.(next);
+  }
 
   return (
     <div className="flex flex-col gap-group-xs">
@@ -65,7 +84,7 @@ export function Slider({
         id={generatedId}
         value={valueArray}
         defaultValue={valueArray ? undefined : defaultArray}
-        onValueChange={onValueChange}
+        onValueChange={handleValueChange}
         min={min}
         max={max}
         step={step}
@@ -84,23 +103,30 @@ export function Slider({
         >
           <SliderPrimitive.Range className="absolute h-full bg-[var(--color-bg-brand-default)]" />
         </SliderPrimitive.Track>
-        {(valueArray ?? defaultArray ?? [min]).map((_, index) => (
+        {thumbValues.map((_, index) => (
           <SliderPrimitive.Thumb
             // biome-ignore lint/suspicious/noArrayIndexKey: thumb 개수는 value 길이로 고정
             key={index}
             className={cn(
               "block shrink-0 cursor-grab rounded-full border-2 border-[var(--color-bg-brand-default)] bg-[var(--color-bg-primary)] shadow-default-md transition-transform",
               "hover:scale-110 active:scale-105 active:cursor-grabbing",
-              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--color-border-focus)]",
+              "focus-ring",
               "disabled:pointer-events-none",
               size === "sm" ? "size-4" : "size-5",
             )}
-            aria-label={label}
+            aria-label={
+              thumbCount > 1
+                ? t.slider.thumb(label ?? ariaLabel ?? "", index, thumbCount)
+                : (label ?? ariaLabel)
+            }
+            aria-describedby={joinIds(describedBy, helperText && helperId)}
           />
         ))}
       </SliderPrimitive.Root>
       {helperText && (
-        <p className="typography-caption text-[var(--color-text-tertiary)]">{helperText}</p>
+        <p id={helperId} className="typography-caption text-[var(--color-text-tertiary)]">
+          {helperText}
+        </p>
       )}
     </div>
   );

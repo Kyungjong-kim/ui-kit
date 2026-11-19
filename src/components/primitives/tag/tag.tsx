@@ -1,5 +1,6 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import type { HTMLAttributes } from "react";
+import { useUiKitMessages } from "../../../locale";
 import { cn } from "../../../utils/cn";
 
 const tagVariants = cva("inline-flex items-center gap-group-xxs rounded-full transition-colors", {
@@ -45,6 +46,7 @@ export function Tag({
   children,
   ...props
 }: TagProps) {
+  const t = useUiKitMessages();
   return (
     <span className={cn(tagVariants({ variant, appearance, size }), className)} {...props}>
       {children}
@@ -52,8 +54,8 @@ export function Tag({
         <button
           type="button"
           onClick={onRemove}
-          aria-label="제거"
-          className="ml-0.5 flex items-center justify-center rounded-full opacity-60 hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-border-focus)]"
+          aria-label={t.common.remove}
+          className="ml-0.5 flex items-center justify-center rounded-full opacity-60 hover:opacity-100 focus-ring"
         >
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
             <path

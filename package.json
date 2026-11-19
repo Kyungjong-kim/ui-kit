@@ -1,6 +1,6 @@
 {
   "name": "@kyungjong-kim/ui-kit",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Personal design system — portfolio & reusable component library",
   "keywords": [
     "design-system",
@@ -28,7 +28,8 @@
       "require": "./dist/index.cjs"
     },
     "./styles": "./dist/styles.css",
-    "./theme": "./dist/theme.css"
+    "./theme": "./dist/theme.css",
+    "./reduced-motion": "./dist/reduced-motion.css"
   },
   "files": [
     "dist"
@@ -38,7 +39,8 @@
     "build": "tsup",
     "showcase": "vite showcase",
     "showcase:build": "vite build showcase",
-    "tokens": "node scripts/build-tokens.ts",
+    "tokens": "node --experimental-strip-types scripts/build-tokens.ts",
+    "catalog": "node --experimental-strip-types scripts/catalog.ts --write",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test": "vitest run",
@@ -47,8 +49,16 @@
     "format": "biome format . --write",
     "changeset": "changeset",
     "version": "changeset version",
-    "release": "pnpm build && pnpm check:masking && changeset publish",
-    "check:masking": "! grep -rliE 'genos|genon|gen-portal|admin-front|0161ed' dist"
+    "release": "pnpm build && pnpm check:masking && pnpm check:ds && changeset publish",
+    "check:ds": "pnpm check:typography && pnpm check:tokens && pnpm check:vars && pnpm check:focus && pnpm check:copy && pnpm check:catalog",
+    "check:masking": "! grep -rliE 'genos|genon|gen-portal|admin-front|0161ed' dist",
+    "check:typography": "node --experimental-strip-types scripts/check-typography.ts",
+    "check:tokens": "node --experimental-strip-types scripts/check-tokens.ts",
+    "check:vars": "node --experimental-strip-types scripts/check-css-vars.ts",
+    "check:focus": "node --experimental-strip-types scripts/check-focus.ts",
+    "check:copy": "node --experimental-strip-types scripts/check-copy.ts",
+    "check:catalog": "node --experimental-strip-types scripts/catalog.ts",
+    "check:docs": "node --experimental-strip-types scripts/check-docs.ts"
   },
   "peerDependencies": {
     "react": "^19.0.0",

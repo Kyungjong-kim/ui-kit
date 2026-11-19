@@ -39,6 +39,30 @@ jobs:
       - name: Lint
         run: pnpm lint
 
+      # Blocking DS gates. Each catches a class of drift that lint and build let through:
+      #  - typography: Tailwind v4 drops undefined utilities silently (font never applies)
+      #  - tokens:     raw hex/rgb bypasses the token layer, so theming skips the element
+      #  - vars:       a misspelt var(--token) is valid CSS and silently falls back
+      #  - focus:      a button without a focus style works by mouse but is invisible by keyboard
+      #  - copy:       a hardcoded label renders fine but ignores the app's locale
+      #  - catalog:    ds-catalog.json and the README inventory fall behind the source
+      - name: Check design system
+        run: pnpm check:ds
+
+      # Advisory. Every finding needs a human decision, so it reports into the job
+      # summary instead of failing — a gate that fires on judgement calls gets muted.
+      - name: Report documentation drift
+        if: always()
+        continue-on-error: true
+        run: |
+          REPORT=$(pnpm check:docs || true)
+          echo "$REPORT"
+          {
+            echo '```'
+            echo "$REPORT"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
       - name: Test
         run: pnpm test
 

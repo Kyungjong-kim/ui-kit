@@ -1,4 +1,5 @@
 import { CheckIcon } from "lucide-react";
+import { useUiKitMessages } from "../../../locale";
 import { cn } from "../../../utils/cn";
 import { Button } from "../button";
 
@@ -9,6 +10,7 @@ export interface StepperProps {
   onPrev?: () => void;
   onComplete?: () => void;
   completeBtnText?: string;
+  /** 다음 버튼 비활성 — 마지막 단계에서는 완료 버튼에도 적용 */
   isNextDisabled?: boolean;
   className?: string;
 }
@@ -19,25 +21,31 @@ export function Stepper({
   onNext,
   onPrev,
   onComplete,
-  completeBtnText = "완료",
+  completeBtnText: completeBtnTextProp,
   isNextDisabled,
   className,
 }: StepperProps) {
+  const t = useUiKitMessages();
+  const completeBtnText = completeBtnTextProp ?? t.stepper.complete;
   const isFirst = activeStep === 0;
   const isLast = activeStep === steps.length - 1;
 
   return (
     <div className={cn("flex flex-col gap-group-xl", className)}>
-      <ol aria-label="단계 진행" className="flex items-center">
+      <ol aria-label={t.stepper.label} className="flex items-center">
         {steps.map((step, index) => {
           const isDone = index < activeStep;
           const isCurrent = index === activeStep;
-          const stepState = isDone ? "완료" : isCurrent ? "현재" : "미완";
+          const stepState = isDone
+            ? t.stepper.stateDone
+            : isCurrent
+              ? t.stepper.stateCurrent
+              : t.stepper.stateUpcoming;
 
           return (
             <li
               key={step}
-              aria-label={`${index + 1}단계: ${step} (${stepState})`}
+              aria-label={t.stepper.step(index + 1, step, stepState)}
               aria-current={isCurrent ? "step" : undefined}
               className="flex flex-1 items-center"
             >
@@ -85,13 +93,15 @@ export function Stepper({
       </ol>
       <div className="flex justify-between">
         <Button variant="secondary" onClick={onPrev} disabled={isFirst}>
-          이전
+          {t.common.previous}
         </Button>
         {isLast ? (
-          <Button onClick={onComplete}>{completeBtnText}</Button>
+          <Button onClick={onComplete} disabled={isNextDisabled}>
+            {completeBtnText}
+          </Button>
         ) : (
           <Button onClick={onNext} disabled={isNextDisabled}>
-            다음
+            {t.common.next}
           </Button>
         )}
       </div>

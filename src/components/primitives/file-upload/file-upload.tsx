@@ -1,6 +1,7 @@
 import { AlertCircleIcon, FileIcon, UploadIcon, XIcon } from "lucide-react";
 import { useCallback, useState } from "react";
 import { type Accept, type FileRejection, useDropzone } from "react-dropzone";
+import { type UiKitMessages, useUiKitMessages } from "../../../locale";
 import { cn } from "../../../utils/cn";
 
 export interface FileUploadProps {
@@ -12,11 +13,15 @@ export interface FileUploadProps {
   className?: string;
 }
 
-function getRejectionMessage(code: string, fileName: string): string {
-  if (code === "file-too-large") return `${fileName}: 파일 크기 초과`;
-  if (code === "file-invalid-type") return `${fileName}: 지원하지 않는 형식`;
-  if (code === "too-many-files") return "파일 개수 초과";
-  return `${fileName}: 업로드 실패`;
+function getRejectionMessage(
+  code: string,
+  fileName: string,
+  messages: UiKitMessages["fileUpload"],
+): string {
+  if (code === "file-too-large") return messages.tooLarge(fileName);
+  if (code === "file-invalid-type") return messages.invalidType(fileName);
+  if (code === "too-many-files") return messages.tooMany;
+  return messages.failed(fileName);
 }
 
 export function FileUpload({
@@ -27,6 +32,7 @@ export function FileUpload({
   disabled,
   className,
 }: FileUploadProps) {
+  const t = useUiKitMessages();
   const [files, setFiles] = useState<File[]>([]);
   const [errors, setErrors] = useState<string[]>([]);
 
@@ -36,7 +42,8 @@ export function FileUpload({
       const deduped = accepted.filter(
         (f) => !files.some((existing) => existing.name === f.name && existing.size === f.size),
       );
-      const next = [...files, ...deduped].slice(0, maxFiles);
+      const combined = [...files, ...deduped];
+      const next = combined.slice(0, maxFiles);
       setFiles(next);
       onFilesChange(next);
 
@@ -45,16 +52,20 @@ export function FileUpload({
       const seen = new Set<string>();
       for (const { file, errors: fileErrors } of rejected) {
         for (const e of fileErrors) {
-          const msg = getRejectionMessage(e.code, file.name);
+          const msg = getRejectionMessage(e.code, file.name, t.fileUpload);
           if (!seen.has(msg)) {
             seen.add(msg);
             newErrors.push(msg);
           }
         }
       }
+      // dropzone 의 maxFiles 는 한 번 드롭한 개수만 본다 — 누적 한도 초과도 알린다
+      if (combined.length > maxFiles && !seen.has(t.fileUpload.tooMany)) {
+        newErrors.push(t.fileUpload.tooMany);
+      }
       setErrors(newErrors);
     },
-    [files, maxFiles, onFilesChange],
+    [files, maxFiles, onFilesChange, t.fileUpload],
   );
 
   const removeFile = (index: number) => {
@@ -90,10 +101,10 @@ export function FileUpload({
           aria-hidden="true"
         />
         <p className="typography-label-md-medium text-[var(--color-text-primary)]">
-          파일을 드래그하거나 클릭해서 업로드
+          {t.fileUpload.dropHint}
         </p>
         <p className="mt-stack-xxs typography-caption text-[var(--color-text-tertiary)]">
-          최대 {maxFiles}개, 파일당 {Math.round(maxSize / 1024 / 1024)}MB
+          {t.fileUpload.limits(maxFiles, Math.round(maxSize / 1024 / 1024))}
         </p>
       </div>
 
@@ -134,7 +145,7 @@ export function FileUpload({
               <button
                 type="button"
                 onClick={() => removeFile(i)}
-                aria-label={`${file.name} 제거`}
+                aria-label={t.fileUpload.removeFile(file.name)}
                 className="rounded-xxs p-stack-xxs text-[var(--color-text-tertiary)] hover:text-[var(--color-text-primary)] focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-[var(--color-border-focus)] transition-colors"
               >
                 <XIcon className="h-size-icon-xs w-size-icon-xs" aria-hidden="true" />

@@ -17,6 +17,8 @@ import {
 import { CSS } from "@dnd-kit/utilities";
 import { GripVerticalIcon } from "lucide-react";
 import type { ReactNode } from "react";
+import { useId } from "react";
+import { useUiKitMessages } from "../../../locale";
 import { cn } from "../../../utils/cn";
 
 export interface DndListProps<T extends { id: string }> {
@@ -35,6 +37,7 @@ function SortableItem<T extends { id: string }>({
   index: number;
   renderItem: (item: T, index: number) => ReactNode;
 }) {
+  const t = useUiKitMessages();
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
     id: item.id,
   });
@@ -52,8 +55,8 @@ function SortableItem<T extends { id: string }>({
         type="button"
         {...attributes}
         {...listeners}
-        className="cursor-grab touch-none text-[var(--color-text-tertiary)] hover:text-[var(--color-text-secondary)] active:cursor-grabbing"
-        aria-label="드래그 핸들"
+        className="focus-ring cursor-grab touch-none text-[var(--color-text-tertiary)] hover:text-[var(--color-text-secondary)] active:cursor-grabbing"
+        aria-label={t.common.dragHandle}
       >
         <GripVerticalIcon className="h-size-icon-sm w-size-icon-sm" />
       </button>
@@ -68,6 +71,7 @@ export function DndList<T extends { id: string }>({
   renderItem,
   className,
 }: DndListProps<T>) {
+  const dndContextId = useId();
   const sensors = useSensors(
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates }),
@@ -83,7 +87,13 @@ export function DndList<T extends { id: string }>({
   };
 
   return (
-    <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+    <DndContext
+      // 전역 카운터 id 대신 useId — 서버·클라이언트 렌더의 aria-describedby 가 어긋나지 않는다
+      id={dndContextId}
+      sensors={sensors}
+      collisionDetection={closestCenter}
+      onDragEnd={handleDragEnd}
+    >
       <SortableContext items={items.map((i) => i.id)} strategy={verticalListSortingStrategy}>
         <div className={cn("flex flex-col gap-group-sm", className)}>
           {items.map((item, index) => (

@@ -2,6 +2,7 @@ import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { cva, type VariantProps } from "class-variance-authority";
 import { XIcon } from "lucide-react";
 import type { ReactNode } from "react";
+import { useUiKitMessages } from "../../../locale";
 import { cn } from "../../../utils/cn";
 
 const sheetVariants = cva(
@@ -35,6 +36,8 @@ const sheetVariants = cva(
 export interface SheetProps extends VariantProps<typeof sheetVariants> {
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
+  /** 이 요소를 누르면 열린다(`asChild` 로 감싸므로 버튼 등 단일 요소). 넘기면 `open` 없이도 쓸 수 있다 */
+  trigger?: ReactNode;
   title?: string;
   description?: string;
   children?: ReactNode;
@@ -45,6 +48,7 @@ export interface SheetProps extends VariantProps<typeof sheetVariants> {
 
 export function Sheet({
   open,
+  trigger,
   onOpenChange,
   side = "right",
   maxWidth = "sm",
@@ -55,8 +59,10 @@ export function Sheet({
   showClose = true,
   className,
 }: SheetProps) {
+  const t = useUiKitMessages();
   return (
     <DialogPrimitive.Root open={open} onOpenChange={onOpenChange}>
+      {trigger && <DialogPrimitive.Trigger asChild>{trigger}</DialogPrimitive.Trigger>}
       <DialogPrimitive.Portal>
         <DialogPrimitive.Overlay className="fixed inset-0 z-50 bg-black/40 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
         <DialogPrimitive.Content
@@ -68,18 +74,20 @@ export function Sheet({
             className,
           )}
         >
+          {!title && (
+            // title·닫기 버튼이 모두 없어도 Radix Title 을 둬 대화상자 이름과 경고를 해결한다
+            <DialogPrimitive.Title className="sr-only">{t.navigation.dialog}</DialogPrimitive.Title>
+          )}
           {(title || showClose) && (
             <div className="flex items-center justify-between mb-group-sm">
-              {title ? (
+              {title && (
                 <DialogPrimitive.Title className="typography-headline-sm text-[var(--color-text-primary)]">
                   {title}
                 </DialogPrimitive.Title>
-              ) : (
-                <DialogPrimitive.Title className="sr-only">Sheet</DialogPrimitive.Title>
               )}
               {showClose && (
                 <DialogPrimitive.Close
-                  aria-label="닫기"
+                  aria-label={t.common.close}
                   className="ml-auto rounded-xxs p-stack-xxs text-[var(--color-text-tertiary)] hover:text-[var(--color-text-primary)] transition-colors focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-[var(--color-border-focus)]"
                 >
                   <XIcon className="h-size-icon-sm w-size-icon-sm" />

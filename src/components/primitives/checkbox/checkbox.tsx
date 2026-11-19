@@ -1,16 +1,18 @@
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
 import * as Label from "@radix-ui/react-label";
 import { cva } from "class-variance-authority";
-import { CheckIcon } from "lucide-react";
+import { CheckIcon, MinusIcon } from "lucide-react";
 import { type ComponentPropsWithoutRef, useId } from "react";
 import { cn } from "../../../utils/cn";
+import { joinIds } from "../../../utils/join-ids";
 
 const checkboxVariants = cva(
   [
     "h-size-control-xxxs w-size-control-xxxs shrink-0 rounded-xxs border bg-[var(--color-bg-primary)] transition-[background-color,border-color,transform] duration-150",
     "hover:border-[var(--color-border-brand-default)] active:scale-90",
-    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-[var(--color-border-focus)]",
+    "focus-ring",
     "data-[state=checked]:bg-[var(--color-bg-brand-default)] data-[state=checked]:border-[var(--color-bg-brand-default)] data-[state=checked]:text-white",
+    "data-[state=indeterminate]:bg-[var(--color-bg-brand-default)] data-[state=indeterminate]:border-[var(--color-bg-brand-default)] data-[state=indeterminate]:text-white",
     "disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:border-[var(--color-border-strong)]",
   ],
   {
@@ -30,19 +32,33 @@ export interface CheckboxProps extends ComponentPropsWithoutRef<typeof CheckboxP
   helperText?: string;
 }
 
-export function Checkbox({ className, label, error, helperText, id, ...props }: CheckboxProps) {
+export function Checkbox({
+  className,
+  label,
+  error,
+  helperText,
+  id,
+  "aria-describedby": describedBy,
+  "aria-invalid": ariaInvalid,
+  ...props
+}: CheckboxProps) {
   const generatedId = useId();
   const checkboxId = id ?? generatedId;
+  const helperId = `${checkboxId}-helper`;
 
   return (
     <div className={cn("flex gap-group-sm", helperText ? "items-start" : "items-center")}>
       <CheckboxPrimitive.Root
         id={checkboxId}
         className={cn(checkboxVariants({ error: !!error }), helperText && "mt-[2px]", className)}
+        aria-describedby={joinIds(describedBy, helperText && helperId)}
+        aria-invalid={ariaInvalid ?? (error || undefined)}
         {...props}
       >
-        <CheckboxPrimitive.Indicator className="flex items-center justify-center">
-          <CheckIcon className="h-size-icon-xs w-size-icon-xs" />
+        <CheckboxPrimitive.Indicator className="group flex items-center justify-center">
+          {/* checked="indeterminate" 이면 체크 대신 가로줄 — Indicator 의 data-state 로 고른다 */}
+          <CheckIcon className="h-size-icon-xs w-size-icon-xs group-data-[state=indeterminate]:hidden" />
+          <MinusIcon className="hidden h-size-icon-xs w-size-icon-xs group-data-[state=indeterminate]:block" />
         </CheckboxPrimitive.Indicator>
       </CheckboxPrimitive.Root>
       {(label || helperText) && (
@@ -57,6 +73,7 @@ export function Checkbox({ className, label, error, helperText, id, ...props }: 
           )}
           {helperText && (
             <p
+              id={helperId}
               className={cn(
                 "typography-caption",
                 error
