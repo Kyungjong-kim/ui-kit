@@ -99,6 +99,7 @@ describe("Combobox", () => {
     scrollIntoView.mockClear();
     fireEvent.keyDown(screen.getByPlaceholderText("검색"), { key: "ArrowDown" });
     expect(scrollIntoView).toHaveBeenCalledWith({ block: "nearest" });
-    expect(scrollIntoView.mock.contexts.at(-1)).toHaveAttribute("aria-selected");
+    const contexts = scrollIntoView.mock.contexts;
+    expect(contexts[contexts.length - 1]).toHaveAttribute("aria-selected");
   });
 });

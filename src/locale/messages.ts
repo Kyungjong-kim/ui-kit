@@ -116,6 +116,10 @@ export interface UiKitMessages {
   statCard: {
     deltaCaption: string;
   };
+  slider: {
+    /** 범위 슬라이더 thumb 이름 — 두 thumb 이 같은 이름이면 구분할 수 없다 */
+    thumb: (label: string, index: number, count: number) => string;
+  };
 }
 
 export type UiKitLocale = "ko" | "en";
@@ -233,6 +237,12 @@ export const ko: UiKitMessages = {
   statCard: {
     deltaCaption: "직전 기간 대비",
   },
+  slider: {
+    thumb: (label, index, count) => {
+      const part = count === 2 ? (index === 0 ? "최솟값" : "최댓값") : `${index + 1}번째 값`;
+      return label ? `${label} ${part}` : part;
+    },
+  },
 };
 
 export const en: UiKitMessages = {
@@ -347,6 +357,12 @@ export const en: UiKitMessages = {
   },
   statCard: {
     deltaCaption: "vs. previous period",
+  },
+  slider: {
+    thumb: (label, index, count) => {
+      const part = count === 2 ? (index === 0 ? "minimum" : "maximum") : `value ${index + 1}`;
+      return label ? `${label} ${part}` : part;
+    },
   },
 };
 
