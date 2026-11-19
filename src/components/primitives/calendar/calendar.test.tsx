@@ -17,4 +17,12 @@ describe("Calendar", () => {
     const selectedBtn = container.querySelector("[data-selected-single='true']");
     expect(selectedBtn).toBeTruthy();
   });
+
+  it("날짜 버튼에 초점 표시 유틸이 react-day-picker className 에 덮이지 않고 남는다", () => {
+    const { container } = render(<Calendar mode="single" />);
+    const dayButton = container.querySelector("button[data-day]");
+    expect(dayButton).not.toBeNull();
+    expect(dayButton).toHaveClass("focus-ring");
+    expect((dayButton as HTMLElement).style.outline).toBe("");
+  });
 });

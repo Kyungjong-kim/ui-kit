@@ -46,7 +46,7 @@
 
 ## 규칙
 
-- **`prefers-reduced-motion` 존중** — 감소 모드에서 큰 모션은 약화·제거한다. 아래 규칙은 `theme.css` 에 들어 있어 ui-kit theme 을 가져온 앱에 그대로 적용된다(앱 전체 범위). 무한 반복(스피너·indeterminate 진행바)도 멈추도록 반복 횟수를 1로 둔다.
+- **`prefers-reduced-motion` 존중** — 감소 모드에서 큰 모션은 약화·제거한다. 아래 규칙은 `@kyungjong-kim/ui-kit/reduced-motion` 으로 따로 배포한다. 전역(`*`) 규칙이라 앱 전체에 걸리므로 theme 에 넣지 않고, 앱이 `@import "@kyungjong-kim/ui-kit/reduced-motion";` 로 고른다(Storybook 은 기본으로 가져온다). 무한 반복(스피너·indeterminate 진행바)도 멈추도록 반복 횟수를 1로 둔다.
 
 ```css
 @media (prefers-reduced-motion: reduce) {

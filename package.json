@@ -28,7 +28,8 @@
       "require": "./dist/index.cjs"
     },
     "./styles": "./dist/styles.css",
-    "./theme": "./dist/theme.css"
+    "./theme": "./dist/theme.css",
+    "./reduced-motion": "./dist/reduced-motion.css"
   },
   "files": [
     "dist"

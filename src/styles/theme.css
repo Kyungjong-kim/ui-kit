@@ -275,23 +275,6 @@
   }
 }
 
-/* prefers-reduced-motion — 감소 모드에서는 전환·애니메이션을 사실상 끈다 (foundation/motion.md).
-   무한 반복(스피너·indeterminate 진행바)도 한 번에 멈추도록 반복 횟수를 1로 둔다. */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    /* biome-ignore lint/complexity/noImportantStyles: 사용자 감소 모드 설정이 컴포넌트 유틸(duration-150 등)보다 우선해야 한다 */
-    animation-duration: 0.01ms !important;
-    /* biome-ignore lint/complexity/noImportantStyles: 사용자 감소 모드 설정이 컴포넌트 유틸(duration-150 등)보다 우선해야 한다 */
-    animation-iteration-count: 1 !important;
-    /* biome-ignore lint/complexity/noImportantStyles: 사용자 감소 모드 설정이 컴포넌트 유틸(duration-150 등)보다 우선해야 한다 */
-    transition-duration: 0.01ms !important;
-    /* biome-ignore lint/complexity/noImportantStyles: 사용자 감소 모드 설정이 컴포넌트 유틸(duration-150 등)보다 우선해야 한다 */
-    scroll-behavior: auto !important;
-  }
-}
-
 /* Typography utility (Tailwind v4 @utility) — Text·Chip·SlideListBadge 등에서 사용 */
 @utility typography-display-md {
   font-size: var(--token-typography-display-md-size);
