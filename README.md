@@ -180,6 +180,14 @@ develop               ← 개발 통합 (모든 feature PR 머지 대상)
 
 주요 변경을 여기 누적한다(세부 버전 릴리스는 changesets → `CHANGELOG.md`).
 
+### 2026-11-19 — 0.2.0: 접근성·로케일·가드
+
+- **기본 문구 로케일** — `UiKitLocaleProvider`(`ko`·`en`)·`useUiKitMessages`. MultiSelect·TagInput 영어 기본값이 한국어 사전으로 바뀜(동작 변경)
+- **접근성** — 입력 안내·오류 `aria-describedby`·`aria-invalid` 연결, 키보드 초점 `focus-ring` 통일, 옵트인 `reduced-motion` CSS, Dialog·Sheet 숨김 제목, Calendar 이동 버튼 이름
+- **새 prop** — Dialog·AlertDialog·Sheet `trigger`, Select 빈 문자열 옵션
+- **DS 가드 3종 추가** — `check:vars`(CSS 변수 오타)·`check:focus`(초점 누락)·`check:copy`(박힌 문구)
+- 버그 — Button `asChild` 크래시, Avatar 실패 fallback, 한글 조합 Enter, Calendar 재마운트, Slider·Progress·Stepper·FileUpload·DndList(SSR id) 등. 전체는 `CHANGELOG.md`
+
 ### 2026-07-06 — Storybook 공개 배포·마감 품질
 
 - **GitHub Pages 자동 배포**(#151) — develop push 시 Storybook 배포 → https://kyungjong-kim.github.io/ui-kit/
