@@ -159,6 +159,25 @@ const {
   ...CALENDAR_COMPONENTS_FOR_DROPDOWN
 } = CALENDAR_COMPONENTS;
 
+// dropdown 캡션 전용 — rdp 기본 스타일시트가 없어 select 를 라벨 위에 투명하게 겹치고 nav 를 캡션 양끝에 둔다
+
+const DROPDOWN_NAV_BUTTON =
+  "focus-ring inline-flex size-8 items-center justify-center rounded-[var(--token-radius-xxs)] text-[var(--token-color-text-primary)] hover:bg-[var(--token-color-action-tertiary-hover)] disabled:cursor-default disabled:opacity-50 [&>svg]:size-4 [&>svg]:fill-current";
+
+const DROPDOWN_CLASS_NAMES = {
+  months: "relative",
+  nav: "absolute inset-x-0 top-0 z-10 flex h-8 items-center justify-between",
+  button_previous: DROPDOWN_NAV_BUTTON,
+  button_next: DROPDOWN_NAV_BUTTON,
+  month_caption: "flex h-8 w-full items-center justify-center",
+  dropdowns: "flex items-center gap-1",
+  dropdown_root:
+    "relative inline-flex items-center rounded-[var(--token-radius-xxs)] hover:bg-[var(--token-color-action-tertiary-hover)] has-[select:focus-visible]:outline-2 has-[select:focus-visible]:outline-offset-2 has-[select:focus-visible]:outline-solid has-[select:focus-visible]:outline-[color:var(--color-border-focus)]",
+  dropdown: "absolute inset-0 z-10 cursor-pointer opacity-0",
+  caption_label:
+    "inline-flex h-8 select-none items-center gap-0.5 px-1.5 typography-label-md-bold text-[var(--token-color-text-primary)] [&>svg]:size-3.5 [&>svg]:fill-current",
+};
+
 function Calendar({
   className,
   classNames,
@@ -171,6 +190,9 @@ function Calendar({
 }: React.ComponentProps<typeof DayPicker>) {
   const locale = localeProp ?? ko;
   const defaultClassNames = getDefaultClassNames();
+  const isDropdown = captionLayout !== "label";
+  const dropdownCn = (key: keyof typeof DROPDOWN_CLASS_NAMES) =>
+    isDropdown ? DROPDOWN_CLASS_NAMES[key] : undefined;
 
   return (
     <CalendarLocaleContext.Provider value={locale}>
@@ -189,11 +211,24 @@ function Calendar({
         }}
         classNames={{
           root: cn("w-fit", defaultClassNames.root),
-          months: cn("flex flex-col gap-4 md:flex-row", defaultClassNames.months),
+          months: cn(
+            "flex flex-col gap-4 md:flex-row",
+            dropdownCn("months"),
+            defaultClassNames.months,
+          ),
           month: cn("flex w-full flex-col gap-2", defaultClassNames.month),
-          nav: defaultClassNames.nav,
-          month_caption: cn("flex w-full", defaultClassNames.month_caption),
-          caption_label: defaultClassNames.caption_label,
+          nav: cn(dropdownCn("nav"), defaultClassNames.nav),
+          button_previous: cn(dropdownCn("button_previous"), defaultClassNames.button_previous),
+          button_next: cn(dropdownCn("button_next"), defaultClassNames.button_next),
+          month_caption: cn(
+            "flex w-full",
+            dropdownCn("month_caption"),
+            defaultClassNames.month_caption,
+          ),
+          dropdowns: cn(dropdownCn("dropdowns"), defaultClassNames.dropdowns),
+          dropdown_root: cn(dropdownCn("dropdown_root"), defaultClassNames.dropdown_root),
+          dropdown: cn(dropdownCn("dropdown"), defaultClassNames.dropdown),
+          caption_label: cn(dropdownCn("caption_label"), defaultClassNames.caption_label),
           table: "w-full border-collapse",
           weekdays: cn("flex", defaultClassNames.weekdays),
           weekday: cn("select-none", defaultClassNames.weekday),

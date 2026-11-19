@@ -22,3 +22,8 @@ export const Checked: Story = {
 export const Disabled: Story = {
   args: { label: "이용약관에 동의합니다", disabled: true },
 };
+
+/** 일부만 선택된 그룹의 상위 체크박스 — 가로줄 아이콘, `aria-checked="mixed"` */
+export const Indeterminate: Story = {
+  args: { label: "전체 선택 (3개 중 1개)", checked: "indeterminate" },
+};
