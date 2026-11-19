@@ -22,4 +22,9 @@ describe("Switch", () => {
     await userEvent.click(screen.getByRole("switch"));
     expect(onCheckedChange).not.toHaveBeenCalled();
   });
+
+  it("helperText 를 스위치의 설명으로 연결한다", () => {
+    render(<Switch label="알림" helperText="중요 알림만 받습니다." />);
+    expect(screen.getByRole("switch")).toHaveAccessibleDescription("중요 알림만 받습니다.");
+  });
 });

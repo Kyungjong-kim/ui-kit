@@ -39,4 +39,14 @@ describe("Slider", () => {
     render(<Slider defaultValue={50} helperText="0~100 범위" />);
     expect(screen.getByText("0~100 범위")).toBeInTheDocument();
   });
+
+  it("helperText 를 thumb 설명으로 연결한다", () => {
+    render(<Slider label="볼륨" helperText="0~100 사이" />);
+    expect(screen.getByRole("slider")).toHaveAccessibleDescription("0~100 사이");
+  });
+
+  it("label 이 없으면 aria-label 을 thumb 이름으로 쓴다", () => {
+    render(<Slider aria-label="밝기" />);
+    expect(screen.getByRole("slider", { name: "밝기" })).toBeInTheDocument();
+  });
 });

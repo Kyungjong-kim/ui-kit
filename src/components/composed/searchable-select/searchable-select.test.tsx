@@ -58,4 +58,11 @@ describe("SearchableSelect", () => {
     fireEvent.keyDown(input, { key: "Enter" });
     expect(onValueChange).toHaveBeenCalledWith("incheon");
   });
+
+  it("helperText 를 트리거 설명으로 연결하고 error 면 aria-invalid 를 붙인다", () => {
+    render(<SearchableSelect options={options} error helperText="지역을 고르세요." />);
+    const trigger = screen.getByRole("combobox");
+    expect(trigger).toHaveAccessibleDescription("지역을 고르세요.");
+    expect(trigger).toHaveAttribute("aria-invalid", "true");
+  });
 });

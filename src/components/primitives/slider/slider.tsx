@@ -2,6 +2,7 @@ import * as Label from "@radix-ui/react-label";
 import * as SliderPrimitive from "@radix-ui/react-slider";
 import { useId } from "react";
 import { cn } from "../../../utils/cn";
+import { joinIds } from "../../../utils/join-ids";
 
 export interface SliderProps {
   value?: number | number[];
@@ -16,6 +17,10 @@ export interface SliderProps {
   helperText?: string;
   showValue?: boolean;
   className?: string;
+  /** 보이는 label 없이 쓸 때 thumb 의 접근 가능한 이름 (label 이 있으면 label 우선) */
+  "aria-label"?: string;
+  /** thumb 에 추가로 연결할 설명 요소 id */
+  "aria-describedby"?: string;
 }
 
 function toArray(value?: number | number[]): number[] | undefined {
@@ -36,8 +41,11 @@ export function Slider({
   helperText,
   showValue,
   className,
+  "aria-label": ariaLabel,
+  "aria-describedby": describedBy,
 }: SliderProps) {
   const generatedId = useId();
+  const helperId = `${generatedId}-helper`;
   const valueArray = toArray(value);
   const defaultArray = toArray(defaultValue);
   const displayValue = (valueArray ?? defaultArray ?? [min]).join(" – ");
@@ -95,12 +103,15 @@ export function Slider({
               "disabled:pointer-events-none",
               size === "sm" ? "size-4" : "size-5",
             )}
-            aria-label={label}
+            aria-label={label ?? ariaLabel}
+            aria-describedby={joinIds(describedBy, helperText && helperId)}
           />
         ))}
       </SliderPrimitive.Root>
       {helperText && (
-        <p className="typography-caption text-[var(--color-text-tertiary)]">{helperText}</p>
+        <p id={helperId} className="typography-caption text-[var(--color-text-tertiary)]">
+          {helperText}
+        </p>
       )}
     </div>
   );
