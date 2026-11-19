@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 import { AlertDialog } from "./alert-dialog";
@@ -57,5 +57,12 @@ describe("AlertDialog", () => {
     render(<AlertDialog open title="확인" onCancel={onCancel} onOpenChange={() => {}} />);
     await userEvent.click(screen.getByRole("button", { name: "취소" }));
     expect(onCancel).toHaveBeenCalledTimes(1);
+  });
+
+  it("trigger 를 누르면 open 제어 없이도 열린다", () => {
+    render(<AlertDialog title="삭제할까요?" trigger={<button type="button">열기</button>} />);
+    expect(screen.queryByRole("alertdialog")).not.toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: "열기" }));
+    expect(screen.getByRole("alertdialog")).toBeInTheDocument();
   });
 });
