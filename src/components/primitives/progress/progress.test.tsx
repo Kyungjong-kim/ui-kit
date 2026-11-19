@@ -28,4 +28,23 @@ describe("Progress", () => {
     render(<Progress value={50} size="md" />);
     expect(screen.getByRole("progressbar").className).toMatch(/h-stack-xs/);
   });
+
+  it("max 를 넘거나 음수인 value 는 범위로 잘라 aria-valuenow 를 유지한다", () => {
+    const { rerender } = render(<Progress value={150} max={100} />);
+    expect(screen.getByRole("progressbar")).toHaveAttribute("aria-valuenow", "100");
+    rerender(<Progress value={-5} max={100} />);
+    expect(screen.getByRole("progressbar")).toHaveAttribute("aria-valuenow", "0");
+  });
+
+  it("max 가 0 이하면 100 을 최대값으로 쓴다", () => {
+    render(<Progress value={40} max={0} />);
+    const bar = screen.getByRole("progressbar");
+    expect(bar).toHaveAttribute("aria-valuemax", "100");
+    expect(bar).toHaveAttribute("aria-valuenow", "40");
+  });
+
+  it("label 을 progressbar 의 접근 가능한 이름으로 연결한다", () => {
+    render(<Progress value={30} label="업로드" />);
+    expect(screen.getByRole("progressbar", { name: "업로드" })).toBeInTheDocument();
+  });
 });
