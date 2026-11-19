@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { cn } from "../../../utils/cn";
 
 export interface AvatarProps {
@@ -17,6 +18,9 @@ export function Avatar({
   shape = "circle",
   className,
 }: AvatarProps) {
+  // 실패한 src 를 기억해 두면 src 가 바뀔 때 자동으로 다시 시도한다
+  const [failedSrc, setFailedSrc] = useState<string>();
+  const showImage = Boolean(src) && failedSrc !== src;
   const sizeClasses = {
     xs: "h-size-avatar-xs w-size-avatar-xs typography-label-xs",
     sm: "h-size-avatar-sm w-size-avatar-sm typography-label-xs",
@@ -34,14 +38,12 @@ export function Avatar({
         className,
       )}
     >
-      {src ? (
+      {showImage ? (
         <img
           src={src}
           alt={alt ?? "avatar"}
           className="h-full w-full object-cover"
-          onError={(e) => {
-            (e.target as HTMLImageElement).style.display = "none";
-          }}
+          onError={() => setFailedSrc(src)}
         />
       ) : (
         <span className="typography-label-md-medium text-[var(--color-text-brand-default)] select-none">
