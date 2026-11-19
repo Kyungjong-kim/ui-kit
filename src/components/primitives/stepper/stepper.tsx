@@ -10,6 +10,7 @@ export interface StepperProps {
   onPrev?: () => void;
   onComplete?: () => void;
   completeBtnText?: string;
+  /** 다음 버튼 비활성 — 마지막 단계에서는 완료 버튼에도 적용 */
   isNextDisabled?: boolean;
   className?: string;
 }
@@ -95,7 +96,9 @@ export function Stepper({
           {t.common.previous}
         </Button>
         {isLast ? (
-          <Button onClick={onComplete}>{completeBtnText}</Button>
+          <Button onClick={onComplete} disabled={isNextDisabled}>
+            {completeBtnText}
+          </Button>
         ) : (
           <Button onClick={onNext} disabled={isNextDisabled}>
             {t.common.next}
