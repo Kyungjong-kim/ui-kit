@@ -29,4 +29,20 @@ describe("Stepper", () => {
     render(<Stepper steps={steps} activeStep={2} />);
     expect(screen.getByRole("button", { name: /완료/ })).toBeInTheDocument();
   });
+
+  it("마지막 스텝의 완료 버튼은 onComplete 를 호출한다", async () => {
+    const onComplete = vi.fn();
+    render(<Stepper steps={steps} activeStep={2} onComplete={onComplete} />);
+    await userEvent.click(screen.getByRole("button", { name: /완료/ }));
+    expect(onComplete).toHaveBeenCalled();
+  });
+
+  it("마지막 스텝에서도 isNextDisabled 면 완료 버튼이 비활성화된다", async () => {
+    const onComplete = vi.fn();
+    render(<Stepper steps={steps} activeStep={2} isNextDisabled onComplete={onComplete} />);
+    const complete = screen.getByRole("button", { name: /완료/ });
+    expect(complete).toBeDisabled();
+    await userEvent.click(complete);
+    expect(onComplete).not.toHaveBeenCalled();
+  });
 });
