@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { Slider } from "./slider";
 
@@ -48,5 +48,13 @@ describe("Slider", () => {
   it("label 이 없으면 aria-label 을 thumb 이름으로 쓴다", () => {
     render(<Slider aria-label="밝기" />);
     expect(screen.getByRole("slider", { name: "밝기" })).toBeInTheDocument();
+  });
+
+  it("비제어 모드에서도 showValue 가 움직인 값을 따라간다", () => {
+    render(<Slider defaultValue={40} step={10} showValue aria-label="볼륨" />);
+    expect(screen.getByText("40")).toBeInTheDocument();
+    fireEvent.keyDown(screen.getByRole("slider"), { key: "ArrowRight" });
+    expect(screen.getByRole("slider")).toHaveAttribute("aria-valuenow", "50");
+    expect(screen.getByText("50")).toBeInTheDocument();
   });
 });
