@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { Sheet } from "./sheet";
 
@@ -53,5 +53,16 @@ describe("Sheet", () => {
       </Sheet>,
     );
     expect(screen.getByRole("dialog", { name: "대화상자" })).toBeInTheDocument();
+  });
+
+  it("trigger 를 누르면 open 제어 없이도 열린다", () => {
+    render(
+      <Sheet title="설정" trigger={<button type="button">열기</button>}>
+        <p>본문</p>
+      </Sheet>,
+    );
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: "열기" }));
+    expect(screen.getByRole("dialog")).toBeInTheDocument();
   });
 });

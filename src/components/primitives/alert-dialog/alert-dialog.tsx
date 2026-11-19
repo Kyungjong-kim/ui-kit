@@ -6,6 +6,8 @@ import { cn } from "../../../utils/cn";
 export interface AlertDialogProps {
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
+  /** 이 요소를 누르면 열린다(`asChild` 로 감싸므로 버튼 등 단일 요소). 넘기면 `open` 없이도 쓸 수 있다 */
+  trigger?: ReactNode;
   title: string;
   description?: string;
   children?: ReactNode;
@@ -19,6 +21,7 @@ export interface AlertDialogProps {
 
 export function AlertDialog({
   open,
+  trigger,
   onOpenChange,
   title,
   description,
@@ -35,6 +38,7 @@ export function AlertDialog({
   const actionText = actionTextProp ?? t.common.confirm;
   return (
     <AlertDialogPrimitive.Root open={open} onOpenChange={onOpenChange}>
+      {trigger && <AlertDialogPrimitive.Trigger asChild>{trigger}</AlertDialogPrimitive.Trigger>}
       <AlertDialogPrimitive.Portal>
         <AlertDialogPrimitive.Overlay className="fixed inset-0 z-50 bg-black/40 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
         <AlertDialogPrimitive.Content

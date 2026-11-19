@@ -9,7 +9,7 @@ import { Dialog, DialogTrigger, Sheet, SheetTrigger } from "ui-kit";
 import type { DialogProps, SheetProps } from "ui-kit";
 ```
 
-`DialogTrigger` / `SheetTrigger`는 Radix `Dialog.Trigger`를 re-export한 것으로, `open`을 직접 제어하지 않을 때 트리거로 쓴다.
+트리거 버튼으로 열려면 `trigger` prop 에 요소를 넘긴다(`<Dialog trigger={<Button>열기</Button>}>` — 내부에서 `Trigger asChild` 로 감싼다). `open` 을 넘기지 않으면 비제어로 동작한다. `DialogTrigger` / `SheetTrigger` export 는 래퍼가 Root 를 내부에서 만들어 단독으로는 쓸 수 없다(호환을 위해 남김).
 
 ---
 
@@ -23,6 +23,7 @@ import type { DialogProps, SheetProps } from "ui-kit";
 |---|---|---|---|
 | `open` | `boolean` | — | 열림 상태(제어형) |
 | `onOpenChange` | `(open: boolean) => void` | — | 상태 변경 콜백 |
+| `trigger` | `ReactNode` | — | 누르면 여는 요소 (`asChild`, 단일 요소). 넘기면 `open` 없이도 쓸 수 있다 |
 | `title` | `string` | — | 제목 (`Dialog.Title`) |
 | `description` | `string` | — | 부제 (`Dialog.Description`) |
 | `children` | `ReactNode` | — | 본문 |
@@ -63,6 +64,7 @@ const [open, setOpen] = useState(false);
 |---|---|---|---|
 | `open` | `boolean` | — | 열림 상태 |
 | `onOpenChange` | `(open: boolean) => void` | — | 상태 변경 콜백 |
+| `trigger` | `ReactNode` | — | 누르면 여는 요소 (`asChild`, 단일 요소). 넘기면 `open` 없이도 쓸 수 있다 |
 | `side` | `"top" \| "right" \| "bottom" \| "left"` | `"right"` | 등장 방향 |
 | `maxWidth` | `"sm" \| "md" \| "lg" \| "xl" \| "full"` | `"sm"` | 너비(좌/우) — `top`·`bottom`에서는 무시 |
 | `title` | `string` | — | 제목 |

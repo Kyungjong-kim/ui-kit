@@ -36,6 +36,8 @@ const sheetVariants = cva(
 export interface SheetProps extends VariantProps<typeof sheetVariants> {
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
+  /** 이 요소를 누르면 열린다(`asChild` 로 감싸므로 버튼 등 단일 요소). 넘기면 `open` 없이도 쓸 수 있다 */
+  trigger?: ReactNode;
   title?: string;
   description?: string;
   children?: ReactNode;
@@ -46,6 +48,7 @@ export interface SheetProps extends VariantProps<typeof sheetVariants> {
 
 export function Sheet({
   open,
+  trigger,
   onOpenChange,
   side = "right",
   maxWidth = "sm",
@@ -59,6 +62,7 @@ export function Sheet({
   const t = useUiKitMessages();
   return (
     <DialogPrimitive.Root open={open} onOpenChange={onOpenChange}>
+      {trigger && <DialogPrimitive.Trigger asChild>{trigger}</DialogPrimitive.Trigger>}
       <DialogPrimitive.Portal>
         <DialogPrimitive.Overlay className="fixed inset-0 z-50 bg-black/40 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
         <DialogPrimitive.Content
