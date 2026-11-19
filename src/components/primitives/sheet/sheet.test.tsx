@@ -45,4 +45,13 @@ describe("Sheet", () => {
     render(<Sheet open side={side} title={`${side} 패널`} onOpenChange={() => {}} />);
     expect(screen.getByText(`${side} 패널`)).toBeInTheDocument();
   });
+
+  it("title·닫기 버튼이 모두 없어도 숨김 제목으로 이름을 준다", () => {
+    render(
+      <Sheet open onOpenChange={() => {}} showClose={false}>
+        <p>본문</p>
+      </Sheet>,
+    );
+    expect(screen.getByRole("dialog", { name: "대화상자" })).toBeInTheDocument();
+  });
 });

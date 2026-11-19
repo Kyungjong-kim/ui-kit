@@ -70,14 +70,16 @@ export function Sheet({
             className,
           )}
         >
+          {!title && (
+            // title·닫기 버튼이 모두 없어도 Radix Title 을 둬 대화상자 이름과 경고를 해결한다
+            <DialogPrimitive.Title className="sr-only">{t.navigation.dialog}</DialogPrimitive.Title>
+          )}
           {(title || showClose) && (
             <div className="flex items-center justify-between mb-group-sm">
-              {title ? (
+              {title && (
                 <DialogPrimitive.Title className="typography-headline-sm text-[var(--color-text-primary)]">
                   {title}
                 </DialogPrimitive.Title>
-              ) : (
-                <DialogPrimitive.Title className="sr-only">Sheet</DialogPrimitive.Title>
               )}
               {showClose && (
                 <DialogPrimitive.Close
