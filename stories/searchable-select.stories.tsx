@@ -51,3 +51,18 @@ export const Small: Story = {
 export const Large: Story = {
   args: { options, label: "지역 선택", size: "lg" },
 };
+
+const manyOptions = Array.from({ length: 40 }, (_, i) => ({
+  value: `item-${i + 1}`,
+  label: `항목 ${i + 1}`,
+}));
+
+/** 긴 목록 — 방향키로 활성 옵션을 옮기면 목록이 따라 스크롤한다 */
+export const LongList: Story = {
+  args: {
+    options: manyOptions,
+    label: "항목 선택",
+    placeholder: "항목을 선택해주세요",
+    searchPlaceholder: "항목 검색",
+  },
+};

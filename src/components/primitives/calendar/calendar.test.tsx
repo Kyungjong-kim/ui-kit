@@ -64,4 +64,24 @@ describe("Calendar", () => {
     );
     expect(screen.getAllByRole("combobox").length).toBeGreaterThanOrEqual(2);
   });
+
+  it("captionLayout=dropdown 의 네이티브 select 는 보이는 라벨 위에 투명하게 겹친다 (라벨 중복 방지)", () => {
+    render(
+      <Calendar
+        mode="single"
+        captionLayout="dropdown"
+        month={new Date(2026, 0, 1)}
+        startMonth={new Date(2025, 0)}
+        endMonth={new Date(2027, 11)}
+      />,
+    );
+    for (const select of screen.getAllByRole("combobox")) {
+      expect(select).toHaveClass("absolute", "opacity-0");
+      expect(select.parentElement).toHaveClass("relative");
+    }
+    // 이전·다음 달 버튼은 캡션 줄 양끝에 겹쳐 놓는다(세로로 쌓이지 않게)
+    const nav = screen.getByRole("button", { name: /previous|이전/i }).parentElement;
+    expect(nav).toHaveClass("absolute", "justify-between");
+    expect(nav?.parentElement).toHaveClass("relative");
+  });
 });
