@@ -38,4 +38,26 @@ describe("Button", () => {
     render(<Button loading>저장 중</Button>);
     expect(screen.getByText("저장 중")).toBeInTheDocument();
   });
+
+  it("asChild 면 자식 요소를 버튼처럼 렌더한다", () => {
+    render(
+      <Button asChild variant="primary">
+        <a href="/docs">문서</a>
+      </Button>,
+    );
+    const link = screen.getByRole("link", { name: "문서" });
+    expect(link).toHaveAttribute("href", "/docs");
+    expect(link.className).toContain("inline-flex");
+  });
+
+  it("asChild + loading 이면 Spinner 를 자식 요소 안에 넣는다", () => {
+    render(
+      <Button asChild loading>
+        <a href="/docs">문서</a>
+      </Button>,
+    );
+    const link = screen.getByRole("link", { name: /문서/ });
+    expect(link).toContainElement(screen.getByRole("status"));
+    expect(link).toHaveAttribute("aria-busy", "true");
+  });
 });
