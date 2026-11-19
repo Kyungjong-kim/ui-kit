@@ -1,5 +1,5 @@
-import { render, screen } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { fireEvent, render, screen } from "@testing-library/react";
+import { describe, expect, it, vi } from "vitest";
 import { Select } from "./select";
 
 const options = [
@@ -29,5 +29,25 @@ describe("Select", () => {
     const trigger = screen.getByRole("combobox");
     expect(trigger).toHaveAccessibleDescription("과일을 고르세요.");
     expect(trigger).toHaveAttribute("aria-invalid", "true");
+  });
+
+  it('빈 문자열 value 옵션(「전체」)을 렌더하고 선택하면 "" 를 돌려준다', () => {
+    const onValueChange = vi.fn();
+    const withAll = [{ value: "", label: "전체" }, ...options];
+    render(<Select options={withAll} value="apple" onValueChange={onValueChange} />);
+    fireEvent.click(screen.getByRole("combobox"));
+    fireEvent.click(screen.getByRole("option", { name: "전체" }));
+    expect(onValueChange).toHaveBeenCalledWith("");
+  });
+
+  it('value="" 이고 빈 값 옵션이 있으면 그 옵션이 선택된 것으로 보인다', () => {
+    const withAll = [{ value: "", label: "전체" }, ...options];
+    render(<Select options={withAll} value="" placeholder="고르세요" />);
+    expect(screen.getByRole("combobox")).toHaveTextContent("전체");
+  });
+
+  it('빈 값 옵션이 없을 때 value="" 는 지금처럼 placeholder 를 보여 준다', () => {
+    render(<Select options={options} value="" placeholder="고르세요" />);
+    expect(screen.getByRole("combobox")).toHaveTextContent("고르세요");
   });
 });

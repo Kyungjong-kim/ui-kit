@@ -50,6 +50,12 @@ export interface SelectProps extends Omit<VariantProps<typeof triggerVariants>, 
   className?: string;
 }
 
+/**
+ * Radix Select 는 Item value 로 빈 문자열을 받지 않는다(빈 값 = 선택 해제 신호).
+ * 「전체」처럼 value 가 "" 인 옵션은 내부에서만 이 값으로 바꿔 넘기고, 밖으로는 "" 를 돌려준다.
+ */
+const EMPTY_OPTION_VALUE = "__ui-kit-select-empty__";
+
 export function Select({
   options,
   value,
@@ -65,6 +71,8 @@ export function Select({
   const t = useUiKitMessages();
   const placeholder = placeholderProp ?? t.common.select;
   const generatedId = useId();
+  // 빈 값 옵션이 없으면 value="" 는 지금처럼 「선택 없음(placeholder)」 이다
+  const hasEmptyOption = options.some((opt) => opt.value === "");
   const helperId = `${generatedId}-helper`;
 
   return (
@@ -77,7 +85,11 @@ export function Select({
           {label}
         </Label.Root>
       )}
-      <SelectPrimitive.Root value={value} onValueChange={onValueChange} disabled={disabled}>
+      <SelectPrimitive.Root
+        value={hasEmptyOption && value === "" ? EMPTY_OPTION_VALUE : value}
+        onValueChange={(next) => onValueChange?.(next === EMPTY_OPTION_VALUE ? "" : next)}
+        disabled={disabled}
+      >
         <SelectPrimitive.Trigger
           id={generatedId}
           className={cn(triggerVariants({ size, error: !!error }), className)}
@@ -99,7 +111,7 @@ export function Select({
               {options.map((opt) => (
                 <SelectPrimitive.Item
                   key={opt.value}
-                  value={opt.value}
+                  value={opt.value === "" ? EMPTY_OPTION_VALUE : opt.value}
                   disabled={opt.disabled}
                   className={cn(
                     "flex cursor-pointer select-none items-center justify-between gap-inline-sm rounded-xs px-inline-md py-stack-xs typography-label-md-base text-[var(--color-text-primary)] outline-none transition-colors",
