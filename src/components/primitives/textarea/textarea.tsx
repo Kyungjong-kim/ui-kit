@@ -2,6 +2,7 @@ import * as Label from "@radix-ui/react-label";
 import { cva, type VariantProps } from "class-variance-authority";
 import { forwardRef, type TextareaHTMLAttributes, useId } from "react";
 import { cn } from "../../../utils/cn";
+import { joinIds } from "../../../utils/join-ids";
 
 const textareaVariants = cva(
   [
@@ -40,11 +41,23 @@ export interface TextareaProps
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   (
-    { className, label, error, helperText, size = "md", resize = "vertical", id, ...props },
+    {
+      className,
+      label,
+      error,
+      helperText,
+      size = "md",
+      resize = "vertical",
+      id,
+      "aria-describedby": describedBy,
+      "aria-invalid": ariaInvalid,
+      ...props
+    },
     ref,
   ) => {
     const generatedId = useId();
     const textareaId = id ?? generatedId;
+    const helperId = `${textareaId}-helper`;
 
     return (
       <div className="flex flex-col gap-group-xs">
@@ -60,6 +73,8 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           id={textareaId}
           ref={ref}
           rows={props.rows ?? 4}
+          aria-describedby={joinIds(describedBy, helperText && helperId)}
+          aria-invalid={ariaInvalid ?? (error || undefined)}
           className={cn(
             textareaVariants({ size, error: !!error }),
             {
@@ -74,6 +89,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         />
         {helperText && (
           <p
+            id={helperId}
             className={cn(
               "typography-caption",
               error

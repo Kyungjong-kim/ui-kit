@@ -4,6 +4,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { CheckIcon, ChevronDownIcon } from "lucide-react";
 import { useId } from "react";
 import { cn } from "../../../utils/cn";
+import { joinIds } from "../../../utils/join-ids";
 
 const triggerVariants = cva(
   [
@@ -61,6 +62,7 @@ export function Select({
   className,
 }: SelectProps) {
   const generatedId = useId();
+  const helperId = `${generatedId}-helper`;
 
   return (
     <div className="flex flex-col gap-group-xs">
@@ -76,6 +78,8 @@ export function Select({
         <SelectPrimitive.Trigger
           id={generatedId}
           className={cn(triggerVariants({ size, error: !!error }), className)}
+          aria-describedby={joinIds(helperText && helperId)}
+          aria-invalid={error || undefined}
         >
           <SelectPrimitive.Value placeholder={placeholder} />
           <SelectPrimitive.Icon aria-hidden="true">
@@ -113,6 +117,7 @@ export function Select({
       </SelectPrimitive.Root>
       {helperText && (
         <p
+          id={helperId}
           className={cn(
             "typography-caption",
             error ? "text-[var(--color-text-danger-default)]" : "text-[var(--color-text-tertiary)]",

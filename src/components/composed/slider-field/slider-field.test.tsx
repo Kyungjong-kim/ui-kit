@@ -54,4 +54,10 @@ describe("SliderField", () => {
     expect(screen.getByText("1")).toBeInTheDocument();
     expect(screen.getByText("9")).toBeInTheDocument();
   });
+
+  it("label 을 thumb 이름으로, helperText 를 설명으로 연결한다", () => {
+    render(<SliderField label="투명도" helperText="낮을수록 흐려집니다." />);
+    const slider = screen.getByRole("slider", { name: "투명도" });
+    expect(slider).toHaveAccessibleDescription("낮을수록 흐려집니다.");
+  });
 });

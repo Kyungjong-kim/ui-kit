@@ -22,4 +22,11 @@ describe("Checkbox", () => {
     await userEvent.click(screen.getByRole("checkbox"));
     expect(onCheckedChange).not.toHaveBeenCalled();
   });
+
+  it("helperText 를 설명으로 연결하고 error 면 aria-invalid 를 붙인다", () => {
+    render(<Checkbox label="약관 동의" error helperText="동의가 필요합니다." />);
+    const checkbox = screen.getByRole("checkbox");
+    expect(checkbox).toHaveAccessibleDescription("동의가 필요합니다.");
+    expect(checkbox).toHaveAttribute("aria-invalid", "true");
+  });
 });

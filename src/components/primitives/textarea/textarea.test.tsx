@@ -22,4 +22,11 @@ describe("Textarea", () => {
     render(<Textarea rows={5} />);
     expect(screen.getByRole("textbox")).toHaveAttribute("rows", "5");
   });
+
+  it("helperText 를 설명으로 연결하고 error 면 aria-invalid 를 붙인다", () => {
+    render(<Textarea error helperText="200자 이내로 입력하세요." />);
+    const textarea = screen.getByRole("textbox");
+    expect(textarea).toHaveAccessibleDescription("200자 이내로 입력하세요.");
+    expect(textarea).toHaveAttribute("aria-invalid", "true");
+  });
 });
