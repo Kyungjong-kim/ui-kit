@@ -22,6 +22,7 @@ export interface UiKitMessages {
     deleteFile: string;
     previous: string;
     next: string;
+    save: string;
   };
   navigation: {
     nav: string;
@@ -42,6 +43,8 @@ export interface UiKitMessages {
     countUnit: string;
     /** "총 {count}{unit}" 의 앞말 */
     totalPrefix: string;
+    /** "{n}개 선택됨" 의 뒷말 */
+    selectedSuffix: string;
   };
   date: {
     datePlaceholder: string;
@@ -136,6 +139,7 @@ export const ko: UiKitMessages = {
     deleteFile: "파일 삭제",
     previous: "이전",
     next: "다음",
+    save: "저장",
   },
   navigation: {
     nav: "네비게이션",
@@ -155,6 +159,7 @@ export const ko: UiKitMessages = {
     collapse: "접기",
     countUnit: "건",
     totalPrefix: "총",
+    selectedSuffix: "개 선택됨",
   },
   date: {
     datePlaceholder: "날짜 선택",
@@ -246,6 +251,7 @@ export const en: UiKitMessages = {
     deleteFile: "Delete file",
     previous: "Previous",
     next: "Next",
+    save: "Save",
   },
   navigation: {
     nav: "Navigation",
@@ -265,6 +271,7 @@ export const en: UiKitMessages = {
     collapse: "Collapse",
     countUnit: "items",
     totalPrefix: "Total",
+    selectedSuffix: " selected",
   },
   date: {
     datePlaceholder: "Select date",

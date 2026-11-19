@@ -22,7 +22,8 @@ export function ResetButton({
   ...rest
 }: ResetButtonProps) {
   const t = useUiKitMessages();
-  const label = labelProp ?? t.common.reset;
+  // label 은 ReactNode — null 은 「라벨 없이 아이콘만」 의도라 undefined 일 때만 기본 문구를 쓴다
+  const label = labelProp === undefined ? t.common.reset : labelProp;
   const iconSize = size === "sm" ? 16 : size === "lg" ? 20 : 18;
 
   return (

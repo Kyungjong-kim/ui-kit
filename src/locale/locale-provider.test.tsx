@@ -2,10 +2,13 @@ import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { DateTimeCell } from "../components/composed/date-time-cell";
 import { MultiSelect } from "../components/composed/multi-select";
+import { ResetButton } from "../components/composed/reset-button";
 import { Combobox } from "../components/primitives/combobox";
 import { Pagination } from "../components/primitives/pagination";
 import { Spinner } from "../components/primitives/spinner";
+import { FormPageTemplate } from "../templates/form-page-template";
 import { UiKitLocaleProvider } from "./locale-provider";
+import type { UiKitLocale } from "./messages";
 import { en, ko } from "./messages";
 
 const options = [{ value: "a", label: "Apple" }];
@@ -55,6 +58,42 @@ describe("UiKitLocaleProvider", () => {
       </UiKitLocaleProvider>,
     );
     expect(screen.getByText("3m ago")).toBeInTheDocument();
+  });
+
+  it("지원하지 않는 locale 이면 ko 로 떨어진다", () => {
+    render(
+      <UiKitLocaleProvider locale={"en-US" as UiKitLocale}>
+        <Spinner />
+      </UiKitLocaleProvider>,
+    );
+    expect(screen.getByRole("status", { name: "로딩 중" })).toBeInTheDocument();
+  });
+
+  it("messages 에 undefined 로 넘긴 키는 기본 문구를 지우지 않는다", () => {
+    render(
+      <UiKitLocaleProvider messages={{ pagination: { page: undefined, previous: undefined } }}>
+        <Pagination currentPage={1} totalPages={2} onPageChange={() => {}} />
+      </UiKitLocaleProvider>,
+    );
+    expect(screen.getByRole("button", { name: "1 페이지" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "이전" })).toBeInTheDocument();
+  });
+
+  it("ResetButton 의 label={null} 은 기본 문구로 채우지 않는다", () => {
+    render(<ResetButton label={null} aria-label="되돌리기" />);
+    expect(screen.getByRole("button", { name: "되돌리기" })).not.toHaveTextContent("초기화");
+  });
+
+  it("템플릿 기본 문구도 사전을 따른다", () => {
+    render(
+      <UiKitLocaleProvider locale="en">
+        <FormPageTemplate title="T" onSubmit={() => {}} onCancel={() => {}}>
+          <div />
+        </FormPageTemplate>
+      </UiKitLocaleProvider>,
+    );
+    expect(screen.getByRole("button", { name: "Save" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Cancel" })).toBeInTheDocument();
   });
 
   it("영문만 있던 MultiSelect 기본 문구도 ko 사전으로 통일된다", () => {
