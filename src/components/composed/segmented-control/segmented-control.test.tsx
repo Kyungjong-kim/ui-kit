@@ -50,4 +50,15 @@ describe("SegmentedControl", () => {
     await userEvent.click(screen.getByRole("radio", { name: "지도" }));
     expect(onValueChange).not.toHaveBeenCalled();
   });
+
+  it("트랙은 테두리가 있고, 선택 칸은 그림자 대신 입력 테두리로 떠 보인다 (Warm Precision)", () => {
+    renderControl();
+    expect(screen.getByRole("radiogroup").className).toMatch(
+      /border-\[var\(--color-border-default\)\]/,
+    );
+    const selected = screen.getByRole("radio", { name: "목록" });
+    expect(selected.className).toMatch(/border-\[var\(--color-border-input-default\)\]/);
+    expect(selected.className).not.toMatch(/shadow-sm/);
+    expect(screen.getByRole("radio", { name: "격자" }).className).toMatch(/border-transparent/);
+  });
 });
