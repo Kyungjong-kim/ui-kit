@@ -38,6 +38,7 @@ pnpm add react react-dom
 | `@kyungjong-kim/ui-kit/styles` | core+semantic 토큰 `:root` 값 (런타임 CSS 변수) | ✅ |
 | `@kyungjong-kim/ui-kit/theme` | Tailwind v4 `@theme inline` 매핑 (radius·spacing·size·shadow·color·typography 유틸 매핑) | ✅ Tailwind v4 |
 | `@source` | ui-kit dist 스캔 → 컴포넌트가 쓰는 유틸 생성 | ✅ |
+| `@kyungjong-kim/ui-kit/reduced-motion` | `prefers-reduced-motion: reduce` 일 때 전환·애니메이션을 끄는 전역 규칙 (앱 전체에 걸림) | 선택 |
 
 > `@kyungjong-kim/ui-kit/theme` 없이는 컴포넌트가 쓰는 `gap-group-xl`·`h-size-control-sm`·`w-size-icon-sm`·`rounded-md`·`shadow-default-sm`·`typography-*` 같은 커스텀 theme 유틸이 생성되지 않아 레이아웃이 깨진다. (`@import "tailwindcss"` 는 소비 앱이 직접 선언 — `@kyungjong-kim/ui-kit/theme` 에는 포함하지 않는다.)
 >

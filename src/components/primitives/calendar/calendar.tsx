@@ -210,6 +210,7 @@ function CalendarDayButton({
   modifiers,
   locale,
   style: _propsStyle,
+  className,
   ...props
 }: React.ComponentProps<typeof DayButton> & { locale?: Partial<Locale> }) {
   const ref = React.useRef<HTMLButtonElement>(null);
@@ -250,7 +251,6 @@ function CalendarDayButton({
     <button
       ref={ref}
       type="button"
-      className="focus-ring"
       data-day={day.date.toLocaleDateString(locale?.code)}
       data-selected-single={isSelectedSingle}
       data-range-start={modifiers.range_start}
@@ -278,6 +278,8 @@ function CalendarDayButton({
         transition: "background-color 0.15s",
       }}
       {...props}
+      // react-day-picker 가 넘기는 className(rdp-day_button)에 덮이지 않도록 spread 뒤에서 합친다
+      className={cn("focus-ring", className)}
     />
   );
 }

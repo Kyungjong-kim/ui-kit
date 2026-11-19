@@ -5,6 +5,7 @@ export default defineConfig({
     index: "src/index.ts",
     styles: "src/styles/tokens.css",
     theme: "src/styles/theme.css",
+    "reduced-motion": "src/styles/reduced-motion.css",
   },
   format: ["esm", "cjs"],
   dts: true,
