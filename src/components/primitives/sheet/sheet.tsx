@@ -2,6 +2,7 @@ import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { cva, type VariantProps } from "class-variance-authority";
 import { XIcon } from "lucide-react";
 import type { ReactNode } from "react";
+import { useUiKitMessages } from "../../../locale";
 import { cn } from "../../../utils/cn";
 
 const sheetVariants = cva(
@@ -55,6 +56,7 @@ export function Sheet({
   showClose = true,
   className,
 }: SheetProps) {
+  const t = useUiKitMessages();
   return (
     <DialogPrimitive.Root open={open} onOpenChange={onOpenChange}>
       <DialogPrimitive.Portal>
@@ -79,7 +81,7 @@ export function Sheet({
               )}
               {showClose && (
                 <DialogPrimitive.Close
-                  aria-label="닫기"
+                  aria-label={t.common.close}
                   className="ml-auto rounded-xxs p-stack-xxs text-[var(--color-text-tertiary)] hover:text-[var(--color-text-primary)] transition-colors focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-[var(--color-border-focus)]"
                 >
                   <XIcon className="h-size-icon-sm w-size-icon-sm" />

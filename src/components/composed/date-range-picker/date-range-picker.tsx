@@ -1,5 +1,6 @@
 import { useState } from "react";
 import type { DateRange } from "react-day-picker";
+import { useUiKitMessages } from "../../../locale";
 import { cn } from "../../../utils/cn";
 import { Calendar } from "../../primitives/calendar";
 import { Icon } from "../../primitives/icon";
@@ -55,8 +56,10 @@ export function DateRangePicker({
   className,
   triggerClassName,
   formatDate = defaultFormatDate,
-  placeholder = "기간 선택",
+  placeholder: placeholderProp,
 }: DateRangePickerProps) {
+  const t = useUiKitMessages();
+  const placeholder = placeholderProp ?? t.date.rangePlaceholder;
   const [internalOpen, setInternalOpen] = useState(false);
   const [internalRange, setInternalRange] = useState<DateRangeValue>(defaultValue ?? {});
 

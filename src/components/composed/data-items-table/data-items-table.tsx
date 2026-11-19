@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { useUiKitMessages } from "../../../locale";
 import { cn } from "../../../utils/cn";
 
 /** 카드형 아이템의 라벨-값 필드 정의. render로 값 커스터마이징 가능. */
@@ -22,9 +23,11 @@ export function DataItemsTable<T>({
   fields,
   data,
   minCardWidth = 260,
-  emptyMessage = "데이터가 없습니다",
+  emptyMessage: emptyMessageProp,
   className,
 }: DataItemsTableProps<T>) {
+  const t = useUiKitMessages();
+  const emptyMessage = emptyMessageProp ?? t.common.noData;
   if (data.length === 0) {
     return (
       <div

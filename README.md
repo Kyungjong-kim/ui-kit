@@ -60,6 +60,22 @@ export function App() {
 }
 ```
 
+### 3. 기본 문구 언어 (선택)
+
+컴포넌트 안 기본 문구(닫기·검색·결과 없음·페이지 이동 등)는 사전에서 온다. Provider 가 없으면 한국어(`ko`)다.
+
+```tsx
+import { UiKitLocaleProvider } from "@kyungjong-kim/ui-kit";
+
+<UiKitLocaleProvider locale="en" messages={{ common: { close: "Dismiss" } }}>
+  <App />
+</UiKitLocaleProvider>
+```
+
+- `locale`: `"ko"`(기본) · `"en"`. `messages` 로 사전 일부만 덮어쓸 수 있다.
+- 컴포넌트에 직접 넘긴 prop(`placeholder`·`emptyText` 등)이 사전보다 항상 우선한다.
+- 사전 전체는 `ko`·`en` export 와 `UiKitMessages` 타입으로 확인한다.
+
 ---
 
 ## 컴포넌트

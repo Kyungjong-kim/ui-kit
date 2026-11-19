@@ -17,6 +17,7 @@ import {
 import { CSS } from "@dnd-kit/utilities";
 import { GripVerticalIcon } from "lucide-react";
 import type { ReactNode } from "react";
+import { useUiKitMessages } from "../../../locale";
 import { cn } from "../../../utils/cn";
 
 export interface DndListProps<T extends { id: string }> {
@@ -35,6 +36,7 @@ function SortableItem<T extends { id: string }>({
   index: number;
   renderItem: (item: T, index: number) => ReactNode;
 }) {
+  const t = useUiKitMessages();
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
     id: item.id,
   });
@@ -53,7 +55,7 @@ function SortableItem<T extends { id: string }>({
         {...attributes}
         {...listeners}
         className="focus-ring cursor-grab touch-none text-[var(--color-text-tertiary)] hover:text-[var(--color-text-secondary)] active:cursor-grabbing"
-        aria-label="드래그 핸들"
+        aria-label={t.common.dragHandle}
       >
         <GripVerticalIcon className="h-size-icon-sm w-size-icon-sm" />
       </button>

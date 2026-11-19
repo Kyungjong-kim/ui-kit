@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { useUiKitMessages } from "../../../locale";
 import { cn } from "../../../utils/cn";
 
 /** 테이블 컬럼 정의. render로 셀 커스터마이징 가능. */
@@ -20,9 +21,11 @@ export interface TableProps<T> {
 export function Table<T>({
   columns,
   data,
-  emptyMessage = "데이터가 없습니다",
+  emptyMessage: emptyMessageProp,
   className,
 }: TableProps<T>) {
+  const t = useUiKitMessages();
+  const emptyMessage = emptyMessageProp ?? t.common.noData;
   const isEmpty = data.length === 0;
 
   return (

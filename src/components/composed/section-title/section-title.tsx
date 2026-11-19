@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { useUiKitMessages } from "../../../locale";
 import { cn } from "../../../utils/cn";
 import { Text } from "../../primitives/text";
 import { IconButton } from "../icon-button";
@@ -34,6 +35,7 @@ export function SectionTitle({
   type = "default",
   className,
 }: SectionTitleProps) {
+  const t = useUiKitMessages();
   const isModal = type === "modal" || !!onClose;
 
   return (
@@ -66,7 +68,7 @@ export function SectionTitle({
           appearance="ghost"
           shape="circle"
           size="sm"
-          aria-label="닫기"
+          aria-label={t.common.close}
           onClick={onClose}
         />
       ) : (
