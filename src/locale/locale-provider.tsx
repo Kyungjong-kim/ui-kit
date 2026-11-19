@@ -30,7 +30,8 @@ export function UiKitLocaleProvider({
   children,
 }: UiKitLocaleProviderProps) {
   const value = useMemo(
-    () => mergeMessages(messagesByLocale[locale], messages),
+    // 지원하지 않는 locale(예: "en-US" 를 캐스팅해 넘긴 경우)은 ko 로 떨어뜨린다
+    () => mergeMessages(messagesByLocale[locale] ?? ko, messages),
     [locale, messages],
   );
   return <UiKitMessagesContext.Provider value={value}>{children}</UiKitMessagesContext.Provider>;
@@ -57,6 +58,8 @@ function mergeSection<K extends keyof UiKitMessages>(
   entries: UiKitMessageOverrides[K],
 ): void {
   if (!entries) return;
+  // undefined 로 넘긴 키는 기본 문구를 지우지 않도록 걸러 낸다
+  const defined = Object.fromEntries(Object.entries(entries).filter(([, v]) => v !== undefined));
   // 사전 전체를 펼친 뒤 덮으므로 빠지는 키가 없다 — Partial 을 완전한 섹션으로 좁힌다
-  target[key] = { ...base[key], ...entries } as UiKitMessages[K];
+  target[key] = { ...base[key], ...defined } as UiKitMessages[K];
 }
