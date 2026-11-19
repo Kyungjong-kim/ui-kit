@@ -1,6 +1,6 @@
 import * as Label from "@radix-ui/react-label";
 import * as SliderPrimitive from "@radix-ui/react-slider";
-import { useId } from "react";
+import { useId, useState } from "react";
 import { cn } from "../../../utils/cn";
 import { joinIds } from "../../../utils/join-ids";
 
@@ -48,7 +48,14 @@ export function Slider({
   const helperId = `${generatedId}-helper`;
   const valueArray = toArray(value);
   const defaultArray = toArray(defaultValue);
-  const displayValue = (valueArray ?? defaultArray ?? [min]).join(" – ");
+  // 비제어일 때 표시 값이 첫 값에 고정되지 않도록 Radix 의 변경을 따라간다
+  const [internalArray, setInternalArray] = useState<number[]>(defaultArray ?? [min]);
+  const displayValue = (valueArray ?? internalArray).join(" – ");
+
+  function handleValueChange(next: number[]) {
+    if (!valueArray) setInternalArray(next);
+    onValueChange?.(next);
+  }
 
   return (
     <div className="flex flex-col gap-group-xs">
@@ -73,7 +80,7 @@ export function Slider({
         id={generatedId}
         value={valueArray}
         defaultValue={valueArray ? undefined : defaultArray}
-        onValueChange={onValueChange}
+        onValueChange={handleValueChange}
         min={min}
         max={max}
         step={step}
