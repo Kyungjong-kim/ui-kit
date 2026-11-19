@@ -15,15 +15,17 @@ raw 팔레트(`core.css`) → **의미 토큰(`semantic.css`)** → 컴포넌트
 
 | 카테고리 | 역할 | 50 | 500 | 900 |
 |---|---|---|---|---|
-| **brand** (Golden Amber) | 브랜드·기본 액션 | `#fff8d9` | `#fabc37` | `#7a5812` |
-| **neutral** (Warm Gray) | 텍스트·배경·테두리 | `#faf8f5` | `#908880` | `#141210` |
-| **red** | 위험·삭제·에러 | `#ffebea` | `#ff4c51` | `#bf383d` |
-| **green** | 성공 | `#e6f8ef` | `#28c76f` | `#1e9553` |
-| **orange** | 경고 (브랜드가 골든이라 노랑 대신 오렌지로 구분) | `#fff1e0` | `#f97316` | `#783908` |
+| **brand** (Golden Amber) | 브랜드·기본 액션 | `#fff8d9` | `#fabc37` | `#563c08` |
+| **neutral** (Warm Gray) | 텍스트·배경·테두리 | `#faf8f5` | `#776f67` | `#141210` |
+| **red** | 위험·삭제·에러 | `#ffebea` | `#ff4c51` | `#741c20` |
+| **green** | 성공 | `#e6f8ef` | `#28c76f` | `#0e4a2a` |
+| **orange** | 경고 (브랜드가 골든이라 노랑 대신 오렌지로 구분) | `#fff1e0` | `#f97316` | `#6b2f07` |
 | **blue** | 정보 | `#eff6ff` | `#3b82f6` | `#1e3a8a` |
 | **purple** | 분류·태그(category) | `#f4eeff` | `#8b5cf6` | `#472a85` |
 
 > ⚠️ 브랜드 500(`#fabc37`)은 **밝은 색**이다. 이 색을 배경으로 쓰면 그 위 텍스트는 반드시 다크(neutral-900)를 사용한다 — 흰 텍스트는 대비 미달.
+
+> **대비 기준**: 25~500 은 옅은 면·기준색, **600~900 은 흰 배경 위 텍스트·채움용으로 단계마다 명도를 뚜렷이 벌려 둔다.** red·green·orange 는 700 이 흰 배경 대비 AA(4.5:1) 이상이라 의미색 텍스트의 기본 단계다. 600 은 채움·아이콘(3:1 이상), 700 은 흰 글자를 올리는 채움(`bg-*-strong`)에도 쓴다.
 
 ## 텍스트 (`--color-text-*`)
 
@@ -36,13 +38,15 @@ raw 팔레트(`core.css`) → **의미 토큰(`semantic.css`)** → 컴포넌트
 | `--color-text-inverse` | white | 어두운 배경 위 텍스트 |
 | `--color-text-brand-default` | brand-700 | 링크·브랜드 강조 (흰 배경 가독성 위해 700) |
 | `--color-text-brand-hover` | brand-800 | 브랜드 텍스트 hover |
-| `--color-text-danger-default` | red-500 | 에러·위험 텍스트 |
-| `--color-text-success-default` | green-500 | 성공 텍스트 |
-| `--color-text-warning-default` | orange-600 | 경고 텍스트 |
+| `--color-text-danger-default` | red-700 | 에러·위험 텍스트 |
+| `--color-text-success-default` | green-700 | 성공 텍스트 |
+| `--color-text-warning-default` | orange-700 | 경고 텍스트 |
 | `--color-text-info-default` | blue-700 | 정보 텍스트 |
+| `--color-text-{danger,success,warning}-strong` | red-800 / green-800 / orange-800 | subtle 배경 위 강조 텍스트(Badge 등) |
+| `--color-text-on-strong` | white | `bg-*-strong` 채움 위 글자 (테마 공통) |
 | `--color-text-category-default` | purple-600 | 분류·태그(category) 텍스트 |
 
-> 각 상태·브랜드·category 계열에는 `-hover` 변형도 있다(`*-hover` = default보다 한 단계 진하게). 전체 목록은 [tokens/semantic.md](../tokens/semantic.md).
+> 각 상태·브랜드·category 계열에는 `-hover` 변형도 있다(`*-hover` = default보다 한 단계 진하게, 상태색은 800). 전체 목록은 [tokens/semantic.md](../tokens/semantic.md).
 
 ## 배경 (`--color-bg-*`)
 
@@ -55,10 +59,11 @@ raw 팔레트(`core.css`) → **의미 토큰(`semantic.css`)** → 컴포넌트
 | `--color-bg-brand-default` | brand-500 | 기본 브랜드 배경 (위 텍스트=다크) |
 | `--color-bg-brand-hover` | brand-600 | 브랜드 배경 hover |
 | `--color-bg-brand-subtle` / `-subtle-hover` | brand-50 / brand-100 | 약한 브랜드 강조 영역 |
-| `--color-bg-danger-default` / `-subtle` | red-500 / red-50 | 위험 배경·약한 위험 영역 |
-| `--color-bg-success-default` / `-subtle` | green-500 / green-50 | 성공 |
-| `--color-bg-warning-default` / `-subtle` | orange-500 / orange-50 | 경고 |
+| `--color-bg-danger-default` / `-subtle` | red-600 / red-50 | 위험 배경·약한 위험 영역 |
+| `--color-bg-success-default` / `-subtle` | green-600 / green-50 | 성공 |
+| `--color-bg-warning-default` / `-subtle` | orange-600 / orange-50 | 경고 |
 | `--color-bg-info-default` / `-subtle` | blue-500 / blue-50 | 정보 |
+| `--color-bg-{danger,success,warning,info}-strong` | red-700 / green-700 / orange-700 / blue-700 | 흰 글자(`text-on-strong`)를 올리는 채움 — solid Badge·Tag (테마 공통, 4.5:1 이상) |
 | `--color-bg-disabled` | neutral-100 | 비활성 배경 |
 
 ## 테두리 (`--color-border-*`)
@@ -70,8 +75,8 @@ raw 팔레트(`core.css`) → **의미 토큰(`semantic.css`)** → 컴포넌트
 | `--color-border-strong` | neutral-300 | 강한 구분 |
 | `--color-border-hover` | neutral-300 | hover 테두리 |
 | `--color-border-inverse` | neutral-700 | 반전 테두리 |
-| `--color-border-input-default` / `-input-focus` | neutral-300 / brand-500 | 입력 컨트롤 테두리 |
-| `--color-border-focus` | brand-400 | 포커스 링 (offset과 함께 사용) |
+| `--color-border-input-default` / `-input-focus` | neutral-300 / brand-700 | 입력 컨트롤 테두리 (다크: focus brand-400) |
+| `--color-border-focus` | brand-700 (다크 brand-400) | 포커스 링 (offset과 함께 사용, 흰 배경 4.7:1 이상) |
 | `--color-border-disabled` | neutral-200 | 비활성 테두리 |
 | `--color-border-{brand,danger,info,success,warning}-default` | 각 계열 500 | 상태 강조 테두리 |
 | `--color-border-category-default` | purple-500 | 분류·태그 테두리 |
@@ -88,7 +93,7 @@ raw 팔레트(`core.css`) → **의미 토큰(`semantic.css`)** → 컴포넌트
 | `--color-interactive-primary-text` | neutral-900 | ⚠️ 밝은 브랜드 배경이라 텍스트는 다크 |
 | `--color-interactive-secondary-bg` / `-border` / `-text` | white / neutral-300 / neutral-900 | 아웃라인 버튼 |
 | `--color-interactive-ghost-text` / `-bg-hover` | neutral-700 / neutral-100 | 배경 없는 버튼 |
-| `--color-interactive-destructive-bg` / `-bg-hover` / `-text` | red-500 / red-600 / white | 파괴적 액션 |
+| `--color-interactive-destructive-bg` / `-bg-hover` / `-text` | red-600 / red-700 / white | 파괴적 액션 (다크 hover 도 red-700) |
 
 ## 표면 (`--token-color-surface-*`)
 
@@ -109,7 +114,7 @@ Tailwind `bg-surface-*` 유틸 호환용 표면 계층. neutral 은 `subtlest`(2
 |---|---|
 | `--color-icon-primary` / `-secondary` / `-tertiary` | text-primary / -secondary / -tertiary |
 | `--color-icon-disabled` / `-inverse` | text-disabled / -inverse |
-| `--color-icon-{brand,danger,success,warning,info}-default` | 각 계열 bg-default |
+| `--color-icon-{brand,danger,success,warning,info}-default` | 각 계열 bg-default (danger·success·warning 은 600) |
 | `--color-icon-{danger,warning,info}-muted` | 각 계열 300 (옅은 아이콘) |
 | `--color-icon-category-default` / `-hover` / `-muted` | purple-500 / -600 / -300 |
 
@@ -144,11 +149,15 @@ Tailwind `bg-surface-*` 유틸 호환용 표면 계층. neutral 은 `subtlest`(2
 `semantic.css` 는 `[data-theme="dark"]` 셀렉터로 text·bg·surface·border·icon 계열을 재정의한다. core 팔레트(raw hex)는 불변이고, semantic 토큰만 다크 값으로 재매핑된다. 소비 앱이 최상위 요소에 `data-theme="dark"` 를 지정하면 활성화된다.
 
 - 예: 라이트 `--color-bg-primary` = white → 다크 = neutral-900, `--color-text-primary` = neutral-900 → 다크 = neutral-25.
+- 다크 `bg-{brand,danger,success,warning,info}-subtle` 은 `color-mix(in oklab, <hue>-500 18%, neutral-900)`(brand `-subtle-hover` 는 26%), `border-*-subtle` 은 같은 방식 35%. 900 단계는 중간 톤 원색이라 다크 배경 위 글자가 2.3~2.6:1 로 미달해 이 방식으로 바꿨다.
+- `bg-*-strong`·`text-on-strong` 은 테마 공통(다크에서도 재정의하지 않음).
 - 시각 전시·라이트/다크 비교: Storybook `Docs/Design Tokens` 7절.
 
 ## 규칙
 
 - **raw hex/rgb 금지** — 반드시 semantic 토큰.
 - **core 팔레트 직접 참조 금지** — `--color-brand-500`이 아니라 `--color-bg-brand-default` 같은 의미 토큰 경유.
-- 밝은 브랜드 배경 위 텍스트는 항상 다크(`--color-interactive-primary-text`).
+- 밝은 브랜드 배경 위 텍스트는 항상 다크(`--color-interactive-primary-text`). 적용처: Button primary, Calendar 선택일, MonthPicker 선택월, FilterDropdown 개수 배지, SlideListBadge 선택, Badge·Tag solid 기본형.
+- 흰 글자를 올리는 채움은 `--color-bg-{danger,success,warning,info}-strong` + `--color-text-on-strong`.
+- 흰 배경 위 의미색 텍스트는 `text-*-default`(700). 채움·아이콘은 `bg-*-default`(600).
 - 장식용 그라디언트·글로우 남용 금지([principles.md](principles.md)).

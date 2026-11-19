@@ -24,13 +24,15 @@
 | `--color-text-inverse` | `white` |
 | `--color-text-brand-default` | `brand-700` (흰 배경 가독성용 딥 앰버) |
 | `--color-text-brand-hover` | `brand-800` |
-| `--color-text-danger-default` | `red-500` |
-| `--color-text-success-default` | `green-500` |
-| `--color-text-warning-default` | `orange-600` |
+| `--color-text-danger-default` | `red-700` |
+| `--color-text-success-default` | `green-700` |
+| `--color-text-warning-default` | `orange-700` |
 | `--color-text-info-default` | `blue-700` |
+| `--color-text-{danger,success,warning}-strong` | `red-800` / `green-800` / `orange-800` (subtle 배경 위 대비 확보용) |
+| `--color-text-on-strong` | `white` (`bg-*-strong` 채움 위 글자, 테마 공통) |
 | `--color-text-category-default` | `purple-600` |
 
-> 브랜드·상태·category 계열에는 `-hover` 변형도 있다(default보다 한 단계 진하게): `--color-text-{brand,danger,success,warning,info,category}-hover`.
+> 브랜드·상태·category 계열에는 `-hover` 변형도 있다(default보다 한 단계 진하게): `--color-text-{brand,danger,success,warning,info,category}-hover`. 상태색 hover 는 `-800`.
 
 ## Background
 
@@ -44,14 +46,15 @@
 | `--color-bg-brand-hover` | `brand-600` |
 | `--color-bg-brand-subtle` | `brand-50` |
 | `--color-bg-brand-subtle-hover` | `brand-100` |
-| `--color-bg-danger-default` | `red-500` |
+| `--color-bg-danger-default` | `red-600` (채움·아이콘 3:1 이상) |
 | `--color-bg-danger-subtle` | `red-50` |
-| `--color-bg-success-default` | `green-500` |
+| `--color-bg-success-default` | `green-600` |
 | `--color-bg-success-subtle` | `green-50` |
-| `--color-bg-warning-default` | `orange-500` |
+| `--color-bg-warning-default` | `orange-600` |
 | `--color-bg-warning-subtle` | `orange-50` |
 | `--color-bg-info-default` | `blue-500` |
 | `--color-bg-info-subtle` | `blue-50` |
+| `--color-bg-{danger,success,warning,info}-strong` | `red-700` / `green-700` / `orange-700` / `blue-700` (흰 글자 `text-on-strong` 을 올리는 solid Badge·Tag 채움, 테마 공통) |
 | `--color-bg-disabled` | `neutral-100` |
 
 ## Border
@@ -63,8 +66,8 @@
 | `--color-border-strong` | `neutral-300` |
 | `--color-border-hover` | `neutral-300` |
 | `--color-border-inverse` | `neutral-700` |
-| `--color-border-input-default` / `-input-focus` | `neutral-300` / `brand-500` |
-| `--color-border-focus` | `brand-400` (포커스 링 — offset과 함께 사용) |
+| `--color-border-input-default` / `-input-focus` | `neutral-300` / `brand-700` (다크 focus `brand-400`) |
+| `--color-border-focus` | `brand-700` (포커스 링 — offset과 함께 사용, 흰 배경 4.7:1 이상. 다크 `brand-400`) |
 | `--color-border-disabled` | `neutral-200` |
 | `--color-border-tertiary-default` / `-hover` | `neutral-200` / `neutral-300` |
 | `--color-border-{brand,danger,info,success,warning}-default` | 각 계열 `500` |
@@ -86,8 +89,8 @@
 | `--color-interactive-secondary-text` | `neutral-900` |
 | `--color-interactive-ghost-text` | `neutral-700` |
 | `--color-interactive-ghost-bg-hover` | `neutral-100` |
-| `--color-interactive-destructive-bg` | `red-500` |
-| `--color-interactive-destructive-bg-hover` | `red-600` |
+| `--color-interactive-destructive-bg` | `red-600` |
+| `--color-interactive-destructive-bg-hover` | `red-700` (다크도 `red-700`) |
 | `--color-interactive-destructive-text` | `white` |
 
 ## Icon
@@ -107,7 +110,7 @@
 | `--color-icon-brand-hover` | `bg-brand-hover` |
 | `--color-icon-danger-default` | `bg-danger-default` |
 | `--color-icon-danger-hover` | `interactive-destructive-bg-hover` |
-| `--color-icon-success-default` / `-hover` | `bg-success-default` / `green-600` |
+| `--color-icon-success-default` / `-hover` | `bg-success-default` (green-600) / `green-600` |
 | `--color-icon-{danger,warning,info}-muted` | 각 계열 `300` (옅은 아이콘) |
 | `--color-icon-{warning,info}-default` / `-hover` | 각 계열 bg-default / `600` |
 | `--color-icon-category-default` / `-hover` / `-muted` | `purple-500` / `-600` / `-300` |
@@ -153,6 +156,12 @@ neutral surface 는 `subtlest`(25) → `strongest`(400) 로 진해진다. 상태
 | `--color-bg-secondary` | `neutral-50` | `neutral-800` |
 | `--color-border-default` | `neutral-200` | `neutral-700` |
 | `--color-text-brand-default` | `brand-700` | `brand-300` |
+| `--color-border-focus` / `-input-focus` | `brand-700` | `brand-400` |
+| `--color-bg-{brand,danger,success,warning,info}-subtle` | 각 계열 `50` | `color-mix(in oklab, <계열>-500 18%, neutral-900)` |
+| `--color-bg-brand-subtle-hover` | `brand-100` | `color-mix(in oklab, brand-500 26%, neutral-900)` |
+| `--color-border-{brand,danger,info,success,warning}-subtle` | 각 계열 `200` | `color-mix(in oklab, <계열>-500 35%, neutral-900)` |
 | `--token-color-surface-strong` | `neutral-200` | `neutral-700` |
+
+> 다크 subtle 배경·테두리는 900 단계 대신 `color-mix` 로 500 계열을 어두운 바탕(neutral-900)에 섞는다. 900 단계가 중간 톤 원색이라 다크 Badge·Alert 글자 대비가 2.3~2.6:1 로 미달했기 때문이다. `bg-*-strong`·`text-on-strong` 은 다크에서 재정의하지 않는다(테마 공통).
 
 > 라이트/다크 나란히 비교: Storybook `Docs/Design Tokens` 7절. 전체 다크 매핑은 `semantic.css` `[data-theme="dark"]` 블록이 SoT.

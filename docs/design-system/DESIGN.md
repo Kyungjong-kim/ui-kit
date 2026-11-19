@@ -5,13 +5,13 @@ description: ui-kit의 비주얼 아이덴티티 — 코딩 에이전트가 한 
 colors:
   brand: "#fabc37"
   brand-hover: "#e6a828"
-  brand-text: "#c48e1a"
+  brand-text: "#8f6309"
   bg-primary: "#ffffff"
   bg-secondary: "#faf8f5"
   bg-tertiary: "#f2efe9"
   text-primary: "#141210"
   text-secondary: "#403c38"
-  text-tertiary: "#908880"
+  text-tertiary: "#776f67"
   text-disabled: "#b5afa5"
   text-inverse: "#ffffff"
   border-default: "#e5e1da"
@@ -102,11 +102,11 @@ ui-kit은 **골든 앰버(Golden Amber, `#fabc37`) 브랜드**를 축으로 한 
 
 브랜드(앰버)는 **행동·강조에만**, 정보 전달은 **중성 텍스트 3단계**로 한다.
 
-- **Brand / Action** — `brand #fabc37`(기본), hover `brand-600 #e6a828`. 주요 버튼·활성 상태 등 "누를 수 있는 것"에만 쓴다. ⚠️ 브랜드 500은 **밝은 색**이므로 그 위 텍스트는 반드시 다크(`--color-interactive-primary-text` = neutral-900). 흰 배경 위 브랜드 텍스트는 가독성을 위해 `--color-text-brand-default`(brand-700).
+- **Brand / Action** — `brand #fabc37`(기본), hover `brand-600 #e6a828`. 주요 버튼·활성 상태 등 "누를 수 있는 것"에만 쓴다. ⚠️ 브랜드 500은 **밝은 색**이므로 그 위 텍스트는 반드시 다크(`--color-interactive-primary-text` = neutral-900). 흰 배경 위 브랜드 텍스트는 가독성을 위해 `--color-text-brand-default`(brand-700 `#8f6309`).
 - **Surface** — `bg-primary #ffffff`(카드·패널), `bg-secondary`(neutral-50)·`bg-tertiary`(neutral-100)로 한 단계씩 낮춘다. 면은 색이 아니라 **명도 단계**로 위계를 만든다. Tailwind 유틸 호환 표면 계층은 `surface-{subtlest…strongest}`.
 - **Text (3단계)** — `text-primary`(neutral-900, 본문·제목), `text-secondary`(neutral-700, 보조·라벨), `text-tertiary`(neutral-500, 캡션·약한 보조). 그 외 `text-disabled`(neutral-400, 본문 금지), `text-inverse`(white, 어두운 면 위).
-- **Border** — `border-default`(neutral-200, 기본 구분선), `border-subtle`(neutral-100, 옅은 경계), `border-strong`(neutral-300, 강조). 입력은 `border-input-default`(neutral-300) / focus `border-input-focus`(brand-500).
-- **Status** — `success #28c76f`(green) · `warning #f97316`(orange) · `danger #ff4c51`(red) · `info #3b82f6`(blue). 의미 전달(상태·결과)에만 쓰고 장식으로 쓰지 않는다. 색만으로 의미를 전달하지 말고 아이콘·텍스트를 병기한다.
+- **Border** — `border-default`(neutral-200, 기본 구분선), `border-subtle`(neutral-100, 옅은 경계), `border-strong`(neutral-300, 강조). 입력은 `border-input-default`(neutral-300) / focus `border-input-focus`(라이트 brand-700, 다크 brand-400). 포커스 링 `border-focus`도 같다.
+- **Status** — `success #28c76f`(green) · `warning #f97316`(orange) · `danger #ff4c51`(red) · `info #3b82f6`(blue). 의미 전달(상태·결과)에만 쓰고 장식으로 쓰지 않는다. 위 hex 는 기준(500)이며 흰 배경 위 텍스트는 700 단계(`text-*-default`, AA 4.5:1 이상), 채움·아이콘은 600(`bg-*-default`, 3:1 이상)을 쓴다. 흰 글자를 올리는 채움(solid Badge·Tag)은 `bg-*-strong` + `text-on-strong`. 색만으로 의미를 전달하지 말고 아이콘·텍스트를 병기한다.
 - **Category** — `category #8b5cf6`(purple). 분류·태그 계열. 상태색·브랜드와 구분되는 중립 강조색.
 
 규칙: **raw hex/rgb 금지** — `[var(--color-text-primary)]`·`[var(--color-bg-brand-default)]`·`[var(--color-border-default)]` 같은 semantic 토큰만 참조한다(core 팔레트 `--color-brand-500` 직접 참조도 금지). 근거: [`foundation/color.md`](./foundation/color.md).
