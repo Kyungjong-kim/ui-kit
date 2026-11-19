@@ -1,6 +1,7 @@
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { XIcon } from "lucide-react";
 import type { ReactNode } from "react";
+import { useUiKitMessages } from "../../../locale";
 import { cn } from "../../../utils/cn";
 
 export interface FullScreenDialogProps {
@@ -39,6 +40,7 @@ export function FullScreenDialog({
   showClose = true,
   className,
 }: FullScreenDialogProps) {
+  const t = useUiKitMessages();
   return (
     <DialogPrimitive.Root open={open} onOpenChange={onOpenChange}>
       <DialogPrimitive.Portal>
@@ -55,13 +57,15 @@ export function FullScreenDialog({
                 {title}
               </DialogPrimitive.Title>
             ) : (
-              <DialogPrimitive.Title className="sr-only">전체화면 다이얼로그</DialogPrimitive.Title>
+              <DialogPrimitive.Title className="sr-only">
+                {t.navigation.fullScreenDialog}
+              </DialogPrimitive.Title>
             )}
             <div className="ml-auto flex items-center gap-group-sm">
               {headerActions}
               {showClose && (
                 <DialogPrimitive.Close
-                  aria-label="닫기"
+                  aria-label={t.common.close}
                   className="rounded-xs p-stack-xxs text-[var(--color-text-tertiary)] transition-colors hover:bg-[var(--color-bg-tertiary)] hover:text-[var(--color-text-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-border-focus)]"
                 >
                   <XIcon className="h-size-icon-sm w-size-icon-sm" />

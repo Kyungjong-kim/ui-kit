@@ -1,32 +1,34 @@
+import { type UiKitMessages, useUiKitMessages } from "../../../locale";
 import { cn } from "../../../utils/cn";
 import { Text } from "../../primitives/text";
 
-/** 상대시간 계산에 쓰는 단위별 임계값(초)과 라벨 포맷터 */
-const RELATIVE_THRESHOLDS: ReadonlyArray<{
-  limit: number;
-  divisor: number;
-  suffix: string;
-}> = [
-  { limit: 60, divisor: 1, suffix: "초 전" },
-  { limit: 3600, divisor: 60, suffix: "분 전" },
-  { limit: 86400, divisor: 3600, suffix: "시간 전" },
-  { limit: 2592000, divisor: 86400, suffix: "일 전" },
-  { limit: 31536000, divisor: 2592000, suffix: "개월 전" },
+type RelativeUnit = Exclude<keyof UiKitMessages["relativeTime"], "justNow">;
+
+/** 상대시간 계산에 쓰는 단위별 임계값(초)과 사전 키 */
+const RELATIVE_THRESHOLDS: ReadonlyArray<{ limit: number; divisor: number; unit: RelativeUnit }> = [
+  { limit: 60, divisor: 1, unit: "seconds" },
+  { limit: 3600, divisor: 60, unit: "minutes" },
+  { limit: 86400, divisor: 3600, unit: "hours" },
+  { limit: 2592000, divisor: 86400, unit: "days" },
+  { limit: 31536000, divisor: 2592000, unit: "months" },
 ];
 
-/** 두 시각의 차이를 한국어 상대시간 문자열로 변환한다. */
-function formatRelativeTime(target: Date, now: Date): string {
+/** 두 시각의 차이를 사전 문구의 상대시간 문자열로 변환한다. */
+function formatRelativeTime(
+  target: Date,
+  now: Date,
+  messages: UiKitMessages["relativeTime"],
+): string {
   const diffSeconds = Math.floor((now.getTime() - target.getTime()) / 1000);
 
-  if (diffSeconds < 0) return "방금 전";
-  if (diffSeconds < 5) return "방금 전";
+  if (diffSeconds < 5) return messages.justNow;
 
-  for (const { limit, divisor, suffix } of RELATIVE_THRESHOLDS) {
+  for (const { limit, divisor, unit } of RELATIVE_THRESHOLDS) {
     if (diffSeconds < limit) {
-      return `${Math.floor(diffSeconds / divisor)}${suffix}`;
+      return messages[unit](Math.floor(diffSeconds / divisor));
     }
   }
-  return `${Math.floor(diffSeconds / 31536000)}년 전`;
+  return messages.years(Math.floor(diffSeconds / 31536000));
 }
 
 /** Date를 `YYYY-MM-DD` 문자열로 포맷한다. */
@@ -73,6 +75,7 @@ export function DateTimeCell({
   now,
   className,
 }: DateTimeCellProps) {
+  const t = useUiKitMessages();
   const date = value instanceof Date ? value : new Date(value);
   const isValid = !Number.isNaN(date.getTime());
 
@@ -95,7 +98,7 @@ export function DateTimeCell({
         className={cn("text-[var(--color-text-secondary)] whitespace-nowrap", className)}
         title={showTime ? `${formatDate(date)} ${formatTime(date)}` : formatDate(date)}
       >
-        {formatRelativeTime(date, reference)}
+        {formatRelativeTime(date, reference, t.relativeTime)}
       </Text>
     );
   }

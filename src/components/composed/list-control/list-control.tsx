@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { useUiKitMessages } from "../../../locale";
 import { cn } from "../../../utils/cn";
 import { Text } from "../../primitives/text";
 
@@ -24,12 +25,14 @@ export interface ListControlProps {
  */
 export function ListControl({
   count,
-  countUnit = "건",
+  countUnit: countUnitProp,
   search,
   sort,
   filter,
   className,
 }: ListControlProps) {
+  const t = useUiKitMessages();
+  const countUnit = countUnitProp ?? t.table.countUnit;
   const shouldShowCount = typeof count === "number";
   const shouldShowActions = sort != null || filter != null;
 
@@ -41,7 +44,7 @@ export function ListControl({
             variant="typography-body-sm-medium"
             className="whitespace-nowrap text-[var(--color-text-secondary)]"
           >
-            총{" "}
+            {t.table.totalPrefix}{" "}
             <Text
               as="span"
               variant="typography-body-sm-bold"

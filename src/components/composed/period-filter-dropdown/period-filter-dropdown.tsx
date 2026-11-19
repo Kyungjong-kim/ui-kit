@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useUiKitMessages } from "../../../locale";
 import { cn } from "../../../utils/cn";
 import { Button } from "../../primitives/button";
 import { Icon } from "../../primitives/icon";
@@ -15,13 +16,6 @@ export interface PeriodValue {
   end?: Date;
 }
 
-const PRESET_LABELS: Record<PeriodPreset, string> = {
-  today: "오늘",
-  last7: "최근 7일",
-  last30: "최근 30일",
-  custom: "사용자 지정",
-};
-
 const PRESET_ORDER: PeriodPreset[] = ["today", "last7", "last30", "custom"];
 
 function formatDate(date: Date): string {
@@ -30,13 +24,13 @@ function formatDate(date: Date): string {
 }
 
 /** 트리거에 표시할 요약 텍스트 */
-function summarize(value: PeriodValue): string {
+function summarize(value: PeriodValue, labelOf: (preset: PeriodPreset) => string): string {
   if (value.preset === "custom") {
     if (value.start && value.end) return `${formatDate(value.start)} – ${formatDate(value.end)}`;
     if (value.start) return `${formatDate(value.start)} –`;
-    return PRESET_LABELS.custom;
+    return labelOf("custom");
   }
-  return PRESET_LABELS[value.preset];
+  return labelOf(value.preset);
 }
 
 export interface PeriodFilterDropdownProps {
@@ -69,12 +63,13 @@ export function PeriodFilterDropdown({
   disabled,
   className,
 }: PeriodFilterDropdownProps) {
+  const t = useUiKitMessages();
   const isControlled = value !== undefined;
   const [internal, setInternal] = React.useState<PeriodValue>(defaultValue);
   const current = isControlled ? value : internal;
   const [open, setOpen] = React.useState(false);
 
-  const labelOf = (p: PeriodPreset) => presetLabels?.[p] ?? PRESET_LABELS[p];
+  const labelOf = (p: PeriodPreset) => presetLabels?.[p] ?? t.period[p];
 
   const commit = (next: PeriodValue) => {
     if (!isControlled) setInternal(next);
@@ -117,7 +112,7 @@ export function PeriodFilterDropdown({
             size="sm"
             color={disabled ? "disabled" : "secondary"}
           />
-          <span>{summarize(current)}</span>
+          <span>{summarize(current, labelOf)}</span>
           <Icon
             name="chevronDownThickFalse"
             size="sm"
@@ -153,22 +148,22 @@ export function PeriodFilterDropdown({
           <div className="mt-group-md flex flex-col gap-group-sm border-t border-[var(--color-border-default)] pt-group-md">
             <div className="flex flex-col gap-group-xxs">
               <span className="typography-label-sm-medium text-[var(--color-text-tertiary)]">
-                시작일
+                {t.date.startLabel}
               </span>
               <DatePicker
                 value={current.start}
-                placeholder="시작일 선택"
+                placeholder={t.date.startDate}
                 maxDate={current.end}
                 onChange={(d) => commit({ preset: "custom", start: d, end: current.end })}
               />
             </div>
             <div className="flex flex-col gap-group-xxs">
               <span className="typography-label-sm-medium text-[var(--color-text-tertiary)]">
-                종료일
+                {t.date.endLabel}
               </span>
               <DatePicker
                 value={current.end}
-                placeholder="종료일 선택"
+                placeholder={t.date.endDate}
                 minDate={current.start}
                 onChange={(d) => commit({ preset: "custom", start: current.start, end: d })}
               />
@@ -180,7 +175,7 @@ export function PeriodFilterDropdown({
               disabled={!current.start || !current.end}
               onClick={() => setOpen(false)}
             >
-              적용
+              {t.common.apply}
             </Button>
           </div>
         )}

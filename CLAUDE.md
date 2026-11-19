@@ -130,7 +130,7 @@
 - [ ] pnpm test 통과
 - [ ] pnpm build 통과 (dist 갱신)
 - [ ] pnpm lint 통과 (biome)
-- [ ] pnpm check:ds 통과 — typography · tokens · catalog 3종 가드
+- [ ] pnpm check:ds 통과 — typography · tokens · copy · catalog 4종 가드
 - [ ] 컴포넌트 추가·제거·export 변경 시 `pnpm catalog` 재생성 + README 수치·목록 갱신
 ```
 
@@ -221,12 +221,13 @@
 - 테스트: `pnpm test` (vitest)
 - 린트·포맷: `pnpm lint` / `pnpm format` (biome)
 - 카탈로그: `pnpm catalog` — 소스에서 `docs/design-system/ds-catalog.json` 생성 (수정 금지)
-- DS 가드: `pnpm check:ds` = typography + tokens + catalog. **CI·릴리스 양쪽에서 차단.**
+- DS 가드: `pnpm check:ds` = typography + tokens + copy + catalog. **CI·릴리스 양쪽에서 차단.**
 
 | 가드 | 잡는 것 | 왜 빌드로는 못 잡나 |
 |---|---|---|
 | `check:typography` | 미정의 `typography-*` 클래스 | Tailwind v4 가 미정의 유틸을 **에러 없이 무시** — 폰트만 조용히 안 먹는다 |
 | `check:tokens` | raw hex·`rgb()` (차단) / core 팔레트 직접참조 (리포트) | 값이 유효한 CSS 라 아무도 실패하지 않는다. 테마 전환 시 그 요소만 안 바뀐다 |
+| `check:copy` | 컴포넌트 소스에 박힌 한글 UI 문구 (사전 `src/locale/messages.ts` 경유 강제) | 박힌 문구도 렌더·테스트는 정상이다. 앱이 언어를 바꿀 때만 그 자리만 안 바뀐다 |
 | `check:catalog` | 카탈로그·README 수치·컴포넌트 목록 드리프트 | 아무도 읽지 않는 수기 문서라 틀려도 신호가 없다 |
 
 - 문서 리포트: `pnpm check:docs` — **비차단.** 끊긴 링크·고아 스펙·스토리 누락·문서 미갱신을

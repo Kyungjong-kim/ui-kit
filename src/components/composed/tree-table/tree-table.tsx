@@ -1,5 +1,6 @@
 import { ChevronRightIcon } from "lucide-react";
 import { type ReactNode, useState } from "react";
+import { useUiKitMessages } from "../../../locale";
 import { cn } from "../../../utils/cn";
 
 /** 계층 구조를 가지는 트리 테이블 노드. children으로 중첩. */
@@ -29,10 +30,12 @@ export interface TreeTableProps<T extends TreeTableNode> {
 export function TreeTable<T extends TreeTableNode>({
   columns,
   data,
-  emptyMessage = "데이터가 없습니다",
+  emptyMessage: emptyMessageProp,
   defaultExpandedIds = [],
   className,
 }: TreeTableProps<T>) {
+  const t = useUiKitMessages();
+  const emptyMessage = emptyMessageProp ?? t.common.noData;
   const [expandedIds, setExpandedIds] = useState<Set<string>>(() => new Set(defaultExpandedIds));
 
   function toggle(id: string) {
@@ -70,7 +73,7 @@ export function TreeTable<T extends TreeTableNode>({
                     <button
                       type="button"
                       onClick={() => toggle(node.id)}
-                      aria-label={isExpanded ? "접기" : "펼치기"}
+                      aria-label={isExpanded ? t.table.collapse : t.table.expand}
                       aria-expanded={isExpanded}
                       className="flex h-5 w-5 items-center justify-center rounded text-[var(--color-text-tertiary)] hover:bg-[var(--color-bg-tertiary)]"
                     >

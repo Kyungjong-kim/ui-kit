@@ -1,5 +1,6 @@
 import * as AlertDialogPrimitive from "@radix-ui/react-alert-dialog";
 import type { ReactNode } from "react";
+import { useUiKitMessages } from "../../../locale";
 import { cn } from "../../../utils/cn";
 
 export interface AlertDialogProps {
@@ -22,13 +23,16 @@ export function AlertDialog({
   title,
   description,
   children,
-  cancelText = "취소",
-  actionText = "확인",
+  cancelText: cancelTextProp,
+  actionText: actionTextProp,
   destructive = false,
   onCancel,
   onAction,
   maxWidth = "md",
 }: AlertDialogProps) {
+  const t = useUiKitMessages();
+  const cancelText = cancelTextProp ?? t.common.cancel;
+  const actionText = actionTextProp ?? t.common.confirm;
   return (
     <AlertDialogPrimitive.Root open={open} onOpenChange={onOpenChange}>
       <AlertDialogPrimitive.Portal>

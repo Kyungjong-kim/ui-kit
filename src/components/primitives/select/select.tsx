@@ -3,6 +3,7 @@ import * as SelectPrimitive from "@radix-ui/react-select";
 import { cva, type VariantProps } from "class-variance-authority";
 import { CheckIcon, ChevronDownIcon } from "lucide-react";
 import { useId } from "react";
+import { useUiKitMessages } from "../../../locale";
 import { cn } from "../../../utils/cn";
 
 const triggerVariants = cva(
@@ -52,7 +53,7 @@ export function Select({
   options,
   value,
   onValueChange,
-  placeholder = "선택",
+  placeholder: placeholderProp,
   label,
   error,
   helperText,
@@ -60,6 +61,8 @@ export function Select({
   size = "md",
   className,
 }: SelectProps) {
+  const t = useUiKitMessages();
+  const placeholder = placeholderProp ?? t.common.select;
   const generatedId = useId();
 
   return (

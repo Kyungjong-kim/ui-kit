@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useUiKitMessages } from "../../../locale";
 import { cn } from "../../../utils/cn";
 import { Calendar } from "../../primitives/calendar";
 import { Icon } from "../../primitives/icon";
@@ -54,8 +55,10 @@ export function DateTimePicker({
   className,
   triggerClassName,
   formatDate = defaultFormatDate,
-  placeholder = "날짜·시간 선택",
+  placeholder: placeholderProp,
 }: DateTimePickerProps) {
+  const t = useUiKitMessages();
+  const placeholder = placeholderProp ?? t.date.dateTimePlaceholder;
   const [internalOpen, setInternalOpen] = useState(false);
   const [internalValue, setInternalValue] = useState<Date | undefined>(defaultValue);
 
@@ -144,7 +147,7 @@ export function DateTimePicker({
             type="number"
             min={0}
             max={23}
-            aria-label="시"
+            aria-label={t.date.hour}
             value={currentValue ? pad2(currentValue.getHours()) : ""}
             placeholder="00"
             onChange={(event) => handleTimeChange("hours", event.target.value)}
@@ -155,7 +158,7 @@ export function DateTimePicker({
             type="number"
             min={0}
             max={59}
-            aria-label="분"
+            aria-label={t.date.minute}
             value={currentValue ? pad2(currentValue.getMinutes()) : ""}
             placeholder="00"
             onChange={(event) => handleTimeChange("minutes", event.target.value)}

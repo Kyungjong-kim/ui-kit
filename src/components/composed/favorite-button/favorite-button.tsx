@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useUiKitMessages } from "../../../locale";
 import { IconButton, type IconButtonProps } from "../icon-button";
 
 export interface FavoriteButtonProps
@@ -23,9 +24,11 @@ export function FavoriteButton({
   defaultPressed = false,
   onPressedChange,
   onClick,
-  "aria-label": ariaLabel = "즐겨찾기",
+  "aria-label": ariaLabelProp,
   ...rest
 }: FavoriteButtonProps) {
+  const t = useUiKitMessages();
+  const ariaLabel = ariaLabelProp ?? t.common.favorite;
   const [internalPressed, setInternalPressed] = useState(defaultPressed);
   const isControlled = pressed !== undefined;
   const isPressed = isControlled ? pressed : internalPressed;

@@ -22,6 +22,8 @@
 | **export** | named export만 사용 (default export 금지) |
 | **타입** | `interface FooProps` 또는 `VariantProps<typeof fooVariants>` |
 | **className 결합** | `cn(...)` 유틸 (`src/utils/cn.ts`) 사용 — `clsx + twMerge` |
+| **기본 문구** | 컴포넌트 안 문구(라벨·aria-label·placeholder·빈 상태)는 `src/locale/messages.ts` 의 ko·en 사전에 넣고 `useUiKitMessages()` 로 읽는다. 바꿀 수 있는 문구는 prop 도 남긴다(`labelProp ?? t.section.key`). 소스에 한글을 박으면 `check:copy` 가 막는다 |
+| **접근성 연결** | 안내·오류 문구는 `aria-describedby`(`joinIds`)로, 오류 상태는 `aria-invalid` 로 컨트롤에 잇는다 |
 
 ---
 
