@@ -1,4 +1,5 @@
 import * as ProgressPrimitive from "@radix-ui/react-progress";
+import { useId } from "react";
 import { cn } from "../../../utils/cn";
 
 export interface ProgressProps {
@@ -21,13 +22,19 @@ export function Progress({
   const isIndeterminate = value == null;
   const safeMax = max > 0 ? max : 100;
   const percentage = isIndeterminate ? null : Math.min(100, Math.max(0, (value / safeMax) * 100));
+  // Radix 는 범위 밖 value 를 버리고 indeterminate 로 바꾼다 — 시각과 같은 값으로 잘라 넘긴다
+  const clampedValue = isIndeterminate ? null : Math.min(safeMax, Math.max(0, value));
+  const labelId = `${useId()}-label`;
 
   return (
     <div className={cn("flex w-full flex-col gap-group-xs", className)}>
       {(label || (showValue && !isIndeterminate)) && (
         <div className="flex items-center justify-between">
           {label && (
-            <span className="typography-label-md-medium text-[var(--color-text-primary)]">
+            <span
+              id={labelId}
+              className="typography-label-md-medium text-[var(--color-text-primary)]"
+            >
               {label}
             </span>
           )}
@@ -43,8 +50,9 @@ export function Progress({
           "relative w-full overflow-hidden rounded-full bg-[var(--color-bg-tertiary)]",
           size === "sm" ? "h-stack-xxs" : "h-stack-xs",
         )}
-        value={value ?? null}
-        max={max}
+        value={clampedValue}
+        max={safeMax}
+        aria-labelledby={label ? labelId : undefined}
       >
         <ProgressPrimitive.Indicator
           className={cn(
