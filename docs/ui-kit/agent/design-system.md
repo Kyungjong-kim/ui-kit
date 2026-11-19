@@ -50,10 +50,19 @@ src/styles/
 
 | 카테고리 | 패턴 | 예시 |
 |---|---|---|
-| **text** | `--color-text-{primary, secondary, tertiary, disabled, inverse, brand-default, brand-hover, danger-default, success-default, warning-default, info-default}` | `--color-text-primary` |
-| **bg** | `--color-bg-{primary, secondary, tertiary, inverse, brand-default, brand-hover, brand-subtle, danger-default, danger-subtle, success-default, success-subtle, warning-default, warning-subtle, info-default, info-subtle, disabled}` | `--color-bg-brand-default` |
+| **text** | `--color-text-{primary, secondary, tertiary, disabled, inverse, brand-default, brand-hover, danger-default, success-default, warning-default, info-default, on-strong}` | `--color-text-primary` |
+| **bg** | `--color-bg-{primary, secondary, tertiary, inverse, brand-default, brand-hover, brand-subtle, danger-default, danger-subtle, danger-strong, success-default, success-subtle, success-strong, warning-default, warning-subtle, warning-strong, info-default, info-subtle, info-strong, disabled}` | `--color-bg-brand-default` |
 | **border** | `--color-border-{default, strong, brand-default, danger-default, info-default, disabled, focus}` | `--color-border-default` |
 | **interactive** | `--color-interactive-{primary, secondary, ghost, destructive}-{bg, bg-hover, text, border}` | `--color-interactive-primary-bg` |
+
+**대비 규칙 (WCAG AA)**
+- 흰 배경 위 의미색 텍스트: `text-{danger,success,warning}-default` (core 700, hover·strong 은 800).
+- 채움·아이콘: `bg-{danger,success,warning}-default` (core 600, 3:1 이상).
+- **밝은 브랜드 노랑(`bg-brand-default`) 위 글자는 `--color-interactive-primary-text`(neutral-900)**. 흰 글자 금지. (Calendar 선택일·MonthPicker 선택월·FilterDropdown 개수 배지·SlideListBadge 선택·Badge/Tag solid 기본형)
+- 흰 글자를 올리는 채움(solid Badge·Tag)은 `bg-{danger,success,warning,info}-strong`(700, 테마 공통) + `text-on-strong`(white, 테마 공통).
+- 포커스: `border-focus`·`border-input-focus` 라이트 brand-700 / 다크 brand-400.
+- 다크 `bg-*-subtle`·`border-*-subtle` 은 `color-mix(in oklab, <hue>-500 18%|35%, neutral-900)` — 900 단계 직접 참조 금지.
+- 팔레트 600~900 은 명도를 벌려 재단계됨(25~500 불변). 값 정본은 `core.json`.
 
 **`index.css`의 `@theme inline` 블록은 Storybook dev 환경 전용. 컴포넌트 className은 항상 `[var(--...)]` 임의값 형태 사용 (라이브러리 이식성 보장 — 소비 앱이 `@theme inline` 미구성 시에도 동작).**
 
@@ -79,7 +88,7 @@ src/styles/
 const buttonVariants = cva("기본 공통 클래스", {
   variants: {
     variant: {
-      primary: "bg-[var(--color-bg-brand-default)] text-[var(--color-text-inverse)]",
+      primary: "bg-[var(--color-bg-brand-default)] text-[var(--color-interactive-primary-text)]",
       secondary: "bg-[var(--color-bg-primary)] border border-[var(--color-border-default)]",
       ghost: "hover:bg-[var(--color-bg-tertiary)]",
       destructive: "bg-[var(--color-bg-danger-default)] text-[var(--color-text-inverse)]",
@@ -129,3 +138,5 @@ const buttonVariants = cva("기본 공통 클래스", {
 | 위험 액션 배경 | `bg-[var(--color-bg-danger-default)]` |
 | 기본 보더 | `border-[var(--color-border-default)]` |
 | 포커스 보더 | `border-[var(--color-border-focus)]` |
+| 노랑 채움 위 글자 | `text-[var(--color-interactive-primary-text)]` |
+| solid 상태 채움 + 흰 글자 | `bg-[var(--color-bg-danger-strong)] text-[var(--color-text-on-strong)]` |
