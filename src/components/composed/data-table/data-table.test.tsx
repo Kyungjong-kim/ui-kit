@@ -108,6 +108,16 @@ describe("DataTable", () => {
     expect(screen.queryByText("데이터가 없습니다")).not.toBeInTheDocument();
   });
 
+  it("선택 열은 체크박스 폭만 차지한다 (다른 열과 폭을 나누지 않음)", () => {
+    render(<DataTable data={data} columns={columns} enableRowSelection />);
+    const selectAll = screen.getByRole("checkbox", { name: "전체 선택" });
+    expect(selectAll.closest("th")).toHaveClass("w-px");
+    const rowBox = screen.getAllByRole("checkbox", { name: "행 선택" })[0];
+    expect(rowBox.closest("td")).toHaveClass("w-px");
+    // 데이터 열은 영향 없음
+    expect(screen.getAllByRole("columnheader")[1]).not.toHaveClass("w-px");
+  });
+
   it("enableRowSelection이면 선택 체크박스를 렌더한다", () => {
     render(<DataTable data={data} columns={columns} enableRowSelection />);
     expect(screen.getByLabelText("전체 선택")).toBeInTheDocument();
