@@ -246,7 +246,7 @@ function CalendarDayButton({
       : "transparent";
 
   const textColor = isActive
-    ? "var(--token-color-text-inverse)"
+    ? "var(--color-interactive-primary-text)"
     : modifiers.outside && !modifiers.selected
       ? "var(--token-color-text-tertiary)"
       : "var(--token-color-text-primary)";

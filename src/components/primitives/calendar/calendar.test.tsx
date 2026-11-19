@@ -18,6 +18,16 @@ describe("Calendar", () => {
     expect(selectedBtn).toBeTruthy();
   });
 
+  it("선택된 날짜는 밝은 노랑 배경이라 어두운 글자를 쓴다", () => {
+    const selected = new Date(2026, 4, 8);
+    const { container } = render(
+      <Calendar mode="single" selected={selected} defaultMonth={selected} />,
+    );
+    const btn = container.querySelector("button[data-selected-single='true']") as HTMLElement;
+    expect(btn).not.toBeNull();
+    expect(btn.style.color).toBe("var(--color-interactive-primary-text)");
+  });
+
   it("날짜 버튼에 초점 표시 유틸이 react-day-picker className 에 덮이지 않고 남는다", () => {
     const { container } = render(<Calendar mode="single" />);
     const dayButton = container.querySelector("button[data-day]");

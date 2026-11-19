@@ -10,9 +10,9 @@
   --color-brand-400: #fcc83c;
   --color-brand-500: #fabc37;
   --color-brand-600: #e6a828;
-  --color-brand-700: #c48e1a;
-  --color-brand-800: #a07318;
-  --color-brand-900: #7a5812;
+  --color-brand-700: #8f6309;
+  --color-brand-800: #725009;
+  --color-brand-900: #563c08;
 
   /* Neutral — Warm Gray (앰버와 어울리는 따뜻한 그레이) */
   --color-neutral-25: #fdfcfb;
@@ -21,7 +21,7 @@
   --color-neutral-200: #e5e1da;
   --color-neutral-300: #d2cdc4;
   --color-neutral-400: #b5afa5;
-  --color-neutral-500: #908880;
+  --color-neutral-500: #776f67;
   --color-neutral-600: #635e58;
   --color-neutral-700: #403c38;
   --color-neutral-800: #272420;
@@ -35,10 +35,10 @@
   --color-red-300: #ff9497;
   --color-red-400: #ff7074;
   --color-red-500: #ff4c51;
-  --color-red-600: #e64449;
-  --color-red-700: #d94145;
-  --color-red-800: #cc3d41;
-  --color-red-900: #bf383d;
+  --color-red-600: #d93a3f;
+  --color-red-700: #b82e33;
+  --color-red-800: #962529;
+  --color-red-900: #741c20;
 
   /* Green (Success) */
   --color-green-25: #f2fbf7;
@@ -48,10 +48,10 @@
   --color-green-300: #7edda9;
   --color-green-400: #53d28c;
   --color-green-500: #28c76f;
-  --color-green-600: #24b364;
-  --color-green-700: #22a95e;
-  --color-green-800: #209f59;
-  --color-green-900: #1e9553;
+  --color-green-600: #1f9d57;
+  --color-green-700: #187f46;
+  --color-green-800: #136338;
+  --color-green-900: #0e4a2a;
 
   /* Orange (Warning — 브랜드가 골든/앰버라 노란색 대신 오렌지로 구분) */
   --color-orange-25: #fff8f0;
@@ -61,10 +61,10 @@
   --color-orange-300: #ffa640;
   --color-orange-400: #ff8f1a;
   --color-orange-500: #f97316;
-  --color-orange-600: #ea6c0e;
-  --color-orange-700: #c45c0c;
-  --color-orange-800: #9e4a0a;
-  --color-orange-900: #783908;
+  --color-orange-600: #d9620c;
+  --color-orange-700: #b44f0a;
+  --color-orange-800: #8f3f09;
+  --color-orange-900: #6b2f07;
 
   /* Blue (Info) */
   --color-blue-25: #f0f7ff;

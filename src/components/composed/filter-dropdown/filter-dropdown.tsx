@@ -103,7 +103,7 @@ export function FilterDropdown({
         >
           <span>{label}</span>
           {count > 0 && (
-            <span className="inline-flex min-w-size-icon-md items-center justify-center rounded-full bg-[var(--color-bg-brand-default)] px-inline-xs typography-label-sm-medium text-[var(--color-text-inverse)]">
+            <span className="inline-flex min-w-size-icon-md items-center justify-center rounded-full bg-[var(--color-bg-brand-default)] px-inline-xs typography-label-sm-medium text-[var(--color-interactive-primary-text)]">
               {count}
             </span>
           )}

@@ -18,6 +18,13 @@ describe("SlideListBadge", () => {
     expect(screen.getByText("1").className).toMatch(/bg-action-primary-default/);
   });
 
+  it("selected=true 는 밝은 노랑 배경이라 어두운 글자를 쓴다 (흰 글자 1.7:1 방지)", () => {
+    render(<SlideListBadge value={1} selected />);
+    const cls = screen.getByText("1").className;
+    expect(cls).toMatch(/color-interactive-primary-text/);
+    expect(cls).not.toMatch(/text-inverse/);
+  });
+
   it("selected=false(기본값)이면 unselected 클래스가 적용된다", () => {
     render(<SlideListBadge value={1} />);
     expect(screen.getByText("1").className).toMatch(/bg-surface-default/);
