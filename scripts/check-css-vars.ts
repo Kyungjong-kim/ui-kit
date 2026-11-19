@@ -87,7 +87,12 @@ for (const { file, text } of sources) {
       if (declared.has(name) || EXTERNAL_PREFIXES.some((prefix) => name.startsWith(prefix))) {
         continue;
       }
-      unknown.push({ file: relative(ROOT, file), line: index + 1, name, text: line.trim().slice(0, 120) });
+      unknown.push({
+        file: relative(ROOT, file),
+        line: index + 1,
+        name,
+        text: line.trim().slice(0, 120),
+      });
     }
   });
 }
