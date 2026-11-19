@@ -281,6 +281,18 @@
           "dark": "var(--color-brand-400)"
         },
         {
+          "name": "--color-border-input-hover",
+          "value": "var(--color-neutral-400)",
+          "dark": "var(--color-neutral-500)",
+          "commentBefore": "/* 입력 컨트롤 hover — default(300)보다 한 단계 진하게 */"
+        },
+        {
+          "name": "--color-focus-halo",
+          "value": "color-mix(in oklab, var(--color-brand-500) 30%, transparent)",
+          "dark": "color-mix(in oklab, var(--color-brand-400) 35%, transparent)",
+          "commentBefore": "/* 필드 초점 둘레 링 — 초점 표시는 border-input-focus 가 맡고 이 링은 보조 */"
+        },
+        {
           "name": "--color-border-brand-hover",
           "value": "var(--color-brand-600)",
           "dark": "var(--color-brand-400)",

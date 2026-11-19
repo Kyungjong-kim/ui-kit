@@ -138,6 +138,9 @@
   --color-action-tertiary-default: var(--token-color-action-tertiary-default);
   --color-action-tertiary-hover: var(--token-color-action-tertiary-hover);
 
+  /* font — font-sans 와 preflight 의 html 기본 글꼴이 이 스택을 쓴다 */
+  --font-sans: var(--token-font-family-sans);
+
   /* radius — rounded-sm=8px, rounded-md=12px, rounded-lg=16px 등 */
   --radius-xxs: var(--token-radius-xxs);
   --radius-xs: var(--token-radius-xs);

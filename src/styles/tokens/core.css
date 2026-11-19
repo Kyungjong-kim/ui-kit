@@ -181,6 +181,11 @@
   --token-shadow-default-xl:
     0 4px 8px -3px rgba(20, 18, 16, 0.1), 0 20px 48px -10px rgba(20, 18, 16, 0.2);
 
+  /* Font family — 글꼴 파일은 싣지 않는다. 소비 앱이 Pretendard 를 로드하면 쓰고, 없으면 시스템 한글 글꼴로 떨어진다. */
+  --token-font-family-sans:
+    "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+    "Noto Sans KR", system-ui, sans-serif;
+
   /* Typography — size·weight·line-height·letter-spacing */
   --token-typography-display-md-size: 32px;
   --token-typography-display-md-weight: 700;

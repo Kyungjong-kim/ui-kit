@@ -656,6 +656,15 @@
       ]
     },
     {
+      "comment": "/* Font family — 글꼴 파일은 싣지 않는다. 소비 앱이 Pretendard 를 로드하면 쓰고, 없으면 시스템 한글 글꼴로 떨어진다. */",
+      "tokens": [
+        {
+          "name": "--token-font-family-sans",
+          "value": "\n    \"Pretendard Variable\", Pretendard, -apple-system, BlinkMacSystemFont, \"Apple SD Gothic Neo\",\n    \"Noto Sans KR\", system-ui, sans-serif"
+        }
+      ]
+    },
+    {
       "comment": "/* Typography — size·weight·line-height·letter-spacing */",
       "tokens": [
         {
