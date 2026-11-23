@@ -5,14 +5,18 @@ import { extendTailwindMerge } from "tailwind-merge";
 // 등록한다. 미등록 시 tailwind-merge가 충돌로 인식하지 못해 `w-full` 등 소비자 측
 // override가 CSS 순서에 따라 무시된다(예: TagInput 내부 Input의 w-full).
 const isSizeToken = (value: string) => value.startsWith("size-");
+// typography-* (theme.css @utility) 는 글꼴 크기·굵기·줄간격 묶음이라 서로 충돌한다.
+// 미등록 시 Button size="lg" 처럼 base 의 md 와 함께 남아 CSS 순서로 md 가 이겼다.
+const isTypographyToken = (value: string) => /^[a-z]/.test(value);
 
-const twMerge = extendTailwindMerge({
+const twMerge = extendTailwindMerge<"typography">({
   extend: {
     classGroups: {
       w: [{ w: [isSizeToken] }],
       h: [{ h: [isSizeToken] }],
       "min-w": [{ "min-w": [isSizeToken] }],
       "min-h": [{ "min-h": [isSizeToken] }],
+      typography: [{ typography: [isTypographyToken] }],
     },
   },
 });

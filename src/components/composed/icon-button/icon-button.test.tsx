@@ -35,4 +35,36 @@ describe("IconButton", () => {
     render(<IconButton icon="x" aria-label="닫기" size="xs" />);
     expect(screen.getByRole("button").className).toMatch(/h-size-control-xxs/);
   });
+
+  it("기본(secondary)·ghost 아이콘은 흰색이 아니라 보이는 색을 쓴다", () => {
+    const { container, rerender } = render(<IconButton icon="x" aria-label="닫기" />);
+    expect((container.querySelector("svg") as SVGElement).style.color).toBe(
+      "var(--color-icon-secondary)",
+    );
+    rerender(<IconButton icon="x" variant="ghost" aria-label="닫기" />);
+    expect((container.querySelector("svg") as SVGElement).style.color).toBe(
+      "var(--color-icon-secondary)",
+    );
+  });
+
+  it("primary 는 노랑 위라 어두운 아이콘, danger 는 흰 아이콘", () => {
+    const { container, rerender } = render(
+      <IconButton icon="x" variant="primary" aria-label="추가" />,
+    );
+    expect((container.querySelector("svg") as SVGElement).style.color).toBe(
+      "var(--color-interactive-primary-text)",
+    );
+    rerender(<IconButton icon="x" variant="danger" aria-label="삭제" />);
+    expect((container.querySelector("svg") as SVGElement).style.color).toBe(
+      "var(--color-text-on-strong)",
+    );
+  });
+
+  it("square 는 필드와 같은 6px, outline 은 입력 테두리 토큰", () => {
+    render(<IconButton icon="x" appearance="outline" aria-label="설정" />);
+    const cls = screen.getByRole("button").className;
+    expect(cls).toMatch(/rounded-xs/);
+    expect(cls).toMatch(/color-border-input-default/);
+    expect(cls).not.toMatch(/text-white/);
+  });
 });

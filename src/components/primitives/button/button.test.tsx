@@ -74,4 +74,18 @@ describe("Button", () => {
     expect(notPrevented).toBe(false);
     expect(onClick).not.toHaveBeenCalled();
   });
+
+  it("size=lg 는 lg 글꼴만 갖는다 (base 의 md 가 남지 않음)", () => {
+    render(<Button size="lg">큰 버튼</Button>);
+    const cls = screen.getByRole("button").className;
+    expect(cls).toMatch(/typography-label-lg-medium/);
+    expect(cls).not.toMatch(/typography-label-md-medium/);
+  });
+
+  it("필드와 같은 6px 라운드, 그림자 없이 hairline (Warm Precision)", () => {
+    render(<Button variant="secondary">취소</Button>);
+    const cls = screen.getByRole("button").className;
+    expect(cls).toMatch(/rounded-xs/);
+    expect(cls).not.toMatch(/shadow-default/);
+  });
 });
