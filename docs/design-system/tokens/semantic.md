@@ -67,6 +67,7 @@
 | `--color-border-hover` | `neutral-300` |
 | `--color-border-inverse` | `neutral-700` |
 | `--color-border-input-default` / `-input-hover` / `-input-focus` | `neutral-300` / `neutral-400` / `brand-700` (다크 `neutral-600` / `neutral-500` / `brand-400`) — 필드 트리거(Input·Textarea·Select·Combobox 등)가 실제로 쓴다 |
+| `--color-border-control` | `neutral-400` (다크 `neutral-500`) — Checkbox·Radio·MultiSelect 체크 표시의 미선택 테두리 |
 | `--color-focus-halo` | `color-mix(in oklab, brand-500 30%, transparent)` (다크 `brand-400` 35%) — 필드 초점·열림 상태의 3px 둘레 링. 초점 표시는 `border-input-focus` 가 맡고 halo 는 보조 |
 | `--color-border-focus` | `brand-700` (포커스 링 — offset과 함께 사용, 흰 배경 4.7:1 이상. 다크 `brand-400`) |
 | `--color-border-disabled` | `neutral-200` |

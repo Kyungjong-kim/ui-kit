@@ -52,6 +52,10 @@ const columns: TableColumn<User>[] = [
 - `render`가 없는 컬럼은 `row[key]`를 그대로 렌더하며, 값이 `null`/`undefined`면 빈 셀이 된다.
 - 가로 스크롤: 루트가 `overflow-x-auto`라 좁은 뷰포트에서 테이블이 넘치면 가로 스크롤된다.
 
+## 스타일
+
+DataTable 규격과 같다 — 12px(`rounded-md`) 테두리 래퍼, 회색 헤더(`bg-secondary`), th `typography-label-sm-medium`·td `typography-body-sm-base`, 셀 `px-inline-lg py-stack-md`, 빈 상태 `py-stack-xl`.
+
 ## When to use
 
 - 정적 데이터를 표 형태로 단순 나열할 때.

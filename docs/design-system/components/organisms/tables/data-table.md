@@ -89,6 +89,10 @@ const columns: ColumnDef<User, unknown>[] = [
 - **행 선택**: `enableRowSelection`이면 맨 앞에 체크박스 컬럼이 주입된다. 헤더 체크박스는 전체 선택이며, 일부만 선택되면 `indeterminate` 상태가 된다. `getRowId`를 주면 데이터 재정렬·페이지 이동에도 선택이 안정적으로 유지된다.
 - **우선순위**: `loading` → 스켈레톤, 그다음 `data`가 비면 `emptyContent`(기본 `EmptyState`), 그 외 데이터 행.
 
+## 스타일
+
+12px(`rounded-md`) 테두리 래퍼, 회색 헤더(`bg-secondary`), th `typography-label-sm-medium`·td `typography-body-sm-base`, 셀 `px-inline-lg py-stack-md`, 빈 상태 `py-stack-xl`. 선택 행은 `bg-brand-subtle`로 표시해 hover 회색과 구분한다. Table·TreeTable 도 같은 규격이다.
+
 ## When to use
 
 - 정렬·페이지네이션·선택이 필요한 목록형 데이터 → `DataTable`.
