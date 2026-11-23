@@ -77,4 +77,17 @@ describe("RadioGroup", () => {
     );
     expect(screen.getByRole("radio", { name: "택배" })).toHaveAccessibleDescription("2~3일 소요");
   });
+
+  it("배경은 토큰(다크 대응), 미선택 테두리는 control 토큰, 선택 점은 노랑 위 어두운 색", () => {
+    const { container } = render(
+      <RadioGroup defaultValue="a">
+        <RadioGroupItem value="a" label="옵션 A" />
+      </RadioGroup>,
+    );
+    const radio = screen.getByRole("radio");
+    expect(radio.className).not.toMatch(/bg-white/);
+    expect(radio.className).toMatch(/border-\[var\(--color-border-control\)\]/);
+    const dot = container.querySelector('[data-state="checked"] div') as HTMLElement;
+    expect(dot.className).toMatch(/color-interactive-primary-text/);
+  });
 });

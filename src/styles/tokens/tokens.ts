@@ -137,6 +137,7 @@ export type ColorToken =
   | "--color-border-input-default"
   | "--color-border-input-focus"
   | "--color-border-input-hover"
+  | "--color-border-control"
   | "--color-focus-halo"
   | "--color-border-brand-hover"
   | "--color-border-brand-subtle"

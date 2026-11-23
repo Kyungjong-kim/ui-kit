@@ -11,15 +11,15 @@ const checkboxVariants = cva(
     "h-size-control-xxxs w-size-control-xxxs shrink-0 rounded-xxs border bg-[var(--color-bg-primary)] transition-[background-color,border-color,transform] duration-150",
     "hover:border-[var(--color-border-brand-default)] active:scale-90",
     "focus-ring",
-    "data-[state=checked]:bg-[var(--color-bg-brand-default)] data-[state=checked]:border-[var(--color-bg-brand-default)] data-[state=checked]:text-white",
-    "data-[state=indeterminate]:bg-[var(--color-bg-brand-default)] data-[state=indeterminate]:border-[var(--color-bg-brand-default)] data-[state=indeterminate]:text-white",
-    "disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:border-[var(--color-border-strong)]",
+    "data-[state=checked]:bg-[var(--color-bg-brand-default)] data-[state=checked]:border-[var(--color-bg-brand-default)] data-[state=checked]:text-[var(--color-interactive-primary-text)]",
+    "data-[state=indeterminate]:bg-[var(--color-bg-brand-default)] data-[state=indeterminate]:border-[var(--color-bg-brand-default)] data-[state=indeterminate]:text-[var(--color-interactive-primary-text)]",
+    "disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:border-[var(--color-border-control)]",
   ],
   {
     variants: {
       error: {
         true: "border-[var(--color-border-danger-default)]",
-        false: "border-[var(--color-border-strong)]",
+        false: "border-[var(--color-border-control)]",
       },
     },
     defaultVariants: { error: false },
