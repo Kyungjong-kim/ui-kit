@@ -32,7 +32,7 @@ export function DataItemsTable<T>({
     return (
       <div
         className={cn(
-          "flex items-center justify-center rounded-lg border border-[var(--color-border-default)] px-4 py-8 text-center text-sm text-[var(--color-text-tertiary)]",
+          "flex items-center justify-center rounded-md border border-[var(--color-border-default)] px-inline-lg py-stack-xl text-center typography-body-sm-base text-[var(--color-text-tertiary)]",
           className,
         )}
       >
@@ -43,19 +43,21 @@ export function DataItemsTable<T>({
 
   return (
     <div
-      className={cn("grid gap-4", className)}
+      className={cn("grid gap-group-lg", className)}
       style={{ gridTemplateColumns: `repeat(auto-fill, minmax(${minCardWidth}px, 1fr))` }}
     >
       {data.map((item, index) => (
         <div
           // biome-ignore lint/suspicious/noArrayIndexKey: 정적 카드 목록(재정렬 없음)
           key={index}
-          className="rounded-lg border border-[var(--color-border-default)] bg-[var(--color-bg-primary)] p-4"
+          className="rounded-md border border-[var(--color-border-default)] bg-[var(--color-bg-primary)] p-inline-lg"
         >
-          <dl className="grid grid-cols-[minmax(0,auto)_1fr] gap-x-4 gap-y-2 text-sm">
+          <dl className="grid grid-cols-[minmax(0,auto)_1fr] gap-x-group-lg gap-y-group-sm typography-body-sm-base">
             {fields.map((field) => (
               <div key={field.key} className="contents">
-                <dt className="font-medium text-[var(--color-text-secondary)]">{field.label}</dt>
+                <dt className="typography-label-sm-medium text-[var(--color-text-secondary)]">
+                  {field.label}
+                </dt>
                 <dd className="text-right text-[var(--color-text-primary)]">
                   {field.render
                     ? field.render(item, index)
