@@ -50,6 +50,9 @@ ui-kit는 React 디자인시스템 라이브러리이며 `dist/` 산출물을 �
 
 > **tsup external**: `react`, `react-dom`만 external. 나머지는 사용처가 자동으로 transitive dependency로 가져감.
 
+> **tree-shaking (#216)**: ESM 은 `src/index.ts` + 각 컴포넌트(`primitives`·`composed`·`templates` 아래 `index.ts`)를 entry 로 code splitting 한다(`dist/index.js` 는 chunk 를 다시 내보내는 얇은 파일). `package.json` `"sideEffects": ["**/*.css"]` 와 함께 소비 앱이 안 쓰는 컴포넌트 chunk 를 통째로 뺀다. 둘 중 하나만으로는 효과가 없다 — 단일 파일이면 최상위 `forwardRef`·`cva`·`displayName` 대입이 남고, sideEffects 가 없으면 chunk 를 지우지 못한다. 측정(Vite, react 제외): `Button` 만 1,477KB → 35KB. CJS 는 단일 `index.cjs` 유지, 타입은 `index.d.ts`·`index.d.cts` 하나씩. 공개 진입점은 루트(`.`)뿐이라 `dist/components/**` 는 내부 파일이다.
+> **새 컴포넌트 디렉토리**는 `index.ts` 만 있으면 entry 에 자동 포함된다(`tsup.config.ts` 가 디렉토리를 읽음). 최상위에서 실행되는 부수효과 코드(전역 등록 등)를 넣지 않는다 — sideEffects 선언과 어긋난다.
+
 ---
 
 ## 4. 디렉토리 구조
