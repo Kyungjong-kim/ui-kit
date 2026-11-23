@@ -65,4 +65,11 @@ describe("AlertDialog", () => {
     fireEvent.click(screen.getByRole("button", { name: "열기" }));
     expect(screen.getByRole("alertdialog")).toBeInTheDocument();
   });
+
+  it("12px 라운드 + hairline 테두리 (패널·카드와 같은 계열)", () => {
+    render(<AlertDialog open title="삭제 확인" onOpenChange={() => {}} />);
+    const dialog = screen.getByRole("alertdialog");
+    expect(dialog).toHaveClass("rounded-md", "border");
+    expect(dialog.className).not.toMatch(/rounded-lg/);
+  });
 });
