@@ -65,4 +65,12 @@ describe("Sheet", () => {
     fireEvent.click(screen.getByRole("button", { name: "열기" }));
     expect(screen.getByRole("dialog")).toBeInTheDocument();
   });
+
+  it("닫기 버튼은 Dialog 와 같은 focus-ring·hover 배경 (ring-offset 방식 아님)", () => {
+    render(<Sheet open title="패널" onOpenChange={() => {}} />);
+    const close = screen.getByRole("button", { name: "닫기" });
+    expect(close).toHaveClass("focus-ring", "rounded-xs");
+    expect(close.className).toMatch(/hover:bg-\[var\(--color-bg-tertiary\)\]/);
+    expect(close.className).not.toMatch(/focus:ring/);
+  });
 });

@@ -62,4 +62,14 @@ describe("NavFlyout", () => {
     await user.click(screen.getByText("비활성"));
     expect(onSelect).not.toHaveBeenCalled();
   });
+
+  it("패널 4px 여백, 항목 4px 라운드·focus-ring-inset (떠 있는 패널 규칙)", async () => {
+    const user = userEvent.setup();
+    render(<NavFlyout trigger={<button type="button">메뉴</button>} items={items} />);
+    await user.click(screen.getByText("메뉴"));
+    const item = screen.getByRole("menuitem", { name: /프로필/ });
+    expect(item).toHaveClass("rounded-xxs", "focus-ring-inset");
+    expect(item.className).not.toMatch(/focus-visible:outline-none/);
+    expect(item.closest("[data-radix-popper-content-wrapper] > *")).toHaveClass("p-stack-xs");
+  });
 });

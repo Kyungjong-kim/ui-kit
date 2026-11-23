@@ -52,4 +52,15 @@ describe("Dialog", () => {
     fireEvent.click(screen.getByRole("button", { name: "열기" }));
     expect(screen.getByRole("dialog")).toBeInTheDocument();
   });
+
+  it("12px 라운드 + hairline 테두리 (패널·카드와 같은 계열)", () => {
+    render(
+      <Dialog open title="확인" onOpenChange={() => {}}>
+        본문
+      </Dialog>,
+    );
+    const dialog = screen.getByRole("dialog");
+    expect(dialog).toHaveClass("rounded-md", "border");
+    expect(dialog.className).not.toMatch(/rounded-lg/);
+  });
 });
