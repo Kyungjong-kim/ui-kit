@@ -31,12 +31,15 @@
     "./theme": "./dist/theme.css",
     "./reduced-motion": "./dist/reduced-motion.css"
   },
+  "sideEffects": [
+    "**/*.css"
+  ],
   "files": [
     "dist"
   ],
   "scripts": {
     "dev": "tsup --watch",
-    "build": "tsup",
+    "build": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true })\" && tsup",
     "showcase": "vite showcase",
     "showcase:build": "vite build showcase",
     "tokens": "node --experimental-strip-types scripts/build-tokens.ts",
