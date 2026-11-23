@@ -180,6 +180,14 @@ develop               ← 개발 통합 (모든 feature PR 머지 대상)
 
 주요 변경을 여기 누적한다(세부 버전 릴리스는 changesets → `CHANGELOG.md`).
 
+### 2026-11-23 — 0.3.0: 대비·Warm Precision 시각 정제
+
+- **색 대비 WCAG AA** — core red·green·orange·brand 600~900 재단계, 의미색 텍스트·초점 고리·위험 버튼 대비 개선, 다크 상태 배경을 어두운 틴트로. 새 토큰 `bg-*-strong`·`text-on-strong`·`border-input-hover`·`focus-halo`·`border-control`
+- **Warm Precision(시각 변경)** — 글꼴 토큰 `--font-sans`(Pretendard 우선, 파일 미포함), 라운드 체계 옵션 4·컨트롤 6·패널 8·컨테이너 12px, 버튼·카드 그림자 제거, 선택 상태 연노랑으로 hover 와 구분, **Tabs 밑줄형**, Table·TreeTable 을 DataTable 규격으로, `Card` `shadow` 기본 `"none"`
+- **노랑 위 흰 글자 제거** — Badge·Tag solid, Calendar·MonthPicker 선택, Pagination, Checkbox·Radio·MultiSelect 체크 등
+- 버그 — 기본 IconButton 아이콘이 안 보임, Button `lg` 글꼴 14px(`cn` typography 병합), Calendar `captionLayout="dropdown"` 레이아웃, DataTable 선택 열 폭. 전체는 `CHANGELOG.md`
+- Storybook 라이트/다크 테마 툴바
+
 ### 2026-11-19 — 0.2.0: 접근성·로케일·가드
 
 - **기본 문구 로케일** — `UiKitLocaleProvider`(`ko`·`en`)·`useUiKitMessages`. MultiSelect·TagInput 영어 기본값이 한국어 사전으로 바뀜(동작 변경)

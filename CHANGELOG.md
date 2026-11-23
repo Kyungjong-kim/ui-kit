@@ -1,5 +1,50 @@
 # @kyungjong-kim/ui-kit
 
+## 0.3.0
+
+### Minor Changes
+
+- 3ad6cb3: 색 대비를 WCAG AA 기준으로 맞췄다. **시각 변경**: 상태색 텍스트·초점 고리·위험 버튼이 한 단계 진해지고, 다크 테마의 상태 배경이 어두운 틴트로 바뀐다.
+
+  - core 팔레트 red·green·orange·brand 의 600~900 을 다시 단계화했다(25~500 은 그대로). 기존 600~900 이 거의 같은 밝기라 의미색 텍스트가 흰 배경 대비 2.2~3.3:1 이었다. `neutral-500` 도 4.5:1 이 되도록 조금 진해졌다(`text-tertiary`).
+  - `text-{danger,success,warning}-default` 는 700, `-strong` 은 800, `bg-{danger,success,warning}-default` 는 600 을 가리킨다. 위험 버튼(`interactive-destructive-bg`) 흰 글자 대비 3.3 → 4.5:1.
+  - 초점 고리(`--color-border-focus`)·입력 초점 테두리가 라이트에서 `brand-700` 이다(흰 배경 1.6 → 5.3:1). 다크는 `brand-400` 그대로.
+  - 다크 테마의 `bg-*-subtle`·`border-*-subtle` 이 중간 톤 원색(900) 대신 `color-mix(in oklab, …)` 어두운 틴트다. 다크 Badge·Alert 글자 대비 2.3 → 6:1 이상.
+  - 새 토큰 `--color-bg-{danger,success,warning,info}-strong`·`--color-text-on-strong`: 흰 글자를 올리는 채움용. `Badge`·`Tag` 의 `appearance="solid"` 상태색이 이 토큰을 쓴다.
+  - 밝은 브랜드 노랑 위 글자를 어둡게 바꿨다(흰 글자 1.7:1): `Badge`·`Tag` solid 기본형, `Calendar` 선택일, `MonthPicker` 선택월, `FilterDropdown` 개수 배지, `SlideListBadge` 선택 상태.
+
+- a55ff4a: Atoms·Organisms 를 Warm Precision 규격으로 맞추고 버그 2건을 고쳤다. **시각 변경**: 버튼·카드·표·대화상자의 라운드·그림자·여백이 바뀐다.
+
+  버그
+
+  - `IconButton` 기본(secondary)·ghost 아이콘이 흰색이라 흰 배경에서 보이지 않던 문제. primary 는 노랑 위 어두운 아이콘, danger 는 흰 아이콘, 나머지는 secondary 색을 쓴다.
+  - `Button size="lg"` 글꼴이 md(14px)로 렌더되던 문제. `cn` 이 `typography-*` 유틸끼리 충돌로 처리한다(소비자가 className 으로 넘긴 typography 도 이제 덮어쓴다).
+
+  규격
+
+  - 라운드 체계: 옵션 4px · 컨트롤 6px(Button·IconButton·SelectButton 8 → 6) · 떠 있는 패널 8px · 컨테이너 12px(Card 계열·표·Dialog 16 → 12).
+  - Button·Card 계열의 기본 그림자를 빼고 hairline 테두리만 둔다. `Card` 의 `shadow` 기본값이 `"sm"` → `"none"`.
+  - 카드 여백 20px 통일(Card 24·VersionInfoCard 16·StatCard·MetricCard raw 값 → 20). 지표 값 tabular 숫자.
+  - Table·TreeTable 이 DataTable 과 같은 규격(테두리 래퍼·회색 헤더·토큰 여백·typography). DataTable 선택 행은 연노랑으로 hover 와 구분.
+  - 새 토큰 `--color-border-control`: Checkbox·Radio 미선택 테두리를 한 단계 진하게. 노랑 위 체크·점은 어두운 색.
+  - SelectButton 선택은 연노랑, Dialog·AlertDialog 테두리, Sheet 닫기 버튼 초점·hover, NavFlyout 패널 여백·항목 라운드·초점.
+  - Popover·LinkButton 의 utility 형태 토큰을 `[var(--…)]` 로, Progress 채움 단색, Skeleton 기본 라운드 8px.
+
+- 26f361c: Molecule 시각 정제(Warm Precision). **시각 변경**: 필드·목록·Tabs·SegmentedControl·Pagination 의 모양이 바뀐다. 공개 API 변화는 없다.
+
+  - 글꼴 토큰 `--token-font-family-sans`(Pretendard → 시스템 한글 글꼴)를 `--font-sans` 로 노출한다. 글꼴 파일은 싣지 않으니 Pretendard 를 쓰려면 소비 앱에서 로드한다(없으면 Apple SD Gothic Neo·Noto Sans KR 등으로 떨어진다).
+  - 필드(Input·Textarea·Select·Combobox·SearchableSelect·MultiSelect, 필터 트리거): 6px 라운드, 정의만 있던 `border-input-default`·`border-input-focus` 사용, 새 `border-input-hover`. 초점은 `ring-offset` 링 대신 입력 초점 테두리 + 새 `--color-focus-halo` 3px 링.
+  - 떠 있는 패널은 8px 라운드로 통일(DropdownMenu·Popover 12 → 8), 목록 안쪽 여백 4px, 옵션 4px 라운드. 선택 옵션은 브랜드 연노랑 배경 + 체크로 hover(회색)와 구분한다.
+  - **Tabs·IconTabs 가 밑줄형**이 된다(활성 탭 앰버 밑줄). 알약형 전환 UI 는 SegmentedControl 을 쓴다.
+  - SegmentedControl 트랙에 테두리, 선택 칸은 그림자 대신 입력 테두리.
+  - Pagination 칸 36 → 32px·6px·tabular 숫자, 이전·다음은 테두리 버튼.
+  - 입력 계열 오류 문구 앞에 장식용 경고 아이콘(색 외의 단서).
+
+### Patch Changes
+
+- f23157d: - `Calendar` `captionLayout="dropdown"` 레이아웃을 고쳤다. 연·월 라벨이 두 번 보이고 이전·다음 버튼이 세로로 쌓이던 문제(기본 스타일시트 없이 렌더). 이제 네이티브 select 가 라벨 위에 투명하게 겹치고, 이동 버튼은 캡션 줄 양끝에 놓인다.
+  - `DataTable` 선택(체크박스) 열이 체크박스 폭만 차지한다. 전에는 다른 열과 폭을 나눠 체크박스와 첫 열 사이가 크게 벌어졌다.
+
 ## 0.2.0
 
 ### Minor Changes
