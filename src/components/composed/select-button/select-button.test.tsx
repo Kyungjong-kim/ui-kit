@@ -37,4 +37,12 @@ describe("SelectButton", () => {
     render(<SelectButton disabled>필터</SelectButton>);
     expect(screen.getByRole("button")).toBeDisabled();
   });
+
+  it("선택 상태는 연노랑 배경, 테두리는 입력 테두리 토큰·6px (Warm Precision)", () => {
+    render(<SelectButton selected>최근 7일</SelectButton>);
+    const cls = screen.getByRole("button").className;
+    expect(cls).toMatch(/color-bg-brand-subtle/);
+    expect(cls).toMatch(/color-border-input-default/);
+    expect(cls).toMatch(/rounded-xs/);
+  });
 });

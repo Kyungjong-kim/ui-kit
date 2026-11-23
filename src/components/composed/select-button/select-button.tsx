@@ -37,13 +37,13 @@ export function SelectButton({
   const outlineClassName = disabled
     ? "bg-transparent border border-[var(--color-border-disabled)]"
     : isSelected
-      ? "bg-[var(--color-bg-tertiary)] border border-[var(--color-border-default)] hover:bg-[var(--color-interactive-ghost-bg-hover)] hover:border-[var(--color-border-default)]"
-      : "bg-transparent border border-[var(--color-border-default)] hover:bg-[var(--color-interactive-ghost-bg-hover)] hover:border-[var(--color-border-default)]";
+      ? "bg-[var(--color-bg-brand-subtle)] border border-[var(--color-border-input-default)] hover:bg-[var(--color-bg-brand-subtle-hover)]"
+      : "bg-transparent border border-[var(--color-border-input-default)] hover:bg-[var(--color-interactive-ghost-bg-hover)] hover:border-[var(--color-border-input-hover)]";
 
   const ghostClassName = disabled
     ? "bg-transparent"
     : isSelected
-      ? "bg-[var(--color-bg-tertiary)] hover:bg-[var(--color-interactive-ghost-bg-hover)]"
+      ? "bg-[var(--color-bg-brand-subtle)] hover:bg-[var(--color-bg-brand-subtle-hover)]"
       : "bg-transparent hover:bg-[var(--color-interactive-ghost-bg-hover)]";
 
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
@@ -61,7 +61,7 @@ export function SelectButton({
       aria-pressed={isSelected}
       disabled={disabled}
       className={cn(
-        "inline-flex items-center justify-center gap-group-xs rounded-sm h-size-control-sm px-inline-md typography-label-sm-medium transition-colors",
+        "inline-flex items-center justify-center gap-group-xs rounded-xs h-size-control-sm px-inline-md typography-label-sm-medium transition-colors",
         "focus-ring",
         "disabled:pointer-events-none disabled:opacity-50",
         appearance === "ghost" ? ghostClassName : outlineClassName,
