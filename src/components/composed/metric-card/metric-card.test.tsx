@@ -25,4 +25,13 @@ describe("MetricCard", () => {
     const trend = screen.getByText("3%");
     expect(trend.className).toMatch(/danger/);
   });
+
+  it("카드 계열 공통 규격: 12px 라운드·hairline·그림자 없음·20px 여백 (Warm Precision)", () => {
+    const { container } = render(<MetricCard label="활성 사용자" value="1,204" />);
+    const root = container.firstElementChild as HTMLElement;
+    expect(root).toHaveClass("rounded-md");
+    expect(root.className).not.toMatch(/rounded-lg|shadow-default/);
+    expect(root).toHaveClass("p-inline-xl");
+    expect(screen.getByText("1,204").className).toMatch(/tabular-nums/);
+  });
 });
