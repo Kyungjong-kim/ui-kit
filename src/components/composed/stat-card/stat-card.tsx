@@ -101,7 +101,7 @@ export function StatCard({
     <section
       aria-label={label}
       className={cn(
-        "flex flex-col gap-2 rounded-lg border border-[var(--color-border-default)] bg-[var(--color-bg-primary)] px-5 py-4 shadow-default-sm",
+        "flex flex-col gap-2 rounded-md border border-[var(--color-border-default)] bg-[var(--color-bg-primary)] p-inline-xl",
         className,
       )}
     >
@@ -117,11 +117,12 @@ export function StatCard({
       <div className="flex items-end gap-1 pb-1">
         <Text
           variant="typography-display-sm"
-          className={
+          className={cn(
+            "tabular-nums",
             tone === "danger"
               ? "text-[var(--color-text-danger-default)]"
-              : "text-[var(--color-text-primary)]"
-          }
+              : "text-[var(--color-text-primary)]",
+          )}
         >
           {value}
         </Text>

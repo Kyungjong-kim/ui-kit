@@ -55,14 +55,16 @@ export function MetricCard({ className, label, value, unit, trend, ...props }: M
   return (
     <div
       className={cn(
-        "flex flex-col gap-1 rounded-lg border border-[var(--color-border-default)] bg-[var(--color-bg-primary)] p-5 shadow-default-sm transition-shadow",
+        "flex flex-col gap-1 rounded-md border border-[var(--color-border-default)] bg-[var(--color-bg-primary)] p-inline-xl",
         className,
       )}
       {...props}
     >
       <span className="typography-label-sm-medium text-[var(--color-text-secondary)]">{label}</span>
       <div className="flex items-baseline gap-1.5">
-        <span className="typography-display-sm text-[var(--color-text-primary)]">{value}</span>
+        <span className="typography-display-sm tabular-nums text-[var(--color-text-primary)]">
+          {value}
+        </span>
         {unit && (
           <span className="typography-label-md-medium text-[var(--color-text-tertiary)]">
             {unit}

@@ -33,7 +33,7 @@ export function VersionInfoCard({
   return (
     <div
       className={cn(
-        "flex flex-col gap-stack-md rounded-lg border border-[var(--color-border-default)] bg-[var(--color-bg-primary)] px-inline-lg py-stack-lg",
+        "flex flex-col gap-stack-md rounded-md border border-[var(--color-border-default)] bg-[var(--color-bg-primary)] p-inline-xl",
         className,
       )}
       {...props}

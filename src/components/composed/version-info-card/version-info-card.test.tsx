@@ -40,4 +40,12 @@ describe("VersionInfoCard", () => {
     const { container } = render(<VersionInfoCard version="v2.4.1" />);
     expect(container.querySelector("dl")).not.toBeInTheDocument();
   });
+
+  it("카드 계열 공통 규격: 12px 라운드·hairline·그림자 없음·20px 여백 (Warm Precision)", () => {
+    const { container } = render(<VersionInfoCard version="v2.4.1" />);
+    const root = container.firstElementChild as HTMLElement;
+    expect(root).toHaveClass("rounded-md");
+    expect(root.className).not.toMatch(/rounded-lg|shadow-default/);
+    expect(root).toHaveClass("p-inline-xl");
+  });
 });

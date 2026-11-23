@@ -38,4 +38,15 @@ describe("StatCard", () => {
     expect(bar).not.toBeNull();
     expect(bar.style.width).toBe("100%");
   });
+
+  it("카드 계열 공통 규격: 12px 라운드·hairline·그림자 없음·20px 여백 (Warm Precision)", () => {
+    const { container } = render(
+      <StatCard label="처리량" tone="success" statusLabel="정상" value={1234} unit="건" />,
+    );
+    const root = container.firstElementChild as HTMLElement;
+    expect(root).toHaveClass("rounded-md");
+    expect(root.className).not.toMatch(/rounded-lg|shadow-default/);
+    expect(root).toHaveClass("p-inline-xl");
+    expect(screen.getByText("1234").className).toMatch(/tabular-nums/);
+  });
 });
