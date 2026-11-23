@@ -47,4 +47,10 @@ describe("Progress", () => {
     render(<Progress value={30} label="업로드" />);
     expect(screen.getByRole("progressbar", { name: "업로드" })).toBeInTheDocument();
   });
+
+  it("채움은 그라데이션 없이 브랜드 단색", () => {
+    const { container } = render(<Progress value={50} />);
+    expect(container.innerHTML).not.toMatch(/gradient/);
+    expect(container.innerHTML).toMatch(/bg-\[var\(--color-bg-brand-default\)\]/);
+  });
 });

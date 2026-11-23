@@ -17,4 +17,9 @@ describe("Skeleton", () => {
     const { container } = render(<Skeleton className="w-32 h-4" />);
     expect(container.firstChild).toHaveClass("w-32", "h-4");
   });
+
+  it("기본 라운드는 8px(rounded-sm) — 카드 12px 안에서 겹쳐 보이지 않게", () => {
+    const { container } = render(<Skeleton />);
+    expect(container.firstChild).toHaveClass("rounded-sm");
+  });
 });
