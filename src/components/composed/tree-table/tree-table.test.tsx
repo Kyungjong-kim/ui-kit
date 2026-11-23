@@ -54,4 +54,16 @@ describe("TreeTable", () => {
     render(<TreeTable columns={columns} data={[]} emptyMessage="항목 없음" />);
     expect(screen.getByText("항목 없음")).toBeInTheDocument();
   });
+
+  it("DataTable 과 같은 규격: 테두리 12px 래퍼·회색 헤더·토큰 여백·typography (raw text-sm·px-4 없음)", () => {
+    const { container } = render(<TreeTable columns={columns} data={data} />);
+    const wrapper = container.firstElementChild as HTMLElement;
+    expect(wrapper).toHaveClass("rounded-md", "border");
+    const th = container.querySelector("th") as HTMLElement;
+    expect(th).toHaveClass("typography-label-sm-medium", "px-inline-lg", "py-stack-md");
+    expect(th.closest("tr")?.className).toMatch(/color-bg-secondary/);
+    const td = container.querySelector("td") as HTMLElement;
+    expect(td).toHaveClass("typography-body-sm-base", "px-inline-lg");
+    expect(container.innerHTML).not.toMatch(/text-sm|px-4|font-semibold/);
+  });
 });

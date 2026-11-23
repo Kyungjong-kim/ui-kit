@@ -132,7 +132,7 @@ export function DataTable<TData>({
 
   return (
     <div className={cn("flex w-full flex-col gap-group-md", className)}>
-      <div className="w-full overflow-x-auto rounded-lg border border-[var(--color-border-default)]">
+      <div className="w-full overflow-x-auto rounded-md border border-[var(--color-border-default)]">
         <table className="w-full border-collapse text-left">
           <thead className="bg-[var(--color-bg-secondary)]">
             {table.getHeaderGroups().map((headerGroup) => (
@@ -206,7 +206,7 @@ export function DataTable<TData>({
                 <tr
                   key={row.id}
                   data-state={row.getIsSelected() ? "selected" : undefined}
-                  className="border-b border-[var(--color-border-default)] transition-colors last:border-b-0 hover:bg-[var(--color-bg-secondary)] data-[state=selected]:bg-[var(--color-bg-secondary)]"
+                  className="border-b border-[var(--color-border-default)] transition-colors last:border-b-0 hover:bg-[var(--color-bg-secondary)] data-[state=selected]:bg-[var(--color-bg-brand-subtle)]"
                 >
                   {row.getVisibleCells().map((cell) => (
                     <td

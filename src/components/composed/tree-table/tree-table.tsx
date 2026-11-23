@@ -62,7 +62,10 @@ export function TreeTable<T extends TreeTableNode>({
           {columns.map((column, columnIndex) => (
             <td
               key={column.key}
-              className={cn("px-4 py-3 text-[var(--color-text-primary)]", column.className)}
+              className={cn(
+                "px-inline-lg py-stack-md typography-body-sm-base text-[var(--color-text-primary)]",
+                column.className,
+              )}
             >
               {columnIndex === 0 ? (
                 <span
@@ -75,14 +78,17 @@ export function TreeTable<T extends TreeTableNode>({
                       onClick={() => toggle(node.id)}
                       aria-label={isExpanded ? t.table.collapse : t.table.expand}
                       aria-expanded={isExpanded}
-                      className="focus-ring flex h-5 w-5 items-center justify-center rounded text-[var(--color-text-tertiary)] hover:bg-[var(--color-bg-tertiary)]"
+                      className="focus-ring flex h-size-control-xxxs w-size-control-xxxs items-center justify-center rounded-xxs text-[var(--color-text-tertiary)] hover:bg-[var(--color-bg-tertiary)]"
                     >
                       <ChevronRightIcon
-                        className={cn("h-4 w-4 transition-transform", isExpanded && "rotate-90")}
+                        className={cn(
+                          "h-size-icon-sm w-size-icon-sm transition-transform",
+                          isExpanded && "rotate-90",
+                        )}
                       />
                     </button>
                   ) : (
-                    <span className="inline-block h-5 w-5 shrink-0" />
+                    <span className="inline-block h-size-control-xxxs w-size-control-xxxs shrink-0" />
                   )}
                   <span>
                     {column.render
@@ -108,15 +114,20 @@ export function TreeTable<T extends TreeTableNode>({
   }
 
   return (
-    <div className={cn("w-full overflow-x-auto", className)}>
-      <table className="w-full border-collapse text-sm">
+    <div
+      className={cn(
+        "w-full overflow-x-auto rounded-md border border-[var(--color-border-default)]",
+        className,
+      )}
+    >
+      <table className="w-full border-collapse text-left">
         <thead>
-          <tr className="border-b border-[var(--color-border-default)]">
+          <tr className="border-b border-[var(--color-border-default)] bg-[var(--color-bg-secondary)]">
             {columns.map((column) => (
               <th
                 key={column.key}
                 className={cn(
-                  "px-4 py-3 text-left font-semibold text-[var(--color-text-secondary)]",
+                  "px-inline-lg py-stack-md typography-label-sm-medium text-[var(--color-text-secondary)]",
                   column.className,
                 )}
               >
@@ -130,7 +141,7 @@ export function TreeTable<T extends TreeTableNode>({
             <tr>
               <td
                 colSpan={columns.length}
-                className="px-4 py-8 text-center text-[var(--color-text-tertiary)]"
+                className="px-inline-lg py-stack-xl text-center typography-body-sm-base text-[var(--color-text-tertiary)]"
               >
                 {emptyMessage}
               </td>

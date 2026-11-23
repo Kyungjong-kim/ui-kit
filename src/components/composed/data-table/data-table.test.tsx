@@ -153,4 +153,11 @@ describe("DataTable", () => {
     fireEvent.click(screen.getByLabelText("전체 선택"));
     expect(onChange).toHaveBeenLastCalledWith(data);
   });
+
+  it("선택 행은 hover(회색)와 다른 연노랑, 래퍼는 12px (Warm Precision)", () => {
+    const { container } = render(<DataTable data={data} columns={columns} enableRowSelection />);
+    expect(container.querySelector(".overflow-x-auto")).toHaveClass("rounded-md");
+    const row = screen.getAllByRole("row")[1];
+    expect(row.className).toMatch(/data-\[state=selected\]:bg-\[var\(--color-bg-brand-subtle\)\]/);
+  });
 });
