@@ -143,4 +143,12 @@ describe("MultiSelect", () => {
     const helper = screen.getByText("필수 항목입니다.");
     expect(helper.querySelector("svg[aria-hidden='true']")).not.toBeNull();
   });
+
+  it("선택된 항목의 체크 표시는 노랑 위 어두운 색 (흰색 1.7:1 방지)", async () => {
+    render(<MultiSelect options={options} value={["a"]} onValueChange={() => {}} />);
+    await userEvent.click(screen.getByRole("combobox"));
+    const svgs = [...document.querySelectorAll('[data-icon="checkThickTrue"] svg')] as SVGElement[];
+    expect(svgs.length).toBeGreaterThan(0);
+    for (const svg of svgs) expect(svg.style.color).toBe("var(--color-interactive-primary-text)");
+  });
 });

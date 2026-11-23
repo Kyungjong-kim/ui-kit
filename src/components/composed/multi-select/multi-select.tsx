@@ -59,13 +59,21 @@ function CheckVisual({
           ? "bg-[var(--color-bg-disabled)] border-[var(--color-border-disabled)]"
           : active
             ? "bg-[var(--color-bg-brand-default)] border-[var(--color-bg-brand-default)]"
-            : "bg-[var(--color-bg-primary)] border-[var(--color-border-strong)]",
+            : "bg-[var(--color-bg-primary)] border-[var(--color-border-control)]",
       )}
     >
       {indeterminate ? (
-        <Icon name="minus" size="xs" color={disabled ? "disabled" : "inverse"} />
+        <Icon
+          name="minus"
+          size="xs"
+          color={disabled ? "disabled" : "var(--color-interactive-primary-text)"}
+        />
       ) : checked ? (
-        <Icon name="checkThickTrue" size="xs" color={disabled ? "disabled" : "inverse"} />
+        <Icon
+          name="checkThickTrue"
+          size="xs"
+          color={disabled ? "disabled" : "var(--color-interactive-primary-text)"}
+        />
       ) : null}
     </span>
   );
