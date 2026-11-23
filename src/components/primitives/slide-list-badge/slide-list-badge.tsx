@@ -33,7 +33,7 @@ const slideListBadgeVariants = cva(
       {
         variant: "primary",
         state: "selected",
-        className: "bg-action-primary-default text-text-inverse",
+        className: "bg-action-primary-default text-[var(--color-interactive-primary-text)]",
       },
     ],
     defaultVariants: {

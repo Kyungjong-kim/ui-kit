@@ -29,15 +29,20 @@ export function Table<T>({
   const isEmpty = data.length === 0;
 
   return (
-    <div className={cn("w-full overflow-x-auto", className)}>
-      <table className="w-full border-collapse text-sm">
+    <div
+      className={cn(
+        "w-full overflow-x-auto rounded-md border border-[var(--color-border-default)]",
+        className,
+      )}
+    >
+      <table className="w-full border-collapse text-left">
         <thead>
           <tr className="border-b border-[var(--color-border-default)] bg-[var(--color-bg-secondary)]">
             {columns.map((column) => (
               <th
                 key={column.key}
                 className={cn(
-                  "px-4 py-3.5 text-left font-semibold text-[var(--color-text-secondary)]",
+                  "px-inline-lg py-stack-md typography-label-sm-medium text-[var(--color-text-secondary)]",
                   column.className,
                 )}
               >
@@ -51,7 +56,7 @@ export function Table<T>({
             <tr>
               <td
                 colSpan={columns.length}
-                className="px-4 py-8 text-center text-[var(--color-text-tertiary)]"
+                className="px-inline-lg py-stack-xl text-center typography-body-sm-base text-[var(--color-text-tertiary)]"
               >
                 {emptyMessage}
               </td>
@@ -66,7 +71,10 @@ export function Table<T>({
                 {columns.map((column) => (
                   <td
                     key={column.key}
-                    className={cn("px-4 py-3.5 text-[var(--color-text-primary)]", column.className)}
+                    className={cn(
+                      "px-inline-lg py-stack-md typography-body-sm-base text-[var(--color-text-primary)]",
+                      column.className,
+                    )}
                   >
                     {column.render
                       ? column.render(row, rowIndex)

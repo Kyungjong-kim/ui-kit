@@ -116,3 +116,9 @@ const [open, setOpen] = useState(false);
 - 두 컴포넌트 모두 Radix Dialog 기반으로 **포커스 트랩·ESC 닫기·배경 스크롤 잠금**이 기본 동작한다.
 - `title`을 제공하면 `Dialog.Title`로 접근 가능한 이름이 연결된다. Sheet는 `title` 미제공 시 `sr-only` 제목을 자동 삽입한다.
 - × 버튼은 `aria-label="닫기"`를 내장한다.
+
+## 스타일
+
+- Dialog·AlertDialog: 12px(`rounded-md`) + hairline 테두리.
+- Sheet 닫기 버튼: `focus-ring`·`rounded-xs`·hover `bg-tertiary`(Dialog 와 동일).
+- NavFlyout: 패널 `p-stack-xs`(4px), 항목 `rounded-xxs`·`focus-ring-inset`.

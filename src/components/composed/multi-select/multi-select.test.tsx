@@ -117,4 +117,38 @@ describe("MultiSelect", () => {
     expect(trigger).toHaveAttribute("aria-invalid", "true");
     expect(trigger).toHaveAccessibleDescription("하나 이상 고르세요.");
   });
+
+  it("필드 상자는 입력 테두리 토큰·6px·초점 halo 를 쓴다 (Warm Precision)", () => {
+    const { container } = render(
+      <MultiSelect options={options} value={[]} onValueChange={() => {}} />,
+    );
+    const box = container.querySelector('[class*="color-border-input-default"]');
+    expect(box).not.toBeNull();
+    const cls = (box as HTMLElement).className;
+    expect(cls).toMatch(/rounded-xs/);
+    expect(cls).toMatch(/color-focus-halo/);
+    expect(cls).not.toMatch(/ring-offset/);
+  });
+
+  it("오류 helperText 앞에 장식용 경고 아이콘이 붙는다", () => {
+    render(
+      <MultiSelect
+        options={options}
+        value={[]}
+        onValueChange={() => {}}
+        state="error"
+        helperText="필수 항목입니다."
+      />,
+    );
+    const helper = screen.getByText("필수 항목입니다.");
+    expect(helper.querySelector("svg[aria-hidden='true']")).not.toBeNull();
+  });
+
+  it("선택된 항목의 체크 표시는 노랑 위 어두운 색 (흰색 1.7:1 방지)", async () => {
+    render(<MultiSelect options={options} value={["a"]} onValueChange={() => {}} />);
+    await userEvent.click(screen.getByRole("combobox"));
+    const svgs = [...document.querySelectorAll('[data-icon="checkThickTrue"] svg')] as SVGElement[];
+    expect(svgs.length).toBeGreaterThan(0);
+    for (const svg of svgs) expect(svg.style.color).toBe("var(--color-interactive-primary-text)");
+  });
 });

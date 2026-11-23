@@ -13,7 +13,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "ui-kit";
 | export | 역할 | 비고 |
 |---|---|---|
 | `Tabs` | 루트 컨테이너(상태 보유) | `TabsPrimitive.Root` 재노출 |
-| `TabsList` | 트리거 묶음 | 토큰 배경/라운드 적용된 래퍼 |
+| `TabsList` | 트리거 묶음 | 하단 hairline(`border-default`) 을 가진 래퍼 |
 | `TabsTrigger` | 개별 탭 버튼 | `value` 필수 |
 | `TabsContent` | 탭별 패널 | `value` 필수 |
 
@@ -50,9 +50,9 @@ const [tab, setTab] = useState("overview");
 
 ## 스타일 노트
 
-- 활성 트리거는 `data-[state=active]`에서 primary 배경 + 그림자 토큰으로 강조된다.
+- **밑줄형**이다. `TabsList` 하단에 hairline(`border-default`)이 깔리고, 활성 트리거(`data-[state=active]`)는 2px `border-brand-default` 밑줄 + `text-primary` 로 표시된다(IconTabs 도 같다).
 - 비활성 트리거는 tertiary 텍스트 토큰, hover 시 secondary로 전환된다.
-- `TabsList`는 tertiary 배경의 알약형 컨테이너로 트리거를 감싼다.
+- 알약형(채워진 트랙 안에서 칸이 바뀌는) 전환이 필요하면 Tabs 가 아니라 **SegmentedControl** 을 쓴다. Tabs = 콘텐츠 패널 전환(밑줄형), SegmentedControl = 보기·옵션 값 전환(알약형).
 
 ## When to use
 

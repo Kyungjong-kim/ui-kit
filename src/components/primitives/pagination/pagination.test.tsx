@@ -66,4 +66,13 @@ describe("Pagination", () => {
       "page",
     );
   });
+
+  it("32px·6px 칸, tabular 숫자, 이전·다음은 테두리 버튼 (Warm Precision)", () => {
+    render(<Pagination currentPage={2} totalPages={5} onPageChange={() => {}} />);
+    const page = screen.getByRole("button", { name: "3 페이지" });
+    expect(page).toHaveClass("h-size-control-sm", "rounded-xs", "tabular-nums");
+    const prev = screen.getByRole("button", { name: "이전" });
+    expect(prev.className).toMatch(/border-\[var\(--color-border-input-default\)\]/);
+    expect(page.className).not.toMatch(/border-\[var\(--color-border-input-default\)\]/);
+  });
 });

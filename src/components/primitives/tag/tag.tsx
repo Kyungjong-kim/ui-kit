@@ -14,7 +14,7 @@ const tagVariants = cva("inline-flex items-center gap-group-xxs rounded-full tra
     },
     appearance: {
       subtle: "",
-      solid: "text-[var(--color-text-inverse)]",
+      solid: "text-[var(--color-text-on-strong)]",
     },
     size: {
       sm: "px-inline-xs py-stack-xxs typography-label-xs",
@@ -22,11 +22,15 @@ const tagVariants = cva("inline-flex items-center gap-group-xxs rounded-full tra
     },
   },
   compoundVariants: [
-    { variant: "default", appearance: "solid", className: "bg-[var(--color-bg-brand-default)]" },
-    { variant: "info", appearance: "solid", className: "bg-[var(--color-bg-info-default)]" },
-    { variant: "success", appearance: "solid", className: "bg-[var(--color-bg-success-default)]" },
-    { variant: "warning", appearance: "solid", className: "bg-[var(--color-bg-warning-default)]" },
-    { variant: "danger", appearance: "solid", className: "bg-[var(--color-bg-danger-default)]" },
+    {
+      variant: "default",
+      appearance: "solid",
+      className: "bg-[var(--color-bg-brand-default)] text-[var(--color-interactive-primary-text)]",
+    },
+    { variant: "info", appearance: "solid", className: "bg-[var(--color-bg-info-strong)]" },
+    { variant: "success", appearance: "solid", className: "bg-[var(--color-bg-success-strong)]" },
+    { variant: "warning", appearance: "solid", className: "bg-[var(--color-bg-warning-strong)]" },
+    { variant: "danger", appearance: "solid", className: "bg-[var(--color-bg-danger-strong)]" },
   ],
   defaultVariants: { variant: "default", appearance: "subtle", size: "md" },
 });

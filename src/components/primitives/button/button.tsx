@@ -7,7 +7,7 @@ import { Spinner } from "../spinner/spinner";
 const buttonVariants = cva(
   [
     "inline-flex items-center justify-center gap-group-xs whitespace-nowrap",
-    "rounded-sm",
+    "rounded-xs",
     "typography-label-md-medium",
     "transition-[background-color,border-color,box-shadow,transform,opacity] duration-150 ease-out",
     "focus-ring",
@@ -20,14 +20,12 @@ const buttonVariants = cva(
         primary: [
           "bg-[var(--color-interactive-primary-bg)]",
           "text-[var(--color-interactive-primary-text)]",
-          "shadow-default-sm",
-          "hover:bg-[var(--color-interactive-primary-bg-hover)] hover:shadow-default-md",
+          "hover:bg-[var(--color-interactive-primary-bg-hover)]",
         ],
         secondary: [
           "border border-[var(--color-interactive-secondary-border)]",
           "bg-[var(--color-interactive-secondary-bg)]",
           "text-[var(--color-interactive-secondary-text)]",
-          "shadow-default-sm",
           "hover:bg-[var(--color-bg-secondary)] hover:border-[var(--color-border-strong)]",
         ],
         ghost: [
@@ -37,8 +35,7 @@ const buttonVariants = cva(
         destructive: [
           "bg-[var(--color-interactive-destructive-bg)]",
           "text-[var(--color-interactive-destructive-text)]",
-          "shadow-default-sm",
-          "hover:bg-[var(--color-interactive-destructive-bg-hover)] hover:shadow-default-md",
+          "hover:bg-[var(--color-interactive-destructive-bg-hover)]",
           "destructive",
         ],
       },

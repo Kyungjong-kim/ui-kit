@@ -3,15 +3,16 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { forwardRef, type InputHTMLAttributes, useId } from "react";
 import { cn } from "../../../utils/cn";
 import { joinIds } from "../../../utils/join-ids";
+import { FieldHelperText } from "../../_internal/field-helper-text";
 
 const inputVariants = cva(
   [
-    "w-size-field-md rounded-sm border bg-[var(--color-bg-primary)]",
+    "w-size-field-md rounded-xs border bg-[var(--color-bg-primary)]",
     "text-[var(--color-text-primary)] placeholder:text-[var(--color-text-tertiary)]",
     "transition-[border-color,box-shadow] duration-150",
-    "hover:border-[var(--color-border-strong)]",
-    "focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--color-border-focus)] focus:border-[var(--color-border-focus)]",
-    "disabled:cursor-not-allowed disabled:bg-[var(--color-bg-disabled)] disabled:text-[var(--color-text-disabled)] disabled:hover:border-[var(--color-border-default)]",
+    "hover:border-[var(--color-border-input-hover)]",
+    "focus:outline-none focus:border-[var(--color-border-input-focus)] focus:shadow-[0_0_0_3px_var(--color-focus-halo)]",
+    "disabled:cursor-not-allowed disabled:bg-[var(--color-bg-disabled)] disabled:text-[var(--color-text-disabled)] disabled:hover:border-[var(--color-border-input-default)]",
   ],
   {
     variants: {
@@ -22,7 +23,7 @@ const inputVariants = cva(
       },
       error: {
         true: "border-[var(--color-border-danger-default)]",
-        false: "border-[var(--color-border-default)]",
+        false: "border-[var(--color-border-input-default)]",
       },
     },
     defaultVariants: { size: "md", error: false },
@@ -76,17 +77,9 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           {...props}
         />
         {helperText && (
-          <p
-            id={helperId}
-            className={cn(
-              "typography-caption",
-              error
-                ? "text-[var(--color-text-danger-default)]"
-                : "text-[var(--color-text-tertiary)]",
-            )}
-          >
+          <FieldHelperText id={helperId} error={error}>
             {helperText}
-          </p>
+          </FieldHelperText>
         )}
       </div>
     );

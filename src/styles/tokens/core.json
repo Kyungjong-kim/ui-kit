@@ -38,15 +38,15 @@
         },
         {
           "name": "--color-brand-700",
-          "value": "#c48e1a"
+          "value": "#8f6309"
         },
         {
           "name": "--color-brand-800",
-          "value": "#a07318"
+          "value": "#725009"
         },
         {
           "name": "--color-brand-900",
-          "value": "#7a5812"
+          "value": "#563c08"
         }
       ]
     },
@@ -79,7 +79,7 @@
         },
         {
           "name": "--color-neutral-500",
-          "value": "#908880"
+          "value": "#776f67"
         },
         {
           "name": "--color-neutral-600",
@@ -132,19 +132,19 @@
         },
         {
           "name": "--color-red-600",
-          "value": "#e64449"
+          "value": "#d93a3f"
         },
         {
           "name": "--color-red-700",
-          "value": "#d94145"
+          "value": "#b82e33"
         },
         {
           "name": "--color-red-800",
-          "value": "#cc3d41"
+          "value": "#962529"
         },
         {
           "name": "--color-red-900",
-          "value": "#bf383d"
+          "value": "#741c20"
         }
       ]
     },
@@ -181,19 +181,19 @@
         },
         {
           "name": "--color-green-600",
-          "value": "#24b364"
+          "value": "#1f9d57"
         },
         {
           "name": "--color-green-700",
-          "value": "#22a95e"
+          "value": "#187f46"
         },
         {
           "name": "--color-green-800",
-          "value": "#209f59"
+          "value": "#136338"
         },
         {
           "name": "--color-green-900",
-          "value": "#1e9553"
+          "value": "#0e4a2a"
         }
       ]
     },
@@ -230,19 +230,19 @@
         },
         {
           "name": "--color-orange-600",
-          "value": "#ea6c0e"
+          "value": "#d9620c"
         },
         {
           "name": "--color-orange-700",
-          "value": "#c45c0c"
+          "value": "#b44f0a"
         },
         {
           "name": "--color-orange-800",
-          "value": "#9e4a0a"
+          "value": "#8f3f09"
         },
         {
           "name": "--color-orange-900",
-          "value": "#783908"
+          "value": "#6b2f07"
         }
       ]
     },
@@ -652,6 +652,15 @@
         {
           "name": "--token-shadow-default-xl",
           "value": "\n    0 4px 8px -3px rgba(20, 18, 16, 0.1), 0 20px 48px -10px rgba(20, 18, 16, 0.2)"
+        }
+      ]
+    },
+    {
+      "comment": "/* Font family — 글꼴 파일은 싣지 않는다. 소비 앱이 Pretendard 를 로드하면 쓰고, 없으면 시스템 한글 글꼴로 떨어진다. */",
+      "tokens": [
+        {
+          "name": "--token-font-family-sans",
+          "value": "\n    \"Pretendard Variable\", Pretendard, -apple-system, BlinkMacSystemFont, \"Apple SD Gothic Neo\",\n    \"Noto Sans KR\", system-ui, sans-serif"
         }
       ]
     },

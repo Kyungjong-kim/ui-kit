@@ -73,6 +73,12 @@ const [selected, setSelected] = useState<string[]>([]);
 - `showSelectAll`은 검색 전에만 노출되고, 선택 가능(`!disabled`) 항목만을 대상으로 tri-state(전체/일부/없음)로 동작한다.
 - `isLoading`이면 드롭다운에 스피너, 필터 결과가 0건이면 `emptyText`/`emptySubText`를 표시한다.
 
+## 스타일 노트
+
+- 트리거: 6px(`rounded-xs`), `border-input-default` → hover `border-input-hover` → 초점(`focus-within`)·열림 `border-input-focus` + 3px `focus-halo`.
+- 드롭다운 패널 8px(`rounded-sm`), 옵션 4px(`rounded-xxs`), hover·활성 `bg-tertiary`.
+- `helperText` 는 내부 `FieldHelperText` — `error` 일 때만 경고 아이콘(`aria-hidden`), `disabled` 가 우선.
+
 ## When to use
 
 - 여러 값을 고르고 선택 결과를 칩으로 보여줘야 할 때.

@@ -9,22 +9,24 @@
   /* 브랜드 텍스트: 흰 배경 위에서 가독성을 위해 700(딥 앰버) 사용 */
   --color-text-brand-default: var(--color-brand-700);
   --color-text-brand-hover: var(--color-brand-800);
-  --color-text-danger-default: var(--color-red-500);
-  --color-text-success-default: var(--color-green-500);
-  --color-text-warning-default: var(--color-orange-600);
+  --color-text-danger-default: var(--color-red-700);
+  --color-text-success-default: var(--color-green-700);
+  --color-text-warning-default: var(--color-orange-700);
   --color-text-info-default: var(--color-blue-700);
   /* 상태 텍스트 hover — default보다 한 단계 진하게 */
-  --color-text-danger-hover: var(--color-red-600);
-  --color-text-success-hover: var(--color-green-600);
-  --color-text-warning-hover: var(--color-orange-700);
+  --color-text-danger-hover: var(--color-red-800);
+  --color-text-success-hover: var(--color-green-800);
+  --color-text-warning-hover: var(--color-orange-800);
   --color-text-info-hover: var(--color-blue-800);
   /* 상태 텍스트 strong — subtle 배경 위 대비 확보용(Badge 등) */
-  --color-text-danger-strong: var(--color-red-600);
-  --color-text-success-strong: var(--color-green-700);
-  --color-text-warning-strong: var(--color-orange-700);
+  --color-text-danger-strong: var(--color-red-800);
+  --color-text-success-strong: var(--color-green-800);
+  --color-text-warning-strong: var(--color-orange-800);
   /* category(purple) 텍스트 */
   --color-text-category-default: var(--color-purple-600);
   --color-text-category-hover: var(--color-purple-700);
+  /* strong 상태 채움(bg-*-strong) 위 글자 — 테마와 무관하게 흰색 */
+  --color-text-on-strong: var(--color-white);
 
   /* Background */
   --color-bg-primary: var(--color-white);
@@ -35,14 +37,19 @@
   --color-bg-brand-hover: var(--color-brand-600);
   --color-bg-brand-subtle: var(--color-brand-50);
   --color-bg-brand-subtle-hover: var(--color-brand-100);
-  --color-bg-danger-default: var(--color-red-500);
+  --color-bg-danger-default: var(--color-red-600);
   --color-bg-danger-subtle: var(--color-red-50);
-  --color-bg-success-default: var(--color-green-500);
+  --color-bg-success-default: var(--color-green-600);
   --color-bg-success-subtle: var(--color-green-50);
-  --color-bg-warning-default: var(--color-orange-500);
+  --color-bg-warning-default: var(--color-orange-600);
   --color-bg-warning-subtle: var(--color-orange-50);
   --color-bg-info-default: var(--color-blue-500);
   --color-bg-info-subtle: var(--color-blue-50);
+  /* 상태 strong 채움 — 흰 글자(text-on-strong)를 올리는 solid Badge·Tag 용. 양 테마 공통 4.5:1 이상 */
+  --color-bg-danger-strong: var(--color-red-700);
+  --color-bg-success-strong: var(--color-green-700);
+  --color-bg-warning-strong: var(--color-orange-700);
+  --color-bg-info-strong: var(--color-blue-700);
   --color-bg-disabled: var(--color-neutral-100);
 
   /* Border */
@@ -53,14 +60,20 @@
   --color-border-info-default: var(--color-blue-500);
   --color-border-disabled: var(--color-neutral-200);
   /* focus ring: 밝은 골든 앰버로 선명한 포커스 표시 (offset과 함께 사용) */
-  --color-border-focus: var(--color-brand-400);
+  --color-border-focus: var(--color-brand-700);
   /* subtle: default(200)보다 옅은 구분선 — 카드·푸터 등 약한 경계용 */
   --color-border-subtle: var(--color-neutral-100);
   --color-border-hover: var(--color-neutral-300);
   --color-border-inverse: var(--color-neutral-700);
   /* 입력 컨트롤 테두리 — default/focus */
   --color-border-input-default: var(--color-neutral-300);
-  --color-border-input-focus: var(--color-brand-500);
+  --color-border-input-focus: var(--color-brand-700);
+  /* 입력 컨트롤 hover — default(300)보다 한 단계 진하게 */
+  --color-border-input-hover: var(--color-neutral-400);
+  /* 작은 선택 컨트롤(Checkbox·Radio) 미선택 테두리 — 테두리만으로 형태를 알아봐야 해서 입력보다 한 단계 진하다 */
+  --color-border-control: var(--color-neutral-400);
+  /* 필드 초점 둘레 링 — 초점 표시는 border-input-focus 가 맡고 이 링은 보조 */
+  --color-focus-halo: color-mix(in oklab, var(--color-brand-500) 30%, transparent);
   /* 상태 border — 각 계열 default/hover/subtle */
   --color-border-brand-hover: var(--color-brand-600);
   --color-border-brand-subtle: var(--color-brand-200);
@@ -92,8 +105,8 @@
   --color-interactive-secondary-text: var(--color-neutral-900);
   --color-interactive-ghost-text: var(--color-neutral-700);
   --color-interactive-ghost-bg-hover: var(--color-neutral-100);
-  --color-interactive-destructive-bg: var(--color-red-500);
-  --color-interactive-destructive-bg-hover: var(--color-red-600);
+  --color-interactive-destructive-bg: var(--color-red-600);
+  --color-interactive-destructive-bg-hover: var(--color-red-700);
   --color-interactive-destructive-text: var(--color-white);
 
   /* Icon — `Icon` 컴포넌트의 colorTokenMap 키와 매핑 */
@@ -228,33 +241,73 @@
   --color-bg-tertiary: var(--color-neutral-700);
   --color-bg-inverse: var(--color-neutral-25);
   --color-bg-brand-hover: var(--color-brand-400);
-  --color-bg-brand-subtle: var(--color-brand-900);
-  --color-bg-brand-subtle-hover: var(--color-brand-800);
-  --color-bg-danger-subtle: var(--color-red-900);
-  --color-bg-success-subtle: var(--color-green-900);
-  --color-bg-warning-subtle: var(--color-orange-900);
-  --color-bg-info-subtle: var(--color-blue-900);
+  --color-bg-brand-subtle: color-mix(
+    in oklab,
+    var(--color-brand-500) 18%,
+    var(--color-neutral-900)
+  );
+  --color-bg-brand-subtle-hover: color-mix(
+    in oklab,
+    var(--color-brand-500) 26%,
+    var(--color-neutral-900)
+  );
+  --color-bg-danger-subtle: color-mix(in oklab, var(--color-red-500) 18%, var(--color-neutral-900));
+  --color-bg-success-subtle: color-mix(
+    in oklab,
+    var(--color-green-500) 18%,
+    var(--color-neutral-900)
+  );
+  --color-bg-warning-subtle: color-mix(
+    in oklab,
+    var(--color-orange-500) 18%,
+    var(--color-neutral-900)
+  );
+  --color-bg-info-subtle: color-mix(in oklab, var(--color-blue-500) 18%, var(--color-neutral-900));
   --color-bg-disabled: var(--color-neutral-700);
 
   /* Border */
   --color-border-default: var(--color-neutral-700);
   --color-border-strong: var(--color-neutral-600);
   --color-border-disabled: var(--color-neutral-700);
+  --color-border-focus: var(--color-brand-400);
   --color-border-subtle: var(--color-neutral-800);
   --color-border-hover: var(--color-neutral-500);
   --color-border-inverse: var(--color-neutral-300);
   --color-border-input-default: var(--color-neutral-600);
   --color-border-input-focus: var(--color-brand-400);
+  --color-border-input-hover: var(--color-neutral-500);
+  --color-border-control: var(--color-neutral-500);
+  --color-focus-halo: color-mix(in oklab, var(--color-brand-400) 35%, transparent);
   --color-border-brand-hover: var(--color-brand-400);
-  --color-border-brand-subtle: var(--color-brand-800);
+  --color-border-brand-subtle: color-mix(
+    in oklab,
+    var(--color-brand-500) 35%,
+    var(--color-neutral-900)
+  );
   --color-border-danger-hover: var(--color-red-400);
-  --color-border-danger-subtle: var(--color-red-800);
+  --color-border-danger-subtle: color-mix(
+    in oklab,
+    var(--color-red-500) 35%,
+    var(--color-neutral-900)
+  );
   --color-border-info-hover: var(--color-blue-400);
-  --color-border-info-subtle: var(--color-blue-800);
+  --color-border-info-subtle: color-mix(
+    in oklab,
+    var(--color-blue-500) 35%,
+    var(--color-neutral-900)
+  );
   --color-border-success-hover: var(--color-green-400);
-  --color-border-success-subtle: var(--color-green-800);
+  --color-border-success-subtle: color-mix(
+    in oklab,
+    var(--color-green-500) 35%,
+    var(--color-neutral-900)
+  );
   --color-border-warning-hover: var(--color-orange-400);
-  --color-border-warning-subtle: var(--color-orange-800);
+  --color-border-warning-subtle: color-mix(
+    in oklab,
+    var(--color-orange-500) 35%,
+    var(--color-neutral-900)
+  );
   --color-border-tertiary-default: var(--color-neutral-700);
   --color-border-tertiary-hover: var(--color-neutral-600);
   --color-border-category-hover: var(--color-purple-400);
@@ -268,7 +321,7 @@
   --color-interactive-secondary-text: var(--color-neutral-25);
   --color-interactive-ghost-text: var(--color-neutral-300);
   --color-interactive-ghost-bg-hover: var(--color-neutral-800);
-  --color-interactive-destructive-bg-hover: var(--color-red-400);
+  --color-interactive-destructive-bg-hover: var(--color-red-700);
 
   /* Icon — `Icon` 컴포넌트의 colorTokenMap 키와 매핑 */
   --color-icon-success-hover: var(--color-green-400);

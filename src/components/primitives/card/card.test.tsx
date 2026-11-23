@@ -20,4 +20,16 @@ describe("Card", () => {
     expect(screen.getByText("바디")).toBeInTheDocument();
     expect(screen.getByText("푸터")).toBeInTheDocument();
   });
+
+  it("카드 계열 공통 규격: 12px 라운드·hairline·그림자 없음·20px 여백 (Warm Precision)", () => {
+    const { container } = render(
+      <Card>
+        <CardBody>내용</CardBody>
+      </Card>,
+    );
+    const root = container.firstElementChild as HTMLElement;
+    expect(root).toHaveClass("rounded-md");
+    expect(root.className).not.toMatch(/rounded-lg|shadow-default/);
+    expect(screen.getByText("내용")).toHaveClass("p-inline-xl");
+  });
 });

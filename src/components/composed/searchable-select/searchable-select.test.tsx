@@ -90,4 +90,32 @@ describe("SearchableSelect", () => {
     const contexts = scrollIntoView.mock.contexts;
     expect(contexts[contexts.length - 1]).toHaveAttribute("aria-selected");
   });
+
+  it("필드 상자는 입력 테두리 토큰·6px·초점 halo 를 쓴다 (Warm Precision)", () => {
+    render(<SearchableSelect options={options} label="지역" />);
+    const cls = screen.getByRole("combobox").className;
+    expect(cls).toMatch(/rounded-xs/);
+    expect(cls).toMatch(/color-border-input-default/);
+    expect(cls).toMatch(/hover:border-\[var\(--color-border-input-hover\)\]/);
+    expect(cls).toMatch(/color-border-input-focus/);
+    expect(cls).toMatch(/color-focus-halo/);
+    expect(cls).not.toMatch(/ring-offset/);
+  });
+
+  it("목록은 4px 안쪽 여백, 선택 옵션은 연노랑 배경으로 hover 와 구분된다 (Warm Precision)", () => {
+    render(<SearchableSelect options={options} value="seoul" />);
+    fireEvent.click(screen.getByRole("combobox"));
+    const listbox = screen.getByRole("listbox");
+    expect(listbox).toHaveClass("p-stack-xs");
+    const selected = screen.getByRole("option", { selected: true });
+    expect(selected.className).toMatch(/color-bg-brand-subtle/);
+    expect(selected).toHaveClass("rounded-xxs");
+    expect(selected.className).not.toMatch(/text-\[var\(--color-text-brand-default\)\]/);
+  });
+
+  it("오류 helperText 앞에 장식용 경고 아이콘이 붙는다", () => {
+    render(<SearchableSelect options={options} error helperText="필수 항목입니다." />);
+    const helper = screen.getByText("필수 항목입니다.");
+    expect(helper.querySelector("svg[aria-hidden='true']")).not.toBeNull();
+  });
 });

@@ -34,3 +34,22 @@ export const WithDisabledDates: Story = {
     );
   },
 };
+
+/** `captionLayout="dropdown"` — 연·월을 드롭다운으로 바로 고른다. 범위는 `startMonth`·`endMonth` */
+export const DropdownCaption: Story = {
+  render: () => {
+    const [date, setDate] = useState<Date | undefined>(new Date());
+    return (
+      <div className="border border-border-default rounded-md overflow-hidden">
+        <Calendar
+          mode="single"
+          selected={date}
+          onSelect={setDate}
+          captionLayout="dropdown"
+          startMonth={new Date(2020, 0)}
+          endMonth={new Date(2030, 11)}
+        />
+      </div>
+    );
+  },
+};

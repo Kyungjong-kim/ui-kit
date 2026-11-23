@@ -49,6 +49,8 @@ export interface DataTableProps<TData> {
 }
 
 const SELECT_COLUMN_ID = "__select__";
+// 선택 열은 체크박스 폭으로 줄인다(w-px = 내용 최소폭). 오른쪽 여백은 다음 열 왼쪽 여백이 맡는다.
+const SELECT_CELL_CLASS = "w-px pr-0 align-middle";
 
 export function DataTable<TData>({
   data,
@@ -130,7 +132,7 @@ export function DataTable<TData>({
 
   return (
     <div className={cn("flex w-full flex-col gap-group-md", className)}>
-      <div className="w-full overflow-x-auto rounded-lg border border-[var(--color-border-default)]">
+      <div className="w-full overflow-x-auto rounded-md border border-[var(--color-border-default)]">
         <table className="w-full border-collapse text-left">
           <thead className="bg-[var(--color-bg-secondary)]">
             {table.getHeaderGroups().map((headerGroup) => (
@@ -148,7 +150,10 @@ export function DataTable<TData>({
                             ? "descending"
                             : undefined
                       }
-                      className="typography-label-sm-medium border-b border-[var(--color-border-default)] px-inline-lg py-stack-md text-[var(--color-text-secondary)]"
+                      className={cn(
+                        "typography-label-sm-medium border-b border-[var(--color-border-default)] px-inline-lg py-stack-md text-[var(--color-text-secondary)]",
+                        header.column.id === SELECT_COLUMN_ID && SELECT_CELL_CLASS,
+                      )}
                     >
                       {header.isPlaceholder ? null : canSort ? (
                         <button
@@ -201,12 +206,15 @@ export function DataTable<TData>({
                 <tr
                   key={row.id}
                   data-state={row.getIsSelected() ? "selected" : undefined}
-                  className="border-b border-[var(--color-border-default)] transition-colors last:border-b-0 hover:bg-[var(--color-bg-secondary)] data-[state=selected]:bg-[var(--color-bg-secondary)]"
+                  className="border-b border-[var(--color-border-default)] transition-colors last:border-b-0 hover:bg-[var(--color-bg-secondary)] data-[state=selected]:bg-[var(--color-bg-brand-subtle)]"
                 >
                   {row.getVisibleCells().map((cell) => (
                     <td
                       key={cell.id}
-                      className="typography-body-sm-base px-inline-lg py-stack-md text-[var(--color-text-primary)]"
+                      className={cn(
+                        "typography-body-sm-base px-inline-lg py-stack-md text-[var(--color-text-primary)]",
+                        cell.column.id === SELECT_COLUMN_ID && SELECT_CELL_CLASS,
+                      )}
                     >
                       {flexRender(cell.column.columnDef.cell, cell.getContext())}
                     </td>

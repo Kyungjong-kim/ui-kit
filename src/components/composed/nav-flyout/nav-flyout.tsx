@@ -74,7 +74,7 @@ export function NavFlyout({
       <PopoverContent
         align={align}
         side={side}
-        className={cn("w-56 p-stack-xxs shadow-default-md", contentClassName)}
+        className={cn("w-56 p-stack-xs shadow-default-md", contentClassName)}
       >
         <nav className="flex flex-col gap-stack-xxs" aria-label={t.navigation.nav}>
           {items.map((item) => (
@@ -85,10 +85,10 @@ export function NavFlyout({
               disabled={item.disabled}
               onClick={() => handleSelect(item)}
               className={cn(
-                "flex items-center gap-group-sm rounded-sm px-inline-sm py-stack-xs text-left",
+                "flex items-center gap-group-sm rounded-xxs px-inline-sm py-stack-xs text-left",
                 "typography-body-sm-medium text-[var(--color-text-primary)]",
                 "hover:bg-[var(--color-bg-tertiary)]",
-                "focus-visible:outline-none focus-visible:bg-[var(--color-bg-tertiary)]",
+                "focus-ring-inset",
                 "disabled:cursor-not-allowed disabled:text-[var(--color-text-disabled)] disabled:hover:bg-transparent",
               )}
             >

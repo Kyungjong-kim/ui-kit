@@ -137,3 +137,9 @@ Radix `Switch.Root` 속성(`checked`, `onCheckedChange`, `defaultChecked`, `disa
 - 세 컴포넌트 모두 `label`이 컨트롤 `id`와 자동 연결되어 라벨 클릭으로 토글된다.
 - 키보드 조작(Space 토글, RadioGroup은 화살표 이동)이 Radix primitive로 기본 제공된다.
 - 모든 컨트롤은 `focus-visible` 시 `var(--color-border-focus)` 링을 표시한다.
+
+## 스타일 규격
+
+- Checkbox·Radio 미선택 테두리는 `--color-border-control`(라이트 neutral-400 / 다크 neutral-500)이다.
+- 체크·indeterminate 아이콘과 Radio 선택 점은 노랑 채움 위라 `--color-interactive-primary-text`를 쓴다.
+- Radio 배경은 `bg-primary` 토큰이다(`bg-white` 아님).

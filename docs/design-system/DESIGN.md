@@ -5,13 +5,13 @@ description: ui-kit의 비주얼 아이덴티티 — 코딩 에이전트가 한 
 colors:
   brand: "#fabc37"
   brand-hover: "#e6a828"
-  brand-text: "#c48e1a"
+  brand-text: "#8f6309"
   bg-primary: "#ffffff"
   bg-secondary: "#faf8f5"
   bg-tertiary: "#f2efe9"
   text-primary: "#141210"
   text-secondary: "#403c38"
-  text-tertiary: "#908880"
+  text-tertiary: "#776f67"
   text-disabled: "#b5afa5"
   text-inverse: "#ffffff"
   border-default: "#e5e1da"
@@ -102,18 +102,18 @@ ui-kit은 **골든 앰버(Golden Amber, `#fabc37`) 브랜드**를 축으로 한 
 
 브랜드(앰버)는 **행동·강조에만**, 정보 전달은 **중성 텍스트 3단계**로 한다.
 
-- **Brand / Action** — `brand #fabc37`(기본), hover `brand-600 #e6a828`. 주요 버튼·활성 상태 등 "누를 수 있는 것"에만 쓴다. ⚠️ 브랜드 500은 **밝은 색**이므로 그 위 텍스트는 반드시 다크(`--color-interactive-primary-text` = neutral-900). 흰 배경 위 브랜드 텍스트는 가독성을 위해 `--color-text-brand-default`(brand-700).
+- **Brand / Action** — `brand #fabc37`(기본), hover `brand-600 #e6a828`. 주요 버튼·활성 상태 등 "누를 수 있는 것"에만 쓴다. ⚠️ 브랜드 500은 **밝은 색**이므로 그 위 텍스트는 반드시 다크(`--color-interactive-primary-text` = neutral-900). 흰 배경 위 브랜드 텍스트는 가독성을 위해 `--color-text-brand-default`(brand-700 `#8f6309`).
 - **Surface** — `bg-primary #ffffff`(카드·패널), `bg-secondary`(neutral-50)·`bg-tertiary`(neutral-100)로 한 단계씩 낮춘다. 면은 색이 아니라 **명도 단계**로 위계를 만든다. Tailwind 유틸 호환 표면 계층은 `surface-{subtlest…strongest}`.
 - **Text (3단계)** — `text-primary`(neutral-900, 본문·제목), `text-secondary`(neutral-700, 보조·라벨), `text-tertiary`(neutral-500, 캡션·약한 보조). 그 외 `text-disabled`(neutral-400, 본문 금지), `text-inverse`(white, 어두운 면 위).
-- **Border** — `border-default`(neutral-200, 기본 구분선), `border-subtle`(neutral-100, 옅은 경계), `border-strong`(neutral-300, 강조). 입력은 `border-input-default`(neutral-300) / focus `border-input-focus`(brand-500).
-- **Status** — `success #28c76f`(green) · `warning #f97316`(orange) · `danger #ff4c51`(red) · `info #3b82f6`(blue). 의미 전달(상태·결과)에만 쓰고 장식으로 쓰지 않는다. 색만으로 의미를 전달하지 말고 아이콘·텍스트를 병기한다.
+- **Border** — `border-default`(neutral-200, 기본 구분선), `border-subtle`(neutral-100, 옅은 경계), `border-strong`(neutral-300, 강조). 필드는 `border-input-default`(neutral-300) / hover `border-input-hover`(neutral-400) / focus `border-input-focus`(라이트 brand-700, 다크 brand-400) + 3px `focus-halo` 링. 체크박스·라디오 미선택 테두리는 `border-control`(neutral-400, 다크 neutral-500). 키보드 초점 링 `border-focus`는 brand-700 과 같다.
+- **Status** — `success #28c76f`(green) · `warning #f97316`(orange) · `danger #ff4c51`(red) · `info #3b82f6`(blue). 의미 전달(상태·결과)에만 쓰고 장식으로 쓰지 않는다. 위 hex 는 기준(500)이며 흰 배경 위 텍스트는 700 단계(`text-*-default`, AA 4.5:1 이상), 채움·아이콘은 600(`bg-*-default`, 3:1 이상)을 쓴다. 흰 글자를 올리는 채움(solid Badge·Tag)은 `bg-*-strong` + `text-on-strong`. 색만으로 의미를 전달하지 말고 아이콘·텍스트를 병기한다.
 - **Category** — `category #8b5cf6`(purple). 분류·태그 계열. 상태색·브랜드와 구분되는 중립 강조색.
 
 규칙: **raw hex/rgb 금지** — `[var(--color-text-primary)]`·`[var(--color-bg-brand-default)]`·`[var(--color-border-default)]` 같은 semantic 토큰만 참조한다(core 팔레트 `--color-brand-500` 직접 참조도 금지). 근거: [`foundation/color.md`](./foundation/color.md).
 
 ## Typography
 
-ui-kit은 특정 웹폰트를 강제하지 않는다(호스트 앱이 패밀리 지정). 위계는 크기·굵기·자간으로 구분한다.
+본문 글꼴은 `--token-font-family-sans`(Pretendard Variable → 시스템 한글 글꼴 폴백, `theme.css` 의 `--font-sans`). 라이브러리는 글꼴 파일을 싣지 않는다 — 소비 앱이 Pretendard 를 로드하면 쓰고 없으면 시스템 글꼴로 표시된다([`foundation/typography.md`](./foundation/typography.md)). 위계는 크기·굵기·자간으로 구분한다.
 
 | 스케일 | size / weight / line-height | 용도 |
 |---|---|---|
@@ -167,10 +167,11 @@ ui-kit은 라이브러리이므로 페이지 셸을 강제하지 않는다 — �
 
 | 토큰 | px | 용도 |
 |---|---|---|
-| `--token-radius-xxs` / `-xs` | 4 / 6 | 마이크로 요소·배지 |
-| `--token-radius-sm` | 8 | **버튼 · 인풋 · 작은 컨트롤** |
-| `--token-radius-md` | 12 | 중간 컨테이너 |
-| `--token-radius-lg` | 16 | **카드 · 패널 · 모달** |
+| `--token-radius-xxs` | 4 | 마이크로 요소·배지 · **떠 있는 패널 안 옵션 · NavFlyout 항목** |
+| `--token-radius-xs` | 6 | **컨트롤 — 버튼 · 필드 트리거(Input·Textarea·Select 등) · IconButton(square) · SelectButton · Pagination 칸 · SegmentedControl 선택 칸** |
+| `--token-radius-sm` | 8 | **떠 있는 패널(DropdownMenu·Popover·Select 목록) · SegmentedControl 트랙 · Skeleton 기본** |
+| `--token-radius-md` | 12 | **컨테이너 — Card · StatCard · MetricCard · VersionInfoCard · DataItemsTable · DescriptionList · Table · TreeTable · DataTable 래퍼 · Dialog · AlertDialog** |
+| `--token-radius-lg` | 16 | 이 계열(옵션 4 · 컨트롤 6 · 패널 8 · 컨테이너 12)에서는 더 쓰지 않는다 |
 | `--token-radius-xl` | 24 | 큰 컨테이너 |
 | `--token-radius-full` | 99999 | **원형 · pill** |
 
@@ -180,12 +181,19 @@ ui-kit은 라이브러리이므로 페이지 셸을 강제하지 않는다 — �
 
 대표 컴포넌트:
 
-- **Button**(primary) — `bg-[var(--color-interactive-primary-bg)]` / `text-[var(--color-interactive-primary-text)]`(다크) / `rounded-[var(--token-radius-sm)]`, hover `bg-[var(--color-interactive-primary-bg-hover)]`.
-- **Card** — `bg-[var(--color-bg-primary)]` / `rounded-[var(--token-radius-lg)]`(16) / 패딩 `inline-xxl`(24)·`stack-xl`(24).
-- **Input / Select** — control 높이 `md`(36) 기본·`lg`(44) 큰 입력, `rounded-sm`(8), 정적 폭이 필요하면 `field-{sm,md,lg}`(200/280/320).
+- **Button**(primary) — `bg-[var(--color-interactive-primary-bg)]` / `text-[var(--color-interactive-primary-text)]`(다크) / `rounded-xs`(6), hover `bg-[var(--color-interactive-primary-bg-hover)]`. primary·secondary·destructive 는 그림자 없이 hairline 만.
+- **IconButton** — filled 기본 아이콘 색: primary `interactive-primary-text`, danger `text-on-strong`, 그 외 `text-secondary`. outline 은 `border-input-default` → hover `input-hover`.
+- **Checkbox / Radio** — 미선택 테두리 `border-control`, 체크·선택 표시는 노랑 위라 `interactive-primary-text`. **SelectButton** — 6px, `input-default` 테두리, 선택 `bg-brand-subtle`.
+- **Card 계열**(Card·StatCard·MetricCard·VersionInfoCard·DataItemsTable·DescriptionList) — `bg-[var(--color-bg-primary)]` / `rounded-md`(12) / hairline 테두리·그림자 없음 / 여백 20(`inline-xl`) 통일. StatCard·MetricCard 값 `tabular-nums`.
+- **Table 계열**(Table·TreeTable·DataTable) — 12px 테두리 래퍼, 회색 헤더(`bg-secondary`), th `label-sm-medium`·td `body-sm-base`, `px-inline-lg py-stack-md`, 빈 상태 `py-stack-xl`. DataTable 선택 행 `bg-brand-subtle`.
+- **Input / Select** — control 높이 `md`(36) 기본·`lg`(44) 큰 입력, `rounded-xs`(6), 테두리 `input-default` → hover `input-hover` → 초점·열림 `input-focus` + 3px `focus-halo`. 정적 폭이 필요하면 `field-{sm,md,lg}`(200/280/320). 오류 문구는 내부 `FieldHelperText`(오류일 때만 경고 아이콘).
+- **떠 있는 패널**(DropdownMenu·Popover·Select 계열 목록) — `rounded-sm`(8), 안쪽 여백 `stack-xs`(4), 옵션 `rounded-xxs`(4). hover·키보드 활성 `bg-tertiary`, 선택 `bg-brand-subtle` + medium + 브랜드 체크.
+- **Tabs** — 밑줄형(목록 하단 hairline, 활성 2px `border-brand-default`). 알약형 전환은 **SegmentedControl**.
 - **Badge / Tag** — 상태색 텍스트 + 옅은 틴트 면(`bg-*-subtle`).
 - **EmptyState** — 0건 / 검색 없음 / 로드 실패. (패턴: [`patterns/empty-state.md`](./patterns/empty-state.md))
-- **Modal / Sheet(SidePanel)** — 폭에 따라 선택: 360/480 → Modal, 640/800 → SidePanel, 그 이상 → 풀스크린.
+- **Modal / Sheet(SidePanel)** — 폭에 따라 선택: 360/480 → Modal, 640/800 → SidePanel, 그 이상 → 풀스크린. Dialog·AlertDialog 는 12px + hairline 테두리, Sheet 닫기 버튼은 `focus-ring`·6px·hover `bg-tertiary`.
+- **NavFlyout** — 패널 안쪽 여백 `stack-xs`(4), 항목 `rounded-xxs`(4)·`focus-ring-inset`.
+- **Progress / Skeleton** — Progress 채움은 브랜드 단색(그라데이션 없음), Skeleton 기본 `rounded-sm`(8).
 
 ## Do's and Don'ts
 

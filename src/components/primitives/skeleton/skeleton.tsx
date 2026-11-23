@@ -5,7 +5,7 @@ export interface SkeletonProps {
   rounded?: "none" | "sm" | "md" | "lg" | "full";
 }
 
-export function Skeleton({ className, rounded = "md" }: SkeletonProps) {
+export function Skeleton({ className, rounded = "sm" }: SkeletonProps) {
   return (
     <div
       className={cn(

@@ -45,6 +45,13 @@ describe("FilterDropdown", () => {
     expect(screen.getByText("2")).toBeInTheDocument();
   });
 
+  it("선택 개수 배지는 밝은 노랑 배경이라 어두운 글자를 쓴다", () => {
+    render(<FilterDropdown options={options} label="상태" defaultValue={["draft", "done"]} />);
+    const cls = screen.getByText("2").className;
+    expect(cls).toMatch(/color-interactive-primary-text/);
+    expect(cls).not.toMatch(/color-text-inverse/);
+  });
+
   it("disabled면 클릭해도 열리지 않는다", async () => {
     render(<FilterDropdown options={options} label="상태" disabled />);
     await userEvent.click(screen.getByRole("button", { name: /상태/ }));

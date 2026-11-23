@@ -7,17 +7,17 @@ import { joinIds } from "../../../utils/join-ids";
 
 const radioVariants = cva(
   [
-    "h-size-control-xxxs w-size-control-xxxs rounded-full border bg-white transition-[background-color,border-color,transform] duration-150",
+    "h-size-control-xxxs w-size-control-xxxs rounded-full border bg-[var(--color-bg-primary)] transition-[background-color,border-color,transform] duration-150",
     "hover:border-[var(--color-border-brand-default)] active:scale-90",
     "focus-ring",
-    "disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:border-[var(--color-border-strong)]",
+    "disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:border-[var(--color-border-control)]",
     "data-[state=checked]:border-[var(--color-bg-brand-default)] data-[state=checked]:bg-[var(--color-bg-brand-default)]",
   ],
   {
     variants: {
       error: {
         true: "border-[var(--color-border-danger-default)]",
-        false: "border-[var(--color-border-strong)]",
+        false: "border-[var(--color-border-control)]",
       },
     },
     defaultVariants: { error: false },
@@ -111,7 +111,7 @@ export function RadioGroupItem({
         {...props}
       >
         <RadioGroupPrimitive.Indicator className="flex items-center justify-center">
-          <div className="h-size-icon-xxs w-size-icon-xxs rounded-full bg-white" />
+          <div className="h-size-icon-xxs w-size-icon-xxs rounded-full bg-[var(--color-interactive-primary-text)]" />
         </RadioGroupPrimitive.Indicator>
       </RadioGroupPrimitive.Item>
       {(label || helperText) && (

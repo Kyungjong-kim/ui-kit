@@ -56,7 +56,7 @@ export function Progress({
       >
         <ProgressPrimitive.Indicator
           className={cn(
-            "h-full rounded-full bg-gradient-to-r from-[var(--color-bg-brand-default)] to-[var(--color-bg-brand-hover)] transition-transform duration-500 ease-out",
+            "h-full rounded-full bg-[var(--color-bg-brand-default)] transition-transform duration-500 ease-out",
             isIndeterminate && "w-1/3 animate-progress-indeterminate",
           )}
           style={

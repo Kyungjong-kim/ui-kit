@@ -21,6 +21,14 @@ describe("MonthPicker", () => {
     expect(screen.getByRole("button", { name: "12월" })).toBeInTheDocument();
   });
 
+  it("선택된 월은 밝은 노랑 배경이라 어두운 글자를 쓴다", async () => {
+    render(<MonthPicker value={{ year: 2026, month: 0 }} />);
+    await userEvent.click(screen.getByText("2026.01"));
+    const cls = screen.getByRole("button", { name: "1월" }).className;
+    expect(cls).toMatch(/color-interactive-primary-text/);
+    expect(cls).not.toMatch(/color-text-inverse/);
+  });
+
   it("월을 클릭하면 onChange가 연/월과 함께 호출된다", async () => {
     const onChange = vi.fn();
     render(<MonthPicker value={{ year: 2026, month: 0 }} onChange={onChange} />);

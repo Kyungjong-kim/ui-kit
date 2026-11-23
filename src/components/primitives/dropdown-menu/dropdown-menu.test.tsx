@@ -39,4 +39,22 @@ describe("DropdownMenu", () => {
     await userEvent.click(screen.getByRole("button"));
     expect(await screen.findByText("편집")).toBeInTheDocument();
   });
+
+  it("메뉴 패널은 select 계열과 같은 8px 라운드, 항목은 4px·tertiary hover (Warm Precision)", async () => {
+    render(
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button>메뉴 열기</Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent>
+          <DropdownMenuItem>편집</DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>,
+    );
+    await userEvent.click(screen.getByRole("button"));
+    const item = await screen.findByRole("menuitem", { name: "편집" });
+    expect(screen.getByRole("menu")).toHaveClass("rounded-sm", "p-stack-xs");
+    expect(item).toHaveClass("rounded-xxs");
+    expect(item.className).toMatch(/hover:bg-\[var\(--color-bg-tertiary\)\]/);
+  });
 });

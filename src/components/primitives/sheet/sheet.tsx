@@ -88,7 +88,7 @@ export function Sheet({
               {showClose && (
                 <DialogPrimitive.Close
                   aria-label={t.common.close}
-                  className="ml-auto rounded-xxs p-stack-xxs text-[var(--color-text-tertiary)] hover:text-[var(--color-text-primary)] transition-colors focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-[var(--color-border-focus)]"
+                  className="focus-ring ml-auto rounded-xs p-stack-xxs text-[var(--color-text-tertiary)] transition-colors hover:bg-[var(--color-bg-tertiary)] hover:text-[var(--color-text-primary)]"
                 >
                   <XIcon className="h-size-icon-sm w-size-icon-sm" />
                 </DialogPrimitive.Close>

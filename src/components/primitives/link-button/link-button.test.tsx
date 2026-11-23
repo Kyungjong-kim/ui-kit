@@ -59,4 +59,20 @@ describe("LinkButton", () => {
     fireEvent.click(el);
     expect(onClick).not.toHaveBeenCalled();
   });
+
+  it("색 토큰은 [var(--…)] 형태로 쓴다 (utility 형태 토큰 금지 규칙)", () => {
+    const { rerender } = render(
+      <LinkButton href="/home" variant="secondary">
+        홈으로
+      </LinkButton>,
+    );
+    const cls = () => screen.getByText("홈으로").closest("a")?.className ?? "";
+    expect(cls()).not.toMatch(/\btext-text-/);
+    rerender(
+      <LinkButton href="/home" variant="light">
+        홈으로
+      </LinkButton>,
+    );
+    expect(cls()).not.toMatch(/\btext-text-/);
+  });
 });

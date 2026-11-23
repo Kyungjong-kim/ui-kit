@@ -70,7 +70,7 @@ export function SegmentedControl({
         data-slot="segmented-control"
         data-variant={variant}
         className={cn(
-          "inline-flex h-9 w-fit items-center gap-1 rounded-md bg-[var(--color-bg-secondary)] px-1 py-1",
+          "inline-flex h-size-control-md w-fit items-center gap-1 rounded-sm border border-[var(--color-border-default)] bg-[var(--color-bg-tertiary)] p-stack-xxs",
           className,
         )}
         {...props}
@@ -152,18 +152,18 @@ export function SegmentedControlItem({
       onClick={() => !disabled && !isSelected && onValueChange(value)}
       onKeyDown={handleKeyDown}
       className={cn(
-        "inline-flex h-7 min-w-[20px] items-center justify-center gap-1 rounded-sm px-3 py-1",
+        "inline-flex h-size-control-xs min-w-[20px] items-center justify-center gap-1 rounded-xs border px-inline-md",
         "cursor-pointer transition-colors",
         "focus-ring",
         "disabled:cursor-not-allowed disabled:opacity-40",
         isSelected && [
-          "bg-[var(--color-bg-primary)] shadow-sm",
-          variant === "light" && "text-[var(--color-text-secondary)] typography-body-md-medium",
+          "border-[var(--color-border-input-default)] bg-[var(--color-bg-primary)]",
+          variant === "light" && "text-[var(--color-text-primary)] typography-body-md-medium",
           variant === "primary" &&
             "text-[var(--color-text-brand-default)] typography-body-sm-medium",
         ],
         !isSelected && [
-          "bg-transparent text-[var(--color-text-tertiary)] hover:text-[var(--color-text-secondary)]",
+          "border-transparent bg-transparent text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]",
           variant === "light" && "typography-body-md-base",
           variant === "primary" && "typography-body-sm-base",
         ],

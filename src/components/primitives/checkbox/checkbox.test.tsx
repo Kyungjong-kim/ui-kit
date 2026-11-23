@@ -39,4 +39,12 @@ describe("Checkbox", () => {
     expect(icons[1]).toHaveClass("group-data-[state=indeterminate]:block");
     expect(screen.getByRole("checkbox").className).toContain("data-[state=indeterminate]:bg-");
   });
+
+  it("미선택 테두리는 control 토큰, 선택 시 노랑 위 체크는 어두운 색 (Warm Precision)", () => {
+    render(<Checkbox aria-label="동의" />);
+    const cls = screen.getByRole("checkbox").className;
+    expect(cls).toMatch(/border-\[var\(--color-border-control\)\]/);
+    expect(cls).toMatch(/data-\[state=checked\]:text-\[var\(--color-interactive-primary-text\)\]/);
+    expect(cls).not.toMatch(/text-white/);
+  });
 });

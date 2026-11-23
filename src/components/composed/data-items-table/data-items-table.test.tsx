@@ -42,4 +42,11 @@ describe("DataItemsTable", () => {
     render(<DataItemsTable fields={fields} data={[]} emptyMessage="항목이 없습니다" />);
     expect(screen.getByText("항목이 없습니다")).toBeInTheDocument();
   });
+
+  it("카드는 12px·토큰 여백, 목록은 typography 유틸 (raw p-4·text-sm 없음)", () => {
+    const { container } = render(<DataItemsTable fields={fields} data={data} />);
+    const card = (container.firstElementChild as HTMLElement).firstElementChild as HTMLElement;
+    expect(card).toHaveClass("rounded-md", "p-inline-lg");
+    expect(container.innerHTML).not.toMatch(/\bp-4\b|text-sm|gap-4|rounded-lg/);
+  });
 });

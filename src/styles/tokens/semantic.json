@@ -42,17 +42,17 @@
         },
         {
           "name": "--color-text-danger-default",
-          "value": "var(--color-red-500)",
+          "value": "var(--color-red-700)",
           "dark": "var(--color-red-400)"
         },
         {
           "name": "--color-text-success-default",
-          "value": "var(--color-green-500)",
+          "value": "var(--color-green-700)",
           "dark": "var(--color-green-400)"
         },
         {
           "name": "--color-text-warning-default",
-          "value": "var(--color-orange-600)",
+          "value": "var(--color-orange-700)",
           "dark": "var(--color-orange-400)"
         },
         {
@@ -62,18 +62,18 @@
         },
         {
           "name": "--color-text-danger-hover",
-          "value": "var(--color-red-600)",
+          "value": "var(--color-red-800)",
           "dark": "var(--color-red-300)",
           "commentBefore": "/* 상태 텍스트 hover — default보다 한 단계 진하게 */"
         },
         {
           "name": "--color-text-success-hover",
-          "value": "var(--color-green-600)",
+          "value": "var(--color-green-800)",
           "dark": "var(--color-green-300)"
         },
         {
           "name": "--color-text-warning-hover",
-          "value": "var(--color-orange-700)",
+          "value": "var(--color-orange-800)",
           "dark": "var(--color-orange-300)"
         },
         {
@@ -83,18 +83,18 @@
         },
         {
           "name": "--color-text-danger-strong",
-          "value": "var(--color-red-600)",
+          "value": "var(--color-red-800)",
           "dark": "var(--color-red-300)",
           "commentBefore": "/* 상태 텍스트 strong — subtle 배경 위 대비 확보용(Badge 등) */"
         },
         {
           "name": "--color-text-success-strong",
-          "value": "var(--color-green-700)",
+          "value": "var(--color-green-800)",
           "dark": "var(--color-green-300)"
         },
         {
           "name": "--color-text-warning-strong",
-          "value": "var(--color-orange-700)",
+          "value": "var(--color-orange-800)",
           "dark": "var(--color-orange-300)"
         },
         {
@@ -107,6 +107,11 @@
           "name": "--color-text-category-hover",
           "value": "var(--color-purple-700)",
           "dark": "var(--color-purple-200)"
+        },
+        {
+          "name": "--color-text-on-strong",
+          "value": "var(--color-white)",
+          "commentBefore": "/* strong 상태 채움(bg-*-strong) 위 글자 — 테마와 무관하게 흰색 */"
         }
       ]
     },
@@ -145,39 +150,39 @@
         {
           "name": "--color-bg-brand-subtle",
           "value": "var(--color-brand-50)",
-          "dark": "var(--color-brand-900)"
+          "dark": "color-mix(\n    in oklab,\n    var(--color-brand-500) 18%,\n    var(--color-neutral-900)\n  )"
         },
         {
           "name": "--color-bg-brand-subtle-hover",
           "value": "var(--color-brand-100)",
-          "dark": "var(--color-brand-800)"
+          "dark": "color-mix(\n    in oklab,\n    var(--color-brand-500) 26%,\n    var(--color-neutral-900)\n  )"
         },
         {
           "name": "--color-bg-danger-default",
-          "value": "var(--color-red-500)"
+          "value": "var(--color-red-600)"
         },
         {
           "name": "--color-bg-danger-subtle",
           "value": "var(--color-red-50)",
-          "dark": "var(--color-red-900)"
+          "dark": "color-mix(in oklab, var(--color-red-500) 18%, var(--color-neutral-900))"
         },
         {
           "name": "--color-bg-success-default",
-          "value": "var(--color-green-500)"
+          "value": "var(--color-green-600)"
         },
         {
           "name": "--color-bg-success-subtle",
           "value": "var(--color-green-50)",
-          "dark": "var(--color-green-900)"
+          "dark": "color-mix(\n    in oklab,\n    var(--color-green-500) 18%,\n    var(--color-neutral-900)\n  )"
         },
         {
           "name": "--color-bg-warning-default",
-          "value": "var(--color-orange-500)"
+          "value": "var(--color-orange-600)"
         },
         {
           "name": "--color-bg-warning-subtle",
           "value": "var(--color-orange-50)",
-          "dark": "var(--color-orange-900)"
+          "dark": "color-mix(\n    in oklab,\n    var(--color-orange-500) 18%,\n    var(--color-neutral-900)\n  )"
         },
         {
           "name": "--color-bg-info-default",
@@ -186,7 +191,24 @@
         {
           "name": "--color-bg-info-subtle",
           "value": "var(--color-blue-50)",
-          "dark": "var(--color-blue-900)"
+          "dark": "color-mix(in oklab, var(--color-blue-500) 18%, var(--color-neutral-900))"
+        },
+        {
+          "name": "--color-bg-danger-strong",
+          "value": "var(--color-red-700)",
+          "commentBefore": "/* 상태 strong 채움 — 흰 글자(text-on-strong)를 올리는 solid Badge·Tag 용. 양 테마 공통 4.5:1 이상 */"
+        },
+        {
+          "name": "--color-bg-success-strong",
+          "value": "var(--color-green-700)"
+        },
+        {
+          "name": "--color-bg-warning-strong",
+          "value": "var(--color-orange-700)"
+        },
+        {
+          "name": "--color-bg-info-strong",
+          "value": "var(--color-blue-700)"
         },
         {
           "name": "--color-bg-disabled",
@@ -227,8 +249,9 @@
         },
         {
           "name": "--color-border-focus",
-          "value": "var(--color-brand-400)",
-          "commentBefore": "/* focus ring: 밝은 골든 앰버로 선명한 포커스 표시 (offset과 함께 사용) */"
+          "value": "var(--color-brand-700)",
+          "commentBefore": "/* focus ring: 밝은 골든 앰버로 선명한 포커스 표시 (offset과 함께 사용) */",
+          "dark": "var(--color-brand-400)"
         },
         {
           "name": "--color-border-subtle",
@@ -254,8 +277,26 @@
         },
         {
           "name": "--color-border-input-focus",
-          "value": "var(--color-brand-500)",
+          "value": "var(--color-brand-700)",
           "dark": "var(--color-brand-400)"
+        },
+        {
+          "name": "--color-border-input-hover",
+          "value": "var(--color-neutral-400)",
+          "dark": "var(--color-neutral-500)",
+          "commentBefore": "/* 입력 컨트롤 hover — default(300)보다 한 단계 진하게 */"
+        },
+        {
+          "name": "--color-border-control",
+          "value": "var(--color-neutral-400)",
+          "dark": "var(--color-neutral-500)",
+          "commentBefore": "/* 작은 선택 컨트롤(Checkbox·Radio) 미선택 테두리 — 테두리만으로 형태를 알아봐야 해서 입력보다 한 단계 진하다 */"
+        },
+        {
+          "name": "--color-focus-halo",
+          "value": "color-mix(in oklab, var(--color-brand-500) 30%, transparent)",
+          "dark": "color-mix(in oklab, var(--color-brand-400) 35%, transparent)",
+          "commentBefore": "/* 필드 초점 둘레 링 — 초점 표시는 border-input-focus 가 맡고 이 링은 보조 */"
         },
         {
           "name": "--color-border-brand-hover",
@@ -266,7 +307,7 @@
         {
           "name": "--color-border-brand-subtle",
           "value": "var(--color-brand-200)",
-          "dark": "var(--color-brand-800)"
+          "dark": "color-mix(\n    in oklab,\n    var(--color-brand-500) 35%,\n    var(--color-neutral-900)\n  )"
         },
         {
           "name": "--color-border-danger-hover",
@@ -276,7 +317,7 @@
         {
           "name": "--color-border-danger-subtle",
           "value": "var(--color-red-200)",
-          "dark": "var(--color-red-800)"
+          "dark": "color-mix(\n    in oklab,\n    var(--color-red-500) 35%,\n    var(--color-neutral-900)\n  )"
         },
         {
           "name": "--color-border-info-hover",
@@ -286,7 +327,7 @@
         {
           "name": "--color-border-info-subtle",
           "value": "var(--color-blue-200)",
-          "dark": "var(--color-blue-800)"
+          "dark": "color-mix(\n    in oklab,\n    var(--color-blue-500) 35%,\n    var(--color-neutral-900)\n  )"
         },
         {
           "name": "--color-border-success-default",
@@ -300,7 +341,7 @@
         {
           "name": "--color-border-success-subtle",
           "value": "var(--color-green-200)",
-          "dark": "var(--color-green-800)"
+          "dark": "color-mix(\n    in oklab,\n    var(--color-green-500) 35%,\n    var(--color-neutral-900)\n  )"
         },
         {
           "name": "--color-border-warning-default",
@@ -314,7 +355,7 @@
         {
           "name": "--color-border-warning-subtle",
           "value": "var(--color-orange-200)",
-          "dark": "var(--color-orange-800)"
+          "dark": "color-mix(\n    in oklab,\n    var(--color-orange-500) 35%,\n    var(--color-neutral-900)\n  )"
         },
         {
           "name": "--color-border-tertiary-default",
@@ -387,12 +428,12 @@
         },
         {
           "name": "--color-interactive-destructive-bg",
-          "value": "var(--color-red-500)"
+          "value": "var(--color-red-600)"
         },
         {
           "name": "--color-interactive-destructive-bg-hover",
-          "value": "var(--color-red-600)",
-          "dark": "var(--color-red-400)"
+          "value": "var(--color-red-700)",
+          "dark": "var(--color-red-700)"
         },
         {
           "name": "--color-interactive-destructive-text",

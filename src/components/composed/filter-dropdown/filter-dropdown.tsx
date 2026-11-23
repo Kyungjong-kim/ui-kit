@@ -90,12 +90,12 @@ export function FilterDropdown({
           type="button"
           disabled={disabled}
           className={cn(
-            "inline-flex h-size-control-md items-center gap-group-xs rounded-sm border px-inline-md",
+            "inline-flex h-size-control-md items-center gap-group-xs rounded-xs border px-inline-md",
             "typography-label-md-medium transition-colors outline-none",
-            "border-[var(--color-border-default)] bg-[var(--color-bg-primary)] text-[var(--color-text-primary)]",
+            "border-[var(--color-border-input-default)] bg-[var(--color-bg-primary)] text-[var(--color-text-primary)] hover:border-[var(--color-border-input-hover)]",
             "hover:bg-[var(--color-bg-secondary)]",
             "focus-ring",
-            "data-[state=open]:border-[var(--color-border-focus)]",
+            "data-[state=open]:border-[var(--color-border-input-focus)]",
             "disabled:cursor-not-allowed disabled:opacity-50",
             count > 0 && "border-[var(--color-border-brand-default)]",
             className,
@@ -103,7 +103,7 @@ export function FilterDropdown({
         >
           <span>{label}</span>
           {count > 0 && (
-            <span className="inline-flex min-w-size-icon-md items-center justify-center rounded-full bg-[var(--color-bg-brand-default)] px-inline-xs typography-label-sm-medium text-[var(--color-text-inverse)]">
+            <span className="inline-flex min-w-size-icon-md items-center justify-center rounded-full bg-[var(--color-bg-brand-default)] px-inline-xs typography-label-sm-medium text-[var(--color-interactive-primary-text)]">
               {count}
             </span>
           )}

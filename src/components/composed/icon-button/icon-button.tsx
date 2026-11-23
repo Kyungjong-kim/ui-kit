@@ -15,7 +15,7 @@ const iconButtonVariants = cva(
     variants: {
       variant: {
         primary: [
-          "bg-[var(--color-interactive-primary-bg)] text-white",
+          "bg-[var(--color-interactive-primary-bg)] text-[var(--color-interactive-primary-text)]",
           "hover:bg-[var(--color-interactive-primary-bg-hover)]",
         ],
         secondary: [
@@ -24,7 +24,7 @@ const iconButtonVariants = cva(
         ],
         ghost: ["bg-transparent", "hover:bg-[var(--color-interactive-ghost-bg-hover)]"],
         danger: [
-          "bg-[var(--color-interactive-destructive-bg)] text-white",
+          "bg-[var(--color-interactive-destructive-bg)] text-[var(--color-text-on-strong)]",
           "hover:bg-[var(--color-interactive-destructive-bg-hover)]",
         ],
         tertiary: ["bg-[var(--color-bg-tertiary)]", "hover:bg-[var(--color-bg-secondary)]"],
@@ -33,7 +33,7 @@ const iconButtonVariants = cva(
       appearance: {
         filled: [],
         outline: [
-          "bg-transparent border border-[var(--color-border-default)] hover:bg-[var(--color-bg-secondary)]",
+          "bg-transparent border border-[var(--color-border-input-default)] hover:border-[var(--color-border-input-hover)] hover:bg-[var(--color-bg-secondary)]",
         ],
         ghost: ["bg-transparent border-none hover:bg-[var(--color-interactive-ghost-bg-hover)]"],
       },
@@ -44,7 +44,7 @@ const iconButtonVariants = cva(
         lg: ["h-size-control-lg w-size-control-lg"],
       },
       shape: {
-        square: ["rounded-sm"],
+        square: ["rounded-xs"],
         circle: ["rounded-full"],
       },
     },
@@ -72,11 +72,13 @@ type IconButtonAppearance = NonNullable<VariantProps<typeof iconButtonVariants>[
 function getDefaultIconColor(
   variant: IconButtonVariant,
   appearance: IconButtonAppearance | undefined,
-): IconColor {
+): IconColor | (string & {}) {
   const isFilled = !appearance || appearance === "filled";
   if (isFilled) {
-    if (variant === "tertiary" || variant === "light") return "secondary";
-    return "inverse";
+    // 채움 배경에 맞춘 색 — 노랑 위는 어둡게, 빨강 위는 흰색, 흰·투명 배경은 secondary
+    if (variant === "primary") return "var(--color-interactive-primary-text)";
+    if (variant === "danger") return "var(--color-text-on-strong)";
+    return "secondary";
   }
   if (variant === "primary") return "brandDefault";
   if (variant === "danger") return "dangerDefault";

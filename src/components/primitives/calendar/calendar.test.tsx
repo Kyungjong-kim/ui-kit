@@ -18,6 +18,16 @@ describe("Calendar", () => {
     expect(selectedBtn).toBeTruthy();
   });
 
+  it("선택된 날짜는 밝은 노랑 배경이라 어두운 글자를 쓴다", () => {
+    const selected = new Date(2026, 4, 8);
+    const { container } = render(
+      <Calendar mode="single" selected={selected} defaultMonth={selected} />,
+    );
+    const btn = container.querySelector("button[data-selected-single='true']") as HTMLElement;
+    expect(btn).not.toBeNull();
+    expect(btn.style.color).toBe("var(--color-interactive-primary-text)");
+  });
+
   it("날짜 버튼에 초점 표시 유틸이 react-day-picker className 에 덮이지 않고 남는다", () => {
     const { container } = render(<Calendar mode="single" />);
     const dayButton = container.querySelector("button[data-day]");
@@ -53,5 +63,25 @@ describe("Calendar", () => {
       />,
     );
     expect(screen.getAllByRole("combobox").length).toBeGreaterThanOrEqual(2);
+  });
+
+  it("captionLayout=dropdown 의 네이티브 select 는 보이는 라벨 위에 투명하게 겹친다 (라벨 중복 방지)", () => {
+    render(
+      <Calendar
+        mode="single"
+        captionLayout="dropdown"
+        month={new Date(2026, 0, 1)}
+        startMonth={new Date(2025, 0)}
+        endMonth={new Date(2027, 11)}
+      />,
+    );
+    for (const select of screen.getAllByRole("combobox")) {
+      expect(select).toHaveClass("absolute", "opacity-0");
+      expect(select.parentElement).toHaveClass("relative");
+    }
+    // 이전·다음 달 버튼은 캡션 줄 양끝에 겹쳐 놓는다(세로로 쌓이지 않게)
+    const nav = screen.getByRole("button", { name: /previous|이전/i }).parentElement;
+    expect(nav).toHaveClass("absolute", "justify-between");
+    expect(nav?.parentElement).toHaveClass("relative");
   });
 });
