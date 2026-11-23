@@ -52,7 +52,7 @@ src/styles/
 |---|---|---|
 | **text** | `--color-text-{primary, secondary, tertiary, disabled, inverse, brand-default, brand-hover, danger-default, success-default, warning-default, info-default, on-strong}` | `--color-text-primary` |
 | **bg** | `--color-bg-{primary, secondary, tertiary, inverse, brand-default, brand-hover, brand-subtle, danger-default, danger-subtle, danger-strong, success-default, success-subtle, success-strong, warning-default, warning-subtle, warning-strong, info-default, info-subtle, info-strong, disabled}` | `--color-bg-brand-default` |
-| **border** | `--color-border-{default, strong, brand-default, danger-default, info-default, disabled, focus, input-default, input-hover, input-focus}` | `--color-border-default` |
+| **border** | `--color-border-{default, strong, brand-default, danger-default, info-default, disabled, focus, input-default, input-hover, input-focus, control}` | `--color-border-default` |
 | **focus** | `--color-focus-halo` (필드 초점 3px 링, brand 30% 투명 / 다크 brand-400 35%) | `focus:shadow-[0_0_0_3px_var(--color-focus-halo)]` |
 | **interactive** | `--color-interactive-{primary, secondary, ghost, destructive}-{bg, bg-hover, text, border}` | `--color-interactive-primary-bg` |
 
@@ -93,8 +93,21 @@ src/styles/
 | **Tabs·IconTabs** | 밑줄형 — 목록 하단 hairline `border-default`, 활성 2px `border-brand-default` + `text-primary` |
 | **SegmentedControl** | 알약형 — 트랙 `border-default` + `bg-tertiary` + 8px, 선택 칸 `bg-primary` + `input-default` 테두리(그림자 없음), 비선택 `border-transparent` + `text-secondary` |
 | **Pagination** | 칸 32px(`size-control-sm`)·6px·`tabular-nums`, 이전/다음은 `input-default` 테두리 버튼 |
+| **라운드 체계** | 옵션 4px(`rounded-xxs`) · 컨트롤(버튼·필드·IconButton square·SelectButton) 6px(`rounded-xs`) · 떠 있는 패널·Skeleton 기본 8px(`rounded-sm`) · 컨테이너 12px(`rounded-md`). 16px(`rounded-lg`)는 이 계열에서 쓰지 않는다 |
+| **Button** | 6px. primary·secondary·destructive 는 `shadow-default-sm`/`hover:shadow-default-md` 없이 hairline 만 |
+| **IconButton** | filled 기본 아이콘 색 — primary `interactive-primary-text`(노랑 위 어둡게) / danger `text-on-strong` / 그 외(secondary·ghost·tertiary·light) `text-secondary`. inverse(흰색) 금지(흰 배경에서 안 보임). outline = `input-default` 테두리 → hover `input-hover` |
+| **SelectButton** | 6px, 테두리 `input-default` → hover `input-hover`, 선택 `bg-brand-subtle`(hover `brand-subtle-hover`) |
+| **Checkbox·Radio·MultiSelect 체크** | 미선택 테두리 `border-control`(라이트 neutral-400 / 다크 neutral-500). 체크·indeterminate 아이콘·Radio 선택 점·MultiSelect 체크 아이콘은 노랑 위라 `interactive-primary-text`. Radio 배경 `bg-primary` 토큰 |
+| **카드 계열** (Card·StatCard·MetricCard·VersionInfoCard·DataItemsTable·DescriptionList) | 12px·hairline·그림자 없음(Card `shadow` 기본 `"none"`), 여백 20px(`p-inline-xl`) 통일. StatCard·MetricCard 값 `tabular-nums` |
+| **표 계열** (Table·TreeTable·DataTable) | 12px 테두리 래퍼, 회색 헤더(`bg-secondary`), th `typography-label-sm-medium`·td `typography-body-sm-base`, `px-inline-lg py-stack-md`, 빈 상태 `py-stack-xl`. DataTable 선택 행 `bg-brand-subtle`(hover 회색과 구분). DataItemsTable 은 카드 12px·`p-inline-lg` |
+| **오버레이** | Dialog·AlertDialog 12px + hairline 테두리. Sheet 닫기 버튼 `focus-ring`·`rounded-xs`·hover `bg-tertiary`(Dialog 와 동일). NavFlyout 패널 `p-stack-xs`(4), 항목 `rounded-xxs`·`focus-ring-inset` |
+| **Progress·Skeleton** | Progress 채움은 그라데이션 없이 브랜드 단색. Skeleton 기본 `rounded` `"md"` → `"sm"` |
 
 **Tabs vs SegmentedControl**: 콘텐츠 패널 전환 = Tabs(밑줄형). 보기·옵션 값 전환(알약형) = SegmentedControl.
+
+**cn 병합 주의**: `src/utils/cn.ts` 의 tailwind-merge 는 `typography` class group 을 등록해 `typography-*` 유틸끼리 충돌로 처리한다(후자 우선). 미등록이던 시절 Button `size="lg"` 가 base 의 `typography-label-md-medium` 과 함께 남아 14px 로 렌더되던 버그가 있었다.
+
+**토큰 형태**: Popover·LinkButton 등은 utility 형태(`bg-surface-default`, `text-text-*`)가 아닌 `[var(--…)]` 형태로 쓴다.
 
 ---
 

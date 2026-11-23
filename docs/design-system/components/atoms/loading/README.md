@@ -9,3 +9,5 @@
 | Skeleton | 문서 예정 | `Skeleton` |
 | TextSkeleton | 문서 예정 | `TextSkeleton` |
 | Spinner | 문서 예정 | `Spinner` |
+
+Skeleton 기본 `rounded` 는 `"sm"`(8px, 이전 `"md"`).

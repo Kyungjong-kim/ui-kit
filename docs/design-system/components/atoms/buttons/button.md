@@ -47,12 +47,14 @@ import type { ButtonProps } from "ui-kit";
 | **ghost** | ✅ | ✅ | ✅ |
 | **destructive** | ✅ | ✅ | ✅ |
 
-- `primary` — 채워진 브랜드 배경 + 그림자. 화면당 1개 주요 액션.
+- `primary` — 채워진 브랜드 배경(그림자 없이 hairline 만). 화면당 1개 주요 액션.
 - `secondary` — 테두리 + 중립 배경. 보조 액션.
 - `ghost` — 배경 없음, hover 시만 강조. 밀집 영역·아이콘 인접 액션.
 - `destructive` — 파괴적/되돌릴 수 없는 액션(삭제 등).
 
 크기별 높이는 `h-size-control-sm|md|lg` 토큰을 사용한다.
+
+모서리는 6px(`rounded-xs`). primary·secondary·destructive 는 `shadow-default-sm`/`hover:shadow-default-md` 없이 hairline 테두리만 쓴다. `size="lg"` 는 base 의 `typography-label-md-medium` 을 덮어쓴다(`cn` 의 tailwind-merge 가 `typography-*` 유틸을 충돌로 처리).
 
 ## When to use
 

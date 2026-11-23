@@ -52,6 +52,10 @@ import type { MetricCardProps, MetricTrend, MetricTrendDirection } from "ui-kit"
 - `trend`는 `direction`에 따라 색과 화살표 아이콘이 자동 매핑된다(`up`↑ success, `down`↓ danger, `neutral`→ 회색). 색은 방향으로만 결정되므로 "하락이 긍정"인 지표라면 표시 값을 호출부에서 조정한다.
 - `trend`가 있으면 우측 정렬(`ml-auto`)로 값 옆에 붙는다.
 
+## 스타일
+
+12px(`rounded-md`)·hairline 테두리·그림자 없음, 여백 20px(`p-5`). 값은 `tabular-nums`로 자릿수 폭을 맞춘다. StatCard 도 같은 카드 규격(`px-5 py-4`)이다.
+
 ## When to use
 
 - 대시보드의 단일 핵심 수치 + 증감 표시.

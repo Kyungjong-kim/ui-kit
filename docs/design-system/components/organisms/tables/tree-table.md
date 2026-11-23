@@ -68,6 +68,10 @@ const data: FileNode[] = [
 - 첫 번째 컬럼(index 0)에만 토글 화살표와 `depth * 20px` 들여쓰기가 적용된다. 자식이 없는 노드는 화살표 자리를 빈 공간으로 채워 정렬을 맞춘다.
 - 토글 버튼은 `aria-expanded`와 접기/펼치기 `aria-label`을 제공한다.
 
+## 스타일
+
+DataTable 규격과 같다 — 12px(`rounded-md`) 테두리 래퍼, 회색 헤더(`bg-secondary`), th `typography-label-sm-medium`·td `typography-body-sm-base`, 셀 `px-inline-lg py-stack-md`, 빈 상태 `py-stack-xl`.
+
 ## When to use
 
 - 파일 트리·조직도·중첩 카테고리 등 **계층 구조**를 표로 보여줄 때.
