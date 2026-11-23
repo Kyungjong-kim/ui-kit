@@ -20,16 +20,16 @@ const linkButtonVariants = cva(
     variants: {
       variant: {
         primary: [],
-        secondary: ["text-text-secondary", "hover:text-text-primary"],
+        secondary: ["text-[var(--color-text-secondary)]", "hover:text-[var(--color-text-primary)]"],
         tertiary: [],
         danger: [],
-        light: ["text-text-inverse"],
+        light: ["text-[var(--color-text-inverse)]"],
       },
       size: {
         sm: ["typography-label-sm-base"],
       },
       disabled: {
-        true: ["text-text-disabled", "hover:text-text-disabled"],
+        true: ["text-[var(--color-text-disabled)]", "hover:text-[var(--color-text-disabled)]"],
         false: ["hover:underline"],
       },
     },
